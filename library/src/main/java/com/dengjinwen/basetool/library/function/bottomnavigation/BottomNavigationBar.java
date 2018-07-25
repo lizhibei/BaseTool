@@ -28,7 +28,6 @@ import com.dengjinwen.basetool.library.function.bottomnavigation.behaviour.Botto
 import com.dengjinwen.basetool.library.function.bottomnavigation.navigationtab.BottomNavigationTab;
 import com.dengjinwen.basetool.library.function.bottomnavigation.navigationtab.FixedBottomNavigationTab;
 import com.dengjinwen.basetool.library.function.bottomnavigation.navigationtab.ShiftingBottomNavigationTab;
-import com.dengjinwen.basetool.library.tool.FetchContextTool;
 import com.dengjinwen.basetool.library.tool.ScreenUitl;
 
 import java.lang.annotation.Retention;
@@ -158,7 +157,7 @@ public class BottomNavigationBar extends FrameLayout {
         if (attrs != null) {
             TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.BottomNavigationBar, 0, 0);
 
-            mActiveColor = typedArray.getColor(R.styleable.BottomNavigationBar_bnbActiveColor, FetchContextTool.fetchContextColor(context, R.attr.colorAccent));
+            mActiveColor = typedArray.getColor(R.styleable.BottomNavigationBar_bnbActiveColor,ContextCompat.getColor(context,R.color.text_color) );
             mInActiveColor = typedArray.getColor(R.styleable.BottomNavigationBar_bnbInactiveColor, Color.LTGRAY);
             mBackgroundColor = typedArray.getColor(R.styleable.BottomNavigationBar_bnbBackgroundColor, Color.WHITE);
             mAutoHideEnabled = typedArray.getBoolean(R.styleable.BottomNavigationBar_bnbAutoHideEnabled, true);
@@ -206,7 +205,7 @@ public class BottomNavigationBar extends FrameLayout {
 
             typedArray.recycle();
         } else {
-            mActiveColor = FetchContextTool.fetchContextColor(context, R.attr.colorAccent);
+            mActiveColor = ContextCompat.getColor(context,R.color.text_color);
             mInActiveColor = Color.LTGRAY;
             mBackgroundColor = Color.WHITE;
             mElevation = getResources().getDimension(R.dimen.bottom_navigation_elevation);
