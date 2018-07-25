@@ -1,4 +1,4 @@
-package com.dengjinwen.basetool.library;
+package com.dengjinwen.basetool.library.tool;
 
 import android.content.Context;
 import android.util.DisplayMetrics;
