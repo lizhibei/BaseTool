@@ -12,8 +12,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ashokvarma.bottomnavigation.R;
-import com.ashokvarma.bottomnavigation.badgeitem.BadgeTextView;
+import com.dengjinwen.basetool.library.R;
+import com.dengjinwen.basetool.library.function.bottomnavigation.badgeitem.BadgeTextView;
 
 /**
  * Class description
