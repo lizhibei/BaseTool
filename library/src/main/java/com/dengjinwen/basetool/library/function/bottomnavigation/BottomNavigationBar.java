@@ -47,11 +47,17 @@ import java.util.ArrayList;
 @CoordinatorLayout.DefaultBehavior(BottomVerticalScrollBehavior.class)
 public class BottomNavigationBar extends FrameLayout {
 
-    //如果Item的个数<=3就会使用MODE_FIXED模式，否则使用MODE_SHIFTING模式
+    /**
+     * 如果Item的个数<=3就会使用MODE_FIXED模式，否则使用MODE_SHIFTING模式
+     */
     public static final int MODE_DEFAULT = 0;
-    //填充模式，未选中的Item会显示文字，没有换挡动画。
+    /**
+     * 填充模式，未选中的Item会显示文字，没有换挡动画。
+     */
     public static final int MODE_FIXED = 1;
-    //换挡模式，未选中的Item不会显示文字，选中的会显示文字。在切换的时候会有一个像换挡的动画
+    /**
+     * 换挡模式，未选中的Item不会显示文字，选中的会显示文字。在切换的时候会有一个像换挡的动画
+     */
     public static final int MODE_SHIFTING = 2;
     public static final int MODE_FIXED_NO_TITLE = 3;
     public static final int MODE_SHIFTING_NO_TITLE = 4;
@@ -61,11 +67,17 @@ public class BottomNavigationBar extends FrameLayout {
     @interface Mode {
     }
 
-    //如果设置的Mode为MODE_FIXED，将使用BACKGROUND_STYLE_STATIC 。如果Mode为MODE_SHIFTING将使用BACKGROUND_STYLE_RIPPLE
+    /**
+     * 如果设置的Mode为MODE_FIXED，将使用BACKGROUND_STYLE_STATIC 。如果Mode为MODE_SHIFTING将使用BACKGROUND_STYLE_RIPPLE
+     */
     public static final int BACKGROUND_STYLE_DEFAULT = 0;
-    //点击的时候没有水波纹效果
+    /**
+     * 点击的时候没有水波纹效果
+     */
     public static final int BACKGROUND_STYLE_STATIC = 1;
-    //点击的时候有水波纹效果
+    /**
+     * 点击的时候有水波纹效果
+     */
     public static final int BACKGROUND_STYLE_RIPPLE = 2;
 
     @IntDef({BACKGROUND_STYLE_DEFAULT, BACKGROUND_STYLE_STATIC, BACKGROUND_STYLE_RIPPLE})
@@ -91,29 +103,83 @@ public class BottomNavigationBar extends FrameLayout {
     private static final Interpolator INTERPOLATOR = new LinearOutSlowInInterpolator();
     private ViewPropertyAnimatorCompat mTranslationAnimator;
 
+    /**
+     * 是否滚动
+     */
     private boolean mScrollable = false;
 
+    /**
+     * item最少个数
+     */
     private static final int MIN_SIZE = 3;
+    /**
+     * item最多数量
+     */
     private static final int MAX_SIZE = 5;
 
+    /**
+     * item 数据列表
+     */
     ArrayList<BottomNavigationItem> mBottomNavigationItems = new ArrayList<>();
+    /**
+     * 存储tab的列表
+     */
     ArrayList<BottomNavigationTab> mBottomNavigationTabs = new ArrayList<>();
 
+    /**
+     * 默认选中的位置
+     */
     private static final int DEFAULT_SELECTED_POSITION = -1;
+    /**
+     * 当前选中的位置
+     */
     private int mSelectedPosition = DEFAULT_SELECTED_POSITION;
+    /**
+     * 初始化时选中的位置
+     */
     private int mFirstSelectedPosition = 0;
+    /**
+     * tab点击回调
+     */
     private OnTabSelectedListener mTabSelectedListener;
 
+    /**
+     * 选中时候的颜色
+     */
     private int mActiveColor;
+    /**
+     * 未选中时的颜色
+     */
     private int mInActiveColor;
+    /**
+     * 背景颜色
+     */
     private int mBackgroundColor;
 
+    /**
+     * 上层实现水波纹效果的布局
+     */
     private FrameLayout mBackgroundOverlay;
+    /**
+     * 整个BottomNavigationBar的布局容器 包括上层水波纹效果布局和tab布局
+     */
     private FrameLayout mContainer;
+    /**
+     *tab 的容器
+     */
     private LinearLayout mTabContainer;
 
+    /**
+     * 默认动画的持续时间
+     */
     private static final int DEFAULT_ANIMATION_DURATION = 200;
+    /**
+     * 动画持续时间
+     */
     private int mAnimationDuration = DEFAULT_ANIMATION_DURATION;
+    /**
+     * 水波纹动画持续时间
+     */
     private int mRippleAnimationDuration = (int) (DEFAULT_ANIMATION_DURATION * 2.5);
 
     private float mElevation;
@@ -375,12 +441,15 @@ public class BottomNavigationBar extends FrameLayout {
         if (!mBottomNavigationItems.isEmpty()) {
             mTabContainer.removeAllViews();
             if (mMode == MODE_DEFAULT) {
+                //设置MODE_DEFAULT  当item的数量小于等于3时 为MODE_FIXED模式
                 if (mBottomNavigationItems.size() <= MIN_SIZE) {
                     mMode = MODE_FIXED;
-                } else {
+                } else {  //大于3则是MODE_SHIFTING 模式
                     mMode = MODE_SHIFTING;
                 }
             }
+            //当设置BACKGROUND_STYLE_DEFAULT时 如果mMode是MODE_FIXED 则设置BACKGROUND_STYLE_STATIC
+            // 其他设置BACKGROUND_STYLE_RIPPLE
             if (mBackgroundStyle == BACKGROUND_STYLE_DEFAULT) {
                 if (mMode == MODE_FIXED) {
                     mBackgroundStyle = BACKGROUND_STYLE_STATIC;
@@ -398,6 +467,7 @@ public class BottomNavigationBar extends FrameLayout {
 
             if (mMode == MODE_FIXED || mMode == MODE_FIXED_NO_TITLE) {
 
+                //获得tab的宽度
                 int[] widths = BottomNavigationHelper.getMeasurementsForFixedMode(getContext(), screenWidth,
                         mBottomNavigationItems.size(), mScrollable);
                 int itemWidth = widths[0];
@@ -526,11 +596,11 @@ public class BottomNavigationBar extends FrameLayout {
     }
 
     /**
-     * Internal Method to select a tab
+     * 选择tab的操作事件
      *
-     * @param newPosition     to select a tab after bottom navigation bar is initialised
-     * @param firstTab        if firstTab the no ripple animation will be done
-     * @param callListener    is listener callbacks enabled for this change
+     * @param newPosition     选择的新位置
+     * @param firstTab        是否是初始化时第一次调用  初始化时不显示上层的波纹效果
+     * @param callListener    是否要调用回调
      * @param forcedSelection if bottom navigation bar forced to select tab (in this case call on selected irrespective of previous state
      */
     private void selectTabInternal(int newPosition, boolean firstTab, boolean callListener, boolean forcedSelection) {
@@ -547,7 +617,7 @@ public class BottomNavigationBar extends FrameLayout {
 
                 final BottomNavigationTab clickedView = mBottomNavigationTabs.get(newPosition);
                 if (firstTab) {
-                    // Running a ripple on the opening app won't be good so on firstTab this won't run.
+                    // 第一次初始化不显示水波纹效果
                     mContainer.setBackgroundColor(clickedView.getActiveColor());
                     mBackgroundOverlay.setVisibility(View.GONE);
                 } else {
@@ -555,7 +625,9 @@ public class BottomNavigationBar extends FrameLayout {
                         @Override
                         public void run() {
 //                            try {
-                            BottomNavigationHelper.setBackgroundWithRipple(clickedView, mContainer, mBackgroundOverlay, clickedView.getActiveColor(), mRippleAnimationDuration);
+                            //设置背景水波纹效果
+                            BottomNavigationHelper.setBackgroundWithRipple(clickedView, mContainer, mBackgroundOverlay,
+                                    clickedView.getActiveColor(), mRippleAnimationDuration);
 //                            } catch (Exception e) {
 //                                mContainer.setBackgroundColor(clickedView.getActiveColor());
 //                                mBackgroundOverlay.setVisibility(View.GONE);

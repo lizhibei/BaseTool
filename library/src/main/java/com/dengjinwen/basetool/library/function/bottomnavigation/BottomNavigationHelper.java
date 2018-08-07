@@ -27,14 +27,13 @@ class BottomNavigationHelper {
     }
 
     /**
-     * 在MODE_FIXED下 的itemWidth
-     * Used to get Measurements for MODE_FIXED
+     * MODE_FIXED模式下获得tab的宽度
      *
      * @param context     to fetch measurements
      * @param screenWidth total screen width  屏幕宽度
      * @param noOfTabs    no of bottom bar tabs  tab的数量
      * @param scrollable  is bottom bar scrollable  是否滑动
-     * @return width of each tab
+     * @return width of each tab 一个长度为2的数组 第一个值为tab的宽度
      */
     static int[] getMeasurementsForFixedMode(Context context, int screenWidth, int noOfTabs, boolean scrollable) {
 
@@ -57,12 +56,12 @@ class BottomNavigationHelper {
     }
 
     /**
-     * Used to get Measurements for MODE_SHIFTING
+     * MODE_SHIFTING模式下获得tab的宽度
      *
      * @param context     to fetch measurements
-     * @param screenWidth total screen width
-     * @param noOfTabs    no of bottom bar tabs
-     * @param scrollable  is bottom bar scrollable
+     * @param screenWidth 屏幕宽度
+     * @param noOfTabs    tab的数量
+     * @param scrollable  是否滑动
      * @return min and max width of each tab
      */
     static int[] getMeasurementsForShiftingMode(Context context, int screenWidth, int noOfTabs, boolean scrollable) {
@@ -110,7 +109,7 @@ class BottomNavigationHelper {
     }
 
     /**
-     * Used to get set data to the Tab views from navigation items
+     * 把bottomNavigationItem和BottomNavigationTab结合
      *
      * @param bottomNavigationItem holds all the data
      * @param bottomNavigationTab  view to which data need to be set
@@ -154,13 +153,13 @@ class BottomNavigationHelper {
     }
 
     /**
-     * Used to set the ripple animation when a tab is selected
+     * 当tab被选择时的水波纹动画
      *
-     * @param clickedView       the view that is clicked (to get dimens where ripple starts)
-     * @param backgroundView    temporary view to which final background color is set
-     * @param bgOverlay         temporary view which is animated to get ripple effect
-     * @param newColor          the new color i.e ripple color
-     * @param animationDuration duration for which animation runs
+     * @param clickedView       被选择的tab  view
+     * @param backgroundView    存储水波纹视图和tab容器的 父类视图
+     * @param bgOverlay         实现水波纹动画的视图
+     * @param newColor          水波纹动画的颜色值
+     * @param animationDuration 动画持续时间
      */
     static void setBackgroundWithRipple(View clickedView, final View backgroundView,
                                         final View bgOverlay, final int newColor, int animationDuration) {

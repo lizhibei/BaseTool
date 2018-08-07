@@ -1,13 +1,40 @@
 package com.dengjinwen.basetool;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+import com.dengjinwen.basetool.activity.BaseActivity;
+import com.dengjinwen.basetool.activity.BottomNavigationActivity;
+import com.dengjinwen.basetool.activity.NumberProgressBarActivity;
+
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initview();
+    }
+
+    private void initview() {
+        findViewById(R.id.bottom_navigation_tv).setOnClickListener(this);
+        findViewById(R.id.number_progress_bar_tv).setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            //
+            case R.id.bottom_navigation_tv:
+                Intent toBottomNavigationActivity=new Intent(this,BottomNavigationActivity.class);
+                startActivity(toBottomNavigationActivity);
+                break;
+                //
+            case R.id.number_progress_bar_tv:
+                Intent toNumberProgressBarActivity=new Intent(this,NumberProgressBarActivity.class);
+                startActivity(toNumberProgressBarActivity);
+                break;
+        }
     }
 }

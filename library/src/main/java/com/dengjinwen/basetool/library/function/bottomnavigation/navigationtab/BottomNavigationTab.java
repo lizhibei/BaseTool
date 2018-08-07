@@ -30,46 +30,84 @@ import com.dengjinwen.basetool.library.function.bottomnavigation.badgeitem.Badge
  */
 public abstract class BottomNavigationTab extends FrameLayout {
 
-    //是否是没有标题模式
+    /**
+     * 是否是没有标题模式
+     */
     protected boolean isNoTitleMode;
 
-    //选中状态下paddingTop
+    /**
+     * 选中状态下paddingTop
+     */
     protected int paddingTopActive;
-    //未选中状态下paddingTop
+    /**
+     * 未选中状态下paddingTop
+     */
     protected int paddingTopInActive;
 
-    //tab 所在的位置
+    /**
+     * tab 所在的位置
+     */
     protected int mPosition;
-    //选中状态的颜色
+    /**
+     * 选中状态的颜色
+     */
     protected int mActiveColor;
-    //未选中状态的颜色
+    /**
+     * 未选中状态的颜色
+     */
     protected int mInActiveColor;
-    //背景颜色
+    /**
+     * 背景颜色
+     */
     protected int mBackgroundColor;
-    //选中状态下的宽度
+    /**
+     * 选中状态下的宽度
+     */
     protected int mActiveWidth;
-    //未选中状态下的宽度
+    /**
+     * 未选中状态下的宽度
+     */
     protected int mInActiveWidth;
 
-    //选中状态下的图标
+    /**
+     * 选中状态下的图标
+     */
     protected Drawable mCompactIcon;
-    //未选择状态下的图标
+    /**
+     * 未选择状态下的图标
+     */
     protected Drawable mCompactInActiveIcon;
-    //是否设置 在未选择状态下的图标
+    /**
+     * 是否设置 在未选择状态下的图标
+     */
     protected boolean isInActiveIconSet = false;
-    //下方显示的文本
+    /**
+     * 下方显示的文本
+     */
     protected String mLabel;
 
     public BadgeItem badgeItem;
 
-    //是否选中
+    /**
+     * 是否选中
+     */
     boolean isActive = false;
 
+    /**
+     * 存储整个tab的容器
+     */
     View containerView;
-    //文本控件
+    /**
+     * 文本控件
+     */
     TextView labelView;
-    //图标控件
+    /**
+     * 图标控件
+     */
     ImageView iconView;
+    /**
+     * 存储 icon 和badge的容器
+     */
     FrameLayout iconContainerView;
     public BadgeTextView badgeView;
 
@@ -161,6 +199,7 @@ public abstract class BottomNavigationTab extends FrameLayout {
     public void select(boolean setActiveColor, int animationDuration) {
         isActive = true;
 
+        //根据不同状态padding top的不同值 的向上或者向下移动的动画
         ValueAnimator animator = ValueAnimator.ofInt(containerView.getPaddingTop(), paddingTopActive);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -213,6 +252,7 @@ public abstract class BottomNavigationTab extends FrameLayout {
     @CallSuper
     public void initialise(boolean setActiveColor) {
         iconView.setSelected(false);
+        //有设置未选中状态下的图标，切换图标
         if (isInActiveIconSet) {
             StateListDrawable states = new StateListDrawable();
             states.addState(new int[]{android.R.attr.state_selected},
@@ -222,8 +262,9 @@ public abstract class BottomNavigationTab extends FrameLayout {
             states.addState(new int[]{},
                     mCompactInActiveIcon);
             iconView.setImageDrawable(states);
+            //未设置未选中状态下的图标，变化图标颜色
         } else {
-            if (setActiveColor) {
+            if (setActiveColor) {  //有设置选中状态下的颜色
                 DrawableCompat.setTintList(mCompactIcon, new ColorStateList(
                         new int[][]{
                                 new int[]{android.R.attr.state_selected}, //1
@@ -236,7 +277,7 @@ public abstract class BottomNavigationTab extends FrameLayout {
                                 mInActiveColor //3
                         }
                 ));
-            } else {
+            } else {  //未设置选中状态下的颜色，设置为背景颜色
                 DrawableCompat.setTintList(mCompactIcon, new ColorStateList(
                         new int[][]{
                                 new int[]{android.R.attr.state_selected}, //1

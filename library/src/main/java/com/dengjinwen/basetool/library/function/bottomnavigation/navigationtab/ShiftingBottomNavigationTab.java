@@ -92,6 +92,9 @@ public class ShiftingBottomNavigationTab extends BottomNavigationTab {
         layoutParams.width = getContext().getResources().getDimensionPixelSize(R.dimen.shifting_no_title_icon_width);
     }
 
+    /**
+     * item tab大小变化动画
+     */
     private class ResizeWidthAnimation extends Animation {
         private int mWidth;
         private int mStartWidth;

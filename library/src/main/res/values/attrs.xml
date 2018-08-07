@@ -26,4 +26,16 @@
         </attr>
         <attr name="bnbAutoHideEnabled" format="boolean" />
     </declare-styleable>
+    <declare-styleable name="NumberProgressBar">
+        <attr name="reachedColor" format="color" />
+        <attr name="reachedHeight" format="dimension" />
+        <attr name="unreachedColor" format="color" />
+        <attr name="unreachedHeight" format="dimension" />
+        <attr name="drawtextsize" format="dimension" />
+        <attr name="drawtextcolor" format="color" />
+        <attr name="textoffet" format="dimension" />
+        <attr name="progress_text_visible" format="boolean" />
+        <attr name="curent_progress" format="integer" />
+        <attr name="max_progress" format="integer" />
+    </declare-styleable>
 </resources>

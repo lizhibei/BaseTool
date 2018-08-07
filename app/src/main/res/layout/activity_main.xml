@@ -1,18 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
-   <com.dengjinwen.basetool.library.view.IconView
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       app:icon_id="@mipmap/ic_launcher"
-       app:text="iconview"
-       app:textsize="16sp"
-       app:textcolor="#333333"/>
+    <TextView
+        android:id="@+id/bottom_navigation_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="BottomNavigationBar"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/middle_small" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line_color" />
+    <TextView
+        android:id="@+id/number_progress_bar_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="NumberProgressBar"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/middle_small" />
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

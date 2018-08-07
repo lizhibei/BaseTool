@@ -29,12 +29,33 @@ import java.lang.annotation.RetentionPolicy;
  */
 public class ShapeBadgeItem extends BadgeItem<ShapeBadgeItem> {
 
+    /**
+     * 椭圆
+     */
     public static final int SHAPE_OVAL = 0;
+    /**
+     * 矩形
+     */
     public static final int SHAPE_RECTANGLE = 1;
+    /**
+     * 爱心
+     */
     public static final int SHAPE_HEART = 2;
+    /**
+     * 三角星
+     */
     public static final int SHAPE_STAR_3_VERTICES = 3;
+    /**
+     * 四角星
+     */
     public static final int SHAPE_STAR_4_VERTICES = 4;
+    /**
+     * 五角星
+     */
     public static final int SHAPE_STAR_5_VERTICES = 5;
+    /**
+     * 六角星
+     */
     public static final int SHAPE_STAR_6_VERTICES = 6;
 
     @IntDef({SHAPE_OVAL, SHAPE_RECTANGLE, SHAPE_HEART, SHAPE_STAR_3_VERTICES, SHAPE_STAR_4_VERTICES, SHAPE_STAR_5_VERTICES, SHAPE_STAR_6_VERTICES})
@@ -120,8 +141,8 @@ public class ShapeBadgeItem extends BadgeItem<ShapeBadgeItem> {
      * @return this, to allow builder pattern
      */
     public ShapeBadgeItem setSizeInDp(Context context, int heightInDp, int widthInDp) {
-        mHeightInPixels = UnitConversionTool.dp2px(context, heightInDp);
-        mWidthInPixels = UnitConversionTool.dp2px(context, widthInDp);
+        mHeightInPixels = (int) UnitConversionTool.dp2px(context, heightInDp);
+        mWidthInPixels = (int) UnitConversionTool.dp2px(context, widthInDp);
         if (isWeakReferenceValid()) {
             getTextView().get().setDimens(mWidthInPixels, mHeightInPixels);
         }
@@ -148,7 +169,7 @@ public class ShapeBadgeItem extends BadgeItem<ShapeBadgeItem> {
      * @return this, to allow builder pattern
      */
     public ShapeBadgeItem setEdgeMarginInDp(Context context, int edgeMarginInDp) {
-        mEdgeMarginInPx = UnitConversionTool.dp2px(context, edgeMarginInDp);
+        mEdgeMarginInPx = (int) UnitConversionTool.dp2px(context, edgeMarginInDp);
         refreshMargin();
         return this;
     }
@@ -199,11 +220,11 @@ public class ShapeBadgeItem extends BadgeItem<ShapeBadgeItem> {
     @Override
     void bindToBottomTabInternal(BottomNavigationTab bottomNavigationTab) {
         if (mHeightInPixels == 0)
-            mHeightInPixels = UnitConversionTool.dp2px(bottomNavigationTab.getContext(), 12);
+            mHeightInPixels = (int) UnitConversionTool.dp2px(bottomNavigationTab.getContext(), 12);
         if (mWidthInPixels == 0)
-            mWidthInPixels = UnitConversionTool.dp2px(bottomNavigationTab.getContext(), 12);
+            mWidthInPixels = (int) UnitConversionTool.dp2px(bottomNavigationTab.getContext(), 12);
         if (mEdgeMarginInPx == 0)
-            mEdgeMarginInPx = UnitConversionTool.dp2px(bottomNavigationTab.getContext(), 4);
+            mEdgeMarginInPx = (int) UnitConversionTool.dp2px(bottomNavigationTab.getContext(), 4);
 
         refreshMargin();
         refreshColor();// so that user set color will be updated
@@ -270,8 +291,9 @@ public class ShapeBadgeItem extends BadgeItem<ShapeBadgeItem> {
     }
 
     /**
+     * 绘制星星
      * @param canvas  on which star needs to be drawn
-     * @param numOfPt no of points a star should have
+     * @param numOfPt  星星的角数如三角星，五角星
      */
     private void drawStar(Canvas canvas, int numOfPt) {
         double section = 2.0 * Math.PI / numOfPt;
@@ -327,6 +349,10 @@ public class ShapeBadgeItem extends BadgeItem<ShapeBadgeItem> {
         return 0;
     }
 
+    /**
+     * 绘制爱心
+     * @param canvas
+     */
     private void drawHeart(Canvas canvas) {
         float curveLength = canvas.getHeight() / 3;
 
