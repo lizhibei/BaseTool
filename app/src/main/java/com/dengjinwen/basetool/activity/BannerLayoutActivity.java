@@ -55,6 +55,9 @@ public class BannerLayoutActivity extends BaseActivity implements View.OnClickLi
             bannerEntity.setAdImg(imgs[i]);
             mList.add(bannerEntity);
         }
+        BannerEntity bannerEntity=new BannerEntity();
+        bannerEntity.setAdResId(R.mipmap.image);
+        mList.add(bannerEntity);
 
         banner_bl.setEntities(mList,this);
         banner_bl.setPointColor(Color.BLUE, Color.RED);
@@ -77,7 +80,6 @@ public class BannerLayoutActivity extends BaseActivity implements View.OnClickLi
         Glide.with(this)
                 .load(url)
                 .centerCrop()
-//                        .transform(new GlideCircleTransform((Context) obj))
                 .priority(Priority.HIGH)
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .placeholder(R.mipmap.image)

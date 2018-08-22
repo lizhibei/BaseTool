@@ -78,6 +78,11 @@ public class BannerPointLayout extends LinearLayout {
             }
         }
 
+        if(getChildCount()<=1){
+            setVisibility(INVISIBLE);
+        }else {
+            setVisibility(VISIBLE);
+        }
     }
 
     /**

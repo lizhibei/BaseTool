@@ -48,10 +48,14 @@ public class BannerAdapter extends PagerAdapter {
 //                img.setImageResource(entity.getAdResId());
 //            } else {
 
+            if(entity.getImgResid()!=0){
+                img.setImageResource(entity.getImgResid());
+            }else {
                 //回调到最上层，让上层模块自己选择图片加载框架加载网络图片
                 if (callBack != null) {
                     callBack.onBannerShow(mlist.get(i).getBannerImgUrlStr(), img);
                 }
+            }
 //            }
             imgList.add(img);
         }

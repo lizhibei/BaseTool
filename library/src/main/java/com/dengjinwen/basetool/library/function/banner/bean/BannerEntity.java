@@ -60,4 +60,9 @@ public class BannerEntity implements Serializable,IBannerEntity {
     public String getBannerImgUrlStr() {
         return adImg;
     }
+
+    @Override
+    public int getImgResid() {
+        return adResId;
+    }
 }
