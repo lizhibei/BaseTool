@@ -60,9 +60,11 @@ public class BannerPoint extends View {
 
         if (isSelect) {
             mPaint.setColor(mLightColor);
+            mPaint.setStyle(Paint.Style.FILL);
             canvas.drawCircle(vWidth / 2, vHeight / 2, radius, mPaint);
         } else {
             mPaint.setColor(mDimColor);
+            mPaint.setStyle(Paint.Style.STROKE);
             canvas.drawCircle(vWidth / 2, vHeight / 2, radius, mPaint);
         }
 
