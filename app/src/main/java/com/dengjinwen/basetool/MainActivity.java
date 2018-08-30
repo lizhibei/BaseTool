@@ -7,6 +7,7 @@ import android.view.View;
 import com.dengjinwen.basetool.activity.BannerLayoutActivity;
 import com.dengjinwen.basetool.activity.BaseActivity;
 import com.dengjinwen.basetool.activity.BottomNavigationActivity;
+import com.dengjinwen.basetool.activity.CheckViewDemoActivity;
 import com.dengjinwen.basetool.activity.NumberProgressBarActivity;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
@@ -22,6 +23,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.bottom_navigation_tv).setOnClickListener(this);
         findViewById(R.id.number_progress_bar_tv).setOnClickListener(this);
         findViewById(R.id.bannerlayout_tv).setOnClickListener(this);
+        findViewById(R.id.checkview_tv).setOnClickListener(this);
     }
 
     @Override
@@ -41,6 +43,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.bannerlayout_tv:
                 Intent toBannerLayoutActivity=new Intent(this, BannerLayoutActivity.class);
                 startActivity(toBannerLayoutActivity);
+                break;
+                //
+            case R.id.checkview_tv:
+                Intent toCheckViewDemoActivity=new Intent(this,CheckViewDemoActivity.class);
+                startActivity(toCheckViewDemoActivity);
                 break;
         }
     }
