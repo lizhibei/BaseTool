@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.dengjinwen.basetool.activity.AnimViewDemoActivity;
 import com.dengjinwen.basetool.activity.BannerLayoutActivity;
 import com.dengjinwen.basetool.activity.BaseActivity;
 import com.dengjinwen.basetool.activity.BottomNavigationActivity;
@@ -24,6 +25,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.number_progress_bar_tv).setOnClickListener(this);
         findViewById(R.id.bannerlayout_tv).setOnClickListener(this);
         findViewById(R.id.checkview_tv).setOnClickListener(this);
+        findViewById(R.id.animview_tv).setOnClickListener(this);
     }
 
     @Override
@@ -48,6 +50,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.checkview_tv:
                 Intent toCheckViewDemoActivity=new Intent(this,CheckViewDemoActivity.class);
                 startActivity(toCheckViewDemoActivity);
+                break;
+            //实现ViewAnimationUtils动画的自定义View
+            case R.id.animview_tv:
+                Intent toAnimViewDemoActivity=new Intent(this,AnimViewDemoActivity.class);
+                startActivity(toAnimViewDemoActivity);
                 break;
         }
     }

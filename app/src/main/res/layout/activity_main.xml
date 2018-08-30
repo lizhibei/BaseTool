@@ -61,4 +61,20 @@
         android:text="CheckView"
         android:textColor="@color/text_color"
         android:textSize="@dimen/middle_small" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line_color" />
+    <TextView
+        android:id="@+id/animview_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="实现ViewAnimationUtils动画的自定义View"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/middle_small" />
+
 </LinearLayout>
