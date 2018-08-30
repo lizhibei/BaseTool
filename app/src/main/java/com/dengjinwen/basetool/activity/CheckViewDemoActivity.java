@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.dengjinwen.basetool.R;
-import com.dengjinwen.basetool.library.tool.checkView.CheckableImageView;
-import com.dengjinwen.basetool.library.tool.checkView.CheckableLinearLayout;
+import com.dengjinwen.basetool.library.view.checkView.CheckableImageView;
+import com.dengjinwen.basetool.library.view.checkView.CheckableLinearLayout;
 
 public class CheckViewDemoActivity extends BaseActivity implements View.OnClickListener{
     private TextView head_text_title;
