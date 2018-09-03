@@ -96,4 +96,6 @@ public class BannerAdapter extends PagerAdapter {
     void setOnBannerClickListener(OnBannerClickListener onBannerClickListener) {
         this.onBannerClickListener = onBannerClickListener;
     }
+
+
 }
