@@ -24,9 +24,21 @@ import java.net.URL;
 /**
  * Created by dengjinwen on 2018/2/22.
  */
-
 public class HtmlSpanned {
     private Context mContext;
+    private static HtmlSpanned instance;
+
+    private HtmlSpanned(){}
+
+    public static HtmlSpanned getInstance(){
+        if(instance==null){
+            synchronized (HtmlSpanned.class){
+                instance=new HtmlSpanned();
+            }
+        }
+        return instance;
+    }
+
     public  void setHtml(Context context,String html, TextView textView){
         mContext=context;
         //消息的内容解析html

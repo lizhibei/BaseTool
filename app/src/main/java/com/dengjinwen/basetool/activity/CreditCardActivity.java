@@ -11,7 +11,7 @@ import com.dengjinwen.basetool.R;
 
 public class CreditCardActivity extends BaseActivity implements View.OnClickListener{
 
-    private TextView head_text_title,money_tv;
+    private TextView head_text_title,money_tv,front_money_tv;
     private EditText number_et;
 
     private Context mContext;
@@ -30,6 +30,7 @@ public class CreditCardActivity extends BaseActivity implements View.OnClickList
         head_text_title.setText("信用卡");
 
         number_et=findViewById(R.id.number_et);
+        front_money_tv=findViewById(R.id.front_money_tv);
 
         money_tv=findViewById(R.id.money_tv);
         SharedPreferences sp=getSharedPreferences(temp,0);
@@ -58,6 +59,7 @@ public class CreditCardActivity extends BaseActivity implements View.OnClickList
                 String money_s=number_et.getText().toString();
                 if(money_s!=null&&!money_s.isEmpty()){
                     addMoney(Float.parseFloat(money_s));
+                    front_money_tv.setText(money_s);
                 }
                 break;
                 //

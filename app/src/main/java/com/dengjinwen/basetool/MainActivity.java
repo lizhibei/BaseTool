@@ -15,6 +15,7 @@ import com.dengjinwen.basetool.activity.CreditCardActivity;
 import com.dengjinwen.basetool.activity.NumberProgressBarActivity;
 import com.dengjinwen.basetool.adapter.MainAdapter;
 import com.dengjinwen.basetool.entity.MainItem;
+import com.dengjinwen.basetool.util.FilePicker;
 
 import java.util.ArrayList;
 
@@ -63,6 +64,8 @@ public class MainActivity extends BaseActivity  {
         data.add(animView);
         MainItem credit=new MainItem("CreditCard","信用卡账单");
         data.add(credit);
+        MainItem fileS=new MainItem("文件系统","文件系统实例");
+        data.add(fileS);
     }
 
     private void click(int position){
@@ -90,6 +93,14 @@ public class MainActivity extends BaseActivity  {
                 //信用卡账单
             case 5:
                 startIntent(mContext,CreditCardActivity.class);
+                break;
+                //文件系统
+            case 6:
+                new FilePicker().withActivity(this)
+                        .withRequestCode(0)
+                        .withHiddenFiles(true)
+                        .withTitle("Sample title")
+                        .start();
                 break;
         }
     }
