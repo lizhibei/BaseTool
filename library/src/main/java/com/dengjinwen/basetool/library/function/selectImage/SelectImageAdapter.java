@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.dengjinwen.basetool.library.R;
 import com.dengjinwen.basetool.library.tool.ScreenUitl;
-import com.dengjinwen.basetool.library.tool.log;
 
 import java.io.File;
 import java.util.HashSet;
@@ -56,7 +55,6 @@ public class SelectImageAdapter extends BaseAdapter {
         }else {
             holder= (ViewHolder) convertView.getTag();
         }
-        log.e("url:"+data.get(position));
         File file=new File(data.get(position));
         Glide.with(mContext).load(file).into(holder.image_iv);
         if(selectImages.contains(data.get(position))){
@@ -81,7 +79,6 @@ public class SelectImageAdapter extends BaseAdapter {
                     selectImages.add(data.get(position));
                 }
                 listener.selectNumberChange();
-//                notifyDataSetChanged();
             }
         });
         return convertView;

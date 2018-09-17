@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <ListView
-        android:id="@+id/list_lv"
+        android:id="@+id/select_file_lv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@color/line_color"

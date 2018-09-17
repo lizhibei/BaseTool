@@ -287,7 +287,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
     private void selectFilePopupWindow(){
         mPopupWindow=new PopupWindow(mContext);
         View view= LayoutInflater.from(mContext).inflate(R.layout.listview,null);
-        ListView listView=view.findViewById(R.id.list_lv);
+        ListView listView=view.findViewById(R.id.select_file_lv);
         log.e("listView:"+listView);
         fileAdapter=new SelectFileAdapter(mContext,mImageFloders);
         listView.setAdapter(fileAdapter);
