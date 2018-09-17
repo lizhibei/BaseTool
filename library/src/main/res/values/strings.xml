@@ -15,4 +15,13 @@
     <string name="type_word">Document</string>
     <string name="type_apk">APK</string>
     <string name="type_archive">Archive</string>
+
+    <string name="all_image">所有图片</string>
+    <string name="select_image">选择图片</string>
+    <string name="finish">完成</string>
+    <string name="not_storage">没有外部存储</string>
+    <string name="loading">正在加载...</string>
+    <string name="no_image">您手机中没有一张图片</string>
+    <string name="image_number_">张图片</string>
+    <string name="please_select_image">请选中图片</string>
 </resources>

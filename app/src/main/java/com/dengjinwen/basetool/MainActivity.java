@@ -13,6 +13,7 @@ import com.dengjinwen.basetool.activity.BottomNavigationActivity;
 import com.dengjinwen.basetool.activity.CheckViewDemoActivity;
 import com.dengjinwen.basetool.activity.CreditCardActivity;
 import com.dengjinwen.basetool.activity.NumberProgressBarActivity;
+import com.dengjinwen.basetool.activity.SelectImageAndActivity;
 import com.dengjinwen.basetool.adapter.MainAdapter;
 import com.dengjinwen.basetool.entity.MainItem;
 import com.dengjinwen.basetool.util.FilePicker;
@@ -66,6 +67,8 @@ public class MainActivity extends BaseActivity  {
         data.add(credit);
         MainItem fileS=new MainItem("文件系统","文件系统实例");
         data.add(fileS);
+        MainItem selectImage=new MainItem("选择本地图片","选择本地图片实例");
+        data.add(selectImage);
     }
 
     private void click(int position){
@@ -101,6 +104,10 @@ public class MainActivity extends BaseActivity  {
                         .withHiddenFiles(true)
                         .withTitle("Sample title")
                         .start();
+                break;
+                //选择本地图片
+            case 7:
+                startIntent(mContext,SelectImageAndActivity.class);
                 break;
         }
     }
