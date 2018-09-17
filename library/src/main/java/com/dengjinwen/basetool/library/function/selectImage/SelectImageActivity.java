@@ -27,6 +27,7 @@ import android.widget.Toast;
 
 import com.dengjinwen.basetool.library.R;
 import com.dengjinwen.basetool.library.tool.ScreenUitl;
+import com.dengjinwen.basetool.library.tool.log;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.PermissionListener;
 import com.yanzhenjie.permission.Rationale;
@@ -287,7 +288,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
         mPopupWindow=new PopupWindow(mContext);
         View view= LayoutInflater.from(mContext).inflate(R.layout.listview,null);
         ListView listView=view.findViewById(R.id.list_lv);
-        listView.setBackgroundResource(android.R.color.black);
+        log.e("listView:"+listView);
         fileAdapter=new SelectFileAdapter(mContext,mImageFloders);
         listView.setAdapter(fileAdapter);
 

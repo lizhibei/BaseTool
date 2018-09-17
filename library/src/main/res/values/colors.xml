@@ -21,4 +21,5 @@
     <color name="banner_theme">#0085cf</color>
     <color name="banner_red">#CD252B</color>
     <color name="banner_gery_dark">#919191</color>
+    <color name="black">#000000</color>
 </resources>
