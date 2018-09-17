@@ -281,13 +281,15 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
         return childs;
     }
 
+    private View view;
+    private ListView listView;
     /**
      * 选择文件夹
      */
     private void selectFilePopupWindow(){
         mPopupWindow=new PopupWindow(mContext);
-        View view= LayoutInflater.from(mContext).inflate(R.layout.listview,null);
-        ListView listView=view.findViewById(R.id.select_file_lv);
+        view= LayoutInflater.from(mContext).inflate(R.layout.select_file_pop,null);
+        listView=view.findViewById(R.id.list_lv);
         log.e("listView:"+listView);
         fileAdapter=new SelectFileAdapter(mContext,mImageFloders);
         listView.setAdapter(fileAdapter);
