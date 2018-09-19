@@ -4,7 +4,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.dengjinwen.basetool.activity.AnimViewDemoActivity;
 import com.dengjinwen.basetool.activity.BannerLayoutActivity;
@@ -23,6 +25,8 @@ import java.util.ArrayList;
 public class MainActivity extends BaseActivity  {
 
     private ListView list_lv;
+    private ImageView head_img_left;
+    private TextView head_text_title;
 
     private Context mContext;
     private ArrayList<MainItem> data=new ArrayList<>();
@@ -39,6 +43,11 @@ public class MainActivity extends BaseActivity  {
 
 
     private void initview() {
+
+        head_img_left=findViewById(R.id.head_img_left);
+        head_img_left.setVisibility(View.GONE);
+        head_text_title=findViewById(R.id.head_text_title);
+        head_text_title.setText("Demo");
 
         list_lv=  findViewById(R.id.list_lv);
         adapter=new MainAdapter(mContext,data);

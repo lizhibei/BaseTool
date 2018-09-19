@@ -33,7 +33,7 @@ public class BannerAdapter extends PagerAdapter {
             IBannerEntity entity = mlist.get(i);
             final int position = i;
             ImageView img = new ImageView(mContext);
-            img.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            img.setScaleType(ImageView.ScaleType.FIT_XY);
             img.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.MATCH_PARENT));
             img.setOnClickListener(new View.OnClickListener() {
