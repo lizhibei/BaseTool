@@ -27,9 +27,9 @@ public class CommandModeActivity extends BaseActivity implements View.OnClickLis
         LightOnCommand lightOnCommand=new LightOnCommand(lights);
 
         //调用者
-        SimpleRemoteControl simpleRemoteControl=new SimpleRemoteControl();
-        simpleRemoteControl.setCommand(lightOnCommand);
-        simpleRemoteControl.buttonWasPressed();
+        RemoteControl remoteControl =new RemoteControl();
+//        remoteControl.setCommand(lightOnCommand);
+//        remoteControl.buttonWasPressed();
     }
 
     @Override

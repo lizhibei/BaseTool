@@ -8,14 +8,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.dengjinwen.basetool.activity.AnimViewDemoActivity;
-import com.dengjinwen.basetool.activity.BannerLayoutActivity;
 import com.dengjinwen.basetool.activity.BaseActivity;
-import com.dengjinwen.basetool.activity.BottomNavigationActivity;
-import com.dengjinwen.basetool.activity.CheckViewDemoActivity;
 import com.dengjinwen.basetool.activity.CreditCardActivity;
-import com.dengjinwen.basetool.activity.NumberProgressBarActivity;
 import com.dengjinwen.basetool.activity.SelectImageAndActivity;
+import com.dengjinwen.basetool.activity.selfview.SelfViewActivity;
 import com.dengjinwen.basetool.adapter.MainAdapter;
 import com.dengjinwen.basetool.entity.MainItem;
 import com.dengjinwen.basetool.util.FilePicker;
@@ -62,16 +58,8 @@ public class MainActivity extends BaseActivity  {
     }
 
     private void initData() {
-        MainItem bootonNar=new MainItem("BottomNavigation","底部导航栏");
-        data.add(bootonNar);
-        MainItem numberProgress=new MainItem("NumberProgress","数字进度条");
-        data.add(numberProgress);
-        MainItem bannerLayout=new MainItem("BannerLayout","轮播图");
-        data.add(bannerLayout);
-        MainItem checkView=new MainItem("CheckView","实现Checkable的自定义视图");
-        data.add(checkView);
-        MainItem animView=new MainItem("AnimView","实现ViewAnimationUtils动画的自定义View");
-        data.add(animView);
+        MainItem selfview=new MainItem("自定义View","");
+        data.add(selfview);
         MainItem credit=new MainItem("CreditCard","信用卡账单");
         data.add(credit);
         MainItem fileS=new MainItem("文件系统","文件系统实例");
@@ -82,32 +70,16 @@ public class MainActivity extends BaseActivity  {
 
     private void click(int position){
         switch (position){
-            //底部导航栏
+            //自定义View
             case 0:
-                startIntent(mContext,BottomNavigationActivity.class);
-                break;
-                //数字进度条
-            case 1:
-                startIntent(mContext,NumberProgressBarActivity.class);
-                break;
-                //轮播图
-            case 2:
-                startIntent(mContext,BannerLayoutActivity.class);
-                break;
-                //实现Checkable的自定义视图
-            case 3:
-                startIntent(mContext,CheckViewDemoActivity.class);
-                break;
-                //实现ViewAnimationUtils动画的自定义View
-            case 4:
-                startIntent(mContext,AnimViewDemoActivity.class);
+                startIntent(mContext,SelfViewActivity.class);
                 break;
                 //信用卡账单
-            case 5:
+            case 1:
                 startIntent(mContext,CreditCardActivity.class);
                 break;
                 //文件系统
-            case 6:
+            case 2:
                 new FilePicker().withActivity(this)
                         .withRequestCode(0)
                         .withHiddenFiles(true)
@@ -115,7 +87,7 @@ public class MainActivity extends BaseActivity  {
                         .start();
                 break;
                 //选择本地图片
-            case 7:
+            case 3:
                 startIntent(mContext,SelectImageAndActivity.class);
                 break;
         }
