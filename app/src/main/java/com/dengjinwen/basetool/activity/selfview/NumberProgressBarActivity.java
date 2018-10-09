@@ -1,4 +1,4 @@
-package com.dengjinwen.basetool.activity;
+package com.dengjinwen.basetool.activity.selfview;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.dengjinwen.basetool.R;
+import com.dengjinwen.basetool.activity.BaseActivity;
 import com.dengjinwen.basetool.library.view.NumberProgressBar;
 
 import java.util.Timer;

@@ -1,4 +1,4 @@
-package com.dengjinwen.basetool.activity;
+package com.dengjinwen.basetool.activity.selfview;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.dengjinwen.basetool.R;
+import com.dengjinwen.basetool.activity.BaseActivity;
 import com.dengjinwen.basetool.library.function.banner.BannerLayout;
 import com.dengjinwen.basetool.library.function.banner.bean.BannerEntity;
 import com.dengjinwen.basetool.library.function.banner.interfac.IBannerEntity;
