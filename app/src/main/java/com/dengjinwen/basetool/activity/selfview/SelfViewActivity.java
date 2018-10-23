@@ -44,6 +44,8 @@ public class SelfViewActivity extends BaseActivity implements View.OnClickListen
         data.add(animView);
         MainItem circleimageview=new MainItem("CircleImageView","");
         data.add(circleimageview);
+        MainItem photoview=new MainItem("PhotoView","PhotoView实例");
+        data.add(photoview);
     }
 
     private void initview() {
@@ -87,6 +89,10 @@ public class SelfViewActivity extends BaseActivity implements View.OnClickListen
                 //CircleImageView
             case 5:
                 startIntent(mContext,CircleImageViewDemoActivity.class);
+                break;
+                //PhotoView
+            case 6:
+                startIntent(mContext,PhotoViewActivity.class);
                 break;
         }
     }
