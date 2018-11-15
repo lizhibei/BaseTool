@@ -1,16 +1,12 @@
 package com.dengjinwen.basetool.library.function.selectImage;
 
 import android.app.ProgressDialog;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dengjinwen.basetool.library.R;
+import com.dengjinwen.basetool.library.tool.LocalDataUitlTool;
 import com.dengjinwen.basetool.library.tool.ScreenUitl;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.PermissionListener;
@@ -33,9 +30,7 @@ import com.yanzhenjie.permission.Rationale;
 import com.yanzhenjie.permission.RationaleListener;
 
 import java.io.File;
-import java.io.FilenameFilter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -46,7 +41,17 @@ import java.util.List;
 public class SelectImageActivity extends AppCompatActivity implements View.OnClickListener{
 
     public static final String TAG_IMAGE_NUMBER="image_number";
-    public static final String TAG_SELECT_IMAGE="select_image";
+    public static final String TYPE="select_type";
+    /**
+     * 选择图片
+     */
+    public static final int TAG_SELECT_IMAGE=0;
+    /**
+     * 选择视频
+     */
+    public static final int TAG_SELECT_VIDEO=1;
+
+    private int SELECT_TYPE=TAG_SELECT_IMAGE;
 
     private TextView right_tv,filename_tv;
     private GridView show_image_gv;
@@ -59,20 +64,17 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
      */
     private int IMAGE_NUMBER=0;
     /**
-     * 存储有图片文件夹的路径
-     */
-    private HashSet< String> mFileCache=new HashSet<String>();
-    /**
      * 存储有图片的文件夹
      */
-    private List<ImageFloder> mImageFloders = new ArrayList<ImageFloder>();
+    private List<Floder> mImageFloders = new ArrayList<Floder>();
     /**
-     * 已选择的图片
+     * 已选择的
      */
-    private HashSet<String> selectImages=new HashSet<>();
+    private HashSet<ItemEntity> selectItem=new HashSet<>();
 
     private SelectImageAdapter adapter;
-    private List<String> data=new ArrayList<>();
+    private List<ItemEntity> data=new ArrayList<>();
+    List<ItemEntity> list;
 
     private SelectFileAdapter fileAdapter;
 
@@ -80,12 +82,14 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
      * 选择文件夹对话框
      */
     private PopupWindow mPopupWindow;
+    private LocalDataUitlTool localDataUitlTool;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select_image_activity);
         mContext=this;
+        localDataUitlTool=new LocalDataUitlTool(mContext);
         initview();
     }
 
@@ -93,6 +97,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
         Bundle bundle=getIntent().getExtras();
         if(bundle!=null){
             IMAGE_NUMBER=bundle.getInt(TAG_IMAGE_NUMBER,0);
+            SELECT_TYPE=bundle.getInt(TYPE,TAG_SELECT_IMAGE);
         }
         findViewById(R.id.left_iv).setOnClickListener(this);
 
@@ -107,7 +112,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
 
         bottom_rl=findViewById(R.id.bottom_rl);
 
-        adapter=new SelectImageAdapter(mContext,data,selectImages);
+        adapter=new SelectImageAdapter(mContext,data,selectItem);
         show_image_gv.setAdapter(adapter);
 
         adapter.setOnAdapterProcessListener(new SelectImageAdapter.OnAdapterProcessListener() {
@@ -116,7 +121,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
              */
             @Override
             public void selectNumberChange() {
-                right_tv.setText(getResources().getString(R.string.finish)+" "+selectImages.size()+"/"+IMAGE_NUMBER);
+                right_tv.setText(getResources().getString(R.string.finish)+" "+selectItem.size()+"/"+IMAGE_NUMBER);
             }
         });
 
@@ -161,29 +166,13 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
         new Thread(new Runnable() {
             @Override
             public void run() {
-
-                //查找手机中的jpeg png 格式的图片
-                Uri imageUri= MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-                ContentResolver contentResolver=getContentResolver();
-                Cursor cursor=contentResolver.query(imageUri,null,MediaStore.Images.Media.MIME_TYPE+"=? or " +
-                        MediaStore.Images.Media.MIME_TYPE+"=?",new String[]{"image/jpeg","image/png"}, MediaStore.Images.Media.DATE_MODIFIED);
-                while (cursor.moveToNext()){
-                    String path=cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
-                    File parentFile=new File(path).getParentFile();
-                    if(parentFile==null){
-                        continue;
-                    }
-                    String parentPath=parentFile.getAbsolutePath();
-                    if(mFileCache.contains(parentPath)){
-                        continue;
-                    }else {
-                        mFileCache.add(parentPath);
-                        addImageFloder(path,parentFile);
-                    }
+                if(SELECT_TYPE==TAG_SELECT_VIDEO){
+                    list=localDataUitlTool.getVideotList();
+                }else {
+                    list=localDataUitlTool.getImageList();
                 }
-                mFileCache.clear();
-                Collections.sort(mImageFloders,new ImageFolderComparator());
-                addAllImageFolder();
+                mImageFloders.clear();
+                mImageFloders.addAll(localDataUitlTool.getImageFloders());
                 mHandler.sendEmptyMessage(0);
             }
         }).start();
@@ -205,79 +194,47 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
     private Handler mHandler=new Handler(callback);
 
     /**
-     * 添加所有图片文件夹
-     */
-    private void addAllImageFolder(){
-        ImageFloder imageFloder=new ImageFloder();
-        imageFloder.setAll(true);
-        imageFloder.setName(getResources().getString(R.string.all_image));
-        imageFloder.setFirstImagePath(mImageFloders.get(0).getFirstImagePath());
-        mImageFloders.add(0,imageFloder);
-    }
-
-    /**
      *更新当前列表的图片
      * @param position
      */
     private void updateCurrentListImage(int position){
-        ImageFloder imageFloder=mImageFloders.get(position);
+        Floder imageFloder=mImageFloders.get(position);
         filename_tv.setText(imageFloder.getName());
         imageFloder.setSelect(true);
         data.clear();
-        if(imageFloder.isAll()){
-            for(int i=1;i<mImageFloders.size();i++){
-                ImageFloder ifloder=mImageFloders.get(i);
-                File parentFile=new File(ifloder.getDir());
-                String[] images=getImagesArray(parentFile.getAbsolutePath());
-                for(int j=0;j<images.length;j++){
-                    data.add(parentFile.getAbsolutePath()+"/"+images[j]);
-                }
+        if(SELECT_TYPE==TAG_SELECT_VIDEO){
+            if(imageFloder.isAll()){
+                data.addAll(list);
+            }else {
+                data.addAll(getFloderVideo(imageFloder));
             }
         }else {
-            File parentFile=new File(imageFloder.getDir());
-            String[] images=getImagesArray(parentFile.getAbsolutePath());
-            for(int i=0;i<images.length;i++){
-                data.add(parentFile.getAbsolutePath()+"/"+images[i]);
+            if(imageFloder.isAll()){
+                for(int i=1;i<mImageFloders.size();i++){
+                    Floder ifloder=mImageFloders.get(i);
+                    data.addAll(localDataUitlTool.getFolderImages(ifloder));
+                }
+            }else {
+                data.addAll(localDataUitlTool.getFolderImages(imageFloder));
             }
         }
         adapter.notifyDataSetChanged();
     }
 
     /**
-     * 添加图片文件夹
-     */
-    private void addImageFloder(String path,File parentFile){
-        ImageFloder imageFloder=new ImageFloder();
-        imageFloder.setFirstImagePath(path);
-        imageFloder.setDir(parentFile.getAbsolutePath());
-        imageFloder.setName(parentFile.getName());
-        String[] childs=getImagesArray(parentFile.getAbsolutePath());
-        if(childs!=null&&childs.length>0){
-            imageFloder.setCount(childs.length);
-        }
-        mImageFloders.add(imageFloder);
-    }
-
-    /**
-     * 获得指定文件夹下的所有图片
-     * @param parentPath
+     * 获得 指定文件夹下的视频列表
+     * @param floder
      * @return
      */
-    private String[] getImagesArray(String parentPath){
-        File parentFile=new File(parentPath);
-        String[] childs=parentFile.list(new FilenameFilter() {
-            @Override
-            public boolean accept(File dir, String name) {
-                if(name.endsWith(".png")||name.endsWith("jpg")||name.endsWith("jpeg")){
-                    return true;
-                }
-                return false;
+    private List<ItemEntity> getFloderVideo(Floder floder){
+        List<ItemEntity> l=new ArrayList<>();
+        for(int i=0;i<list.size();i++){
+            ItemEntity itemEntity=list.get(i);
+            if(floder.getDir().equals(new File(itemEntity.getPath()).getParent())){
+                l.add(itemEntity);
             }
-        });
-        if(childs==null){
-            childs=new String[]{};
         }
-        return childs;
+        return l;
     }
 
     private View view;
@@ -289,7 +246,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
         mPopupWindow=new PopupWindow(mContext);
         view= LayoutInflater.from(mContext).inflate(R.layout.select_file_pop,null);
         listView=view.findViewById(R.id.list_lv);
-        fileAdapter=new SelectFileAdapter(mContext,mImageFloders);
+        fileAdapter=new SelectFileAdapter(mContext,mImageFloders,SELECT_TYPE);
         listView.setAdapter(fileAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -297,7 +254,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mPopupWindow.dismiss();
                 for(int i=0;i<mImageFloders.size();i++){
-                    ImageFloder mif=mImageFloders.get(i);
+                    Floder mif=mImageFloders.get(i);
                     if(i==position){
                         mif.setSelect(true);
                     }else {
@@ -331,15 +288,19 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
         if(v.getId()==R.id.left_iv){  //返回
             finish();
         }else if(v.getId()==R.id.right_tv){  //完成
-            if(selectImages.size()>0){
+            if(selectItem.size()>0){
                 Intent intent=new Intent();
                 Bundle bundle=new Bundle();
-                ArrayList<String> urls=new ArrayList<>();
-                Iterator iterator=selectImages.iterator();
+                ArrayList<ItemEntity> items=new ArrayList<>();
+                Iterator iterator=selectItem.iterator();
                 while (iterator.hasNext()){
-                    urls.add((String) iterator.next());
+                    items.add((ItemEntity) iterator.next());
                 }
-                bundle.putStringArrayList(TAG_SELECT_IMAGE,urls);
+                if(SELECT_TYPE==TAG_SELECT_VIDEO){
+                    bundle.putParcelableArrayList(AndSelectImage.SELECT_VIDEO,items);
+                }else {
+                    bundle.putParcelableArrayList(AndSelectImage.SELECT_IMAGE,items);
+                }
                 intent.putExtras(bundle);
                 setResult(RESULT_OK,intent);
                 finish();

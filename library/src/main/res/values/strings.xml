@@ -23,5 +23,7 @@
     <string name="loading">正在加载...</string>
     <string name="no_image">您手机中没有一张图片</string>
     <string name="image_number_">张图片</string>
+    <string name="video_number">个视频</string>
+    <string name="all_video">所有视频</string>
     <string name="please_select_image">请选中图片</string>
 </resources>

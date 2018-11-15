@@ -11,6 +11,9 @@ public class AndSelectImage {
     private android.support.v4.app.Fragment supporFragment;
 
     private Class<? extends SelectImageActivity> mSelectImageClass=SelectImageActivity.class;
+
+    public static final String SELECT_IMAGE="select_image";
+    public static final String SELECT_VIDEO="select_video";
     /**
      * 跳转activity的requestcode
      */
@@ -20,6 +23,10 @@ public class AndSelectImage {
      * 选择图片的数量
      */
     private int selectNumber;
+    /**
+     * 选择的类型 0图片 1视频
+     */
+    private int TYPE;
 
     public AndSelectImage(){}
 
@@ -57,6 +64,11 @@ public class AndSelectImage {
         return this;
     }
 
+    public AndSelectImage withType(int type){
+        this.TYPE=type;
+        return this;
+    }
+
     public void start(){
         if (activity == null && fragment == null && supporFragment == null) {
             throw new RuntimeException("You must pass Activity/Fragment by calling withActivity/withFragment/withSupportFragment method");
@@ -78,6 +90,7 @@ public class AndSelectImage {
         Intent intent=new Intent(activity1,mSelectImageClass);
         Bundle bundle=new Bundle();
         bundle.putInt(SelectImageActivity.TAG_IMAGE_NUMBER,selectNumber);
+        bundle.putInt(SelectImageActivity.TYPE,TYPE);
         intent.putExtras(bundle);
         if(activity!=null){
             activity.startActivityForResult(intent,mRequestCode);

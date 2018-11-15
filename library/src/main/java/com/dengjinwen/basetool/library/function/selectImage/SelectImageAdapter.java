@@ -17,11 +17,11 @@ import java.util.List;
 
 public class SelectImageAdapter extends BaseAdapter {
     private Context mContext;
-    private List<String> data;
+    private List<ItemEntity> data;
     private LayoutInflater inflater;
-    private HashSet<String> selectImages;
+    private HashSet<ItemEntity> selectImages;
 
-    public SelectImageAdapter(Context mContext, List<String> data,HashSet<String> selectImages) {
+    public SelectImageAdapter(Context mContext, List<ItemEntity> data,HashSet<ItemEntity> selectImages) {
         this.mContext = mContext;
         this.data = data;
         this.selectImages=selectImages;
@@ -55,9 +55,10 @@ public class SelectImageAdapter extends BaseAdapter {
         }else {
             holder= (ViewHolder) convertView.getTag();
         }
-        File file=new File(data.get(position));
+        final ItemEntity itemEntity=data.get(position);
+        File file=new File(itemEntity.getPath());
         Glide.with(mContext).load(file).into(holder.image_iv);
-        if(selectImages.contains(data.get(position))){
+        if(itemEntity.isSelect()){
             holder.select_iv.setImageResource(R.drawable.icon_select);
         }else {
             holder.select_iv.setImageResource(R.drawable.icon_unselect);
@@ -71,12 +72,14 @@ public class SelectImageAdapter extends BaseAdapter {
         holder.select_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(selectImages.contains(data.get(position))){
+                if(itemEntity.isSelect()){
+                    selectImages.remove(itemEntity);
+                    itemEntity.setSelect(false);
                     select.setImageResource(R.drawable.icon_unselect);
-                    selectImages.remove(data.get(position));
                 }else {
+                    itemEntity.setSelect(true);
                     select.setImageResource(R.drawable.icon_select);
-                    selectImages.add(data.get(position));
+                    selectImages.add(itemEntity);
                 }
                 listener.selectNumberChange();
             }

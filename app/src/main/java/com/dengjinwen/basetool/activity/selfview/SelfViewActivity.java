@@ -46,6 +46,8 @@ public class SelfViewActivity extends BaseActivity implements View.OnClickListen
         data.add(circleimageview);
         MainItem photoview=new MainItem("PhotoView","PhotoView实例");
         data.add(photoview);
+        MainItem scrollViewContainer=new MainItem("ScrollViewContainer","仿淘宝商品详情");
+        data.add(scrollViewContainer);
     }
 
     private void initview() {
@@ -93,6 +95,10 @@ public class SelfViewActivity extends BaseActivity implements View.OnClickListen
                 //PhotoView
             case 6:
                 startIntent(mContext,PhotoViewActivity.class);
+                break;
+                //ScrollViewContainer
+            case 7:
+                startIntent(mContext,ScrollViewContainerActivity.class);
                 break;
         }
     }

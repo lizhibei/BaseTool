@@ -15,12 +15,14 @@ import java.util.List;
 
 public class SelectFileAdapter extends BaseAdapter {
     private Context mContext;
-    private List<ImageFloder> data;
+    private List<Floder> data;
     private LayoutInflater inflater;
+    private int type;
 
-    public SelectFileAdapter(Context mContext, List<ImageFloder> data) {
+    public SelectFileAdapter(Context mContext, List<Floder> data,int type) {
         this.mContext = mContext;
         this.data = data;
+        this.type=type;
         inflater=LayoutInflater.from(mContext);
     }
 
@@ -53,13 +55,19 @@ public class SelectFileAdapter extends BaseAdapter {
         }else {
             holder= (ViewHolder) convertView.getTag();
         }
-        ImageFloder imageFloder=data.get(position);
+        Floder imageFloder=data.get(position);
         Glide.with(mContext)
                 .load(imageFloder.getFirstImagePath())
                 .error(R.drawable.image)
                 .into(holder.image_iv);
         holder.name_tv.setText(imageFloder.getName());
-        holder.number_tv.setText(imageFloder.getCount()+mContext.getResources().getString(R.string.image_number_));
+        String end;
+        if(type==1){
+            end=mContext.getResources().getString(R.string.video_number);
+        }else {
+            end=mContext.getResources().getString(R.string.image_number_);
+        }
+        holder.number_tv.setText(imageFloder.getCount()+end);
         if(imageFloder.isSelect()){
             holder.select_iv.setImageResource(R.drawable.icon_select);
         }else {

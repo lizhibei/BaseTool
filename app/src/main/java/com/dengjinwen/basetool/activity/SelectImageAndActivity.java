@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.dengjinwen.basetool.R;
 import com.dengjinwen.basetool.adapter.SelectImageAndAdapter;
 import com.dengjinwen.basetool.library.function.selectImage.AndSelectImage;
-import com.dengjinwen.basetool.library.function.selectImage.SelectImageActivity;
+import com.dengjinwen.basetool.library.function.selectImage.ItemEntity;
 
 import java.util.ArrayList;
 
@@ -52,10 +52,13 @@ public class SelectImageAndActivity extends BaseActivity implements View.OnClick
             Bundle bundle=intent.getExtras();
             switch (requestCode){
                 case SELECT_IMAGE:
-                    ArrayList<String> list=bundle.getStringArrayList(SelectImageActivity.TAG_SELECT_IMAGE);
+                    ArrayList<ItemEntity> list=bundle.getParcelableArrayList(AndSelectImage.SELECT_VIDEO);
                     data.clear();
                     if(list!=null&&list.size()>0){
-                        data.addAll(list);
+                        for(int i=0;i<list.size();i++){
+                            ItemEntity itemEntity=list.get(i);
+                            data.add(itemEntity.getPath());
+                        }
                     }
                     adapter.notifyDataSetChanged();
                     break;
@@ -73,6 +76,7 @@ public class SelectImageAndActivity extends BaseActivity implements View.OnClick
                 new AndSelectImage().withActivity(this)
                         .withNumber(20)
                         .withRequestCode(SELECT_IMAGE)
+                        .withType(1)
                         .start();
 //                Intent intent=new Intent();
 //                Bundle bundle=new Bundle();

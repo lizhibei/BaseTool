@@ -2,9 +2,9 @@ package com.dengjinwen.basetool.library.function.selectImage;
 
 import java.util.Comparator;
 
-public class ImageFolderComparator implements Comparator<ImageFloder> {
+public class ImageFolderComparator implements Comparator<Floder> {
     @Override
-    public int compare(ImageFloder o1, ImageFloder o2) {
+    public int compare(Floder o1, Floder o2) {
         if(o1.getCount()<o2.getCount()){
             return 1;
         }else if(o1.getCount()==o2.getCount()){
