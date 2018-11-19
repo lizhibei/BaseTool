@@ -18,6 +18,7 @@
 
     <string name="all_image">所有图片</string>
     <string name="select_image">选择图片</string>
+    <string name="select_video">选择视频</string>
     <string name="finish">完成</string>
     <string name="not_storage">没有外部存储</string>
     <string name="loading">正在加载...</string>
@@ -26,4 +27,6 @@
     <string name="video_number">个视频</string>
     <string name="all_video">所有视频</string>
     <string name="please_select_image">请选中图片</string>
+    <string name="taking_pictures">拍摄照片</string>
+    <string name="taking_video">拍摄视频</string>
 </resources>

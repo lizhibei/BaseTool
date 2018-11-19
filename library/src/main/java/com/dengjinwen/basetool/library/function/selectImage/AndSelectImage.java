@@ -27,6 +27,14 @@ public class AndSelectImage {
      * 选择的类型 0图片 1视频
      */
     private int TYPE;
+    /**
+     * 照片
+     */
+    public static int TYPE_IMAGE=0;
+    /**
+     * 视频
+     */
+    public static int TYPE_VIDEO=1;
 
     public AndSelectImage(){}
 

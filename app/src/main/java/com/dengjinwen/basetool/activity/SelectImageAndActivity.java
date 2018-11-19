@@ -25,6 +25,7 @@ public class SelectImageAndActivity extends BaseActivity implements View.OnClick
     private ArrayList<String> data=new ArrayList<>();
     private SelectImageAndAdapter adapter;
     private final int SELECT_IMAGE=0;
+    private final int SELECT_VIDEO=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +43,7 @@ public class SelectImageAndActivity extends BaseActivity implements View.OnClick
 
         findViewById(R.id.add_tv).setOnClickListener(this);
 
-        adapter=new SelectImageAndAdapter(mContext,data);
+        adapter=new SelectImageAndAdapter(mContext,data,SELECT_IMAGE);
         list_gv.setAdapter(adapter);
     }
 
@@ -52,11 +53,23 @@ public class SelectImageAndActivity extends BaseActivity implements View.OnClick
             Bundle bundle=intent.getExtras();
             switch (requestCode){
                 case SELECT_IMAGE:
-                    ArrayList<ItemEntity> list=bundle.getParcelableArrayList(AndSelectImage.SELECT_VIDEO);
+                    ArrayList<ItemEntity> list=bundle.getParcelableArrayList(AndSelectImage.SELECT_IMAGE);
                     data.clear();
                     if(list!=null&&list.size()>0){
                         for(int i=0;i<list.size();i++){
                             ItemEntity itemEntity=list.get(i);
+                            data.add(itemEntity.getPath());
+                        }
+                    }
+                    adapter.notifyDataSetChanged();
+                    break;
+                    //拍摄视频
+                case SELECT_VIDEO:
+                    ArrayList<ItemEntity> l=bundle.getParcelableArrayList(AndSelectImage.SELECT_VIDEO);
+                    data.clear();
+                    if(l!=null&&l.size()>0){
+                        for(int i=0;i<l.size();i++){
+                            ItemEntity itemEntity=l.get(i);
                             data.add(itemEntity.getPath());
                         }
                     }
@@ -75,14 +88,9 @@ public class SelectImageAndActivity extends BaseActivity implements View.OnClick
             case R.id.add_tv:
                 new AndSelectImage().withActivity(this)
                         .withNumber(20)
-                        .withRequestCode(SELECT_IMAGE)
-                        .withType(1)
+                        .withRequestCode(SELECT_VIDEO)
+                        .withType(AndSelectImage.TYPE_VIDEO)
                         .start();
-//                Intent intent=new Intent();
-//                Bundle bundle=new Bundle();
-//                bundle.putInt(SelectImageActivity.TAG_IMAGE_NUMBER,20);
-//                intent.putExtras(bundle);
-//                startActivityForResult(intent,SELECT_IMAGE);
                 break;
         }
     }

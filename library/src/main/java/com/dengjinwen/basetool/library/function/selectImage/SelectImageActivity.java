@@ -1,8 +1,10 @@
 package com.dengjinwen.basetool.library.function.selectImage;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -22,8 +24,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dengjinwen.basetool.library.R;
+import com.dengjinwen.basetool.library.tool.CameraTool;
 import com.dengjinwen.basetool.library.tool.LocalDataUitlTool;
 import com.dengjinwen.basetool.library.tool.ScreenUitl;
+import com.dengjinwen.basetool.library.tool.log;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.PermissionListener;
 import com.yanzhenjie.permission.Rationale;
@@ -53,7 +57,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
 
     private int SELECT_TYPE=TAG_SELECT_IMAGE;
 
-    private TextView right_tv,filename_tv;
+    private TextView right_tv,filename_tv,title_tv;
     private GridView show_image_gv;
     private RelativeLayout bottom_rl;
     private ProgressDialog mProgressDialog;
@@ -84,6 +88,8 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
     private PopupWindow mPopupWindow;
     private LocalDataUitlTool localDataUitlTool;
 
+    private String path;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,6 +111,13 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
         right_tv.setText(getResources().getString(R.string.finish)+" 0/"+IMAGE_NUMBER);
         right_tv.setOnClickListener(this);
 
+        title_tv=findViewById(R.id.title_tv);
+        if(SELECT_TYPE==TAG_SELECT_VIDEO){
+            title_tv.setText(R.string.select_video);
+        }else {
+            title_tv.setText(R.string.select_image);
+        }
+
         show_image_gv=findViewById(R.id.show_image_gv);
 
         filename_tv=findViewById(R.id.filename_tv); //文件名称
@@ -112,10 +125,19 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
 
         bottom_rl=findViewById(R.id.bottom_rl);
 
-        adapter=new SelectImageAdapter(mContext,data,selectItem);
+        adapter=new SelectImageAdapter(mContext,data,selectItem,SELECT_TYPE);
         show_image_gv.setAdapter(adapter);
 
         adapter.setOnAdapterProcessListener(new SelectImageAdapter.OnAdapterProcessListener() {
+            @Override
+            public void taking() {
+                if(SELECT_TYPE==TAG_SELECT_VIDEO){  //拍摄视频
+                    path=CameraTool.takeVideo(SelectImageActivity.this,TAG_SELECT_VIDEO);
+                }else {  //拍摄照片
+                    path=CameraTool.takePicture(SelectImageActivity.this,TAG_SELECT_IMAGE);
+                }
+            }
+
             /**
              * 选择的图片数量发生改变
              */
@@ -128,10 +150,42 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
         checkPermission();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode==RESULT_OK){
+            Intent intent=new Intent();
+            Bundle bundle=new Bundle();
+            ArrayList<ItemEntity> items=new ArrayList<>();
+            ItemEntity itemEntity=new ItemEntity();
+            itemEntity.setPath(path);
+            items.add(itemEntity);
+            //拍摄照片返回
+            if (requestCode==TAG_SELECT_IMAGE){
+                if(path!=null){
+                    bundle.putParcelableArrayList(AndSelectImage.SELECT_IMAGE,items);
+                    intent.putExtras(bundle);
+                    setResult(RESULT_OK,intent);
+                    finish();
+                }
+            }else if(requestCode==TAG_SELECT_VIDEO){  //拍摄视频返回
+                log.e("执行了吗");
+                if(path!=null){
+                    bundle.putParcelableArrayList(AndSelectImage.SELECT_VIDEO,items);
+                    intent.putExtras(bundle);
+                    setResult(RESULT_OK,intent);
+                    finish();
+                }
+            }
+            //通知相册更新
+            sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(path))));
+        }
+    }
+
     private void checkPermission(){
         AndPermission.with(this)
                 .requestCode(100)
                 .permission(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                .permission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 .callback(new PermissionListener() {
                     @Override
                     public void onSucceed(int requestCode, @NonNull List<String> grantPermissions) {
