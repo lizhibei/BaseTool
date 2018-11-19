@@ -35,7 +35,7 @@ public class CameraTool {
      */
     public static final String PATH_VIDEO=DIR+"/tool/Camera/video/";
 
-    public static final String packageName="com.dengjinwen.basetool.library";
+//    public static final String packageName="com.dengjinwen.basetool.library";
 
     public static File mImageFile;
     public static String path;
@@ -76,7 +76,7 @@ public class CameraTool {
                                     boolean cu=parentFile.mkdirs();
                                 }
                                 mImageFile=new File(parentFile,time+".jpg");
-                                final Uri mUri=FileProvider.getUriForFile(activity,packageName+".fileprovider",mImageFile);
+                                final Uri mUri=FileProvider.getUriForFile(activity,activity.getApplicationInfo().packageName+".fileprovider",mImageFile);
                                 toCamera(mUri,activity,flag,type);
                             }
 
@@ -103,7 +103,7 @@ public class CameraTool {
                 }else {
                     mImageFile=new File(parentFile,time+".mp4");
                 }
-                final Uri mUri=FileProvider.getUriForFile(activity,packageName+".fileprovider",mImageFile);
+                final Uri mUri=FileProvider.getUriForFile(activity,activity.getApplicationInfo().packageName+".fileprovider",mImageFile);
                 toCamera(mUri,activity,flag,type);
             }
 
@@ -142,7 +142,7 @@ public class CameraTool {
         List<ResolveInfo> resInfoList = activity.getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
         for (ResolveInfo resolveInfo : resInfoList) {
             String p = resolveInfo.activityInfo.packageName;
-            activity.grantUriPermission(packageName, mUri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            activity.grantUriPermission(p, mUri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
         }
         activity.startActivityForResult(intent, flag);
     }
