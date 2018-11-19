@@ -27,7 +27,6 @@ import com.dengjinwen.basetool.library.R;
 import com.dengjinwen.basetool.library.tool.CameraTool;
 import com.dengjinwen.basetool.library.tool.LocalDataUitlTool;
 import com.dengjinwen.basetool.library.tool.ScreenUitl;
-import com.dengjinwen.basetool.library.tool.log;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.PermissionListener;
 import com.yanzhenjie.permission.Rationale;
@@ -168,7 +167,6 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                     finish();
                 }
             }else if(requestCode==TAG_SELECT_VIDEO){  //拍摄视频返回
-                log.e("执行了吗");
                 if(path!=null){
                     bundle.putParcelableArrayList(AndSelectImage.SELECT_VIDEO,items);
                     intent.putExtras(bundle);
