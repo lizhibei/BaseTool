@@ -158,6 +158,8 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
             ItemEntity itemEntity=new ItemEntity();
             itemEntity.setPath(path);
             items.add(itemEntity);
+            //通知相册更新
+            sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(path))));
             //拍摄照片返回
             if (requestCode==TAG_SELECT_IMAGE){
                 if(path!=null){
@@ -174,8 +176,6 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                     finish();
                 }
             }
-            //通知相册更新
-            sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(path))));
         }
     }
 
