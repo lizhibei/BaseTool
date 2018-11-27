@@ -29,7 +29,7 @@ public class ImageProgressTool {
         image.compress(Bitmap.CompressFormat.JPEG,100,baos);
         int options=100;
         //循环判断如果压缩后图片是否大于100kb,大于继续压缩
-        while (baos.toByteArray().length/2014>100){
+        while (baos.toByteArray().length/1024>100){
             baos.reset();
             //这里压缩options%，把压缩后的数据存放到baos中
             image.compress(Bitmap.CompressFormat.JPEG,options,baos);
