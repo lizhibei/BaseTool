@@ -19,26 +19,37 @@ public class ImageProgressTool {
         modelH=h;
     }
     /**
-     * 质量压缩
+     * 质量压缩返回Bitmap
      * @param image
      * @return
      */
-    public static Bitmap compressImage(Bitmap image){
+    public static Bitmap compressImage2Bitmap(Bitmap image){
+        byte[] baos=compressImage2byte(image);
+
+        ByteArrayInputStream isBm=new ByteArrayInputStream(baos);
+        Bitmap bitmap=BitmapFactory.decodeStream(isBm,null,null);
+        return bitmap;
+    }
+
+    /**
+     * 质量压缩图片返回字节数组
+     * @param bitmap
+     * @return
+     */
+    public static byte[] compressImage2byte(Bitmap bitmap){
         ByteArrayOutputStream baos=new ByteArrayOutputStream();
         //质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
-        image.compress(Bitmap.CompressFormat.JPEG,100,baos);
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,baos);
         int options=100;
         //循环判断如果压缩后图片是否大于100kb,大于继续压缩
         while (baos.toByteArray().length/1024>100){
             baos.reset();
             //这里压缩options%，把压缩后的数据存放到baos中
-            image.compress(Bitmap.CompressFormat.JPEG,options,baos);
+            bitmap.compress(Bitmap.CompressFormat.JPEG,options,baos);
             options-=10;
         }
 
-        ByteArrayInputStream isBm=new ByteArrayInputStream(baos.toByteArray());
-        Bitmap bitmap=BitmapFactory.decodeStream(isBm,null,null);
-        return bitmap;
+        return baos.toByteArray();
     }
 
     /**
@@ -74,7 +85,7 @@ public class ImageProgressTool {
         //重新读入图片，注意此时已经把options.inJustDecodeBounds 设回false了
         bitmap=BitmapFactory.decodeFile(srcPath,newOpts);
         //压缩好比例大小后再进行质量压缩
-        return compressImage(bitmap);
+        return bitmap;
     }
 
     /**
@@ -113,6 +124,6 @@ public class ImageProgressTool {
         //重新读入图片，注意此时已经把options.inJustDecodeBounds 设回false了
         isBm = new ByteArrayInputStream(baos.toByteArray());
         bitmap = BitmapFactory.decodeStream(isBm, null, newOpts);
-        return compressImage(bitmap);
+        return compressImage2Bitmap(bitmap);
     }
 }
