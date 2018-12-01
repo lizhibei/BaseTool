@@ -144,7 +144,9 @@ public class LocalDataUitlTool {
         Floder imageFloder=new Floder();
         imageFloder.setAll(true);
         imageFloder.setName(name);
-        imageFloder.setFirstImagePath(mImageFloders.get(0).getFirstImagePath());
+        if(mImageFloders.size()>0){
+            imageFloder.setFirstImagePath(mImageFloders.get(0).getFirstImagePath());
+        }
         mImageFloders.add(0,imageFloder);
     }
 
