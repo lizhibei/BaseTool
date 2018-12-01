@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.dengjinwen.basetool.library.R;
@@ -23,13 +24,16 @@ public class SelectImageAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private HashSet<ItemEntity> selectImages;
     private int type;
+    private int MaxImageNumber;
 
-    public SelectImageAdapter(Context mContext, List<ItemEntity> data,HashSet<ItemEntity> selectImages,int type) {
+    public SelectImageAdapter(Context mContext, List<ItemEntity> data,
+                              HashSet<ItemEntity> selectImages,int type,int MaxImageNumber) {
         this.mContext = mContext;
         this.data = data;
         this.selectImages=selectImages;
         this.type=type;
         inflater=LayoutInflater.from(mContext);
+        this.MaxImageNumber=MaxImageNumber;
     }
 
     @Override
@@ -104,9 +108,14 @@ public class SelectImageAdapter extends BaseAdapter {
                         itemEntity.setSelect(false);
                         select.setImageResource(R.drawable.icon_unselect);
                     }else {
-                        itemEntity.setSelect(true);
-                        select.setImageResource(R.drawable.icon_select);
-                        selectImages.add(itemEntity);
+                        if(selectImages.size()<MaxImageNumber){
+                            itemEntity.setSelect(true);
+                            select.setImageResource(R.drawable.icon_select);
+                            selectImages.add(itemEntity);
+                        }else {
+                            Toast.makeText(mContext,"您最多可选数量为"+MaxImageNumber,
+                                    Toast.LENGTH_SHORT).show();
+                        }
                     }
                     listener.selectNumberChange();
                 }

@@ -124,7 +124,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
 
         bottom_rl=findViewById(R.id.bottom_rl);
 
-        adapter=new SelectImageAdapter(mContext,data,selectItem,SELECT_TYPE);
+        adapter=new SelectImageAdapter(mContext,data,selectItem,SELECT_TYPE,IMAGE_NUMBER);
         show_image_gv.setAdapter(adapter);
 
         adapter.setOnAdapterProcessListener(new SelectImageAdapter.OnAdapterProcessListener() {
