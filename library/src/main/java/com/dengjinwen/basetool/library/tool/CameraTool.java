@@ -67,8 +67,9 @@ public class CameraTool {
                     checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED) {
                 AndPermission.with(activity)
                         .requestCode(100)
-                        .permission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                        .permission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        .permission(Manifest.permission.READ_EXTERNAL_STORAGE,
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                Manifest.permission.CAMERA)
                         .callback(new PermissionListener() {
                             @Override
                             public void onSucceed(int requestCode, @NonNull List<String> grantPermissions) {
