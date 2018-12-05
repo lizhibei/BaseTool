@@ -89,6 +89,8 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
 
     private String path;
 
+    private int VIDOE_MAX_CAPACITY=25;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,6 +105,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
         if(bundle!=null){
             IMAGE_NUMBER=bundle.getInt(TAG_IMAGE_NUMBER,0);
             SELECT_TYPE=bundle.getInt(TYPE,TAG_SELECT_IMAGE);
+            VIDOE_MAX_CAPACITY=bundle.getInt("videolimit",25);
         }
         findViewById(R.id.left_iv).setOnClickListener(this);
 
@@ -124,7 +127,8 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
 
         bottom_rl=findViewById(R.id.bottom_rl);
 
-        adapter=new SelectImageAdapter(mContext,data,selectItem,SELECT_TYPE,IMAGE_NUMBER);
+        adapter=new SelectImageAdapter(mContext,data,selectItem,SELECT_TYPE,IMAGE_NUMBER,
+                VIDOE_MAX_CAPACITY);
         show_image_gv.setAdapter(adapter);
 
         adapter.setOnAdapterProcessListener(new SelectImageAdapter.OnAdapterProcessListener() {

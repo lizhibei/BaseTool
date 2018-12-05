@@ -36,6 +36,11 @@ public class AndSelectImage {
      */
     public static int TYPE_VIDEO=1;
 
+    /**
+     * 对视频大小的限制
+     */
+    public int VIDOE_MAX_CAPACITY=25;
+
     public AndSelectImage(){}
 
     public  AndSelectImage withActivity(Activity activity){
@@ -77,6 +82,16 @@ public class AndSelectImage {
         return this;
     }
 
+    /**
+     * 选择视频的大小限制
+     * @param m
+     * @return
+     */
+    public AndSelectImage withVideoMax(int m){
+        VIDOE_MAX_CAPACITY=m;
+        return this;
+    }
+
     public void start(){
         if (activity == null && fragment == null && supporFragment == null) {
             throw new RuntimeException("You must pass Activity/Fragment by calling withActivity/withFragment/withSupportFragment method");
@@ -99,6 +114,7 @@ public class AndSelectImage {
         Bundle bundle=new Bundle();
         bundle.putInt(SelectImageActivity.TAG_IMAGE_NUMBER,selectNumber);
         bundle.putInt(SelectImageActivity.TYPE,TYPE);
+        bundle.putInt("videolimit",VIDOE_MAX_CAPACITY);
         intent.putExtras(bundle);
         if(activity!=null){
             activity.startActivityForResult(intent,mRequestCode);

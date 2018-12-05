@@ -25,15 +25,18 @@ public class SelectImageAdapter extends BaseAdapter {
     private HashSet<ItemEntity> selectImages;
     private int type;
     private int MaxImageNumber;
+    private int videoMax;
 
     public SelectImageAdapter(Context mContext, List<ItemEntity> data,
-                              HashSet<ItemEntity> selectImages,int type,int MaxImageNumber) {
+                              HashSet<ItemEntity> selectImages,int type,int MaxImageNumber,
+                              int videoMax) {
         this.mContext = mContext;
         this.data = data;
         this.selectImages=selectImages;
         this.type=type;
         inflater=LayoutInflater.from(mContext);
         this.MaxImageNumber=MaxImageNumber;
+        this.videoMax=videoMax;
     }
 
     @Override
@@ -88,7 +91,7 @@ public class SelectImageAdapter extends BaseAdapter {
             holder.taking_rl.setVisibility(View.GONE);
 
             final ItemEntity itemEntity=data.get(position-1);
-            File file=new File(itemEntity.getPath());
+            final File file=new File(itemEntity.getPath());
             Glide.with(mContext).load(file).into(holder.image_iv);
             if(itemEntity.isSelect()){
                 holder.select_iv.setImageResource(R.drawable.icon_select);
@@ -103,6 +106,13 @@ public class SelectImageAdapter extends BaseAdapter {
             holder.select_iv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if(type==SelectImageActivity.TAG_SELECT_VIDEO){
+                        if(file.length()>videoMax*1024*1024){
+                            Toast.makeText(mContext,"选择的视频不能大于"+videoMax+"M",
+                                    Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
                     if(itemEntity.isSelect()){
                         selectImages.remove(itemEntity);
                         itemEntity.setSelect(false);

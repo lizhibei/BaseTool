@@ -64,7 +64,8 @@ public class CameraTool {
 
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.N){
             if (activity.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED&&activity.
-                    checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED) {
+                    checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED&&
+                    activity.checkSelfPermission(Manifest.permission.CAMERA)!=PackageManager.PERMISSION_GRANTED) {
                 AndPermission.with(activity)
                         .requestCode(100)
                         .permission(Manifest.permission.READ_EXTERNAL_STORAGE,
