@@ -174,10 +174,16 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                 }
             }else if(requestCode==TAG_SELECT_VIDEO){  //拍摄视频返回
                 if(path!=null){
-                    bundle.putParcelableArrayList(AndSelectImage.SELECT_VIDEO,items);
-                    intent.putExtras(bundle);
-                    setResult(RESULT_OK,intent);
-                    finish();
+                    File file=new File(path);
+                    if(file.length()>VIDOE_MAX_CAPACITY*1024*1024){
+                        Toast.makeText(mContext,"选择的视频不能大于"+VIDOE_MAX_CAPACITY+"M",
+                                Toast.LENGTH_SHORT).show();
+                    }else {
+                        bundle.putParcelableArrayList(AndSelectImage.SELECT_VIDEO,items);
+                        intent.putExtras(bundle);
+                        setResult(RESULT_OK,intent);
+                        finish();
+                    }
                 }
             }
         }
