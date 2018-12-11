@@ -35,6 +35,11 @@ public class MainActivity extends BaseActivity  {
         mContext=this;
         initData();
         initview();
+
+//        DisplayMetrics dm=new DisplayMetrics();
+//        WindowManager windowManager= (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
+//        windowManager.getDefaultDisplay().getMetrics(dm);
+//        log.e("density:"+dm.density);
     }
 
 

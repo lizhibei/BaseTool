@@ -89,7 +89,7 @@ public class SelectImageAndActivity extends BaseActivity implements View.OnClick
                 new AndSelectImage().withActivity(this)
                         .withNumber(1)
                         .withRequestCode(SELECT_VIDEO)
-                        .withType(AndSelectImage.TYPE_VIDEO)
+                        .withType(AndSelectImage.TYPE_IMAGE)
                         .withVideoMax(35)
                         .start();
                 break;

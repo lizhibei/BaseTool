@@ -118,8 +118,9 @@ public class CameraTool {
             }else {
                 mImageFile=new File(parentFile,time+".mp4");
             }
+            Uri mUri=FileProvider.getUriForFile(activity,activity.getApplicationInfo().packageName+".fileprovider",mImageFile);
             Intent intent = new Intent(type);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, mImageFile);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, mUri);
             activity.startActivityForResult(intent, flag);
         }
         return path;

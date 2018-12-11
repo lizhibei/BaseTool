@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="small_four">7sp</dimen>
+    <dimen name="small_three">8sp</dimen>
+    <dimen name="small_two">9sp</dimen>
+    <dimen name="small_one">10sp</dimen>
+    <dimen name="middle_one">11sp</dimen>
+    <dimen name="middle_two">12sp</dimen>
+    <dimen name="middle_three">13sp</dimen>
+    <dimen name="middle_four">14sp</dimen>
+    <dimen name="middle_five">15sp</dimen>
+    <dimen name="big_one">17sp</dimen>
+    <dimen name="big_two">19sp</dimen>
+    <dimen name="big_three">21sp</dimen>
+    <dimen name="big_four">25sp</dimen>
+    <dimen name="big_five">30sp</dimen>
+    <dimen name="big_six">35sp</dimen>
+    <dimen name="big_seven">40sp</dimen>
+    <dimen name="big_eight">45sp</dimen>
+    <dimen name="big_nine">50sp</dimen>
+</resources>
