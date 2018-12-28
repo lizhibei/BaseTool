@@ -96,7 +96,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select_image_activity);
         mContext=this;
-        localDataUitlTool=new LocalDataUitlTool(mContext);
+        localDataUitlTool=LocalDataUitlTool.getInstance(mContext);
         initview();
     }
 

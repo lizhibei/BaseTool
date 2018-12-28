@@ -19,7 +19,7 @@ public class ImageProgressTool {
         modelH=h;
     }
     /**
-     * 质量压缩返回Bitmap
+     * 对Bitmap质量压缩
      * @param image
      * @return
      */
@@ -32,7 +32,7 @@ public class ImageProgressTool {
     }
 
     /**
-     * 质量压缩图片返回字节数组
+     * 质量压缩Bitmap返回字节数组
      * @param bitmap
      * @return
      */
@@ -62,7 +62,7 @@ public class ImageProgressTool {
         //开始读入图片，此时把options.inJustDecodeBounds 设回true了
         newOpts.inJustDecodeBounds=true;
         //此时返回bm为空
-        Bitmap bitmap=BitmapFactory.decodeFile(srcPath,newOpts);
+        BitmapFactory.decodeFile(srcPath,newOpts);
 
         newOpts.inJustDecodeBounds=false;
         int w=newOpts.outWidth;
@@ -83,7 +83,7 @@ public class ImageProgressTool {
 
         newOpts.inSampleSize=be;
         //重新读入图片，注意此时已经把options.inJustDecodeBounds 设回false了
-        bitmap=BitmapFactory.decodeFile(srcPath,newOpts);
+        Bitmap bitmap=BitmapFactory.decodeFile(srcPath,newOpts);
         //压缩好比例大小后再进行质量压缩
         return bitmap;
     }

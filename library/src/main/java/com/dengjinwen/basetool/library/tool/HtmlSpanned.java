@@ -39,6 +39,12 @@ public class HtmlSpanned {
         return instance;
     }
 
+    /**
+     *
+     * @param context
+     * @param html  html字符串
+     * @param textView  用于显示的textview
+     */
     public  void setHtml(Context context,String html, TextView textView){
         mContext=context;
         //消息的内容解析html

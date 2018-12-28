@@ -52,6 +52,7 @@ public class SelectImageAndActivity extends BaseActivity implements View.OnClick
         if(resultCode==RESULT_OK){
             Bundle bundle=intent.getExtras();
             switch (requestCode){
+                //选择图片
                 case SELECT_IMAGE:
                     ArrayList<ItemEntity> list=bundle.getParcelableArrayList(AndSelectImage.SELECT_IMAGE);
                     data.clear();
@@ -63,7 +64,7 @@ public class SelectImageAndActivity extends BaseActivity implements View.OnClick
                     }
                     adapter.notifyDataSetChanged();
                     break;
-                    //拍摄视频
+                    //选择视频返回
                 case SELECT_VIDEO:
                     ArrayList<ItemEntity> l=bundle.getParcelableArrayList(AndSelectImage.SELECT_VIDEO);
                     data.clear();

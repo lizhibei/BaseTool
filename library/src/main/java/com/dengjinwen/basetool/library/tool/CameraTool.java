@@ -1,6 +1,5 @@
 package com.dengjinwen.basetool.library.tool;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -40,11 +39,23 @@ public class CameraTool {
     public static File mImageFile;
     public static String path;
 
+    /**
+     * 录制视频
+     * @param activity
+     * @param flag requestCode
+     * @return
+     */
     public static String takeVideo(Activity activity,int flag){
         path=take(activity,flag,MediaStore.ACTION_VIDEO_CAPTURE);
         return path;
     }
 
+    /**
+     * 拍照
+     * @param activity
+     * @param flag requestCode
+     * @return
+     */
     public static String takePicture(final Activity activity, final int flag){
         path=take(activity,flag,MediaStore.ACTION_IMAGE_CAPTURE);
         return path;
@@ -63,14 +74,14 @@ public class CameraTool {
         final File parentFile=new File(parentPath);
 
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.N){
-            if (activity.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED&&activity.
-                    checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED&&
-                    activity.checkSelfPermission(Manifest.permission.CAMERA)!=PackageManager.PERMISSION_GRANTED) {
+            if (activity.checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED&&activity.
+                    checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED&&
+                    activity.checkSelfPermission(android.Manifest.permission.CAMERA)!=PackageManager.PERMISSION_GRANTED) {
                 AndPermission.with(activity)
                         .requestCode(100)
-                        .permission(Manifest.permission.READ_EXTERNAL_STORAGE,
-                                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                                Manifest.permission.CAMERA)
+                        .permission(android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                android.Manifest.permission.CAMERA)
                         .callback(new PermissionListener() {
                             @Override
                             public void onSucceed(int requestCode, @NonNull List<String> grantPermissions) {

@@ -16,12 +16,13 @@ import com.dengjinwen.basetool.activity.BaseActivity;
 import com.dengjinwen.basetool.library.function.banner.BannerLayout;
 import com.dengjinwen.basetool.library.function.banner.bean.BannerEntity;
 import com.dengjinwen.basetool.library.function.banner.interfac.IBannerEntity;
+import com.dengjinwen.basetool.library.function.banner.interfac.OnBannerClickListener;
 import com.dengjinwen.basetool.library.function.banner.interfac.OnBannerImgShowListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BannerLayoutActivity extends BaseActivity implements View.OnClickListener,OnBannerImgShowListener {
+public class BannerLayoutActivity extends BaseActivity implements View.OnClickListener,OnBannerImgShowListener,OnBannerClickListener {
 
     private TextView head_text_title;
     private BannerLayout banner_bl;
@@ -60,11 +61,11 @@ public class BannerLayoutActivity extends BaseActivity implements View.OnClickLi
         bannerEntity.setAdResId(R.mipmap.image);
         mList.add(bannerEntity);
 
-        banner_bl.setEntities(mList,this);
-        banner_bl.setPointColor(Color.BLUE, Color.RED);
-        banner_bl.setPointPotision(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
-        banner_bl.setPointMargin(10,0,10,90);
-        banner_bl.schedule(2000, 3000);
+        banner_bl.setEntities(mList,this); //绑定数据
+        banner_bl.setPointColor(Color.BLUE, Color.RED);  //设置圆点的颜色
+        banner_bl.setPointPotision(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);//设置圆点的位置
+        banner_bl.setPointMargin(10,0,10,90); //这个方法可以移动圆点的位置
+        banner_bl.schedule(2000, 3000); //设置轮播图跳转的间隔时间
     }
 
     @Override
@@ -87,5 +88,10 @@ public class BannerLayoutActivity extends BaseActivity implements View.OnClickLi
                 .error(R.mipmap.image)
                 .crossFade()
                 .into(imgView);
+    }
+
+    @Override
+    public void onBannerClick(int position, IBannerEntity bean) {
+
     }
 }

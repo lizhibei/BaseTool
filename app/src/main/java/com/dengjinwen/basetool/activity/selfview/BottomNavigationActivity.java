@@ -33,6 +33,7 @@ public class BottomNavigationActivity extends BaseActivity implements View.OnCli
         head_text_title=findViewById(R.id.head_text_title);
         head_text_title.setText("BottomNavigationBar");
 
+        //item的右上角文字
        TextBadgeItem textBadgeItem=new TextBadgeItem();
        textBadgeItem.setBackgroundColor(Color.RED);
        textBadgeItem.setTextColor(Color.WHITE);
