@@ -16,7 +16,7 @@ public class LengthFilter implements InputFilter {
 
     @Override
     public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-        int keep=mMax-
+//        int keep=mMax-
         return null;
     }
 }
