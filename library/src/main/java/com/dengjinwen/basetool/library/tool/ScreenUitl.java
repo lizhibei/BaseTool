@@ -94,7 +94,7 @@ public class ScreenUitl {
      * @param color
      * @param style tag为1时头部是正常的白色标题栏头部；tag为2时头部是图片
      */
-    public void setHead(Activity context, View view, int color, StatusBarStyle style) {
+    public static void setHead(Activity context, View view, int color, StatusBarStyle style) {
         //5.0及以上
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             View decorView = context.getWindow().getDecorView();
@@ -116,7 +116,7 @@ public class ScreenUitl {
     /**
      * 设置头部margin值
      */
-    private void setMargins(View v, int l, int t, int r, int b) {
+    private static void setMargins(View v, int l, int t, int r, int b) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
                 ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
