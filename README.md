@@ -10,6 +10,11 @@
 [UnitConversionTool 单位换算](https://github.com/lizhibei/BaseTool/wiki/UnitConversionTool)&ensp;  &ensp;
 [LocalDataUitlTool 获取本地数据](https://github.com/lizhibei/BaseTool/wiki/LocalDataUitlTool)&ensp;  &ensp;<br/>
 [FileUtil 文件工具类](https://github.com/lizhibei/BaseTool/wiki/FileUtil)&ensp;  &ensp;
+[ApplicationUtil](https://github.com/lizhibei/BaseTool/wiki/ApplicationUtil)&ensp;  &ensp;
+[PinyinUtil 拼音工具类](https://github.com/lizhibei/BaseTool/wiki/PinyinUtil)&ensp;  &ensp;<br/>
 ## 自定义视图
+[PhotoView 缩放移动图片](https://github.com/lizhibei/BaseTool/wiki/PhotoView)&ensp;  &ensp;
+
+
 
 
