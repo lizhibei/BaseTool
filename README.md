@@ -12,8 +12,11 @@
 [FileUtil 文件工具类](https://github.com/lizhibei/BaseTool/wiki/FileUtil)&ensp;  &ensp;
 [ApplicationUtil](https://github.com/lizhibei/BaseTool/wiki/ApplicationUtil)&ensp;  &ensp;
 [PinyinUtil 拼音工具类](https://github.com/lizhibei/BaseTool/wiki/PinyinUtil)&ensp;  &ensp;<br/>
+[StringTool 字符串工具类](https://github.com/lizhibei/BaseTool/wiki/StringTool)&ensp;  &ensp;
 ## 自定义视图
 [PhotoView 缩放移动图片](https://github.com/lizhibei/BaseTool/wiki/PhotoView)&ensp;  &ensp;
+[TreeListView 树形列表](https://github.com/lizhibei/BaseTool/wiki/TreeListView)&ensp;  &ensp;
+
 
 
 
