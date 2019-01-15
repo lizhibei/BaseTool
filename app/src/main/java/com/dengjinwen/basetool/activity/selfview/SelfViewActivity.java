@@ -48,6 +48,8 @@ public class SelfViewActivity extends BaseActivity implements View.OnClickListen
         data.add(photoview);
         MainItem scrollViewContainer=new MainItem("ScrollViewContainer","仿淘宝商品详情");
         data.add(scrollViewContainer);
+        MainItem treelistView=new MainItem("TreeListView","树形结构列表");
+        data.add(treelistView);
     }
 
     private void initview() {
@@ -99,6 +101,10 @@ public class SelfViewActivity extends BaseActivity implements View.OnClickListen
                 //ScrollViewContainer
             case 7:
                 startIntent(mContext,ScrollViewContainerActivity.class);
+                break;
+                //8
+            case 8:
+                startIntent(mContext,TreeListViewActivity.class);
                 break;
         }
     }
