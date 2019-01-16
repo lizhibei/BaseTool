@@ -43,6 +43,22 @@ public class ScreenUitl {
         return height;
     }
 
+    public static float getDensity(Context context){
+        WindowManager manager = (WindowManager) context
+                .getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics dm = new DisplayMetrics();
+        manager.getDefaultDisplay().getMetrics(dm);
+        return dm.density;
+    }
+
+    public static int getDensityDpi(Context context){
+        WindowManager manager = (WindowManager) context
+                .getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics dm = new DisplayMetrics();
+        manager.getDefaultDisplay().getMetrics(dm);
+        return dm.densityDpi;
+    }
+
     /**
      * 获得状态栏高度
      * @param context

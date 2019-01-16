@@ -1,4 +1,4 @@
-package com.dengjinwen.basetool.library.tool.filter.inpurDilrwe;
+package com.dengjinwen.basetool.library.tool.filter.inputFilter;
 
 import android.text.InputFilter;
 import android.text.Spanned;

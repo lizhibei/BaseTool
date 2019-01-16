@@ -1,4 +1,4 @@
-package com.dengjinwen.basetool.library.tool.filter.inpurDilrwe;
+package com.dengjinwen.basetool.library.tool.filter.inputFilter;
 
 import android.text.InputFilter;
 import android.text.SpannableString;
@@ -17,7 +17,7 @@ public class CapitalInputFilter implements InputFilter {
      * @param dest 原先显示的内容
      * @param dstart 输入 - 原光标位置，删除 - 光标删除结束位置
      * @param dend  输入 - 原光标位置，删除 - 光标删除开始位置
-     * @return
+     * @return  返回null则认同当前操作  返回其他则用返回的值替代当前操作
      */
     @Override
     public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
