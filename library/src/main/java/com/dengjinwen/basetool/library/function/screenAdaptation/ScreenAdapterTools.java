@@ -4,8 +4,9 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 
-import com.yatoooon.screenadaptation.loadviewhelper.AbsLoadViewHelper;
-import com.yatoooon.screenadaptation.loadviewhelper.LoadViewHelper;
+import com.dengjinwen.basetool.library.function.screenAdaptation.loadviewhelper.AbsLoadViewHelper;
+import com.dengjinwen.basetool.library.function.screenAdaptation.loadviewhelper.LoadViewHelper;
+
 
 /**
  * Created by yatoooon on 2018/2/6.
