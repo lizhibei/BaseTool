@@ -63,6 +63,7 @@ public class LocalDataUitlTool {
      */
     public  List<ItemEntity> getVideotList(){
 
+        mImageFloders.clear();
         List<ItemEntity> sysVideoList=new ArrayList<>();
         // MediaStore.Video.Thumbnails.DATA:视频缩略图的文件路径
         String[] thumbColumns={MediaStore.Video.Thumbnails.DATA,MediaStore.Video.Thumbnails.VIDEO_ID};
@@ -122,6 +123,7 @@ public class LocalDataUitlTool {
     public  List<ItemEntity> getImageList(){
         List<ItemEntity> data=new ArrayList<>();
         Cursor cursor=getImageCursor(mContext);
+        mImageFloders.clear();
         while (cursor.moveToNext()){
             String path=cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
             ItemEntity ie=new ItemEntity();
