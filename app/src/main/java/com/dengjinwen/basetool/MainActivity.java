@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.dengjinwen.basetool.activity.BaseActivity;
 import com.dengjinwen.basetool.activity.CreditCardActivity;
+import com.dengjinwen.basetool.activity.DialogFactoryActivity;
 import com.dengjinwen.basetool.activity.SelectImageAndActivity;
 import com.dengjinwen.basetool.activity.selfview.SelfViewActivity;
 import com.dengjinwen.basetool.adapter.MainAdapter;
@@ -71,6 +72,8 @@ public class MainActivity extends BaseActivity  {
         data.add(fileS);
         MainItem selectImage=new MainItem("选择本地图片","选择本地图片实例");
         data.add(selectImage);
+        MainItem dialogFactory=new MainItem("DialogFactory","对话框工厂");
+        data.add(dialogFactory);
     }
 
     private void click(int position){
@@ -94,6 +97,10 @@ public class MainActivity extends BaseActivity  {
                 //选择本地图片
             case 3:
                 startIntent(mContext,SelectImageAndActivity.class);
+                break;
+                //对话框工厂
+            case 4:
+                startIntent(mContext,DialogFactoryActivity.class);
                 break;
         }
     }
