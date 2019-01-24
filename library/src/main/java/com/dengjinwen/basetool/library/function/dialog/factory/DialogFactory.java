@@ -12,7 +12,7 @@ public  class DialogFactory {
         //中间文本内容的确定取消对话框
         TEXT_CACD,
         //加载对话框
-        LOAD_DIALOG
+        LOAD_DIALOG,
     }
 
     public static DialogFactory instance;
@@ -30,9 +30,9 @@ public  class DialogFactory {
 
     public Dialog createDialog(Context context,DialogType type){
         Dialog dialog=null;
-        if(type==DialogType.TEXT_CACD){
+        if(type==DialogType.TEXT_CACD){  //中间文本内容的确定取消对话框
             dialog=new TextCACD(context);
-        }else if(type==DialogType.LOAD_DIALOG){
+        }else if(type==DialogType.LOAD_DIALOG){  //加载对话框
             dialog=new LoadDialog(context);
         }
         return dialog;

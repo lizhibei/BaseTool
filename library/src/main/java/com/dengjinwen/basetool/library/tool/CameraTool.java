@@ -1,6 +1,7 @@
 package com.dengjinwen.basetool.library.tool;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -8,13 +9,13 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
 import android.support.v4.content.FileProvider;
 
-import com.yanzhenjie.permission.AndPermission;
-import com.yanzhenjie.permission.PermissionListener;
-import com.yanzhenjie.permission.Rationale;
-import com.yanzhenjie.permission.RationaleListener;
+import com.dengjinwen.basetool.library.function.dialog.product.PermissionHintDialog;
+import com.dengjinwen.basetool.library.function.permission.Action;
+import com.dengjinwen.basetool.library.function.permission.AndPermission;
+import com.dengjinwen.basetool.library.function.permission.Rationale;
+import com.dengjinwen.basetool.library.function.permission.RequestExecutor;
 
 import java.io.File;
 import java.util.List;
@@ -24,20 +25,36 @@ import java.util.List;
  */
 public class CameraTool {
 
-    public static final String DIR=Environment.getExternalStorageDirectory().toString();
+    private   final String DIR=Environment.getExternalStorageDirectory().toString();
     /**
      * 存储照片的路径
      */
-    public static final String PATH_IMAGE = DIR+ "/tool/Camera/image";
+    private   final String PATH_IMAGE = DIR+ "/tool/Camera/image";
     /**
      * 存储视频的路径
      */
-    public static final String PATH_VIDEO=DIR+"/tool/Camera/video/";
+    private   final String PATH_VIDEO=DIR+"/tool/Camera/video/";
 
 //    public static final String packageName="com.dengjinwen.basetool.library";
 
-    public static File mImageFile;
-    public static String path;
+    private   File mImageFile;
+    private   String path;
+    private static CameraTool instance;
+
+    private CameraTool(){
+
+    }
+
+    public static CameraTool getInstance() {
+       if(instance==null){
+           synchronized (CameraTool.class){
+               if(instance==null){
+                   instance=new CameraTool();
+               }
+           }
+       }
+       return instance;
+    }
 
     /**
      * 录制视频
@@ -45,8 +62,8 @@ public class CameraTool {
      * @param flag requestCode
      * @return
      */
-    public static String takeVideo(Activity activity,int flag){
-        path=take(activity,flag,MediaStore.ACTION_VIDEO_CAPTURE);
+    public  String takeVideo(Activity activity,int flag,PermissionFailListener listener){
+        path=take(activity,flag,MediaStore.ACTION_VIDEO_CAPTURE,listener);
         return path;
     }
 
@@ -56,12 +73,12 @@ public class CameraTool {
      * @param flag requestCode
      * @return
      */
-    public static String takePicture(final Activity activity, final int flag){
-        path=take(activity,flag,MediaStore.ACTION_IMAGE_CAPTURE);
+    public  String takePicture(final Activity activity, final int flag,PermissionFailListener listener){
+        path=take(activity,flag,MediaStore.ACTION_IMAGE_CAPTURE,listener);
         return path;
     }
 
-    public static String take(final Activity activity,final int flag,final String type){
+    private   String take(final Activity activity, final int flag, final String type, final PermissionFailListener listener){
         final long time=System.currentTimeMillis();
         String parentPath;
         if(type.equals(MediaStore.ACTION_IMAGE_CAPTURE)){
@@ -72,72 +89,60 @@ public class CameraTool {
             parentPath=PATH_VIDEO;
         }
         final File parentFile=new File(parentPath);
-
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.N){
-            if (activity.checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED&&activity.
-                    checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED&&
-                    activity.checkSelfPermission(android.Manifest.permission.CAMERA)!=PackageManager.PERMISSION_GRANTED) {
-                AndPermission.with(activity)
-                        .requestCode(100)
-                        .permission(android.Manifest.permission.READ_EXTERNAL_STORAGE,
-                                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                                android.Manifest.permission.CAMERA)
-                        .callback(new PermissionListener() {
-                            @Override
-                            public void onSucceed(int requestCode, @NonNull List<String> grantPermissions) {
-                                if(!parentFile.exists()){
-                                    boolean cu=parentFile.mkdirs();
-                                }
-                                mImageFile=new File(parentFile,time+".jpg");
-                                final Uri mUri=FileProvider.getUriForFile(activity,activity.getApplicationInfo().packageName+".fileprovider",mImageFile);
-                                toCamera(mUri,activity,flag,type);
-                            }
-
-                            @Override
-                            public void onFailed(int requestCode, @NonNull List<String> deniedPermissions) {
-                                if(requestCode==100){
-                                    AndPermission.defaultSettingDialog(activity,400).show();
-                                }
-                            }
-                        })
-                        .rationale(new RationaleListener() {
-                            @Override
-                            public void showRequestPermissionRationale(int requestCode, Rationale rationale) {
-                                AndPermission.rationaleDialog(activity,rationale).show();
-                            }
-                        })
-                        .start();
-            }else {
-                if(!parentFile.exists()){
-                    boolean cu=parentFile.mkdirs();
-                }
-                if(type.equals(MediaStore.ACTION_IMAGE_CAPTURE)){
-                    mImageFile=new File(parentFile,time+".jpg");
-                }else {
-                    mImageFile=new File(parentFile,time+".mp4");
-                }
-                final Uri mUri=FileProvider.getUriForFile(activity,activity.getApplicationInfo().packageName+".fileprovider",mImageFile);
-                toCamera(mUri,activity,flag,type);
-            }
-
-        }else {
-            if(!parentFile.exists()){
-                boolean cu=parentFile.mkdirs();
-            }
-            if(type.equals(MediaStore.ACTION_IMAGE_CAPTURE)){
-                mImageFile=new File(parentFile,time+".jpg");
-            }else {
-                mImageFile=new File(parentFile,time+".mp4");
-            }
-            Uri mUri=FileProvider.getUriForFile(activity,activity.getApplicationInfo().packageName+".fileprovider",mImageFile);
-            Intent intent = new Intent(type);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, mUri);
-            activity.startActivityForResult(intent, flag);
-        }
+        AndPermission.with(activity)
+                .permission(android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                        android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        android.Manifest.permission.CAMERA)
+                .onGranted(new Action() {
+                    @Override
+                    public void onAction(List<String> permissions) {
+                        createFile(parentFile,type,time);
+                        final Uri mUri=FileProvider.getUriForFile(activity,activity.getApplicationInfo().packageName+".fileprovider",mImageFile);
+                        toCamera(mUri,activity,flag,type);
+                    }
+                })
+                .onDenied(new Action() {
+                    @Override
+                    public void onAction(List<String> permissions) {
+//                        AndPermission.defaultSettingDialog(activity).show();
+                        log.e("permissions:"+permissions.get(0));
+                        listener.failure();
+                    }
+                })
+                .rationale(new Rationale() {
+                    @Override
+                    public void showRationale(Context context, List<String> permissions, RequestExecutor executor) {
+                        AndPermission.rationaleDialog(activity,executor)
+                                .setNegativeButton(new PermissionHintDialog.ButtonClickListener() {
+                                    @Override
+                                    public void onClick() {
+                                        listener.failure();
+                                    }
+                                }).show();
+                    }
+                })
+                .start();
         return path;
     }
 
-    private static void toCamera(Uri mUri, Activity activity,int flag,String type){
+    /**
+     * 生成存储文件
+     * @param parentFile
+     * @param type
+     * @param time
+     */
+    private  void createFile(File parentFile,String type,long time){
+        if(!parentFile.exists()){
+            boolean cu=parentFile.mkdirs();
+        }
+        if(type.equals(MediaStore.ACTION_IMAGE_CAPTURE)){
+            mImageFile=new File(parentFile,time+".jpg");
+        }else {
+            mImageFile=new File(parentFile,time+".mp4");
+        }
+    }
+
+    private  void toCamera(Uri mUri, Activity activity,int flag,String type){
         Intent intent = new Intent(type);
 //        Intent intent=new Intent("com.android.camera.action.CROP");
 //        intent.setDataAndType(mUri, "image/*");
@@ -152,13 +157,19 @@ public class CameraTool {
 //		intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
 //		intent.putExtra("return-data", false);
 
-        //重要的一步，使用grantUriPermission来给对应的包提升读写指定uri的临时权限。否则即使调用成功，也会保存裁剪照片失败。
-        List<ResolveInfo> resInfoList = activity.getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
-        for (ResolveInfo resolveInfo : resInfoList) {
-            String p = resolveInfo.activityInfo.packageName;
-            activity.grantUriPermission(p, mUri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.N){
+            //重要的一步，使用grantUriPermission来给对应的包提升读写指定uri的临时权限。否则即使调用成功，也会保存裁剪照片失败。
+            List<ResolveInfo> resInfoList = activity.getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+            for (ResolveInfo resolveInfo : resInfoList) {
+                String p = resolveInfo.activityInfo.packageName;
+                activity.grantUriPermission(p, mUri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            }
         }
         activity.startActivityForResult(intent, flag);
+    }
+
+    public interface PermissionFailListener{
+        public void failure();
     }
 
 }

@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -24,13 +23,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dengjinwen.basetool.library.R;
+import com.dengjinwen.basetool.library.function.dialog.product.PermissionHintDialog;
+import com.dengjinwen.basetool.library.function.permission.Action;
+import com.dengjinwen.basetool.library.function.permission.AndPermission;
+import com.dengjinwen.basetool.library.function.permission.Rationale;
+import com.dengjinwen.basetool.library.function.permission.RequestExecutor;
 import com.dengjinwen.basetool.library.tool.CameraTool;
 import com.dengjinwen.basetool.library.tool.LocalDataUitlTool;
 import com.dengjinwen.basetool.library.tool.ScreenUitl;
-import com.yanzhenjie.permission.AndPermission;
-import com.yanzhenjie.permission.PermissionListener;
-import com.yanzhenjie.permission.Rationale;
-import com.yanzhenjie.permission.RationaleListener;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -90,6 +90,10 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
     private String path;
 
     private int VIDOE_MAX_CAPACITY=25;
+    /**
+     * 设置权限返回
+     */
+    private int SET_PERMISSION_BACK=26;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -135,9 +139,21 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
             @Override
             public void taking() {
                 if(SELECT_TYPE==TAG_SELECT_VIDEO){  //拍摄视频
-                    path=CameraTool.takeVideo(SelectImageActivity.this,TAG_SELECT_VIDEO);
+                    path=CameraTool.getInstance().takeVideo(SelectImageActivity.this, TAG_SELECT_VIDEO,
+                            new CameraTool.PermissionFailListener() {
+                        @Override
+                        public void failure() {
+                            Toast.makeText(mContext,"获取拍照权限失败",Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }else {  //拍摄照片
-                    path=CameraTool.takePicture(SelectImageActivity.this,TAG_SELECT_IMAGE);
+                    path=CameraTool.getInstance().takePicture(SelectImageActivity.this, TAG_SELECT_IMAGE,
+                            new CameraTool.PermissionFailListener() {
+                        @Override
+                        public void failure() {
+                            Toast.makeText(mContext,"获取拍照权限失败",Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             }
 
@@ -187,32 +203,44 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                 }
             }
         }
+
+        if(requestCode==SET_PERMISSION_BACK){
+            checkPermission();
+        }
     }
 
     private void checkPermission(){
         AndPermission.with(this)
-                .requestCode(100)
-                .permission(android.Manifest.permission.READ_EXTERNAL_STORAGE)
-                .permission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                .callback(new PermissionListener() {
+                .permission(android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .onDenied(new Action() {  //权限失败
                     @Override
-                    public void onSucceed(int requestCode, @NonNull List<String> grantPermissions) {
-                        if(requestCode==100){
-                            getImage();
-                        }
-                    }
-
-                    @Override
-                    public void onFailed(int requestCode, @NonNull List<String> deniedPermissions) {
-                        if(requestCode==100){
-                            AndPermission.defaultSettingDialog(SelectImageActivity.this,400).show();
-                        }
+                    public void onAction(List<String> permissions) {
+                        AndPermission.defaultSettingDialog(SelectImageActivity.this,SET_PERMISSION_BACK)
+                                .setNegativeButton(new PermissionHintDialog.ButtonClickListener() {
+                                    @Override
+                                    public void onClick() {
+                                        finish();
+                                    }
+                                }).show();
                     }
                 })
-                .rationale(new RationaleListener() {
+                .onGranted(new Action() {  //获取权限成功
                     @Override
-                    public void showRequestPermissionRationale(int requestCode, Rationale rationale) {
-                        AndPermission.rationaleDialog(mContext,rationale).show();
+                    public void onAction(List<String> permissions) {
+                        getImage();
+                    }
+                })
+                .rationale(new Rationale() {  //有被拒绝的权限
+                    @Override
+                    public void showRationale(Context context, List<String> permissions, RequestExecutor executor) {
+                        AndPermission.rationaleDialog(mContext,executor)
+                                .setNegativeButton( new PermissionHintDialog.ButtonClickListener() {
+                                    @Override
+                                    public void onClick() {
+                                        finish();
+                                    }
+                                }).show();
                     }
                 })
                 .start();
