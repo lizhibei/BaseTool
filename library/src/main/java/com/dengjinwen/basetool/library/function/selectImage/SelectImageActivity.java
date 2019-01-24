@@ -216,7 +216,8 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                 .onDenied(new Action() {  //权限失败
                     @Override
                     public void onAction(List<String> permissions) {
-                        AndPermission.defaultSettingDialog(SelectImageActivity.this,SET_PERMISSION_BACK)
+                        AndPermission.defaultSettingDialog(SelectImageActivity.this,
+                                SET_PERMISSION_BACK)
                                 .setNegativeButton(new PermissionHintDialog.ButtonClickListener() {
                                     @Override
                                     public void onClick() {

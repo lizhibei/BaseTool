@@ -38,6 +38,8 @@ public class PermissionHintDialog extends Dialog implements View.OnClickListener
         confirm_tv=view.findViewById(R.id.confirm_tv);
         confirm_tv.setOnClickListener(this);
 
+        setCancelable(false);
+
         Window window=getWindow();
         window.setGravity(Gravity.CENTER);
         window.setContentView(view);

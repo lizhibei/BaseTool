@@ -16,79 +16,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fb85bee-dd5c-4128-87ac-89b987c400b5" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/VersionUpdate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/PermissionDeniedDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/PermissionHintDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/PermissionRationaleDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/mvp/BasePresenter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/mvp/IBaseView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/Action.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/AndPermission.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/LRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/MRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/Permission.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/PermissionActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/Rationale.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/Request.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/RequestExecutor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/SettingService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/checker/AddVoicemailTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/checker/CalendarReadTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/checker/CalendarWriteTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/checker/CallLogReadTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/checker/CallLogWriteTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/checker/CameraTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/checker/ContactsReadTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/checker/ContactsWriteTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/checker/DoubleChecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/checker/LocationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/checker/PermissionChecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/checker/PermissionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/checker/PhoneStateReadTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/checker/RecordAudioTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/checker/SensorsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/checker/SipTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/checker/SmsReadTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/checker/StandardChecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/checker/StorageReadTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/checker/StorageWriteTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/checker/StrictChecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/dialog/PermissionDeniedDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/dialog/PermissionHintDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/dialog/PermissionRationaleDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/setting/PermissionSetting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/source/AppActivitySource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/source/ContextSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/source/FragmentSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/source/Source.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/source/SupportFragmentSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/res/layout/permission_hint_dialog.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/res/values-zh-RHK/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/res/values-zh-rtw/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/jarAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskJars.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskJars.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BaseTool.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BaseTool.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dengjinwen/basetool/activity/SelectImageAndActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dengjinwen/basetool/activity/SelectImageAndActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/library/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/library.iml" beforeDir="false" afterPath="$PROJECT_DIR$/library/library.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/library/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/factory/DialogFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/factory/DialogFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/PermissionHintDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/PermissionHintDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/selectImage/SelectImageActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/selectImage/SelectImageActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/CameraTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/CameraTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/library/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/library/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -111,11 +41,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="SelectImageActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SelectImageActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/selectImage/SelectImageActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="148" column="31" lean-forward="true" selection-start-line="148" selection-start-column="31" selection-end-line="148" selection-end-column="31" />
+            <state relative-caret-position="219">
+              <caret line="230" column="38" selection-start-line="230" selection-start-column="38" selection-end-line="230" selection-end-column="38" />
+              <folding>
+                <element signature="e#2240#2248#0" expanded="true" />
+                <element signature="e#3491#3532#0" expanded="true" />
+                <element signature="e#3716#3737#0" expanded="true" />
+                <element signature="e#3785#3806#0" expanded="true" />
+                <element signature="e#4547#4809#0" expanded="true" />
+                <element signature="e#4808#4809#0" expanded="true" />
+                <element signature="e#4978#5240#0" expanded="true" />
+                <element signature="e#5239#5240#0" expanded="true" />
+                <element signature="e#5437#5478#0" expanded="true" />
+                <element signature="e#7446#8082#0" expanded="true" />
+                <element signature="e#7757#8033#0" expanded="true" />
+                <element signature="e#8032#8033#0" expanded="true" />
+                <element signature="e#8081#8082#0" expanded="true" />
+                <element signature="e#8309#8310#0" expanded="true" />
+                <element signature="e#8339#8965#0" expanded="true" />
+                <element signature="e#8640#8916#0" expanded="true" />
+                <element signature="e#8915#8916#0" expanded="true" />
+                <element signature="e#8964#8965#0" expanded="true" />
+                <element signature="e#9151#9197#0" expanded="true" />
+                <element signature="e#9295#9337#0" expanded="true" />
+                <element signature="e#9360#9826#0" expanded="true" />
+                <element signature="e#9825#9826#0" expanded="true" />
+                <element signature="e#9882#10328#0" expanded="true" />
+                <element signature="e#10097#10140#0" expanded="true" />
+                <element signature="e#10327#10328#0" expanded="true" />
+                <element signature="e#12201#12777#0" expanded="true" />
+                <element signature="e#12776#12777#0" expanded="true" />
+                <element signature="e#13210#13487#0" expanded="true" />
+                <element signature="e#13486#13487#0" expanded="true" />
+                <element signature="e#14466#14520#0" expanded="true" />
+                <element signature="e#14933#14976#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -123,11 +86,12 @@
       <file leaf-file-name="CameraTool.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/CameraTool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="104" column="29" selection-start-line="104" selection-start-column="29" selection-end-line="104" selection-end-column="29" />
+            <state relative-caret-position="259">
+              <caret line="73" column="14" selection-start-line="73" selection-start-column="14" selection-end-line="73" selection-end-column="14" />
               <folding>
                 <element signature="e#2923#3339#0" expanded="true" />
                 <element signature="e#3338#3339#0" expanded="true" />
+                <element signature="e#3367#3597#0" expanded="true" />
                 <element signature="e#3596#3597#0" expanded="true" />
                 <element signature="e#3626#3911#0" expanded="true" />
                 <element signature="e#4020#4287#0" expanded="true" />
@@ -138,55 +102,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LocalDataUitlTool.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LocalDataUitlTool.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/LocalDataUitlTool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="89" column="53" selection-start-line="89" selection-start-column="53" selection-end-line="89" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LRequest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/LRequest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="868">
-              <caret line="114" column="41" selection-start-line="114" selection-start-column="41" selection-end-line="114" selection-end-column="41" />
+            <state relative-caret-position="535">
+              <caret line="74" column="41" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1368#1369#0" expanded="true" />
-                <element signature="e#1405#1406#0" expanded="true" />
+                <element signature="e#1363#1364#0" expanded="true" />
+                <element signature="e#1403#1404#0" expanded="true" />
+                <element signature="e#4213#4266#0" expanded="true" />
+                <element signature="e#5366#5419#0" expanded="true" />
+                <element signature="e#5817#5872#0" expanded="true" />
+                <element signature="e#7932#8230#0" expanded="true" />
+                <element signature="e#8229#8230#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PermissionDeniedDialog.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/PermissionDeniedDialog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
-              <folding>
-                <element signature="e#680#740#0" expanded="true" />
-                <element signature="e#777#838#0" expanded="true" />
-                <element signature="e#840#1057#0" expanded="true" />
-                <element signature="e#1056#1057#0" expanded="true" />
-                <element signature="e#1208#1286#0" expanded="true" />
-                <element signature="e#1313#1392#0" expanded="true" />
-                <element signature="e#1429#1489#0" expanded="true" />
-                <element signature="e#1526#1587#0" expanded="true" />
-                <element signature="e#1592#1809#0" expanded="true" />
-                <element signature="e#1808#1809#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PermissionHintDialog.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/PermissionHintDialog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="98" column="20" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -3459,21 +3388,21 @@
         <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/PermissionRationaleDialog.java" />
         <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/PermissionDeniedDialog.java" />
         <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/AndPermission.java" />
-        <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/PermissionHintDialog.java" />
-        <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/selectImage/SelectImageActivity.java" />
         <option value="$PROJECT_DIR$/library/build.gradle" />
         <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/CameraTool.java" />
         <option value="$PROJECT_DIR$/library/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/dengjinwen/basetool/activity/SelectImageAndActivity.java" />
+        <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/selectImage/SelectImageActivity.java" />
+        <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/PermissionHintDialog.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1330" />
-    <option name="y" value="14" />
-    <option name="width" value="1673" />
-    <option name="height" value="945" />
+    <option name="x" value="1285" />
+    <option name="y" value="38" />
+    <option name="width" value="1862" />
+    <option name="height" value="951" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -3628,7 +3557,28 @@
             <path>
               <item name="BaseTool" type="1abcf292:AndroidViewProjectNode" />
               <item name="library" type="feadf853:AndroidModuleNode" />
-              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="BaseTool" type="1abcf292:AndroidViewProjectNode" />
+              <item name="library" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="library" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BaseTool" type="1abcf292:AndroidViewProjectNode" />
+              <item name="library" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="library" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="function" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BaseTool" type="1abcf292:AndroidViewProjectNode" />
+              <item name="library" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="library" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="function" type="462c0819:PsiDirectoryNode" />
+              <item name="permission" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BaseTool" type="1abcf292:AndroidViewProjectNode" />
@@ -3895,7 +3845,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1330" y="14" width="1673" height="945" extended-state="0" />
+    <frame x="1285" y="38" width="1862" height="951" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.3283208" />
@@ -3913,7 +3863,7 @@
       <window_info id="Captures" order="2" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49658704" visible="true" weight="0.21900062" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49658704" visible="true" weight="0.1961326" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.34962407" />
       <window_info anchor="right" id="Gradle" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -4243,32 +4193,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/PermissionHintDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="98" column="20" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/PermissionDeniedDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="e#680#740#0" expanded="true" />
-            <element signature="e#777#838#0" expanded="true" />
-            <element signature="e#840#1057#0" expanded="true" />
-            <element signature="e#1056#1057#0" expanded="true" />
-            <element signature="e#1208#1286#0" expanded="true" />
-            <element signature="e#1313#1392#0" expanded="true" />
-            <element signature="e#1429#1489#0" expanded="true" />
-            <element signature="e#1526#1587#0" expanded="true" />
-            <element signature="e#1592#1809#0" expanded="true" />
-            <element signature="e#1808#1809#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/LRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="868">
@@ -4303,13 +4227,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/LocalDataUitlTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="89" column="53" selection-start-line="89" selection-start-column="53" selection-end-line="89" selection-end-column="53" />
         </state>
       </provider>
     </entry>
@@ -4350,13 +4267,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dengjinwen/basetool/activity/SelectImageAndActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="919">
+          <caret line="87" column="18" lean-forward="true" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/CameraTool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="104" column="29" selection-start-line="104" selection-start-column="29" selection-end-line="104" selection-end-column="29" />
+        <state relative-caret-position="259">
+          <caret line="73" column="14" selection-start-line="73" selection-start-column="14" selection-end-line="73" selection-end-column="14" />
           <folding>
             <element signature="e#2923#3339#0" expanded="true" />
             <element signature="e#3338#3339#0" expanded="true" />
+            <element signature="e#3367#3597#0" expanded="true" />
             <element signature="e#3596#3597#0" expanded="true" />
             <element signature="e#3626#3911#0" expanded="true" />
             <element signature="e#4020#4287#0" expanded="true" />
@@ -4366,17 +4291,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dengjinwen/basetool/activity/SelectImageAndActivity.java">
+    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/selectImage/SelectImageActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="919">
-          <caret line="87" column="18" lean-forward="true" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="18" />
+        <state relative-caret-position="219">
+          <caret line="230" column="38" selection-start-line="230" selection-start-column="38" selection-end-line="230" selection-end-column="38" />
+          <folding>
+            <element signature="e#2240#2248#0" expanded="true" />
+            <element signature="e#3491#3532#0" expanded="true" />
+            <element signature="e#3716#3737#0" expanded="true" />
+            <element signature="e#3785#3806#0" expanded="true" />
+            <element signature="e#4547#4809#0" expanded="true" />
+            <element signature="e#4808#4809#0" expanded="true" />
+            <element signature="e#4978#5240#0" expanded="true" />
+            <element signature="e#5239#5240#0" expanded="true" />
+            <element signature="e#5437#5478#0" expanded="true" />
+            <element signature="e#7446#8082#0" expanded="true" />
+            <element signature="e#7757#8033#0" expanded="true" />
+            <element signature="e#8032#8033#0" expanded="true" />
+            <element signature="e#8081#8082#0" expanded="true" />
+            <element signature="e#8309#8310#0" expanded="true" />
+            <element signature="e#8339#8965#0" expanded="true" />
+            <element signature="e#8640#8916#0" expanded="true" />
+            <element signature="e#8915#8916#0" expanded="true" />
+            <element signature="e#8964#8965#0" expanded="true" />
+            <element signature="e#9151#9197#0" expanded="true" />
+            <element signature="e#9295#9337#0" expanded="true" />
+            <element signature="e#9360#9826#0" expanded="true" />
+            <element signature="e#9825#9826#0" expanded="true" />
+            <element signature="e#9882#10328#0" expanded="true" />
+            <element signature="e#10097#10140#0" expanded="true" />
+            <element signature="e#10327#10328#0" expanded="true" />
+            <element signature="e#12201#12777#0" expanded="true" />
+            <element signature="e#12776#12777#0" expanded="true" />
+            <element signature="e#13210#13487#0" expanded="true" />
+            <element signature="e#13486#13487#0" expanded="true" />
+            <element signature="e#14466#14520#0" expanded="true" />
+            <element signature="e#14933#14976#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/selectImage/SelectImageActivity.java">
+    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/PermissionDeniedDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="148" column="31" lean-forward="true" selection-start-line="148" selection-start-column="31" selection-end-line="148" selection-end-column="31" />
+        <state relative-caret-position="153">
+          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+          <folding>
+            <element signature="e#680#740#0" expanded="true" />
+            <element signature="e#777#838#0" expanded="true" />
+            <element signature="e#840#1057#0" expanded="true" />
+            <element signature="e#1056#1057#0" expanded="true" />
+            <element signature="e#1208#1286#0" expanded="true" />
+            <element signature="e#1313#1392#0" expanded="true" />
+            <element signature="e#1429#1489#0" expanded="true" />
+            <element signature="e#1526#1587#0" expanded="true" />
+            <element signature="e#1592#1809#0" expanded="true" />
+            <element signature="e#1808#1809#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/PermissionHintDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="35" column="52" lean-forward="true" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/LocalDataUitlTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="74" column="41" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
+          <folding>
+            <element signature="e#1363#1364#0" expanded="true" />
+            <element signature="e#1403#1404#0" expanded="true" />
+            <element signature="e#4213#4266#0" expanded="true" />
+            <element signature="e#5366#5419#0" expanded="true" />
+            <element signature="e#5817#5872#0" expanded="true" />
+            <element signature="e#7932#8230#0" expanded="true" />
+            <element signature="e#8229#8230#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
