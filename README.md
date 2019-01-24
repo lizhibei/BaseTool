@@ -3,6 +3,7 @@
   [BannerLayout 轮播图](https://github.com/lizhibei/BaseTool/wiki/BannerLayout) &ensp;  &ensp;
   [AndSelectImage图片视频选择器](https://github.com/lizhibei/BaseTool/wiki/AndSelectImage)&ensp;  &ensp;<br/>
 [AndroidScreenAdaptation 屏幕适配](https://github.com/lizhibei/BaseTool/wiki/AndroidScreenAdaptation)&ensp;  &ensp;
+[AndPermission 动态获取权限](https://github.com/lizhibei/BaseTool/wiki/AndPermission)&ensp;  &ensp;
  ## 工具类
 [ScreenUtil 屏幕工具类](https://github.com/lizhibei/BaseTool/wiki/ScreenUitl) &ensp;  &ensp;
 [CameraTool 相机工具类](https://github.com/lizhibei/BaseTool/wiki/CameraTool)&ensp;  &ensp;
