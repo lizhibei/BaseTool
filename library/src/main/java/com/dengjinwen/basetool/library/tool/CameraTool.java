@@ -105,7 +105,6 @@ public class CameraTool {
                     @Override
                     public void onAction(List<String> permissions) {
 //                        AndPermission.defaultSettingDialog(activity).show();
-                        log.e("permissions:"+permissions.get(0));
                         listener.failure();
                     }
                 })

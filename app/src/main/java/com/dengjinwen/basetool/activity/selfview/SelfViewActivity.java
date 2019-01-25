@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.dengjinwen.basetool.R;
 import com.dengjinwen.basetool.activity.BaseActivity;
+import com.dengjinwen.basetool.activity.CountDownButtonActivity;
 import com.dengjinwen.basetool.adapter.MainAdapter;
 import com.dengjinwen.basetool.entity.MainItem;
 
@@ -50,6 +51,8 @@ public class SelfViewActivity extends BaseActivity implements View.OnClickListen
         data.add(scrollViewContainer);
         MainItem treelistView=new MainItem("TreeListView","树形结构列表");
         data.add(treelistView);
+        MainItem countDown=new MainItem("CountDownButton","计时器");
+        data.add(countDown);
     }
 
     private void initview() {
@@ -105,6 +108,10 @@ public class SelfViewActivity extends BaseActivity implements View.OnClickListen
                 //8
             case 8:
                 startIntent(mContext,TreeListViewActivity.class);
+                break;
+                //计时器
+            case 9:
+                startIntent(mContext,CountDownButtonActivity.class);
                 break;
         }
     }
