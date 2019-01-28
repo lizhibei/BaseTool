@@ -64,7 +64,7 @@ public class ScreenUitl {
      * @param context
      * @return
      */
-    public int getStatusBarHeight(Context context){
+    public static int getStatusBarHeight(Context context){
         int result=0;
         int resourceId=context.getResources().getIdentifier("status_bar_height",
                 "dimen","android");
@@ -120,7 +120,7 @@ public class ScreenUitl {
             context.getWindow().setStatusBarColor(context.getResources().getColor(color));
             if (style == StatusBarStyle.COLOR) {
                 LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) view.getLayoutParams();
-                linearParams.height = getVirtualBarHeight(context) + 5;
+                linearParams.height = getStatusBarHeight(context);
                 view.setBackgroundColor(context.getResources().getColor(color));
             } else if (style == StatusBarStyle.IMAGE) {
                 //设置距离顶部margin值

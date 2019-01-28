@@ -15,6 +15,7 @@ import com.dengjinwen.basetool.activity.SelectImageAndActivity;
 import com.dengjinwen.basetool.activity.selfview.SelfViewActivity;
 import com.dengjinwen.basetool.adapter.MainAdapter;
 import com.dengjinwen.basetool.entity.MainItem;
+import com.dengjinwen.basetool.library.function.screenAdaptation.ScreenAdapterTools;
 import com.dengjinwen.basetool.util.FilePicker;
 
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class MainActivity extends BaseActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ScreenAdapterTools.getInstance().loadView(getWindow().getDecorView());
         mContext=this;
         initData();
         initview();
