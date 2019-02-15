@@ -1,5 +1,6 @@
 package com.dengjinwen.basetool.library.tool;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -8,11 +9,22 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.Settings;
+import android.support.v4.content.FileProvider;
 import android.telephony.SmsManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.widget.Toast;
 
+import com.dengjinwen.basetool.library.BuildConfig;
+import com.dengjinwen.basetool.library.function.dialog.product.PermissionHintDialog;
+import com.dengjinwen.basetool.library.function.permission.Action;
+import com.dengjinwen.basetool.library.function.permission.AndPermission;
+import com.dengjinwen.basetool.library.function.permission.Rationale;
+import com.dengjinwen.basetool.library.function.permission.RequestExecutor;
+
+import java.io.File;
 import java.util.List;
 
 /**
@@ -269,5 +281,71 @@ public class SystemUtil {
     public boolean isPhone() {
         TelephonyManager tm = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
         return tm != null && tm.getPhoneType() != TelephonyManager.PHONE_TYPE_NONE;
+    }
+
+    public void openFile(String file){
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+            getPermission(new String[]{Manifest.permission.INSTALL_PACKAGES,Manifest.permission.READ_EXTERNAL_STORAGE},file);
+        }else if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+            getPermission(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},file);
+        }else {
+            installApk(file);
+        }
+    }
+
+    private void getPermission(String[] permissions, final String file){
+        AndPermission.with(mContext)
+                .permission(permissions)
+                .onGranted(new Action() {
+                    @Override
+                    public void onAction(List<String> permissions) {
+                        installApk(file);
+                    }
+                })
+                .onDenied(new Action() {
+                    @Override
+                    public void onAction(List<String> permissions) {
+                        Toast.makeText(mContext,"获取安装apk权限失败",Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .rationale(new Rationale() {
+                    @Override
+                    public void showRationale(Context context, List<String> permissions, RequestExecutor executor) {
+                        AndPermission.rationaleDialog(mContext,executor)
+                                .setNegativeButton( new PermissionHintDialog.ButtonClickListener() {
+                                    @Override
+                                    public void onClick() {
+                                        Toast.makeText(mContext,"获取安装apk权限失败",Toast.LENGTH_SHORT).show();
+                                    }
+                                }).show();
+                    }
+                })
+                .start();
+    }
+
+    /**
+     * 安装apk
+     *
+     * @param //url
+     */
+    private void installApk(String file) {
+        File apkfile = new File(file);
+        if (!apkfile.exists()) {
+            return;
+        }
+        Intent i = new Intent(Intent.ACTION_VIEW);
+
+        //判断是否是AndroidN以及更高的版本
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            i.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            Uri contentUri = FileProvider.getUriForFile(mContext, BuildConfig.APPLICATION_ID + ".fileprovider", apkfile);
+            i.setDataAndType(contentUri, "application/vnd.android.package-archive");
+        } else {
+            i.setDataAndType(Uri.fromFile(apkfile), "application/vnd.android.package-archive");
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        }
+//		i.setDataAndType(Uri.parse("file://" + apkfile.toString()),
+//				"application/vnd.android.package-archive");
+        mContext.startActivity(i);
     }
 }

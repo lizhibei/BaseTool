@@ -31,9 +31,11 @@ import com.dengjinwen.basetool.library.function.permission.RequestExecutor;
 import com.dengjinwen.basetool.library.tool.CameraTool;
 import com.dengjinwen.basetool.library.tool.LocalDataUitlTool;
 import com.dengjinwen.basetool.library.tool.ScreenUitl;
+import com.dengjinwen.basetool.library.tool.comparator.FileModityTimeComparator;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -308,6 +310,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
             }else {
                 data.addAll(localDataUitlTool.getFolderImages(imageFloder));
             }
+            Collections.sort(data,new FileModityTimeComparator());
         }
         adapter.notifyDataSetChanged();
     }
