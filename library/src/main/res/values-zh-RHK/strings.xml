@@ -50,4 +50,10 @@
     <string name="permission_resume">繼續</string>
     <string name="permission_title_permission_rationale">權限已被拒絕</string>
     <string name="permission_message_permission_rationale">您已經拒絕過我們申請授權，請您同意授權，否則功能無法正常使用！</string>
+
+    <string name="recycler_swipe_load_more_message">Loading, please wait later</string>
+    <string name="recycler_swipe_data_empty">There is no data</string>
+    <string name="recycler_swipe_more_not">No more data</string>
+    <string name="recycler_swipe_click_load_more">Click to load more</string>
+    <string name="recycler_swipe_load_error">Error, please try again</string>
 </resources>

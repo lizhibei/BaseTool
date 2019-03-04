@@ -49,4 +49,11 @@
     <string name="permission_resume">继续</string>
     <string name="permission_title_permission_rationale">权限已被拒绝</string>
     <string name="permission_message_permission_rationale">您已经拒绝过我们申请授权，请您同意授权，否则功能无法正常使用！</string>
+
+
+    <string name="recycler_swipe_load_more_message">Loading, please wait later</string>
+    <string name="recycler_swipe_data_empty">There is no data</string>
+    <string name="recycler_swipe_more_not">No more data</string>
+    <string name="recycler_swipe_click_load_more">Click to load more</string>
+    <string name="recycler_swipe_load_error">Error, please try again</string>
 </resources>
