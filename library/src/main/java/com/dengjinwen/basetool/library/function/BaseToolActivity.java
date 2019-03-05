@@ -54,7 +54,7 @@ public class BaseToolActivity extends AppCompatActivity implements IBaseView {
     @Override
     public void hideLoading() {
         if(loadDialog.isShowing()){
-            loadDialog.hide();
+            loadDialog.dismiss();
         }
     }
 
