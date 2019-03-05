@@ -7,16 +7,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.dengjinwen.basetool.library.R;
 import com.dengjinwen.basetool.library.function.dialog.product.LoadDialog;
 import com.dengjinwen.basetool.library.function.mvp.IBaseView;
-import com.dengjinwen.basetool.library.tool.ScreenUitl;
 
 public class BaseToolActivity extends AppCompatActivity implements IBaseView {
 
     private LoadDialog loadDialog;
-
-    public boolean isSetStatusBar=true;
 
 //    public void setTextStatusBar(){
 //        ScreenUitl.setHead(this,findViewById(R.id.head_empty),
@@ -34,14 +30,6 @@ public class BaseToolActivity extends AppCompatActivity implements IBaseView {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadDialog=new LoadDialog(this);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if(isSetStatusBar){
-            setTextStatusBar();
-        }
     }
 
     @Override

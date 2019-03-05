@@ -17,8 +17,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2fb85bee-dd5c-4128-87ac-89b987c400b5" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/ScreenUitl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/ScreenUitl.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,11 +39,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="BaseToolActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="BaseToolActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="22" column="20" lean-forward="true" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+            <state relative-caret-position="301">
+              <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
               <folding>
                 <element signature="e#550#551#0" expanded="true" />
                 <element signature="e#577#578#0" expanded="true" />
@@ -54,11 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BaseToolFragment.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BaseToolFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="80" column="2" lean-forward="true" selection-start-line="80" selection-start-column="2" selection-end-line="80" selection-end-column="2" />
+            <state relative-caret-position="272">
+              <caret line="76" column="51" selection-start-line="76" selection-start-column="51" selection-end-line="76" selection-end-column="51" />
               <folding>
                 <element signature="e#2048#2049#0" expanded="true" />
                 <element signature="e#2075#2076#0" expanded="true" />
@@ -3344,8 +3342,8 @@
         <option value="$PROJECT_DIR$/library/src/main/res/layout/header_empty.xml" />
         <option value="$PROJECT_DIR$/library/src/main/res/layout/load_dialog.xml" />
         <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/ScreenUitl.java" />
-        <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolActivity.java" />
         <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolFragment.java" />
+        <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolActivity.java" />
       </list>
     </option>
   </component>
@@ -4192,24 +4190,24 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolActivity.java">
+    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="22" column="20" lean-forward="true" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+        <state relative-caret-position="272">
+          <caret line="76" column="51" selection-start-line="76" selection-start-column="51" selection-end-line="76" selection-end-column="51" />
           <folding>
-            <element signature="e#550#551#0" expanded="true" />
-            <element signature="e#577#578#0" expanded="true" />
+            <element signature="e#2048#2049#0" expanded="true" />
+            <element signature="e#2075#2076#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolFragment.java">
+    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="80" column="2" lean-forward="true" selection-start-line="80" selection-start-column="2" selection-end-line="80" selection-end-column="2" />
+        <state relative-caret-position="301">
+          <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
           <folding>
-            <element signature="e#2048#2049#0" expanded="true" />
-            <element signature="e#2075#2076#0" expanded="true" />
+            <element signature="e#550#551#0" expanded="true" />
+            <element signature="e#577#578#0" expanded="true" />
           </folding>
         </state>
       </provider>
