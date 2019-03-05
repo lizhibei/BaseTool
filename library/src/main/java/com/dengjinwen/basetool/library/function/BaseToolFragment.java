@@ -20,7 +20,7 @@ public abstract class BaseToolFragment extends Fragment implements IBaseView {
 
     public Context mContext;
     public View mRootView;
-    private LoadDialog loadDialog;
+    public LoadDialog loadDialog;
 
     public abstract int getContentViewId();
 
