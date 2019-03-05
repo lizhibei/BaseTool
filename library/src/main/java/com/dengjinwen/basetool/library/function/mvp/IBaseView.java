@@ -23,7 +23,7 @@ public interface IBaseView {
     /**
      * 显示请求错误提示
      */
-    void showErr();
+    void showErr(String msg);
 
     /**
      * 获取上下文

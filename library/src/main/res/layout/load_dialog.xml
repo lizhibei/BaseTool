@@ -12,12 +12,14 @@
         android:orientation="vertical">
 
         <ProgressBar
+            android:id="@+id/progress_bar"
             android:layout_width="100px"
             android:layout_height="100px"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20px" />
 
         <TextView
+            android:id="@+id/hint_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

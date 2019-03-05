@@ -16,39 +16,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fb85bee-dd5c-4128-87ac-89b987c400b5" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/adapter/SwipeAdapterWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/entity/SwipeMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/entity/SwipeMenuBridge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/entity/SwipeMenuItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/interfaces/SwipeItemClickListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/interfaces/SwipeItemLongClickListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/interfaces/SwipeMenuCreator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/interfaces/SwipeMenuItemClickListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/interfaces/SwipeSwitch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/touch/DefaultItemTouchHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/touch/DefaultItemTouchHelperCallback.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/touch/OnItemMoveListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/touch/OnItemMovementListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/touch/OnItemStateChangedListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/util/SwipeHorizontal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/util/SwipeLeftHorizontal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/util/SwipeRightHorizontal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/view/DefaultLoadMoreView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/view/SwipeMenuLayout.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/view/SwipeMenuRecyclerView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/view/SwipeMenuView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/res/layout/recycler_swipe_view_item.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/src/main/res/layout/recycler_swipe_view_load_more.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/src/main/res/values/attrs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/library/src/main/res/values/attrs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/library/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/LoadDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/LoadDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/mvp/IBaseView.java" beforeDir="false" afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/mvp/IBaseView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/ScreenUitl.java" beforeDir="false" afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/ScreenUitl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/src/main/res/layout/load_dialog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/library/src/main/res/layout/load_dialog.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -71,42 +44,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="SwipeMenuRecyclerView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/view/SwipeMenuRecyclerView.java">
+      <file leaf-file-name="ScreenUitl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/ScreenUitl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="774" lean-forward="true" selection-start-line="774" selection-end-line="774" />
+            <state relative-caret-position="230">
+              <caret line="159" column="9" lean-forward="true" selection-start-line="159" selection-start-column="9" selection-end-line="159" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultLoadMoreView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/view/DefaultLoadMoreView.java">
+      <file leaf-file-name="BaseToolActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="69" column="68" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="68" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/library/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SwipeAdapterWrapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/adapter/SwipeAdapterWrapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="101" column="37" lean-forward="true" selection-start-line="101" selection-start-column="37" selection-end-line="101" selection-end-column="37" />
+            <state relative-caret-position="221">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#4013#4014#0" expanded="true" />
-                <element signature="e#4059#4060#0" expanded="true" />
+                <element signature="e#1319#1320#0" expanded="true" />
+                <element signature="e#1394#1395#0" expanded="true" />
+                <element signature="e#550#551#0" expanded="true" />
+                <element signature="e#577#578#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -123,8 +79,8 @@
         <option value="valueResourceFile" />
         <option value="layoutResourceFile_vertical" />
         <option value="Kotlin File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -3331,12 +3287,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/factory/DialogFactory.java" />
-        <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/PermissionRationaleDialog.java" />
-        <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/PermissionDeniedDialog.java" />
-        <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/permission/AndPermission.java" />
-        <option value="$PROJECT_DIR$/library/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/dengjinwen/basetool/activity/SelectImageAndActivity.java" />
         <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/PermissionHintDialog.java" />
         <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/CameraTool.java" />
         <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/CountDownButton.java" />
@@ -3344,7 +3294,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/dengjinwen/basetool/activity/selfview/SelfViewActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/count_down_button_activity.xml" />
         <option value="$PROJECT_DIR$/library/src/main/res/values/colors.xml" />
-        <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/ScreenUitl.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/head.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/dengjinwen/basetool/MainActivity.java" />
         <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/SystemUtil.java" />
@@ -3382,6 +3331,13 @@
         <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/view/DefaultLoadMoreView.java" />
         <option value="$PROJECT_DIR$/library/src/main/res/layout/recycler_swipe_view_load_more.xml" />
         <option value="$PROJECT_DIR$/library/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/library/src/main/res/values-zh-RHK/strings.xml" />
+        <option value="$PROJECT_DIR$/library/src/main/res/values-zh-rtw/strings.xml" />
+        <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/ScreenUitl.java" />
+        <option value="$PROJECT_DIR$/library/src/main/res/layout/load_dialog.xml" />
+        <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/LoadDialog.java" />
+        <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/mvp/IBaseView.java" />
+        <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolActivity.java" />
       </list>
     </option>
   </component>
@@ -3576,84 +3532,39 @@
               <item name="library" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="library" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="function" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BaseTool" type="1abcf292:AndroidViewProjectNode" />
               <item name="library" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="library" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="recyclerView" type="462c0819:PsiDirectoryNode" />
+              <item name="function" type="462c0819:PsiDirectoryNode" />
+              <item name="dialog" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BaseTool" type="1abcf292:AndroidViewProjectNode" />
               <item name="library" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="library" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="recyclerView" type="462c0819:PsiDirectoryNode" />
-              <item name="swipeMenu" type="462c0819:PsiDirectoryNode" />
+              <item name="function" type="462c0819:PsiDirectoryNode" />
+              <item name="dialog" type="462c0819:PsiDirectoryNode" />
+              <item name="product" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BaseTool" type="1abcf292:AndroidViewProjectNode" />
               <item name="library" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="library" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="recyclerView" type="462c0819:PsiDirectoryNode" />
-              <item name="swipeMenu" type="462c0819:PsiDirectoryNode" />
-              <item name="adapter" type="462c0819:PsiDirectoryNode" />
+              <item name="function" type="462c0819:PsiDirectoryNode" />
+              <item name="mvp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BaseTool" type="1abcf292:AndroidViewProjectNode" />
               <item name="library" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="library" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="recyclerView" type="462c0819:PsiDirectoryNode" />
-              <item name="swipeMenu" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BaseTool" type="1abcf292:AndroidViewProjectNode" />
-              <item name="library" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="library" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="recyclerView" type="462c0819:PsiDirectoryNode" />
-              <item name="swipeMenu" type="462c0819:PsiDirectoryNode" />
-              <item name="interfaces" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BaseTool" type="1abcf292:AndroidViewProjectNode" />
-              <item name="library" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="library" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="recyclerView" type="462c0819:PsiDirectoryNode" />
-              <item name="swipeMenu" type="462c0819:PsiDirectoryNode" />
-              <item name="touch" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BaseTool" type="1abcf292:AndroidViewProjectNode" />
-              <item name="library" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="library" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="recyclerView" type="462c0819:PsiDirectoryNode" />
-              <item name="swipeMenu" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BaseTool" type="1abcf292:AndroidViewProjectNode" />
-              <item name="library" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="library" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="recyclerView" type="462c0819:PsiDirectoryNode" />
-              <item name="swipeMenu" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="tool" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BaseTool" type="1abcf292:AndroidViewProjectNode" />
@@ -3665,13 +3576,6 @@
               <item name="library" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
               <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="BaseTool" type="1abcf292:AndroidViewProjectNode" />
-              <item name="library" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
-              <item name="strings" type="c431d0b8:AndroidResGroupNode" />
             </path>
             <path>
               <item name="BaseTool" type="1abcf292:AndroidViewProjectNode" />
@@ -3932,56 +3836,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/ScreenUitl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1972">
-          <caret line="127" column="53" selection-start-line="127" selection-start-column="53" selection-end-line="127" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-46" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="17" lean-forward="true" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/SystemUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4913">
-          <caret line="318" column="37" selection-start-line="318" selection-start-column="37" selection-end-line="318" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/CameraTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="654">
-          <caret line="77" column="20" selection-start-line="77" selection-start-column="20" selection-end-line="77" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/selectImage/ItemEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/library/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="53" lean-forward="true" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider editor-type-id="android-manifest">
         <state />
@@ -4248,7 +4102,7 @@
     <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/adapter/SwipeAdapterWrapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
-          <caret line="101" column="37" lean-forward="true" selection-start-line="101" selection-start-column="37" selection-end-line="101" selection-end-column="37" />
+          <caret line="101" column="37" selection-start-line="101" selection-start-column="37" selection-end-line="101" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4013#4014#0" expanded="true" />
@@ -4279,13 +4133,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/view/SwipeMenuRecyclerView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="774" lean-forward="true" selection-start-line="774" selection-end-line="774" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/library/src/main/res/layout/recycler_swipe_view_load_more.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="281">
@@ -4296,17 +4143,90 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/view/DefaultLoadMoreView.java">
+    <entry file="file://$PROJECT_DIR$/library/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
-          <caret line="69" column="68" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="68" />
+          <caret line="57" column="77" selection-start-line="57" selection-start-column="77" selection-end-line="57" selection-end-column="77" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/library/src/main/res/values/strings.xml">
+    <entry file="file://$PROJECT_DIR$/library/src/main/res/values-zh-RHK/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
+        <state relative-caret-position="428">
+          <caret line="57" column="77" selection-start-line="57" selection-start-column="77" selection-end-line="57" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/src/main/res/values-zh-rtw/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="56" column="77" selection-start-line="56" selection-start-column="77" selection-end-line="56" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/view/DefaultLoadMoreView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="77" column="28" lean-forward="true" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/view/recyclerView/swipeMenu/view/SwipeMenuRecyclerView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="791" column="10" selection-start-line="791" selection-start-column="10" selection-end-line="791" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/ScreenUitl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="159" column="9" lean-forward="true" selection-start-line="159" selection-start-column="9" selection-end-line="159" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/src/main/res/layout/load_dialog.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="21" column="36" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="36" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/LoadDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="21" column="37" lean-forward="true" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
+          <folding>
+            <element signature="e#1667#1668#0" expanded="true" />
+            <element signature="e#1704#1705#0" expanded="true" />
+            <element signature="e#1744#1745#0" expanded="true" />
+            <element signature="e#1781#1782#0" expanded="true" />
+            <element signature="e#1824#1825#0" expanded="true" />
+            <element signature="e#1867#1868#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/mvp/IBaseView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="17" lean-forward="true" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="e#1319#1320#0" expanded="true" />
+            <element signature="e#1394#1395#0" expanded="true" />
+            <element signature="e#550#551#0" expanded="true" />
+            <element signature="e#577#578#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

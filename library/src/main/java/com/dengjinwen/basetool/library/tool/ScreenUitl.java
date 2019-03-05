@@ -1,5 +1,6 @@
 package com.dengjinwen.basetool.library.tool;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
@@ -146,4 +147,30 @@ public class ScreenUitl {
             }
         }
     }
+
+    /**
+     * Android 6.0以上适配
+     *字体为黑色
+     * @param activity
+     */
+    @TargetApi(Build.VERSION_CODES.M)
+    public static void setStatusBarLightMode(Activity activity) {
+        if(activity.getWindow().getDecorView().getSystemUiVisibility()!=(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)){
+            activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+    }
+
+    /**
+     * 设置状态栏字体颜色变白
+     *
+     * @param activity
+     */
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    public static void setStatusBarDarkMode(Activity activity) {
+        if(activity.getWindow().getDecorView().getSystemUiVisibility()!=(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE)){
+            activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+        }
+
+    }
+
 }
