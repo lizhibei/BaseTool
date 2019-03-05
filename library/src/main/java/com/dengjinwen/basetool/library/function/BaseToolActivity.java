@@ -71,7 +71,11 @@ public class BaseToolActivity extends AppCompatActivity implements IBaseView {
 
     @Override
     public void showErr(String msg) {
-        Toast.makeText(getContext(),msg, Toast.LENGTH_SHORT).show();
+        if(msg!=null&&!msg.isEmpty()){
+            Toast.makeText(getContext(),msg, Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(getContext(),"发生错误", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
