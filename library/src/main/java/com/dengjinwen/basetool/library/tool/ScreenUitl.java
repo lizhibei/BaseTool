@@ -157,6 +157,7 @@ public class ScreenUitl {
     public static void setStatusBarLightMode(Activity activity) {
         if(activity.getWindow().getDecorView().getSystemUiVisibility()!=(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)){
             activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
         }
     }
 
@@ -172,5 +173,4 @@ public class ScreenUitl {
         }
 
     }
-
 }

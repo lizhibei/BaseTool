@@ -18,17 +18,17 @@ public class BaseToolActivity extends AppCompatActivity implements IBaseView {
 
     public boolean isSetStatusBar=true;
 
-    public void setTextStatusBar(){
-        ScreenUitl.setHead(this,findViewById(R.id.head_empty),
-                android.R.color.white,ScreenUitl.StatusBarStyle.COLOR);
-        ScreenUitl.setStatusBarLightMode(this);
-    }
-
-    public void setImageStatusBar(){
-        ScreenUitl.setHead(this, findViewById(R.id.head_empty),
-                android.R.color.transparent, ScreenUitl.StatusBarStyle.IMAGE);
-        ScreenUitl.setStatusBarDarkMode(this);
-    }
+//    public void setTextStatusBar(){
+//        ScreenUitl.setHead(this,findViewById(R.id.head_empty),
+//                android.R.color.white,ScreenUitl.StatusBarStyle.COLOR);
+//        ScreenUitl.setStatusBarLightMode(this);
+//    }
+//
+//    public void setImageStatusBar(){
+//        ScreenUitl.setHead(this, findViewById(R.id.head_empty),
+//                android.R.color.transparent, ScreenUitl.StatusBarStyle.IMAGE);
+//        ScreenUitl.setStatusBarDarkMode(this);
+//    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
