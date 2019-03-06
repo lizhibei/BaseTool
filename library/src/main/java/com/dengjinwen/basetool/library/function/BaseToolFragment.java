@@ -11,8 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.dengjinwen.basetool.library.R;
 import com.dengjinwen.basetool.library.function.dialog.product.LoadDialog;
 import com.dengjinwen.basetool.library.function.mvp.IBaseView;
+import com.dengjinwen.basetool.library.tool.ScreenUitl;
 
 public abstract class BaseToolFragment extends Fragment implements IBaseView {
 
@@ -78,15 +80,15 @@ public abstract class BaseToolFragment extends Fragment implements IBaseView {
         return mContext;
     }
 
-//    public void setTextStatusBar(){
-//        ScreenUitl.setHead(getActivity(),mRootView.findViewById(R.id.head_empty),
-//                android.R.color.white,ScreenUitl.StatusBarStyle.COLOR);
-//        ScreenUitl.setStatusBarLightMode(getActivity());
-//    }
-//
-//    public void setImageStatusBar(){
-//        ScreenUitl.setHead(getActivity(), mRootView.findViewById(R.id.head_empty),
-//                android.R.color.transparent, ScreenUitl.StatusBarStyle.IMAGE);
-//        ScreenUitl.setStatusBarDarkMode(getActivity());
-//    }
+    public void setTextStatusBar(){
+        ScreenUitl.setHead(getActivity(),mRootView.findViewById(R.id.head_top),
+                android.R.color.white,ScreenUitl.StatusBarStyle.COLOR);
+        ScreenUitl.setStatusBarLightMode(getActivity());
+    }
+
+    public void setImageStatusBar(){
+        ScreenUitl.setHead(getActivity(), mRootView.findViewById(R.id.head_top),
+                android.R.color.transparent, ScreenUitl.StatusBarStyle.IMAGE);
+        ScreenUitl.setStatusBarDarkMode(getActivity());
+    }
 }
