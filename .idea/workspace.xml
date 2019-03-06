@@ -16,7 +16,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fb85bee-dd5c-4128-87ac-89b987c400b5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/src/main/res/layout/header_empty.xml" beforeDir="false" afterPath="$PROJECT_DIR$/library/src/main/res/layout/header_empty.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -42,8 +42,8 @@
       <file leaf-file-name="BaseToolActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+            <state relative-caret-position="153">
+              <caret line="17" column="40" lean-forward="true" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
               <folding>
                 <element signature="e#550#551#0" expanded="true" />
                 <element signature="e#577#578#0" expanded="true" />
@@ -69,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/ScreenUitl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="266">
-              <caret line="174" column="5" lean-forward="true" selection-start-line="174" selection-start-column="5" selection-end-line="174" selection-end-column="5" />
+              <caret line="174" column="5" selection-start-line="174" selection-start-column="5" selection-end-line="174" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -3339,11 +3339,11 @@
         <option value="$PROJECT_DIR$/library/src/main/res/values-zh-rtw/strings.xml" />
         <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/dialog/product/LoadDialog.java" />
         <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/mvp/IBaseView.java" />
-        <option value="$PROJECT_DIR$/library/src/main/res/layout/header_empty.xml" />
         <option value="$PROJECT_DIR$/library/src/main/res/layout/load_dialog.xml" />
         <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/ScreenUitl.java" />
         <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolFragment.java" />
         <option value="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolActivity.java" />
+        <option value="$PROJECT_DIR$/library/src/main/res/layout/header_empty.xml" />
       </list>
     </option>
   </component>
@@ -4176,18 +4176,8 @@
     <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/tool/ScreenUitl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
-          <caret line="174" column="5" lean-forward="true" selection-start-line="174" selection-start-column="5" selection-end-line="174" selection-end-column="5" />
+          <caret line="174" column="5" selection-start-line="174" selection-start-column="5" selection-end-line="174" selection-end-column="5" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/library/src/main/res/layout/header_empty.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolFragment.java">
@@ -4201,10 +4191,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/library/src/main/res/layout/header_empty.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="15" lean-forward="true" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+        <state relative-caret-position="153">
+          <caret line="17" column="40" lean-forward="true" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
           <folding>
             <element signature="e#550#551#0" expanded="true" />
             <element signature="e#577#578#0" expanded="true" />
