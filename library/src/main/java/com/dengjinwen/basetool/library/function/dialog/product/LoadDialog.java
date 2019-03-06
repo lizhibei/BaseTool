@@ -24,7 +24,7 @@ public class LoadDialog extends Dialog {
 
     public LoadDialog(@NonNull Context context) {
         super(context);
-        view=LayoutInflater.from(context).inflate(R.layout.load_dialog,null);
+        view=LayoutInflater.from(context).inflate(R.layout.load_dialog_basetool,null);
         ScreenAdapterTools.getInstance().loadView(view);
         setCanceledOnTouchOutside(false);
         Window window = getWindow();
