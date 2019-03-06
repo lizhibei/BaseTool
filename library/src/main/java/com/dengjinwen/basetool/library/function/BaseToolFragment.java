@@ -28,8 +28,8 @@ public abstract class BaseToolFragment extends Fragment implements IBaseView {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRootView=inflater.inflate(getContentViewId(),null);
-        mContext=getContext();
-        loadDialog=new LoadDialog(mContext);
+        mContext=getActivity();
+        loadDialog=new LoadDialog(getContext());
         initAllMembersView(savedInstanceState);
         return mRootView;
     }
