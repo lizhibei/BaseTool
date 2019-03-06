@@ -29,21 +29,23 @@ public abstract class BaseToolFragment extends Fragment implements IBaseView {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRootView=inflater.inflate(getContentViewId(),null);
         mContext=getActivity();
-        loadDialog=new LoadDialog(getContext());
+        if(getContext()!=null){
+            loadDialog=new LoadDialog(getContext());
+        }
         initAllMembersView(savedInstanceState);
         return mRootView;
     }
 
     @Override
     public void showLoading() {
-        if(!loadDialog.isShowing()){
+        if(loadDialog!=null&&!loadDialog.isShowing()){
             loadDialog.show();
         }
     }
 
     @Override
     public void hideLoading() {
-        if(loadDialog.isShowing()){
+        if(loadDialog!=null&&loadDialog.isShowing()){
             loadDialog.dismiss();
         }
     }
@@ -70,6 +72,9 @@ public abstract class BaseToolFragment extends Fragment implements IBaseView {
 
     @Override
     public Context getContext() {
+        if(mContext==null){
+            mContext=getActivity();
+        }
         return mContext;
     }
 
