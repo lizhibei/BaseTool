@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.os.CountDownTimer;
-import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatTextView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -18,7 +18,7 @@ import java.util.Locale;
  * 倒计时Button
  */
 
-public class CountDownButton extends AppCompatButton {
+public class CountDownButton extends AppCompatTextView {
 
     /**
      * 默认时间间隔1000ms

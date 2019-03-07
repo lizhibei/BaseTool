@@ -15,10 +15,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fb85bee-dd5c-4128-87ac-89b987c400b5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolFragment.java" afterDir="false" />
-    </list>
+    <list default="true" id="2fb85bee-dd5c-4128-87ac-89b987c400b5" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +41,7 @@
         <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="302">
-              <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+              <caret line="87" selection-start-line="87" selection-end-line="87" />
             </state>
           </provider>
         </entry>
@@ -53,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
             </state>
           </provider>
         </entry>
@@ -4209,14 +4206,14 @@
     <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
-          <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+          <caret line="87" selection-start-line="87" selection-end-line="87" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/library/src/main/java/com/dengjinwen/basetool/library/function/BaseToolActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
