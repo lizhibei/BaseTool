@@ -4,10 +4,10 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dengjinwen.basetool.R;
 import com.dengjinwen.basetool.library.view.CountDownButton;
+import com.dengjinwen.basetool.util.BarterLoginDialog;
 
 /**
  * 计时器
@@ -17,6 +17,7 @@ public class CountDownButtonActivity extends BaseActivity implements View.OnClic
     private CountDownButton cd_button;
 
     private Context mContext;
+    private BarterLoginDialog barterLoginDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,8 @@ public class CountDownButtonActivity extends BaseActivity implements View.OnClic
 
         cd_button=findViewById(R.id.cd_button);
         cd_button.setOnClickListener(this);
+
+        barterLoginDialog=new BarterLoginDialog(this);
     }
 
     @Override
@@ -42,7 +45,8 @@ public class CountDownButtonActivity extends BaseActivity implements View.OnClic
                 break;
                 //
             case R.id.cd_button:
-                Toast.makeText(mContext,"获取验证码成功",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(mContext,"获取验证码成功",Toast.LENGTH_SHORT).show();
+                barterLoginDialog.show();
                 break;
         }
     }

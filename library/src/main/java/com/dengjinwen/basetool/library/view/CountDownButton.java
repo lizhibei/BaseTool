@@ -114,8 +114,8 @@ public class CountDownButton extends AppCompatTextView {
 
     @Override
     public void setOnClickListener(OnClickListener onClickListener) {
-        super.setOnClickListener(onClickListener);
-        this.onClickListener = onClickListener;
+        super.setOnClickListener(this.onClickListener);
+        this.onClickListener=onClickListener;
     }
 
     @Override

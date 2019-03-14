@@ -55,7 +55,7 @@
     <dimen name="fixed_icon_badge_grid_width">48dp </dimen>
     <dimen name="fixed_icon_grid">24dp</dimen>
     <item format="float" name="fixed_label_active_to_inactive_ratio" type="dimen">0.857</item>
-    <dimen name="fixed_label_active">14sp</dimen>
+    <dimen name="fixed_label_active">12sp</dimen>
     <dimen name="shifting_height">56dp</dimen>
     <dimen name="shifting_height_bottom_padding_active">10dp</dimen>
     <dimen name="shifting_width_custom_padding">6dp</dimen>
@@ -63,7 +63,7 @@
     <dimen name="shifting_icon_badge_grid_height">36dp</dimen>
     <dimen name="shifting_icon_badge_grid_width">48dp</dimen>
     <dimen name="shifting_icon_grid">24dp</dimen>
-    <dimen name="shifting_label">14sp</dimen>
+    <dimen name="shifting_label">12sp</dimen>
     <dimen name="bottom_navigation_elevation">8dp</dimen>
     <dimen name="fixed_min_width_small_views">104dp</dimen>
     <dimen name="fixed_min_width">120dp</dimen>
