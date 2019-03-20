@@ -338,6 +338,10 @@ public class SwipeMenuRecyclerView extends RecyclerView {
         }
     }
 
+    /**
+     * 如果是gridView  添加头部和底部时需要设置 spanCount
+     * @param layoutManager
+     */
     @Override
     public void setLayoutManager(LayoutManager layoutManager) {
         if (layoutManager instanceof GridLayoutManager) {
@@ -579,9 +583,15 @@ public class SwipeMenuRecyclerView extends RecyclerView {
         }
     }
 
+    /**
+     * 当要关闭侧滑菜单时进行拦截
+     * @param e
+     * @return
+     */
     @Override
     public boolean onInterceptTouchEvent(MotionEvent e) {
         boolean isIntercepted = super.onInterceptTouchEvent(e);
+        //如果 不侧滑或者mSwipeMenuCreator为空，不拦截
         if (allowSwipeDelete || mSwipeMenuCreator == null) {
             return isIntercepted;
         } else {
@@ -590,6 +600,7 @@ public class SwipeMenuRecyclerView extends RecyclerView {
             int x = (int)e.getX();
             int y = (int)e.getY();
 
+            //获取item的ViewHolder和SwipeMenuLayout 对象
             int touchPosition = getChildAdapterPosition(findChildViewUnder(x, y));
             ViewHolder touchVH = findViewHolderForAdapterPosition(touchPosition);
             SwipeMenuLayout touchView = null;
@@ -600,18 +611,21 @@ public class SwipeMenuRecyclerView extends RecyclerView {
                 }
             }
 
+            //判断item是否要侧滑
             boolean touchMenuEnable = mSwipeItemMenuEnable && !mDisableSwipeItemMenuList.contains(touchPosition);
             if (touchView != null) {
                 touchView.setSwipeEnable(touchMenuEnable);
             }
-            if (!touchMenuEnable) return isIntercepted;
+            if (!touchMenuEnable) return isIntercepted;  //不需要侧滑 不拦截
 
+            //需要侧滑继续执行
             switch (action) {
                 case MotionEvent.ACTION_DOWN: {
                     mDownX = x;
                     mDownY = y;
 
                     isIntercepted = false;
+                    //如果当前有item侧滑打开，并且当前滑动的位置不是打开的item ,则进行拦截，侧滑关闭旧的item
                     if (touchPosition != mOldTouchedPosition && mOldSwipedLayout != null &&
                         mOldSwipedLayout.isMenuOpen()) {
                         mOldSwipedLayout.smoothCloseMenu();
@@ -657,9 +671,9 @@ public class SwipeMenuRecyclerView extends RecyclerView {
         int disX = mDownX - x;
         int disY = mDownY - y;
 
-        // swipe
+        // swipe  侧滑操作
         if (Math.abs(disX) > mScaleTouchSlop && Math.abs(disX) > Math.abs(disY)) return false;
-        // click
+        // click  点击事件
         if (Math.abs(disY) < mScaleTouchSlop && Math.abs(disX) < mScaleTouchSlop) return false;
         return defaultValue;
     }
@@ -728,6 +742,7 @@ public class SwipeMenuRecyclerView extends RecyclerView {
 
             int lastVisiblePosition = linearLayoutManager.findLastVisibleItemPosition();
 
+            //加载更多
             if (itemCount == lastVisiblePosition + 1 &&
                 (mScrollState == SCROLL_STATE_DRAGGING || mScrollState == SCROLL_STATE_SETTLING)) {
                 dispatchLoadMore();

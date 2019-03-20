@@ -24,7 +24,7 @@ public class ImageProgressTool {
      * @return
      */
     public static Bitmap compressImage2Bitmap(Bitmap image){
-        byte[] baos=compressImage2byte(image);
+        byte[] baos=compressImage2byte(image,100);
 
         ByteArrayInputStream isBm=new ByteArrayInputStream(baos);
         Bitmap bitmap=BitmapFactory.decodeStream(isBm,null,null);
@@ -36,13 +36,13 @@ public class ImageProgressTool {
      * @param bitmap
      * @return
      */
-    public static byte[] compressImage2byte(Bitmap bitmap){
+    public static byte[] compressImage2byte(Bitmap bitmap,int maxOptions){
         ByteArrayOutputStream baos=new ByteArrayOutputStream();
         //质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
         bitmap.compress(Bitmap.CompressFormat.JPEG,100,baos);
-        int options=100;
+        int options=maxOptions;
         //循环判断如果压缩后图片是否大于100kb,大于继续压缩
-        while (baos.toByteArray().length/1024>100){
+        while (baos.toByteArray().length/1024>maxOptions){
             baos.reset();
             //这里压缩options%，把压缩后的数据存放到baos中
             bitmap.compress(Bitmap.CompressFormat.JPEG,options,baos);

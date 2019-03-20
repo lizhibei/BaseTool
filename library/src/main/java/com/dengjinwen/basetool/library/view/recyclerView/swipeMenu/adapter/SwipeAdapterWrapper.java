@@ -147,6 +147,7 @@ public class SwipeAdapterWrapper extends RecyclerView.Adapter<RecyclerView.ViewH
 
         if (mSwipeMenuCreator == null) return viewHolder;
 
+        //把item内容添加到 SwipeMenuLayout 下的swipe_content中
         contentView = mInflater.inflate(R.layout.recycler_swipe_view_item, parent, false);
         ViewGroup viewGroup = contentView.findViewById(R.id.swipe_content);
         viewGroup.addView(viewHolder.itemView);
@@ -184,6 +185,7 @@ public class SwipeAdapterWrapper extends RecyclerView.Adapter<RecyclerView.ViewH
             SwipeMenuLayout menuLayout = (SwipeMenuLayout)itemView;
             SwipeMenu leftMenu = new SwipeMenu(menuLayout);
             SwipeMenu rightMenu = new SwipeMenu(menuLayout);
+            //创建 侧滑菜单
             mSwipeMenuCreator.onCreateMenu(leftMenu, rightMenu, position);
 
             SwipeMenuView leftMenuView = (SwipeMenuView)menuLayout.getChildAt(0);
