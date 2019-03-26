@@ -31,6 +31,10 @@ public class DefaultItemTouchHelper extends ItemTouchHelper {
        return mItemTouchHelperCallback.getOnItemMovementListener();
     }
 
+    /**
+     * 设置是否可以长按拖拽
+     * @param canDrag
+     */
     public void setLongPressDragEnabled(boolean canDrag) {
         mItemTouchHelperCallback.setLongPressDragEnabled(canDrag);
     }
@@ -39,6 +43,10 @@ public class DefaultItemTouchHelper extends ItemTouchHelper {
         return mItemTouchHelperCallback.isLongPressDragEnabled();
     }
 
+    /**
+     * 设置是否可以侧滑删除
+     * @param canSwipe
+     */
     public void setItemViewSwipeEnabled(boolean canSwipe) {
         mItemTouchHelperCallback.setItemViewSwipeEnabled(canSwipe);
     }

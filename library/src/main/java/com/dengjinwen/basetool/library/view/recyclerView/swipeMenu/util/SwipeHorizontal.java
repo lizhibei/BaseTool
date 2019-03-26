@@ -79,7 +79,7 @@ public abstract class SwipeHorizontal {
     public abstract Checker checkXY(int x,int y);
 
     /**
-     * 是否点击在内存区域
+     * 是否点击在内容区域
      * @param contentViewWidth
      * @param x
      * @return

@@ -8,7 +8,7 @@
     <include layout="@layout/head_top_basetool"/>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="100px"
         android:background="@android:color/white">
 
         <ImageView
@@ -16,10 +16,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:paddingBottom="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="20dp"
-            android:paddingTop="10dp"
+            android:paddingBottom="20px"
+            android:paddingLeft="20px"
+            android:paddingRight="40px"
+            android:paddingTop="20px"
             android:src="@mipmap/fanhui" />
 
         <TextView
@@ -27,10 +27,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="50px"
             android:maxLength="5"
             android:textColor="@color/text_color"
-            android:textSize="@dimen/middle"
+            android:textSize="28px"
             android:visibility="gone" />
 
         <TextView
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:textColor="@color/text_color"
-            android:textSize="@dimen/middle_more" />
+            android:textSize="30px" />
 
         <TextView
             android:id="@+id/right_tv"
@@ -47,10 +47,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
-            android:padding="10dp"
+            android:layout_marginRight="10px"
+            android:padding="20px"
             android:textColor="@color/text_color"
-            android:textSize="@dimen/middle"
+            android:textSize="28px"
             android:visibility="gone" />
 
         <ImageView
@@ -59,8 +59,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
-            android:padding="10dp"
+            android:layout_marginRight="10px"
+            android:padding="20px"
             android:visibility="gone" />
     </RelativeLayout>
 

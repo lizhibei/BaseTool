@@ -194,9 +194,11 @@ public class SwipeMenuLayout extends FrameLayout implements SwipeSwitch {
             case MotionEvent.ACTION_MOVE: {
                 int disX = (int)(ev.getX() - mDownX);
                 int disY = (int)(ev.getY() - mDownY);
+                //满足侧滑条件 拦截
                 return Math.abs(disX) > mScaledTouchSlop && Math.abs(disX) > Math.abs(disY);
             }
             case MotionEvent.ACTION_UP: {
+                //如果是点击item  有侧滑打开 则关闭侧滑
                 boolean isClick = mSwipeCurrentHorizontal != null &&
                     mSwipeCurrentHorizontal.isClickOnCotentView(getWidth(), ev.getX());
                 if (isMenuOpen() && isClick) {
@@ -219,7 +221,8 @@ public class SwipeMenuLayout extends FrameLayout implements SwipeSwitch {
             return super.onTouchEvent(ev);
         }
 
-        if (mVelocityTracker == null) mVelocityTracker = VelocityTracker.obtain();
+        if (mVelocityTracker == null)
+            mVelocityTracker = VelocityTracker.obtain();
         mVelocityTracker.addMovement(ev);
         int dx;
         int dy;
@@ -270,15 +273,15 @@ public class SwipeMenuLayout extends FrameLayout implements SwipeSwitch {
                     if (mSwipeCurrentHorizontal != null) {
                         int duration = getSwipeDuration(ev, velocity);
                         if (mSwipeCurrentHorizontal instanceof SwipeRightHorizontal) {
-                            if (velocityX < 0) {
+                            if (velocityX < 0) {  //向左滑  打开右边侧滑菜单
                                 smoothOpenMenu(duration);
-                            } else {
+                            } else {  //向右滑  关闭右边测滑菜单
                                 smoothCloseMenu(duration);
                             }
                         } else {
-                            if (velocityX > 0) {
+                            if (velocityX > 0) {  //向右滑  打开左边侧滑菜单
                                 smoothOpenMenu(duration);
-                            } else {
+                            } else {  //向左滑  关闭左边侧滑菜单
                                 smoothCloseMenu(duration);
                             }
                         }
@@ -315,7 +318,7 @@ public class SwipeMenuLayout extends FrameLayout implements SwipeSwitch {
 
     /**
      * compute finish duration.
-     *
+     * 获得侧滑的持续时间
      * @param ev up event.
      * @param velocity velocity x.
      *

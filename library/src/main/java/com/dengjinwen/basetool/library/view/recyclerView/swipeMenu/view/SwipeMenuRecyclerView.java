@@ -118,6 +118,7 @@ public class SwipeMenuRecyclerView extends RecyclerView {
     }
 
     /**
+     * 设置自定义拖拽规则 和侧滑删除规则
      * Set OnItemMovementListener.
      *
      * @param onItemMovementListener {@link OnItemMovementListener}.
@@ -181,6 +182,7 @@ public class SwipeMenuRecyclerView extends RecyclerView {
     }
 
     /**
+     * 设置是否可以长按拖拽
      * Set can long press drag.
      *
      * @param canDrag drag true, otherwise is can't.
@@ -202,6 +204,7 @@ public class SwipeMenuRecyclerView extends RecyclerView {
 
 
     /**
+     * 设置是否可以侧滑删除
      * Set can swipe delete.
      *
      * @param canSwipe swipe true, otherwise is can't.

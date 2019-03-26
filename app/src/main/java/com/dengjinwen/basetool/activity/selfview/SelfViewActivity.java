@@ -53,6 +53,8 @@ public class SelfViewActivity extends BaseActivity implements View.OnClickListen
         data.add(treelistView);
         MainItem countDown=new MainItem("CountDownButton","计时器");
         data.add(countDown);
+        MainItem recyclerView=new MainItem("RecyclerView","RecyclerView");
+        data.add(recyclerView);
     }
 
     private void initview() {
@@ -112,6 +114,10 @@ public class SelfViewActivity extends BaseActivity implements View.OnClickListen
                 //计时器
             case 9:
                 startIntent(mContext,CountDownButtonActivity.class);
+                break;
+                //RecyclerView
+            case 10:
+                startIntent(mContext,RecyclerViewActivity.class);
                 break;
         }
     }
