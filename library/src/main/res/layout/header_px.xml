@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <View
-        android:id="@+id/head_empty"
+        android:id="@+id/head_top"
         android:layout_width="match_parent"
         android:layout_height="0px" />
 
