@@ -8,6 +8,9 @@ import android.text.Spanned;
  */
 public class LengthFilter implements InputFilter {
 
+    /**
+     * 最大长度
+     */
     private int mMax;
 
     public LengthFilter(int mMax) {

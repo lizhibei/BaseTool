@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.dengjinwen.basetool.R;
 import com.dengjinwen.basetool.activity.BaseActivity;
 import com.dengjinwen.basetool.activity.CountDownButtonActivity;
+import com.dengjinwen.basetool.activity.selfview.recyclerview.RecyclerViewActivity;
 import com.dengjinwen.basetool.adapter.MainAdapter;
 import com.dengjinwen.basetool.entity.MainItem;
 
