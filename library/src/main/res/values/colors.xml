@@ -24,4 +24,11 @@
     <color name="black">#000000</color>
 
     <color name="head_translucent">#33000000</color>
+    <color name="react">#ffffff</color>
+    <color name="scanLineColor">#ffffff</color>
+    <color name="viewfinder_mask">#50000000</color>
+    <color name="result_view">#000000</color>
+    <color name="possible_result_points">#ffbd21</color>
+    <color name="white">#ffffff</color>
+    <color name="transparent">#00000000</color>
 </resources>

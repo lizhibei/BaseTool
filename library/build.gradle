@@ -25,8 +25,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     compileOnly 'com.android.support:appcompat-v7:27.1.1'
     compileOnly 'com.android.support:design:27.1.1'
     testImplementation 'junit:junit:4.12'
@@ -34,5 +33,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     compileOnly 'com.github.bumptech.glide:glide:3.7.0'
     compileOnly 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
-
+    compileOnly files('libs/core-3.3.3.jar')
 }

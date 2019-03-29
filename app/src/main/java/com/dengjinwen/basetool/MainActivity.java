@@ -29,6 +29,7 @@ public class MainActivity extends BaseActivity  {
     private Context mContext;
     private ArrayList<MainItem> data=new ArrayList<>();
     private MainAdapter adapter;
+    private final int QR_CODE=11;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

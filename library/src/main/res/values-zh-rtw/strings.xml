@@ -55,4 +55,7 @@
     <string name="recycler_swipe_more_not">No more data</string>
     <string name="recycler_swipe_click_load_more">Click to load more</string>
     <string name="recycler_swipe_load_error">Error, please try again</string>
+
+    <string name="msg_camera_framework_bug">相機被佔用或沒有相機許可權，請檢查</string>
+    <string name="button_ok">退出</string>
 </resources>

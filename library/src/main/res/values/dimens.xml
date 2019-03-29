@@ -80,4 +80,6 @@
     <dimen name="shifting_no_title_icon_height">32dp</dimen>
     <dimen name="shifting_no_title_icon_width">32dp</dimen>
     <dimen name="shifting_height_top_padding_active">0dp</dimen>
+
+    <dimen name="toolBarHeight">48dp</dimen>
 </resources>
