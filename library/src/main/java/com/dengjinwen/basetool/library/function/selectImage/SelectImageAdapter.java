@@ -20,28 +20,22 @@ import java.util.List;
 
 public class SelectImageAdapter extends BaseAdapter {
     private Context mContext;
-    private List<ItemEntity> data;
+    private List<IBaseItemEntity> data;
     private LayoutInflater inflater;
-    private HashSet<ItemEntity> selectImages;
-    private int type;
-    private int MaxImageNumber;
-    private int videoMax;
+    private HashSet<IBaseItemEntity> selectImages;
+    public  OnAdapterProcessListener listener;
 
-    public SelectImageAdapter(Context mContext, List<ItemEntity> data,
-                              HashSet<ItemEntity> selectImages,int type,int MaxImageNumber,
-                              int videoMax) {
+    public SelectImageAdapter(Context mContext, List<IBaseItemEntity> data,
+                              HashSet<IBaseItemEntity> selectImages) {
         this.mContext = mContext;
         this.data = data;
         this.selectImages=selectImages;
-        this.type=type;
         inflater=LayoutInflater.from(mContext);
-        this.MaxImageNumber=MaxImageNumber;
-        this.videoMax=videoMax;
     }
 
     @Override
     public int getCount() {
-        return data.size()+1;
+        return data.size();
     }
 
     @Override
@@ -69,78 +63,160 @@ public class SelectImageAdapter extends BaseAdapter {
         }else {
             holder= (ViewHolder) convertView.getTag();
         }
-        int width= ScreenUitl.getScreenWidth(mContext)/3-20;
-        if(position==0){
-            holder.item_rl.setVisibility(View.GONE);
-            holder.taking_rl.setVisibility(View.VISIBLE);
-//            holder.taking_rl.getLayoutParams().width=width;
-            holder.taking_rl.getLayoutParams().height=width;
-            if(type==SelectImageActivity.TAG_SELECT_VIDEO){
-                holder.hint_tv.setText(R.string.taking_video);
-            }else {
-                holder.hint_tv.setText(R.string.taking_pictures);
-            }
-            holder.taking_rl.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.taking();
-                }
-            });
-        }else {
-            holder.item_rl.setVisibility(View.VISIBLE);
-            holder.taking_rl.setVisibility(View.GONE);
-
-            final ItemEntity itemEntity=data.get(position-1);
-            final File file=new File(itemEntity.getPath());
-            Glide.with(mContext).load(file).into(holder.image_iv);
-            if(itemEntity.isSelect()){
-                holder.select_iv.setImageResource(R.drawable.icon_select);
-            }else {
-                holder.select_iv.setImageResource(R.drawable.icon_unselect);
-            }
-
-//            holder.image_iv.getLayoutParams().width=width;
-            holder.image_iv.getLayoutParams().height=width;
-
-            final ImageView select=holder.select_iv;
-            holder.select_iv.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(type==SelectImageActivity.TAG_SELECT_VIDEO){
-                        if(file.length()>videoMax*1024*1024){
-                            Toast.makeText(mContext,"选择的视频不能大于"+videoMax+"M",
-                                    Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                    }
-                    if(itemEntity.isSelect()){
-                        selectImages.remove(itemEntity);
-                        itemEntity.setSelect(false);
-                        select.setImageResource(R.drawable.icon_unselect);
-                    }else {
-                        if(selectImages.size()<MaxImageNumber){
-                            itemEntity.setSelect(true);
-                            select.setImageResource(R.drawable.icon_select);
-                            selectImages.add(itemEntity);
-                        }else {
-                            Toast.makeText(mContext,"您最多可选数量为"+MaxImageNumber,
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                    listener.selectNumberChange();
-                }
-            });
+        final IBaseItemEntity itemEntity=data.get(position);
+        int type=itemEntity.getType();
+        if(type==SelectImageActivity.TAG_TAKE_IMAGE||type==SelectImageActivity.TAG_TAKE_VIDEO){  //拍照
+            pressTake(holder,itemEntity);
+        }else {  //显示照片或者视频
+            pressImageOrVideo(holder,itemEntity);
         }
         return convertView;
     }
 
-    public  OnAdapterProcessListener listener;
+    /**
+     * type为选择照片或者视频时的操作
+     * @param holder
+     * @param itemEntity
+     */
+    private void pressImageOrVideo(ViewHolder holder,final IBaseItemEntity itemEntity){
+
+        int width= ScreenUitl.getScreenWidth(mContext)/listener.getColumn()-20;
+
+        holder.item_rl.setVisibility(View.VISIBLE);
+        holder.taking_rl.setVisibility(View.GONE);
+        holder.image_iv.getLayoutParams().height=width;
+
+        final File file=new File(itemEntity.getPath());
+        Glide.with(mContext).load(file).into(holder.image_iv);
+        if(itemEntity.isSelect()){
+            holder.select_iv.setImageResource(R.drawable.icon_select);
+        }else {
+            holder.select_iv.setImageResource(R.drawable.icon_unselect);
+        }
+
+
+        final ImageView select=holder.select_iv;
+        holder.select_iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //如果是选择视频，则需要限制视频大小
+                if(itemEntity.getType()==SelectImageActivity.TAG_SELECT_VIDEO){
+                    if(file.length()>listener.getVideoLimit()*1024*1024){
+                        Toast.makeText(mContext,"选择的视频不能大于"+listener.getVideoLimit()+"M",
+                                Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                }
+
+                if(listener.getMaxSelectNumber()>1){  //多选
+                    multiSelect(select,itemEntity);
+                }else if(listener.getMaxSelectNumber()==1){  //单选
+                    theRadio(itemEntity);
+                }
+
+
+                listener.selectNumberChange();
+            }
+        });
+    }
+
+    /**
+     * 多选
+     * @param select
+     * @param itemEntity
+     */
+    private void multiSelect(ImageView select,IBaseItemEntity itemEntity){
+        if(itemEntity.isSelect()){
+            selectImages.remove(itemEntity);
+            itemEntity.setSelect(false);
+            select.setImageResource(R.drawable.icon_unselect);
+        }else {
+            if(selectImages.size()<listener.getMaxSelectNumber()){
+                itemEntity.setSelect(true);
+                select.setImageResource(R.drawable.icon_select);
+                selectImages.add(itemEntity);
+            }else {
+                Toast.makeText(mContext,"您最多可选数量为"+listener.getMaxSelectNumber(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    /**
+     * 单选
+     * @param itemEntity
+     */
+    private void theRadio(IBaseItemEntity itemEntity){
+        if(!itemEntity.isSelect()){
+            itemEntity.setSelect(true);
+            selectImages.add(itemEntity);
+
+            for(int i=0;i<data.size();i++){
+                IBaseItemEntity ib=data.get(i);
+                if(ib!=itemEntity&&ib.isSelect()){
+                    ib.setSelect(false);
+                    selectImages.remove(ib);
+                }
+            }
+            notifyDataSetChanged();
+        }
+    }
+
+    /**
+     * type为拍照时的操作
+     * @param holder
+     */
+    private void pressTake(ViewHolder holder,final IBaseItemEntity itemEntity){
+        int width= ScreenUitl.getScreenWidth(mContext)/listener.getColumn()-20;
+
+        holder.item_rl.setVisibility(View.GONE);
+        holder.taking_rl.setVisibility(View.VISIBLE);
+        holder.taking_rl.getLayoutParams().height=width;
+
+        if(itemEntity.getType()==SelectImageActivity.TAG_SELECT_VIDEO){
+            holder.hint_tv.setText(R.string.taking_video);
+        }else {
+            holder.hint_tv.setText(R.string.taking_pictures);
+        }
+        holder.taking_rl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.taking();
+            }
+        });
+    }
+
     public void setOnAdapterProcessListener(OnAdapterProcessListener l){
         listener=l;
     }
     public interface OnAdapterProcessListener{
+        /**
+         * 拍照
+         */
         public void taking();
+
+        /**
+         * 选择数量发生变化
+         */
         public void selectNumberChange();
+
+        /**
+         * 获得最大选择数量
+         * @return
+         */
+        public int getMaxSelectNumber();
+
+        /**
+         * 获取视频大小限制 单位是MB
+         * @return
+         */
+        public int getVideoLimit();
+
+        /**
+         * 获得列数
+         * @return
+         */
+        public int getColumn();
     }
 
     private class ViewHolder{

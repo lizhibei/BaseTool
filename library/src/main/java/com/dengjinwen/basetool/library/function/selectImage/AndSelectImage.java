@@ -41,6 +41,16 @@ public class AndSelectImage {
      */
     public int VIDOE_MAX_CAPACITY=25;
 
+    /**
+     * 是否显示拍摄照片 默认显示
+     */
+    public boolean IS_SHOW_TAKE=true;
+
+    /**
+     * 图片列表列数  默认3列
+     */
+    public int COLUMN_NUMBER=3;
+
     public AndSelectImage(){}
 
     public  AndSelectImage withActivity(Activity activity){
@@ -82,6 +92,16 @@ public class AndSelectImage {
         return this;
     }
 
+    public AndSelectImage withTakePhoto(boolean isShow){
+        IS_SHOW_TAKE=isShow;
+        return this;
+    }
+
+    public AndSelectImage withColumnNumber(int number){
+        COLUMN_NUMBER=number;
+        return this;
+    }
+
     /**
      * 选择视频的大小限制
      * @param m
@@ -115,6 +135,8 @@ public class AndSelectImage {
         bundle.putInt(SelectImageActivity.TAG_IMAGE_NUMBER,selectNumber);
         bundle.putInt(SelectImageActivity.TYPE,TYPE);
         bundle.putInt("videolimit",VIDOE_MAX_CAPACITY);
+        bundle.putBoolean("show_take",IS_SHOW_TAKE);
+        bundle.putInt("column_number",COLUMN_NUMBER);
         intent.putExtras(bundle);
         if(activity!=null){
             activity.startActivityForResult(intent,mRequestCode);

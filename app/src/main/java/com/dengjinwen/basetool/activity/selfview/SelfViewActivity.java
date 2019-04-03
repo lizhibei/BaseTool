@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.dengjinwen.basetool.R;
 import com.dengjinwen.basetool.activity.BaseActivity;
 import com.dengjinwen.basetool.activity.CountDownButtonActivity;
+import com.dengjinwen.basetool.activity.selfview.chart.ChartActivity;
 import com.dengjinwen.basetool.activity.selfview.recyclerview.RecyclerViewActivity;
 import com.dengjinwen.basetool.adapter.MainAdapter;
 import com.dengjinwen.basetool.entity.MainItem;
@@ -56,6 +57,8 @@ public class SelfViewActivity extends BaseActivity implements View.OnClickListen
         data.add(countDown);
         MainItem recyclerView=new MainItem("RecyclerView","RecyclerView");
         data.add(recyclerView);
+        MainItem chart=new MainItem("ChartView","图表");
+        data.add(chart);
     }
 
     private void initview() {
@@ -119,6 +122,10 @@ public class SelfViewActivity extends BaseActivity implements View.OnClickListen
                 //RecyclerView
             case 10:
                 startIntent(mContext,RecyclerViewActivity.class);
+                break;
+                //图表
+            case 11:
+                startIntent(mContext,ChartActivity.class);
                 break;
         }
     }

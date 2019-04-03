@@ -1,9 +1,8 @@
 package com.dengjinwen.basetool.library.function.selectImage;
 
 import android.os.Parcel;
-import android.os.Parcelable;
 
-public class ItemEntity implements Parcelable {
+public class ItemEntity implements IBaseItemEntity {
     /**
      * 视频文件路径
      */
@@ -19,6 +18,8 @@ public class ItemEntity implements Parcelable {
 
     private boolean isSelect;
 
+    private int type;
+
     public ItemEntity() {
     }
 
@@ -27,6 +28,7 @@ public class ItemEntity implements Parcelable {
         duration = in.readInt();
         thumb = in.readString();
         isSelect = in.readByte() != 0;
+        type=in.readInt();
     }
 
     @Override
@@ -35,6 +37,7 @@ public class ItemEntity implements Parcelable {
         dest.writeInt(duration);
         dest.writeString(thumb);
         dest.writeByte((byte) (isSelect ? 1 : 0));
+        dest.writeInt(type);
     }
 
     @Override
@@ -54,34 +57,52 @@ public class ItemEntity implements Parcelable {
         }
     };
 
+    @Override
     public boolean isSelect() {
         return isSelect;
     }
 
+    @Override
+    public int getType() {
+        return type;
+    }
+
+    @Override
+    public void setType(int type) {
+        this.type=type;
+    }
+
+    @Override
     public void setSelect(boolean select) {
         isSelect = select;
     }
 
+    @Override
     public String getPath() {
         return path;
     }
 
+    @Override
     public void setPath(String path) {
         this.path = path;
     }
 
+    @Override
     public int getDuration() {
         return duration;
     }
 
+    @Override
     public void setDuration(int duration) {
         this.duration = duration;
     }
 
+    @Override
     public String getThumb() {
         return thumb;
     }
 
+    @Override
     public void setThumb(String thumb) {
         this.thumb = thumb;
     }

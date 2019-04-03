@@ -85,4 +85,9 @@
         <attr name="label_text" format="string"/>
         <attr name="label_text_size" format="float"/>
     </declare-styleable>
+
+    <declare-styleable name="pieChartView">
+        <attr name="radius" format="dimension"/>
+        <attr name="hintTextSize" format="dimension"/>
+    </declare-styleable>
 </resources>

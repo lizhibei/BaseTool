@@ -1,6 +1,6 @@
 package com.dengjinwen.basetool.library.tool.comparator;
 
-import com.dengjinwen.basetool.library.function.selectImage.ItemEntity;
+import com.dengjinwen.basetool.library.function.selectImage.IBaseItemEntity;
 
 import java.io.File;
 import java.util.Comparator;
@@ -8,10 +8,10 @@ import java.util.Comparator;
 /**
  * 按文件的修改时间排序
  */
-public class FileModityTimeComparator implements Comparator<ItemEntity> {
+public class FileModityTimeComparator implements Comparator<IBaseItemEntity> {
 
     @Override
-    public int compare(ItemEntity o1, ItemEntity o2) {
+    public int compare(IBaseItemEntity o1, IBaseItemEntity o2) {
         File o1File=new File(o1.getPath());
         File o2File=new File(o2.getPath());
         //修改时间近的在前面

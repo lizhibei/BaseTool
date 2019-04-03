@@ -88,10 +88,11 @@ public class SelectImageAndActivity extends BaseActivity implements View.OnClick
             break;
             case R.id.add_tv:
                 new AndSelectImage().withActivity(this)
-                        .withNumber(1)
+                        .withNumber(2)
                         .withRequestCode(SELECT_IMAGE)
                         .withType(AndSelectImage.TYPE_IMAGE)
-                        .withVideoMax(35)
+                        .withColumnNumber(4)
+                        .withTakePhoto(false)
                         .start();
                 break;
         }

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.FeatureInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,8 +23,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dengjinwen.basetool.library.R;
-import com.dengjinwen.basetool.library.function.BaseToolActivity;
 import com.dengjinwen.basetool.library.function.screenAdaptation.ScreenAdapterTools;
+import com.dengjinwen.basetool.library.function.selectImage.AndSelectImage;
+import com.dengjinwen.basetool.library.function.selectImage.ItemEntity;
 import com.dengjinwen.basetool.library.function.zxing.bean.ZxingConfig;
 import com.dengjinwen.basetool.library.function.zxing.camera.CameraManager;
 import com.dengjinwen.basetool.library.function.zxing.common.Constant;
@@ -31,21 +33,33 @@ import com.dengjinwen.basetool.library.function.zxing.decode.DecodeImgCallback;
 import com.dengjinwen.basetool.library.function.zxing.decode.DecodeImgThread;
 import com.dengjinwen.basetool.library.function.zxing.decode.ImageUtil;
 import com.dengjinwen.basetool.library.function.zxing.view.ViewfinderView;
+import com.dengjinwen.basetool.library.tool.ImageProgressTool;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.ChecksumException;
+import com.google.zxing.DecodeHintType;
+import com.google.zxing.FormatException;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.RGBLuminanceSource;
 import com.google.zxing.Result;
+import com.google.zxing.common.HybridBinarizer;
+import com.google.zxing.qrcode.QRCodeReader;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Hashtable;
 
 
 /**
- * @author: yzq
- * @date: 2017/10/26 15:22
- * @declare :扫一扫
+ *
+ *
+ * 扫一扫
  */
 
 public class BaseToolCaptureActivity extends AppCompatActivity implements SurfaceHolder.Callback, View.OnClickListener {
 
+    private final static int SELECT_IMAGE=20001;
 
-    private TextView head_text_title,open_or_close;
+    private TextView head_text_title,open_or_close,right_tv;
     private SurfaceView previewView;
     private ViewfinderView viewfinderView;
     private ImageView flashLight_iv;
@@ -64,7 +78,7 @@ public class BaseToolCaptureActivity extends AppCompatActivity implements Surfac
     }
 
     public static Intent createIntent(Context context){
-        Intent intent=new Intent(context,BaseToolActivity.class);
+        Intent intent=new Intent(context,BaseToolCaptureActivity.class);
         return intent;
     }
 
@@ -88,6 +102,11 @@ public class BaseToolCaptureActivity extends AppCompatActivity implements Surfac
         findViewById(R.id.head_img_left).setOnClickListener(this);
         head_text_title=findViewById(R.id.head_text_title);
         head_text_title.setText("");
+
+        right_tv=findViewById(R.id.right_tv);
+        right_tv.setVisibility(View.VISIBLE);
+        right_tv.setOnClickListener(this);
+        right_tv.setText("相册");
 
         findViewById(R.id.open_sdt).setOnClickListener(this);
 
@@ -122,6 +141,38 @@ public class BaseToolCaptureActivity extends AppCompatActivity implements Surfac
         if (config == null) {
             config = new ZxingConfig();
         }
+    }
+
+    /**
+     * 扫码二维码图片
+     * @return
+     */
+    private Result scanningImage(String path){
+        if(path==null){
+            return null;
+        }
+
+        Hashtable<DecodeHintType,String> hints=new Hashtable<>();
+        hints.put(DecodeHintType.CHARACTER_SET,"UTF-8");
+
+        Bitmap scanBitmap = ImageProgressTool.getImage(path);
+        int[] data=new int[scanBitmap.getWidth()*scanBitmap.getHeight()];
+        scanBitmap.getPixels(data,0,scanBitmap.getWidth(),0,0,scanBitmap.getWidth(),scanBitmap.getHeight());
+        RGBLuminanceSource source = new RGBLuminanceSource(scanBitmap.getWidth(),scanBitmap.getHeight(),data);
+        BinaryBitmap bitmap1 = new BinaryBitmap(new HybridBinarizer(source));
+        QRCodeReader reader = new QRCodeReader();
+
+        try {
+            return reader.decode(bitmap1,hints);
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+        } catch (ChecksumException e) {
+            e.printStackTrace();
+        } catch (FormatException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
 
@@ -285,16 +336,6 @@ public class BaseToolCaptureActivity extends AppCompatActivity implements Surfac
 
     }
 
-    @Override
-    public void onClick(View view) {
-
-        if(view.getId()==R.id.head_img_left){
-            finish();
-        }else if(view.getId()==R.id.open_sdt){
-            cameraManager.switchFlashLight(handler);
-        }
-    }
-
     public ViewfinderView getViewfinderView() {
         return viewfinderView;
     }
@@ -313,27 +354,48 @@ public class BaseToolCaptureActivity extends AppCompatActivity implements Surfac
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if(resultCode==RESULT_OK){
+            Bundle bundle=intent.getExtras();
+            if(requestCode==Constant.REQUEST_IMAGE){
+                String path = ImageUtil.getImageAbsolutePath(this, intent.getData());
 
-        if (requestCode == Constant.REQUEST_IMAGE && resultCode == RESULT_OK) {
-            String path = ImageUtil.getImageAbsolutePath(this, data.getData());
+                new DecodeImgThread(path, new DecodeImgCallback() {
+                    @Override
+                    public void onImageDecodeSuccess(Result result) {
+                        handleDecode(result);
+                    }
 
-            new DecodeImgThread(path, new DecodeImgCallback() {
-                @Override
-                public void onImageDecodeSuccess(Result result) {
+                    @Override
+                    public void onImageDecodeFailed() {
+                        Toast.makeText(BaseToolCaptureActivity.this, "抱歉，解析失败,换个图片试试.", Toast.LENGTH_SHORT).show();
+                    }
+                }).run();
+            }else if(requestCode==SELECT_IMAGE){  //相册选择图片返回
+                ArrayList<ItemEntity> list=bundle.getParcelableArrayList(AndSelectImage.SELECT_IMAGE);
+                if(list!=null&&list.size()>0){
+                    ItemEntity id=list.get(0);
+                    Result result=scanningImage(id.getPath());
                     handleDecode(result);
                 }
-
-                @Override
-                public void onImageDecodeFailed() {
-                    Toast.makeText(BaseToolCaptureActivity.this, "抱歉，解析失败,换个图片试试.", Toast.LENGTH_SHORT).show();
-                }
-            }).run();
-
-
+            }
         }
     }
 
 
+    @Override
+    public void onClick(View view) {
+
+        if(view.getId()==R.id.head_img_left){
+            finish();
+        }else if(view.getId()==R.id.open_sdt){
+            cameraManager.switchFlashLight(handler);
+        }else if(view.getId()==R.id.right_tv){  //选择图片
+            new AndSelectImage().withActivity(this)
+                    .withNumber(1)
+                    .withRequestCode(SELECT_IMAGE)
+                    .withType(AndSelectImage.TYPE_IMAGE)
+                    .start();
+        }
+    }
 }

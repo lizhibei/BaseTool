@@ -55,6 +55,14 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
      * 选择视频
      */
     public static final int TAG_SELECT_VIDEO=1;
+    /**
+     * 拍照照片
+     */
+    public static final int TAG_TAKE_IMAGE=2;
+    /**
+     * 拍照视频
+     */
+    public static final int TAG_TAKE_VIDEO=3;
 
     private int SELECT_TYPE=TAG_SELECT_IMAGE;
 
@@ -75,10 +83,10 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
     /**
      * 已选择的
      */
-    private HashSet<ItemEntity> selectItem=new HashSet<>();
+    private HashSet<IBaseItemEntity> selectItem=new HashSet<>();
 
     private SelectImageAdapter adapter;
-    private List<ItemEntity> data=new ArrayList<>();
+    private List<IBaseItemEntity> data=new ArrayList<>();
     List<ItemEntity> list;
 
     private SelectFileAdapter fileAdapter;
@@ -97,6 +105,16 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
      */
     private int SET_PERMISSION_BACK=26;
 
+    /**
+     * 是否显示拍摄照片
+     */
+    private boolean IS_SHOW_TAKE=true;
+
+    /**
+     * 列表列数
+     */
+    private int COLUMN_NUMBER=3;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,7 +130,10 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
             IMAGE_NUMBER=bundle.getInt(TAG_IMAGE_NUMBER,0);
             SELECT_TYPE=bundle.getInt(TYPE,TAG_SELECT_IMAGE);
             VIDOE_MAX_CAPACITY=bundle.getInt("videolimit",25);
+            IS_SHOW_TAKE=bundle.getBoolean("show_take",true);
+            COLUMN_NUMBER=bundle.getInt("column_number",3);
         }
+
         findViewById(R.id.left_iv).setOnClickListener(this);
 
         right_tv=findViewById(R.id.right_tv);
@@ -133,29 +154,38 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
 
         bottom_rl=findViewById(R.id.bottom_rl);
 
-        adapter=new SelectImageAdapter(mContext,data,selectItem,SELECT_TYPE,IMAGE_NUMBER,
-                VIDOE_MAX_CAPACITY);
+        adapter=new SelectImageAdapter(mContext,data,selectItem);
+        show_image_gv.setNumColumns(COLUMN_NUMBER);
         show_image_gv.setAdapter(adapter);
 
+        setListener();
+
+        checkPermission();
+    }
+
+    /**
+     * 设置监听器
+     */
+    private void setListener(){
         adapter.setOnAdapterProcessListener(new SelectImageAdapter.OnAdapterProcessListener() {
             @Override
             public void taking() {
                 if(SELECT_TYPE==TAG_SELECT_VIDEO){  //拍摄视频
                     path=CameraTool.getInstance().takeVideo(SelectImageActivity.this, TAG_SELECT_VIDEO,
                             new CameraTool.PermissionFailListener() {
-                        @Override
-                        public void failure() {
-                            Toast.makeText(mContext,"获取拍照权限失败",Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                                @Override
+                                public void failure() {
+                                    Toast.makeText(mContext,"获取拍照权限失败",Toast.LENGTH_SHORT).show();
+                                }
+                            });
                 }else {  //拍摄照片
                     path=CameraTool.getInstance().takePicture(SelectImageActivity.this, TAG_SELECT_IMAGE,
                             new CameraTool.PermissionFailListener() {
-                        @Override
-                        public void failure() {
-                            Toast.makeText(mContext,"获取拍照权限失败",Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                                @Override
+                                public void failure() {
+                                    Toast.makeText(mContext,"获取拍照权限失败",Toast.LENGTH_SHORT).show();
+                                }
+                            });
                 }
             }
 
@@ -166,9 +196,22 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
             public void selectNumberChange() {
                 right_tv.setText(getResources().getString(R.string.finish)+" "+selectItem.size()+"/"+IMAGE_NUMBER);
             }
-        });
 
-        checkPermission();
+            @Override
+            public int getMaxSelectNumber() {
+                return IMAGE_NUMBER;
+            }
+
+            @Override
+            public int getVideoLimit() {
+                return VIDOE_MAX_CAPACITY;
+            }
+
+            @Override
+            public int getColumn() {
+                return COLUMN_NUMBER;
+            }
+        });
     }
 
     @Override
@@ -176,8 +219,8 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
         if(resultCode==RESULT_OK){
             Intent intent=new Intent();
             Bundle bundle=new Bundle();
-            ArrayList<ItemEntity> items=new ArrayList<>();
-            ItemEntity itemEntity=new ItemEntity();
+            ArrayList<IBaseItemEntity> items=new ArrayList<>();
+            IBaseItemEntity itemEntity=new ItemEntity();
             itemEntity.setPath(path);
             items.add(itemEntity);
             //通知相册更新
@@ -211,6 +254,9 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
+    /**
+     * 检查权限
+     */
     private void checkPermission(){
         AndPermission.with(this)
                 .permission(android.Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -249,6 +295,9 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
                 .start();
     }
 
+    /**
+     * 获取图片或者视频
+     */
     private void getImage(){
         if(!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
             Toast.makeText(mContext,getResources().getString(R.string.not_storage),Toast.LENGTH_SHORT).show();
@@ -260,9 +309,9 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
             @Override
             public void run() {
                 if(SELECT_TYPE==TAG_SELECT_VIDEO){
-                    list=localDataUitlTool.getVideotList();
+                    list=localDataUitlTool.getVideotList();  //获取视频
                 }else {
-                    list=localDataUitlTool.getImageList();
+                    list=localDataUitlTool.getImageList();  //获取图片
                 }
                 mImageFloders.clear();
                 mImageFloders.addAll(localDataUitlTool.getImageFloders());
@@ -295,13 +344,13 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
         filename_tv.setText(imageFloder.getName());
         imageFloder.setSelect(true);
         data.clear();
-        if(SELECT_TYPE==TAG_SELECT_VIDEO){
+        if(SELECT_TYPE==TAG_SELECT_VIDEO){  //选择视频
             if(imageFloder.isAll()){
                 data.addAll(list);
             }else {
                 data.addAll(getFloderVideo(imageFloder));
             }
-        }else {
+        }else if(SELECT_TYPE==TAG_SELECT_IMAGE){  //选择照片
             if(imageFloder.isAll()){
                 for(int i=1;i<mImageFloders.size();i++){
                     Floder ifloder=mImageFloders.get(i);
@@ -310,7 +359,23 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
             }else {
                 data.addAll(localDataUitlTool.getFolderImages(imageFloder));
             }
-            Collections.sort(data,new FileModityTimeComparator());
+        }
+        Collections.sort(data,new FileModityTimeComparator());
+        //设置类型
+        for(int i=0;i<data.size();i++){
+            IBaseItemEntity ibie=data.get(i);
+            ibie.setType(SELECT_TYPE);
+        }
+
+        //如果要在第一个Item显示拍照获取照片或者视频 在这里添加数据
+        if(IS_SHOW_TAKE){
+            ItemEntity ie=new ItemEntity();
+            if(SELECT_TYPE==TAG_SELECT_IMAGE){
+                ie.setType(TAG_TAKE_IMAGE);
+            }else {
+                ie.setType(TAG_TAKE_VIDEO);
+            }
+            data.add(0,ie);
         }
         adapter.notifyDataSetChanged();
     }
