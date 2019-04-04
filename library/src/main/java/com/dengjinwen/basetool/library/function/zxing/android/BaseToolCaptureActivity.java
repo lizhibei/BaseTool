@@ -34,6 +34,7 @@ import com.dengjinwen.basetool.library.function.zxing.decode.DecodeImgThread;
 import com.dengjinwen.basetool.library.function.zxing.decode.ImageUtil;
 import com.dengjinwen.basetool.library.function.zxing.view.ViewfinderView;
 import com.dengjinwen.basetool.library.tool.ImageProgressTool;
+import com.dengjinwen.basetool.library.tool.log;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.ChecksumException;
 import com.google.zxing.DecodeHintType;
@@ -72,6 +73,7 @@ public class BaseToolCaptureActivity extends AppCompatActivity implements Surfac
     private CameraManager cameraManager;
     private CaptureActivityHandler handler;
     private SurfaceHolder surfaceHolder;
+    private Context mContext;
 
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
@@ -87,6 +89,7 @@ public class BaseToolCaptureActivity extends AppCompatActivity implements Surfac
         super.onCreate(savedInstanceState);
         configuration();
         setContentView(R.layout.activity_scanner);
+        mContext=this;
         ScreenAdapterTools.getInstance().loadView(getWindow().getDecorView());
         initView();
     }
@@ -163,7 +166,9 @@ public class BaseToolCaptureActivity extends AppCompatActivity implements Surfac
         QRCodeReader reader = new QRCodeReader();
 
         try {
-            return reader.decode(bitmap1,hints);
+            Result result=reader.decode(bitmap1,hints);
+            log.e("result:"+result);
+            return result;
         } catch (NotFoundException e) {
             e.printStackTrace();
         } catch (ChecksumException e) {
@@ -368,7 +373,7 @@ public class BaseToolCaptureActivity extends AppCompatActivity implements Surfac
 
                     @Override
                     public void onImageDecodeFailed() {
-                        Toast.makeText(BaseToolCaptureActivity.this, "抱歉，解析失败,换个图片试试.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "抱歉，解析失败,换个图片试试.", Toast.LENGTH_SHORT).show();
                     }
                 }).run();
             }else if(requestCode==SELECT_IMAGE){  //相册选择图片返回
@@ -376,7 +381,14 @@ public class BaseToolCaptureActivity extends AppCompatActivity implements Surfac
                 if(list!=null&&list.size()>0){
                     ItemEntity id=list.get(0);
                     Result result=scanningImage(id.getPath());
-                    handleDecode(result);
+                    if(result!=null){
+                        Intent intent1 = getIntent();
+                        intent.putExtra(Constant.CODED_CONTENT,result.getText());
+                        setResult(RESULT_OK, intent1);
+                        this.finish();
+                    }else {
+                        Toast.makeText(mContext,"抱歉，解析失败,换个图片试试.",Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         }
@@ -395,6 +407,8 @@ public class BaseToolCaptureActivity extends AppCompatActivity implements Surfac
                     .withNumber(1)
                     .withRequestCode(SELECT_IMAGE)
                     .withType(AndSelectImage.TYPE_IMAGE)
+                    .withColumnNumber(4)
+                    .withTakePhoto(false)
                     .start();
         }
     }
