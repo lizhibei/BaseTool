@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/header_px" />
+    <include layout="@layout/basetool_header_px" />
 
     <FrameLayout
         android:layout_width="match_parent"

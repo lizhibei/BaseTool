@@ -88,7 +88,7 @@ public class BaseToolCaptureActivity extends AppCompatActivity implements Surfac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         configuration();
-        setContentView(R.layout.activity_scanner);
+        setContentView(R.layout.basetool_activity_scanner);
         mContext=this;
         ScreenAdapterTools.getInstance().loadView(getWindow().getDecorView());
         initView();
