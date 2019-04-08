@@ -34,7 +34,6 @@ import com.dengjinwen.basetool.library.function.zxing.decode.DecodeImgThread;
 import com.dengjinwen.basetool.library.function.zxing.decode.ImageUtil;
 import com.dengjinwen.basetool.library.function.zxing.view.ViewfinderView;
 import com.dengjinwen.basetool.library.tool.ImageProgressTool;
-import com.dengjinwen.basetool.library.tool.log;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.ChecksumException;
 import com.google.zxing.DecodeHintType;
@@ -167,7 +166,7 @@ public class BaseToolCaptureActivity extends AppCompatActivity implements Surfac
 
         try {
             Result result=reader.decode(bitmap1,hints);
-            log.e("result:"+result);
+//            log.e("result:"+result);
             return result;
         } catch (NotFoundException e) {
             e.printStackTrace();
@@ -299,7 +298,6 @@ public class BaseToolCaptureActivity extends AppCompatActivity implements Surfac
     @Override
     protected void onPause() {
 
-        Log.i("CaptureActivity","onPause");
         if (handler != null) {
             handler.quitSynchronously();
             handler = null;
@@ -383,7 +381,7 @@ public class BaseToolCaptureActivity extends AppCompatActivity implements Surfac
                     Result result=scanningImage(id.getPath());
                     if(result!=null){
                         Intent intent1 = getIntent();
-                        intent.putExtra(Constant.CODED_CONTENT,result.getText());
+                        intent1.putExtra(Constant.CODED_CONTENT,result.getText());
                         setResult(RESULT_OK, intent1);
                         this.finish();
                     }else {

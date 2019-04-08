@@ -1,6 +1,7 @@
 package com.dengjinwen.basetool;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,7 +17,9 @@ import com.dengjinwen.basetool.activity.selfview.SelfViewActivity;
 import com.dengjinwen.basetool.adapter.MainAdapter;
 import com.dengjinwen.basetool.entity.MainItem;
 import com.dengjinwen.basetool.library.function.zxing.android.BaseToolCaptureActivity;
+import com.dengjinwen.basetool.library.function.zxing.common.Constant;
 import com.dengjinwen.basetool.library.tool.ScreenUitl;
+import com.dengjinwen.basetool.library.tool.log;
 import com.dengjinwen.basetool.util.FilePicker;
 
 import java.util.ArrayList;
@@ -46,7 +49,7 @@ public class MainActivity extends BaseActivity  {
         findViewById(R.id.scan_b).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(BaseToolCaptureActivity.createIntent(mContext));
+                startActivityForResult(BaseToolCaptureActivity.createIntent(mContext),QR_CODE);
             }
         });
 
@@ -74,6 +77,16 @@ public class MainActivity extends BaseActivity  {
             }
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode==RESULT_OK){
+            if(requestCode==QR_CODE){
+                String scanResult = data.getStringExtra(Constant.CODED_CONTENT);
+                log.e("scanResult:"+scanResult);
+            }
+        }
     }
 
     private void initData() {
