@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 
+import com.dengjinwen.basetool.library.function.zxing.ICaptureView;
 import com.dengjinwen.basetool.library.function.zxing.camera.CameraManager;
 import com.dengjinwen.basetool.library.function.zxing.common.Constant;
 import com.dengjinwen.basetool.library.function.zxing.decode.DecodeThread;
@@ -38,19 +39,19 @@ public final class CaptureActivityHandler extends Handler {
     private static final String TAG = CaptureActivityHandler.class
             .getSimpleName();
 
-    private final BaseToolCaptureActivity activity;
     private final DecodeThread decodeThread;
     private State state;
     private final CameraManager cameraManager;
+    private ICaptureView captureView;
 
     private enum State {
         PREVIEW, SUCCESS, DONE
     }
 
-    public CaptureActivityHandler(BaseToolCaptureActivity activity, CameraManager cameraManager) {
-        this.activity = activity;
-        decodeThread = new DecodeThread(activity,  new ViewfinderResultPointCallback(
-                activity.getViewfinderView()));
+    public CaptureActivityHandler(ICaptureView captureView, CameraManager cameraManager) {
+        this.captureView=captureView;
+        decodeThread = new DecodeThread(captureView,  new ViewfinderResultPointCallback(
+                captureView.getViewfinderView()));
         decodeThread.start();
         state = State.SUCCESS;
 
@@ -73,7 +74,7 @@ public final class CaptureActivityHandler extends Handler {
                 // 解码成功
 
                 state = State.SUCCESS;
-                activity.handleDecode((Result) message.obj);
+                captureView.handleDecode((Result) message.obj);
 
                 break;
             case Constant.DECODE_FAILED:
@@ -86,14 +87,14 @@ public final class CaptureActivityHandler extends Handler {
                 break;
             case Constant.RETURN_SCAN_RESULT:
 
-                activity.setResult(Activity.RESULT_OK, (Intent) message.obj);
-                activity.finish();
+                captureView.getActivity().setResult(Activity.RESULT_OK, (Intent) message.obj);
+                captureView.getActivity().finish();
                 break;
             case Constant.FLASH_OPEN:
-                activity.switchFlashImg(Constant.FLASH_OPEN);
+                captureView.switchFlashImg(Constant.FLASH_OPEN);
                 break;
             case Constant.FLASH_CLOSE:
-                activity.switchFlashImg(Constant.FLASH_CLOSE);
+                captureView.switchFlashImg(Constant.FLASH_CLOSE);
                 break;
         }
     }
@@ -125,7 +126,7 @@ public final class CaptureActivityHandler extends Handler {
             state = State.PREVIEW;
             cameraManager.requestPreviewFrame(decodeThread.getHandler(),
                     Constant.DECODE);
-            activity.drawViewfinder();
+            captureView.getViewfinderView().drawViewfinder();
         }
     }
 

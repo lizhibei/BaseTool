@@ -19,7 +19,7 @@ package com.dengjinwen.basetool.library.function.zxing.decode;
 import android.os.Handler;
 import android.os.Looper;
 
-import com.dengjinwen.basetool.library.function.zxing.android.BaseToolCaptureActivity;
+import com.dengjinwen.basetool.library.function.zxing.ICaptureView;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.ResultPointCallback;
@@ -35,15 +35,15 @@ import java.util.concurrent.CountDownLatch;
  */
 public final class DecodeThread extends Thread {
 
-    private final BaseToolCaptureActivity activity;
     private final Hashtable<DecodeHintType, Object> hints;
     private final Vector<BarcodeFormat> decodeFormats;
     private Handler handler;
     private final CountDownLatch handlerInitLatch;
+    private ICaptureView captureView;
 
-    public DecodeThread(BaseToolCaptureActivity activity, ResultPointCallback resultPointCallback) {
+    public DecodeThread(ICaptureView captureView, ResultPointCallback resultPointCallback) {
 
-        this.activity = activity;
+        this.captureView=captureView;
         handlerInitLatch = new CountDownLatch(1);
 
         hints = new Hashtable<>();
@@ -53,7 +53,7 @@ public final class DecodeThread extends Thread {
 
 
         /*是否解析有条形码（一维码）*/
-        if (activity.config.isDecodeBarCode()) {
+        if (captureView.getConfig().isDecodeBarCode()) {
             decodeFormats.addAll(DecodeFormatManager.ONE_D_FORMATS);
 
         }
@@ -78,7 +78,7 @@ public final class DecodeThread extends Thread {
     @Override
     public void run() {
         Looper.prepare();
-        handler = new DecodeHandler(activity, hints);
+        handler = new DecodeHandler(captureView, hints);
         handlerInitLatch.countDown();
         Looper.loop();
     }

@@ -20,7 +20,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 
-import com.dengjinwen.basetool.library.function.zxing.android.BaseToolCaptureActivity;
+import com.dengjinwen.basetool.library.function.zxing.ICaptureView;
 import com.dengjinwen.basetool.library.function.zxing.common.Constant;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.DecodeHintType;
@@ -36,14 +36,14 @@ public final class DecodeHandler extends Handler {
 
     private static final String TAG = DecodeHandler.class.getSimpleName();
 
-    private final BaseToolCaptureActivity activity;
+    private ICaptureView captureView;
     private final MultiFormatReader multiFormatReader;
     private boolean running = true;
 
-    DecodeHandler(BaseToolCaptureActivity activity, Map<DecodeHintType, Object> hints) {
+    DecodeHandler(ICaptureView captureView, Map<DecodeHintType, Object> hints) {
         multiFormatReader = new MultiFormatReader();
         multiFormatReader.setHints(hints);
-        this.activity = activity;
+        this.captureView=captureView;
     }
 
     @Override
@@ -82,7 +82,7 @@ public final class DecodeHandler extends Handler {
         height = tmp;
         data = rotatedData;
 
-        PlanarYUVLuminanceSource source = activity.getCameraManager()
+        PlanarYUVLuminanceSource source = captureView.getCameraManager()
                 .buildLuminanceSource(data, width, height);
 
 
@@ -101,7 +101,7 @@ public final class DecodeHandler extends Handler {
 
 
 
-        Handler handler = activity.getHandler();
+        Handler handler = captureView.getHandler();
         if (rawResult != null) {
 
             if (handler != null) {

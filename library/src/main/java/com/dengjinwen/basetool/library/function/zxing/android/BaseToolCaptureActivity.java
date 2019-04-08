@@ -1,5 +1,6 @@
 package com.dengjinwen.basetool.library.function.zxing.android;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -26,6 +27,7 @@ import com.dengjinwen.basetool.library.R;
 import com.dengjinwen.basetool.library.function.screenAdaptation.ScreenAdapterTools;
 import com.dengjinwen.basetool.library.function.selectImage.AndSelectImage;
 import com.dengjinwen.basetool.library.function.selectImage.ItemEntity;
+import com.dengjinwen.basetool.library.function.zxing.ICaptureView;
 import com.dengjinwen.basetool.library.function.zxing.bean.ZxingConfig;
 import com.dengjinwen.basetool.library.function.zxing.camera.CameraManager;
 import com.dengjinwen.basetool.library.function.zxing.common.Constant;
@@ -55,7 +57,7 @@ import java.util.Hashtable;
  * 扫一扫
  */
 
-public class BaseToolCaptureActivity extends AppCompatActivity implements SurfaceHolder.Callback, View.OnClickListener {
+public class BaseToolCaptureActivity extends AppCompatActivity implements SurfaceHolder.Callback, View.OnClickListener,ICaptureView {
 
     private final static int SELECT_IMAGE=20001;
 
@@ -201,6 +203,7 @@ public class BaseToolCaptureActivity extends AppCompatActivity implements Surfac
     /**
      * @param flashState 切换闪光灯图片
      */
+    @Override
     public void switchFlashImg(int flashState) {
 
         if (flashState == Constant.FLASH_OPEN) {
@@ -213,9 +216,15 @@ public class BaseToolCaptureActivity extends AppCompatActivity implements Surfac
 
     }
 
+    @Override
+    public ZxingConfig getConfig() {
+        return config;
+    }
+
     /**
      * @param rawResult 返回的扫描结果
      */
+    @Override
     public void handleDecode(Result rawResult) {
 
         inactivityTimer.onActivity();
@@ -228,6 +237,11 @@ public class BaseToolCaptureActivity extends AppCompatActivity implements Surfac
         this.finish();
 
 
+    }
+
+    @Override
+    public Activity getActivity() {
+        return this;
     }
 
 
@@ -339,14 +353,13 @@ public class BaseToolCaptureActivity extends AppCompatActivity implements Surfac
 
     }
 
-    public ViewfinderView getViewfinderView() {
-        return viewfinderView;
-    }
 
+    @Override
     public Handler getHandler() {
         return handler;
     }
 
+    @Override
     public CameraManager getCameraManager() {
         return cameraManager;
     }
@@ -392,6 +405,11 @@ public class BaseToolCaptureActivity extends AppCompatActivity implements Surfac
         }
     }
 
+    @Override
+    public ViewfinderView getViewfinderView() {
+        return viewfinderView;
+    }
+
 
     @Override
     public void onClick(View view) {
@@ -410,4 +428,6 @@ public class BaseToolCaptureActivity extends AppCompatActivity implements Surfac
                     .start();
         }
     }
+
+
 }
