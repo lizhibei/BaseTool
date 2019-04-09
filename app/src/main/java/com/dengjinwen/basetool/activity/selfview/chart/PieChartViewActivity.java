@@ -11,6 +11,7 @@ import com.dengjinwen.basetool.activity.BaseActivity;
 import com.dengjinwen.basetool.library.function.screenAdaptation.ScreenAdapterTools;
 import com.dengjinwen.basetool.library.view.chart.data.PieChartData;
 import com.dengjinwen.basetool.library.view.chart.chart.PieChart;
+import com.dengjinwen.basetool.library.view.chart.interfaces.IPieChartData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class PieChartViewActivity extends BaseActivity implements View.OnClickLi
     private TextView head_text_title;
     private PieChart pie_view;
 
-    private List<PieChartData> data=new ArrayList<>();
+    private List<IPieChartData> data=new ArrayList<>();
     private Context mContext;
 
     @Override

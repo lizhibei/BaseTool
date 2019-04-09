@@ -16,7 +16,6 @@ import com.dengjinwen.basetool.activity.SelectImageAndActivity;
 import com.dengjinwen.basetool.activity.selfview.SelfViewActivity;
 import com.dengjinwen.basetool.adapter.MainAdapter;
 import com.dengjinwen.basetool.entity.MainItem;
-import com.dengjinwen.basetool.library.function.zxing.android.BaseToolCaptureActivity;
 import com.dengjinwen.basetool.library.function.zxing.common.Constant;
 import com.dengjinwen.basetool.library.tool.ScreenUitl;
 import com.dengjinwen.basetool.library.tool.log;
@@ -46,12 +45,12 @@ public class MainActivity extends BaseActivity  {
         initData();
         initview();
 
-        findViewById(R.id.scan_b).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivityForResult(BaseToolCaptureActivity.createIntent(mContext),QR_CODE);
-            }
-        });
+//        findViewById(R.id.scan_b).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivityForResult(BaseToolCaptureActivity.createIntent(mContext),QR_CODE);
+//            }
+//        });
 
 //        DisplayMetrics dm=new DisplayMetrics();
 ////        WindowManager windowManager= (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);

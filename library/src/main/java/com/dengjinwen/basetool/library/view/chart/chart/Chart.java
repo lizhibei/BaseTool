@@ -27,7 +27,7 @@ public abstract class Chart<T extends IChartData> extends View {
     /**
      * 图标数据
      */
-    private ArrayList<T> mDatas=new ArrayList<>();
+    public ArrayList<T> mDatas=new ArrayList<>();
 
     public Chart(Context context) {
         this(context,null);
@@ -40,6 +40,18 @@ public abstract class Chart<T extends IChartData> extends View {
     public Chart(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
+
+//    @Override
+//    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+//        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+//        setMeasuredDimension(
+//                Math.max(getSuggestedMinimumWidth(),
+//                        resolveSize(getCurrentWidth(),
+//                                widthMeasureSpec)),
+//                Math.max(getSuggestedMinimumHeight(),
+//                        resolveSize(getCurrentHeight(),
+//                                heightMeasureSpec)));
+//    }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {

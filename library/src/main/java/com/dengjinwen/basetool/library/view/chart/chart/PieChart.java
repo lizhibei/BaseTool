@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.dengjinwen.basetool.library.R;
-import com.dengjinwen.basetool.library.view.chart.data.PieChartData;
 import com.dengjinwen.basetool.library.view.chart.interfaces.IPieChartData;
 import com.dengjinwen.basetool.library.view.chart.render.PieRender;
 
@@ -23,8 +22,6 @@ public class PieChart extends Chart<IPieChartData> {
 
 
     private float textSize;
-
-    private List<PieChartData> mDatas=new ArrayList<>();
 
     private PieRender renderer;
 
@@ -68,7 +65,7 @@ public class PieChart extends Chart<IPieChartData> {
         renderer.drawAllSectors(canvas,mDatas);
     }
 
-    public void setData(List<PieChartData> pieChartDatas){
+    public void setData(List<IPieChartData> pieChartDatas){
         if(mDatas!=null){
             mDatas.clear();
             mDatas.addAll(pieChartDatas);

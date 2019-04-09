@@ -31,7 +31,7 @@ public class RegularUtil {
     /**
      * 手机号
      */
-    private final String PHONE="^1[3|3|5|8][0-9]\\d{8}$";
+    private final String PHONE="^1[3|3|5|8|4][0-9]\\d{8}$";
 
     /**
      * URL

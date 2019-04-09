@@ -8,7 +8,7 @@ import android.graphics.PointF;
 import android.graphics.RectF;
 import android.util.TypedValue;
 
-import com.dengjinwen.basetool.library.view.chart.data.PieChartData;
+import com.dengjinwen.basetool.library.view.chart.interfaces.IPieChartData;
 
 import java.util.List;
 
@@ -76,14 +76,14 @@ public class PieRender {
     /**
      * 绘制图形
      */
-    public void drawAllSectors(Canvas canvas,List<PieChartData> data){
+    public void drawAllSectors(Canvas canvas,List<IPieChartData> data){
         float sum1=0f;
-        for(PieChartData pieChartData:data){
+        for(IPieChartData pieChartData:data){
             sum1+=pieChartData.getValue();
         }
 
         float sum2=0f;
-        for(PieChartData pieChartData:data){
+        for(IPieChartData pieChartData:data){
             float startAngel=sum2/sum1*360;
             sum2+=pieChartData.getValue();
             float sweepAngel=pieChartData.getValue()/sum1*360;
