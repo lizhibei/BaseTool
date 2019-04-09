@@ -4,6 +4,7 @@
   [AndSelectImage图片视频选择器](https://github.com/lizhibei/BaseTool/wiki/AndSelectImage)&ensp;  &ensp;<br/>
 [AndroidScreenAdaptation 屏幕适配](https://github.com/lizhibei/BaseTool/wiki/AndroidScreenAdaptation)&ensp;  &ensp;
 [AndPermission 动态获取权限](https://github.com/lizhibei/BaseTool/wiki/AndPermission)&ensp;  &ensp;
+[Zxing(二维码）](https://github.com/lizhibei/BaseTool/wiki/%E4%BA%8C%E7%BB%B4%E7%A0%81)&ensp;  &ensp; <br/>
  ## 工具类
 [ScreenUtil 屏幕工具类](https://github.com/lizhibei/BaseTool/wiki/ScreenUitl) &ensp;  &ensp;
 [CameraTool 相机工具类](https://github.com/lizhibei/BaseTool/wiki/CameraTool)&ensp;  &ensp;
@@ -16,9 +17,9 @@
 [PinyinUtil 拼音工具类](https://github.com/lizhibei/BaseTool/wiki/PinyinUtil)&ensp;  &ensp;<br/>
 [StringTool 字符串工具类](https://github.com/lizhibei/BaseTool/wiki/StringTool)&ensp;  &ensp;
 [InputFilter 输入过滤器](https://github.com/lizhibei/BaseTool/wiki/InputFilter)&ensp;  &ensp;
+[NumberTool 四舍五入](https://github.com/lizhibei/BaseTool/wiki/NumberTool)&ensp;  &ensp;<br/>
 ## 自定义视图
 [PhotoView 缩放移动图片](https://github.com/lizhibei/BaseTool/wiki/PhotoView)&ensp;  &ensp;
 [TreeListView 树形列表](https://github.com/lizhibei/BaseTool/wiki/TreeListView)&ensp;  &ensp;
 [CountDownButton 倒计时按钮](https://github.com/lizhibei/BaseTool/wiki/CountDownButton)&ensp;  &ensp;<br/>
-
-
+[RecyclerView](https://github.com/lizhibei/BaseTool/wiki/RecyclerView)&ensp;  &ensp;
