@@ -13,6 +13,7 @@ import com.dengjinwen.basetool.activity.BaseActivity;
 import com.dengjinwen.basetool.activity.CreditCardActivity;
 import com.dengjinwen.basetool.activity.DialogFactoryActivity;
 import com.dengjinwen.basetool.activity.SelectImageAndActivity;
+import com.dengjinwen.basetool.activity.StepDownActivity;
 import com.dengjinwen.basetool.activity.selfview.SelfViewActivity;
 import com.dengjinwen.basetool.adapter.MainAdapter;
 import com.dengjinwen.basetool.entity.MainItem;
@@ -99,6 +100,8 @@ public class MainActivity extends BaseActivity  {
         data.add(selectImage);
         MainItem dialogFactory=new MainItem("DialogFactory","对话框工厂");
         data.add(dialogFactory);
+        MainItem stepDown=new MainItem("StepService","本地记步");
+        data.add(stepDown);
     }
 
     private void click(int position){
@@ -126,6 +129,10 @@ public class MainActivity extends BaseActivity  {
                 //对话框工厂
             case 4:
                 startIntent(mContext,DialogFactoryActivity.class);
+                break;
+                //本地记步
+            case 5:
+                startIntent(mContext,StepDownActivity.class);
                 break;
         }
     }

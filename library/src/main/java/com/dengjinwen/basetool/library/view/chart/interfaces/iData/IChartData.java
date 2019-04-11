@@ -1,6 +1,6 @@
-package com.dengjinwen.basetool.library.view.chart.interfaces;
+package com.dengjinwen.basetool.library.view.chart.interfaces.iData;
 
-public interface IChartData {
+public interface IChartData extends IBaseData {
 
     /**
      * 设置图标名称

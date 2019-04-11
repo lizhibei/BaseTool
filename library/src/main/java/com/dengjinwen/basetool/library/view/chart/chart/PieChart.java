@@ -1,30 +1,60 @@
 package com.dengjinwen.basetool.library.view.chart.chart;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
-import com.dengjinwen.basetool.library.R;
-import com.dengjinwen.basetool.library.view.chart.interfaces.IPieChartData;
-import com.dengjinwen.basetool.library.view.chart.render.PieRender;
+import com.dengjinwen.basetool.library.view.chart.animation.ChartAnimator;
+import com.dengjinwen.basetool.library.view.chart.compute.ComputePie;
+import com.dengjinwen.basetool.library.view.chart.data.PieAxisData;
+import com.dengjinwen.basetool.library.view.chart.interfaces.iChart.IPieChart;
+import com.dengjinwen.basetool.library.view.chart.interfaces.iData.IPieAxisData;
+import com.dengjinwen.basetool.library.view.chart.interfaces.iData.IPieData;
+import com.dengjinwen.basetool.library.view.chart.render.ChartRender;
+import com.dengjinwen.basetool.library.view.chart.render.PieChartRender;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.List;
 
-public class PieChart extends Chart<IPieChartData> {
+public class PieChart extends PieRadarChart<IPieData> implements IPieChart {
 
     /**
      * 半径
      */
-    private float radius;
+    private float radius,radiusOut,radiusIn;
+    /**
+     * 放大半径
+     */
+    private float offsetRadius,offsetRadiusOut,offsetRadiusIn;
+    /**
+     * 坐标数据
+     */
+    private IPieAxisData mPieAxisData = new PieAxisData();
+    /**
+     * 扇形 透明 白色圆弧的外切矩形
+     */
+    private RectF[] mRectFs = new RectF[3];
+    private RectF rectF=new RectF(),rectFOut=new RectF(),rectFIn=new RectF();
+    /**
+     * 放大的 扇形 透明 白色圆弧的外切矩形
+     */
+    private RectF[] mOffsetRectFs = new RectF[3];
+    private RectF offsetRectF = new RectF(),offsetRectFOut = new RectF(),offsetRectFIn = new RectF();
 
+    private PieChartRender pieChartRender;
 
-    private float textSize;
+    /**
+     * 是否显示动画
+     */
+    private boolean isAnimated=true;
+    private float animatedValue;
+    private ValueAnimator.AnimatorUpdateListener mAnimatorUpdateListener;
+    private ChartAnimator mChartAnimator;
 
-    private PieRender renderer;
-
+    private ComputePie computePie=new ComputePie(mPieAxisData);
 
     public PieChart(Context context) {
         this(context,null);
@@ -37,43 +67,218 @@ public class PieChart extends Chart<IPieChartData> {
     public PieChart(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        TypedArray ta=getContext().obtainStyledAttributes(attrs, R.styleable.pieChartView,defStyleAttr,0);
-
-        radius=ta.getDimension(R.styleable.pieChartView_radius,radius);
-        textSize=ta.getDimension(R.styleable.pieChartView_hintTextSize,textSize);
-        ta.recycle();
 
         initView();
     }
 
     @Override
-    public void setData(ArrayList chartDatas) {
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        radius=Math.min(mWidth,mHeight)*0.4f;
 
-    }
+        if(radius*2>Math.min(mWidth,mHeight)){
+            radius=0;
+        }
 
-    private void initView() {
+        mPieAxisData.setAxisLength(radius);
 
-        renderer=new PieRender(getContext());
-        renderer.setRadius(radius);
-        renderer.setTextSize(textSize);
+        //饼状图绘制区域
+        rectF.left=-radius;
+        rectF.top=-radius;
+        rectF.right=radius;
+        rectF.bottom=radius;
+        mRectFs[0]=rectF;
+
+        //透明圆弧 白色圆弧
+        radiusOut=radius*mPieAxisData.getOutsideRadiusScale();
+        rectFOut.left=-radiusOut;
+        rectFOut.top=-radiusOut;
+        rectFOut.right=radiusOut;
+        rectFOut.bottom=radiusOut;
+        mRectFs[1]=rectFOut;
+
+        //白色扇形
+        radiusIn=radius*mPieAxisData.getInsideRadiusScale();
+        rectFIn.left=-radiusIn;
+        rectFIn.top=-radiusIn;
+        rectFIn.right=radiusIn;
+        rectFIn.bottom=radiusIn;
+        mRectFs[2]=rectFIn;
+
+        //放大圆环 半径
+        offsetRadius=radius*mPieAxisData.getOffsetRadiusScale();
+
+        //饼状图绘制区域
+        offsetRectF.left=-offsetRadius;
+        offsetRectF.top=-offsetRadius;
+        offsetRectF.right=offsetRadius;
+        offsetRectF.bottom=offsetRadius;
+        mOffsetRectFs[0]=offsetRectF;
+
+        //透明圆弧 白色圆弧
+        offsetRadiusOut=offsetRadius*mPieAxisData.getOutsideRadiusScale();
+        offsetRectFOut.left=-offsetRadiusOut;
+        offsetRectFOut.top=-offsetRadiusOut;
+        offsetRectFOut.right=offsetRadiusOut;
+        offsetRectFOut.bottom=offsetRadiusOut;
+        mOffsetRectFs[1]=offsetRectFOut;
+
+        //白色扇形
+        offsetRadiusIn=offsetRadius*mPieAxisData.getInsideRadiusScale();
+        offsetRectFIn.left=-offsetRadiusIn;
+        offsetRectFIn.top=-offsetRadiusIn;
+        offsetRectFIn.right=offsetRadiusIn;
+        offsetRectFIn.bottom=offsetRadiusIn;
+        mOffsetRectFs[2]=offsetRectFIn;
+
+        /**
+         * 设置扇形半径、透明内外半径属性
+         */
+        mPieAxisData.setRectFs(mRectFs);
+        mPieAxisData.setOffsetRectFs(mOffsetRectFs);
+
+        animated();
+
+        chartRenders.clear();
+        for(int i=0;i<mDatas.size();i++){
+            pieChartRender=new PieChartRender(mPieAxisData,mDatas.get(i));
+            chartRenders.add(pieChartRender);
+        }
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        renderer.setWidthAndHeight(getWidth(),getHeight());
-        renderer.drawAllSectors(canvas,mDatas);
+//        super.onDraw(canvas);
+
+        canvas.translate(mViewWidth/2,mViewHeight/2);
+
+        canvas.save();
+
+        canvas.rotate(mPieAxisData.getStartAngle());
+        for(ChartRender chartRender:chartRenders){
+            chartRender.drawGraph(canvas,animatedValue);
+        }
+        canvas.restore();
     }
 
-    public void setData(List<IPieChartData> pieChartDatas){
-        if(mDatas!=null){
-            mDatas.clear();
-            mDatas.addAll(pieChartDatas);
+    protected void animated(){
+        if(!isAnimated){
+            animatedValue=360f;
+        }else {
+            mAnimatorUpdateListener=new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    animatedValue= (float) animation.getAnimatedValue();
+                    invalidate();
+                }
+            };
+            mChartAnimator=new ChartAnimator(mAnimatorUpdateListener);
+            mChartAnimator.animatedY(2000,360f);
         }
-        invalidate();
     }
+
+    @Override
+    public void setDataList(ArrayList<IPieData> chartDatas) {
+        super.setDataList(chartDatas);
+        computePie();
+    }
+
+    @Override
+    public void setData(IPieData chartData) {
+        super.setData(chartData);
+        computePie();
+    }
+
+    @Override
+    public int getCurrentWidth() {
+        int wrapSize;
+        if (mDatas!=null&&mDatas.size()>1){
+            NumberFormat numberFormat =NumberFormat.getPercentInstance();
+            numberFormat.setMinimumFractionDigits(mPieAxisData.getDecimalPlaces());
+            paintText.setTextSize(mPieAxisData.getTextSize());
+            paintText.setStrokeWidth(mPieAxisData.getPaintWidth());
+            float percentWidth = paintText.measureText(numberFormat.format(10));
+            float nameWidth = paintText.measureText(mPieAxisData.getName());
+            wrapSize = (int) ((percentWidth*4+nameWidth*1.1)* mPieAxisData.getOffsetRadiusScale());
+        }else {
+            wrapSize = 0;
+        }
+        return wrapSize;
+    }
+
+    @Override
+    public int getCurrentHeight() {
+        int wrapSize;
+        if (mDatas!=null&&mDatas.size()>1){
+            NumberFormat numberFormat =NumberFormat.getPercentInstance();
+            numberFormat.setMinimumFractionDigits(mPieAxisData.getDecimalPlaces());
+            paintText.setTextSize(mPieAxisData.getTextSize());
+            paintText.setStrokeWidth(mPieAxisData.getPaintWidth());
+            float percentWidth = paintText.measureText(numberFormat.format(10));
+            float nameWidth = paintText.measureText(mPieAxisData.getName());
+            wrapSize = (int) ((percentWidth*4+nameWidth*1.1)* mPieAxisData.getOffsetRadiusScale());
+        }else {
+            wrapSize = 0;
+        }
+        return wrapSize;
+    }
+
+
+    private void initView() {
+
+    }
+
 
     public void setMarkerLineLength(float markerLineLength){
-        renderer.setMarkerLineLength(markerLineLength);
+    }
+
+    @Override
+    public void setAxisTextSize(float axisTextSize) {
+
+    }
+
+    @Override
+    public void setAxisColor(int axisColor) {
+
+    }
+
+    @Override
+    public void setAxisWidth(float axisWidth) {
+
+    }
+
+    @Override
+    public void computePie() {
+        computePie.computePie(mDatas);
+    }
+
+    @Override
+    public void setInsideRadiusScale(float insideRadiusScale) {
+
+    }
+
+    @Override
+    public void setOutsideRadiusScale(float outsideRadiusScale) {
+
+    }
+
+    @Override
+    public void setOffsetRadiusScale(float offsetRadiusScale) {
+
+    }
+
+    @Override
+    public void setStartAngle(float startAngle) {
+
+    }
+
+    @Override
+    public void setMinAngle(float minAngle) {
+
+    }
+
+    @Override
+    public void setDecimalPlaces(int decimalPlaces) {
+
     }
 }
