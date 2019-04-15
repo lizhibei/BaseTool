@@ -2,8 +2,11 @@ package com.dengjinwen.basetool.library.function.stepDown;
 
 import android.util.Log;
 
+import com.dengjinwen.basetool.library.function.stepDown.interfaces.IStepCountListener;
+import com.dengjinwen.basetool.library.function.stepDown.interfaces.IStepValuePassListener;
 
-public class StepCount implements StepCountListener {
+
+public class StepCount implements IStepCountListener {
     /**
      * 当前步数
      */
@@ -23,7 +26,7 @@ public class StepCount implements StepCountListener {
     /**
      * 接口用来传递步数变化
      */
-    private StepValuePassListener stepValuePassListener;
+    private IStepValuePassListener stepValuePassListener;
     /**
      * 传感器SensorEventListener子类实例
      */
@@ -34,6 +37,10 @@ public class StepCount implements StepCountListener {
         stepDetector.initListener(this);
     }
 
+    /**
+     * 连续走十步才会开始计步
+     * 连续走了9步以下,停留超过3秒,则计数清空
+     */
     @Override
     public void countStep() {
         this.timeOfLastPeak = this.timeOfThisPeak;
@@ -80,7 +87,7 @@ public class StepCount implements StepCountListener {
             this.stepValuePassListener.stepChanged(this.mCount);  //当前步数通过接口传递给调用者
         }
     }
-    public  void initListener(StepValuePassListener listener){
+    public  void initListener(IStepValuePassListener listener){
         this.stepValuePassListener = listener;
     }
 }

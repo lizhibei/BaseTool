@@ -58,4 +58,7 @@
 
     <string name="msg_camera_framework_bug">相機被佔用或沒有相機許可權，請檢查</string>
     <string name="button_ok">退出</string>
+
+    <string name="title_notification_bar">當前步數:%1$s</string>
+    <string name="step_channel_name">計步器通知</string>
 </resources>

@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.dengjinwen.basetool.R;
 import com.dengjinwen.basetool.library.function.screenAdaptation.ScreenAdapterTools;
 import com.dengjinwen.basetool.library.function.stepDown.StepService;
-import com.dengjinwen.basetool.library.function.stepDown.UpdateUiCallBack;
+import com.dengjinwen.basetool.library.function.stepDown.interfaces.IUpdateUiCallBack;
 
 /**
  * 本地记步
@@ -55,7 +55,7 @@ public class StepDownActivity extends BaseActivity implements View.OnClickListen
         public void onServiceConnected(ComponentName name, IBinder service) {
             StepService.LcBinder lcBinder= (StepService.LcBinder) service;
             stepService=lcBinder.getService();
-            stepService.registerCallback(new UpdateUiCallBack() {
+            stepService.registerCallback(new IUpdateUiCallBack() {
                 @Override
                 public void updateUi(int stepCount) {
                     Message message = Message.obtain();

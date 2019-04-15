@@ -4,6 +4,8 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 
+import com.dengjinwen.basetool.library.function.stepDown.interfaces.IStepCountListener;
+
 /**
  * 步数检测
  * 使用加速度传感器计步的主要算法
@@ -78,7 +80,7 @@ public class StepDetector  implements SensorEventListener {
      * 波峰波谷时间差
      */
     private int TimeInterval = 250;
-    private StepCountListener mStepListeners;
+    private IStepCountListener mStepListeners;
 
     @Override
     public void onSensorChanged(SensorEvent event) {
@@ -97,7 +99,7 @@ public class StepDetector  implements SensorEventListener {
 
     }
 
-    public void initListener(StepCountListener listener) {
+    public void initListener(IStepCountListener listener) {
         this.mStepListeners = listener;
     }
 

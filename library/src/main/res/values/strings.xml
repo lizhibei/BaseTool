@@ -58,4 +58,7 @@
     <string name="recycler_swipe_load_error">Error, please try again</string>
     <string name="msg_camera_framework_bug">相机被占用或没有相机权限，请检查</string>
     <string name="button_ok">退出</string>
+
+    <string name="title_notification_bar">当前步数:%1$s</string>
+    <string name="step_channel_name">计步器通知</string>
 </resources>

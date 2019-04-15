@@ -1,10 +1,10 @@
-package com.dengjinwen.basetool.library.function.stepDown;
+package com.dengjinwen.basetool.library.function.stepDown.interfaces;
 
 /**
  * 步数更新回调
  * Created by dylan on 16/9/27.
  */
-public interface UpdateUiCallBack {
+public interface IUpdateUiCallBack {
     /**
      * 更新UI步数
      *
