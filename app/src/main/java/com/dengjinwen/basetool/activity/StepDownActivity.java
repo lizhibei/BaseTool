@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.dengjinwen.basetool.R;
 import com.dengjinwen.basetool.library.function.screenAdaptation.ScreenAdapterTools;
-import com.dengjinwen.basetool.library.function.stepDown.StepService;
+import com.dengjinwen.basetool.library.function.stepDown.BaseToolStepService;
 import com.dengjinwen.basetool.library.function.stepDown.interfaces.IUpdateUiCallBack;
 
 /**
@@ -23,7 +23,7 @@ public class StepDownActivity extends BaseActivity implements View.OnClickListen
     private TextView head_text_title,step_count_tv;
 
     private Context mContext;
-    private StepService stepService;
+    private BaseToolStepService stepService;
     private boolean isBind;
 
     @Override
@@ -42,8 +42,8 @@ public class StepDownActivity extends BaseActivity implements View.OnClickListen
 
         step_count_tv=findViewById(R.id.step_count_tv);
 
-        Intent intent=new Intent(mContext,StepService.class);
-        intent.putExtra(StepService.notification,true);
+        Intent intent=new Intent(mContext,BaseToolStepService.class);
+        intent.putExtra(BaseToolStepService.notification,true);
         isBind=bindService(intent,serviceConnection,Context.BIND_AUTO_CREATE);
         startService(intent);
     }
@@ -54,7 +54,7 @@ public class StepDownActivity extends BaseActivity implements View.OnClickListen
     private ServiceConnection serviceConnection=new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            StepService.LcBinder lcBinder= (StepService.LcBinder) service;
+            BaseToolStepService.LcBinder lcBinder= (BaseToolStepService.LcBinder) service;
             stepService=lcBinder.getService();
             stepService.registerCallback(new IUpdateUiCallBack() {
                 @Override

@@ -48,7 +48,7 @@
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
 
         <service
-            android:name=".function.stepDown.StepService"
+            android:name=".function.stepDown.BaseToolStepService"
             android:enabled="true"
             android:exported="true" />
     </application>

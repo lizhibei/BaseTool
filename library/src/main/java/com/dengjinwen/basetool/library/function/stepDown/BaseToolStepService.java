@@ -4,8 +4,10 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -32,7 +34,7 @@ import com.dengjinwen.basetool.library.tool.log;
 import static com.dengjinwen.basetool.library.function.stepDown.SportStepJsonUtils.getCalorieByStep;
 import static com.dengjinwen.basetool.library.function.stepDown.SportStepJsonUtils.getDistanceByStep;
 
-public class StepService extends Service implements SensorEventListener {
+public class BaseToolStepService extends Service implements SensorEventListener {
 
     public static final String notification="notification";
 
@@ -92,11 +94,14 @@ public class StepService extends Service implements SensorEventListener {
      */
     private boolean isNofi=false;
 
+    private BroadcastReceiver mInfoReceiver;
+
     @Override
     public void onCreate() {
         super.onCreate();
         stepDBHelper=StepDBHelper.factory(getApplicationContext());
         log.e("BindService—onCreate:开启计步");
+        initBroadcastReceiver();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -143,7 +148,7 @@ public class StepService extends Service implements SensorEventListener {
         Sensor detectorSensor=sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
         if(countSensor!=null){
             stepSensorType=Sensor.TYPE_STEP_COUNTER;
-            sensorManager.registerListener(StepService.this,
+            sensorManager.registerListener(BaseToolStepService.this,
                     countSensor,SensorManager.SENSOR_DELAY_NORMAL);
 //        } else if(detectorSensor!=null){
 //            stepSensorType=Sensor.TYPE_STEP_DETECTOR;
@@ -211,19 +216,6 @@ public class StepService extends Service implements SensorEventListener {
             //获取当前传感器返回的临时步数
             int tempStep= (int) event.values[0];
             log.e("传感器返回的步数："+tempStep);
-            //首次如果没有获取手机系统中已有的步数,则获取一次系统中APP还未开始记步的步数
-//            if(!hasRecord){
-//                hasRecord=true;
-//                hasStepCount=tempStep;
-//            }else {
-//                //获取APP打开到现在的总步数=本次系统回调的总步数-APP打开之前已有的步数
-//                int thisStepCount = tempStep - hasStepCount;
-//                //本次有效步数=（APP打开后所记录的总步数-上一次APP打开后所记录的总步数）
-//                int thisStep = thisStepCount - previousStepCount;
-//                //总步数=现有的步数+本次有效步数
-//                nowStepCount += (thisStep);
-//                //记录最后一次APP打开到现在的总步数
-//                previousStepCount = thisStepCount;
 
             long time=System.currentTimeMillis();
             String currrentDay=DateUtils.dateFormat(time,"yyyy-MM-dd");
@@ -302,21 +294,49 @@ public class StepService extends Service implements SensorEventListener {
      * 绑定回调接口
      */
     public class LcBinder extends Binder {
-        public StepService getService() {
-            return StepService.this;
+        public BaseToolStepService getService() {
+            return BaseToolStepService.this;
         }
+    }
+
+    private void initBroadcastReceiver(){
+        IntentFilter filter=new IntentFilter();
+
+        //监听日期变化
+        filter.addAction(Intent.ACTION_DATE_CHANGED);  //日期发生变化调用
+        filter.addAction(Intent.ACTION_TIME_CHANGED); //在设置中修改调用
+        filter.addAction(Intent.ACTION_TIME_TICK);  //每分钟调用一次
+
+        mInfoReceiver=new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String action=intent.getAction();
+                //监听日期变化
+                if(action.equals(Intent.ACTION_DATE_CHANGED)||
+                        action.equals(Intent.ACTION_TIME_CHANGED)||
+                        action.equals(Intent.ACTION_TIME_TICK)){
+                    if("00:00".equals(DateUtils.getCurrentDate("HH:mm"))){
+                    }
+                }
+            }
+        };
+
+        registerReceiver(mInfoReceiver, filter);
     }
 
     /**
      * 更新通知
      */
     private synchronized void updateNotification(int stepCount) {
-        if (null != mNotificationApiCompat) {
+        if (null == mNotificationApiCompat) {
+           initNotification(stepCount);
+        }else {
             String km = getDistanceByStep(stepCount);
             String calorie = getCalorieByStep(stepCount);
             String contentText = calorie + " 千卡  " + km + " 公里";
-            mNotificationApiCompat.updateNotification(NOTIFY_ID, getString(R.string.
-                    title_notification_bar, String.valueOf(stepCount)), contentText);
+            mNotificationApiCompat.updateNotification(NOTIFY_ID,
+                    getString(R.string.
+                            title_notification_bar, String.valueOf(stepCount)), contentText);
         }
     }
 
