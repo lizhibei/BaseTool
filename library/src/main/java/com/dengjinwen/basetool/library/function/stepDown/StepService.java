@@ -34,6 +34,8 @@ import static com.dengjinwen.basetool.library.function.stepDown.SportStepJsonUti
 
 public class StepService extends Service implements SensorEventListener {
 
+    public static final String notification="notification";
+
     /**
      * binder服务与activity交互桥梁
      */
@@ -85,11 +87,15 @@ public class StepService extends Service implements SensorEventListener {
      */
     private static final int NOTIFY_ID = 1000;
 
+    /**
+     * 是否显示通知
+     */
+    private boolean isNofi=false;
+
     @Override
     public void onCreate() {
         super.onCreate();
         stepDBHelper=StepDBHelper.factory(getApplicationContext());
-        initNotification(nowStepCount);
         log.e("BindService—onCreate:开启计步");
         new Thread(new Runnable() {
             @Override
@@ -103,6 +109,10 @@ public class StepService extends Service implements SensorEventListener {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
+        isNofi=intent.getBooleanExtra(notification,false);
+        if(isNofi){
+            initNotification(nowStepCount);
+        }
         return lcBinder;
     }
 
@@ -186,7 +196,9 @@ public class StepService extends Service implements SensorEventListener {
             Log.i("BindService", "数据更新");
             mCallback.updateUi(nowStepCount);
         }
-        updateNotification(nowStepCount);
+        if(isNofi){
+            updateNotification(nowStepCount);
+        }
     }
 
     /**

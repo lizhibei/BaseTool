@@ -30,5 +30,5 @@ public class DBConstants {
     public static final String SQL_QUERY_STEP_ORDER_BY = "SELECT * FROM " + TABLE_NAME + " WHERE "
             + TODAY + " = ? ORDER BY " + STEP + " DESC";
 
-    public static final int ERROR=10;
+    public static final int ERROR=0;
 }

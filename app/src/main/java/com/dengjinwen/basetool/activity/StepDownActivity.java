@@ -43,6 +43,7 @@ public class StepDownActivity extends BaseActivity implements View.OnClickListen
         step_count_tv=findViewById(R.id.step_count_tv);
 
         Intent intent=new Intent(mContext,StepService.class);
+        intent.putExtra(StepService.notification,true);
         isBind=bindService(intent,serviceConnection,Context.BIND_AUTO_CREATE);
         startService(intent);
     }
