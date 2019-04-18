@@ -16,6 +16,7 @@ public class PreferencesHelper {
      * 计步器上次返回的步数
      */
     public static final String LAST_SENSOR_TIME="last_sensor_time";
+    public static final String NAME="front_name";
 
     private static SharedPreferences getSharedPreferences(Context context){
         return context.getSharedPreferences(APP_SHARE,0);
@@ -30,7 +31,7 @@ public class PreferencesHelper {
         Gson gson=new Gson();
         Type type=new TypeToken<StepData>(){}.getType();
         String json=gson.toJson(stepData,type);
-        getSharedPreferences(context).edit().putString(LAST_SENSOR_TIME,json).apply();
+        getSharedPreferences(context).edit().putString(getName(context)+LAST_SENSOR_TIME,json).apply();
     }
 
     /**
@@ -41,11 +42,23 @@ public class PreferencesHelper {
     public static StepData getLastSensorStep(Context context){
         Gson gson=new Gson();
         Type type=new TypeToken<StepData>(){}.getType();
-        String json=getSharedPreferences(context).getString(LAST_SENSOR_TIME,null);
+        String json=getSharedPreferences(context).getString(getName(context)+LAST_SENSOR_TIME,null);
         if(json!=null){
             StepData stepData=gson.fromJson(json,type);
             return stepData;
         }
         return null;
+    }
+
+    /**
+     * 保存步数到本地的前缀
+     * @param name
+     */
+    public static void saveName(Context context,String name){
+        getSharedPreferences(context).edit().putString(NAME,name).apply();
+    }
+
+    public static String getName(Context context){
+        return getSharedPreferences(context).getString(NAME,"");
     }
 }
