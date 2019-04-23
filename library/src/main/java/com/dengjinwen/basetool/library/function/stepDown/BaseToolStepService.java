@@ -1,18 +1,10 @@
 package com.dengjinwen.basetool.library.function.stepDown;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -21,18 +13,13 @@ import android.os.Binder;
 import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
 import android.util.Log;
 
-import com.dengjinwen.basetool.library.R;
 import com.dengjinwen.basetool.library.function.stepDown.interfaces.IStepDBHelper;
 import com.dengjinwen.basetool.library.function.stepDown.interfaces.IStepValuePassListener;
 import com.dengjinwen.basetool.library.function.stepDown.interfaces.IUpdateUiCallBack;
 import com.dengjinwen.basetool.library.tool.DateUtils;
 import com.dengjinwen.basetool.library.tool.log;
-
-import static com.dengjinwen.basetool.library.function.stepDown.SportStepJsonUtils.getCalorieByStep;
-import static com.dengjinwen.basetool.library.function.stepDown.SportStepJsonUtils.getDistanceByStep;
 
 public class BaseToolStepService extends Service implements SensorEventListener {
 
@@ -77,18 +64,6 @@ public class BaseToolStepService extends Service implements SensorEventListener 
 
     private IStepDBHelper stepDBHelper;
 
-    private NotificationManager nm;
-    private NotificationApiCompat mNotificationApiCompat;
-    /**
-     * 点击通知栏广播requestCode
-     */
-    private static final int BROADCAST_REQUEST_CODE = 100;
-    private static final String STEP_CHANNEL_ID = "stepChannelId";
-    /**
-     * 步数通知ID
-     */
-    private static final int NOTIFY_ID = 1000;
-
     /**
      * 是否显示通知
      */
@@ -115,8 +90,9 @@ public class BaseToolStepService extends Service implements SensorEventListener 
     @Override
     public IBinder onBind(Intent intent) {
         isNofi=intent.getBooleanExtra(notification,false);
-        if(isNofi){
-            initNotification(nowStepCount);
+        NotificationHelper.getInstance().initNotification(this,this,nowStepCount);
+        if(!isNofi){
+           NotificationHelper.getInstance().stopNotification();
         }
         return lcBinder;
     }
@@ -202,8 +178,12 @@ public class BaseToolStepService extends Service implements SensorEventListener 
             mCallback.updateUi(nowStepCount);
         }
         if(isNofi){
-            updateNotification(nowStepCount);
+            NotificationHelper.getInstance().updateNotification(this,this,nowStepCount);
         }
+    }
+
+    public void showNofi(){
+        isNofi=true;
     }
 
     /**
@@ -324,97 +304,4 @@ public class BaseToolStepService extends Service implements SensorEventListener 
         registerReceiver(mInfoReceiver, filter);
     }
 
-    /**
-     * 更新通知
-     */
-    private synchronized void updateNotification(int stepCount) {
-        if (null == mNotificationApiCompat) {
-           initNotification(stepCount);
-        }else {
-            String km = getDistanceByStep(stepCount);
-            String calorie = getCalorieByStep(stepCount);
-            String contentText = calorie + " 千卡  " + km + " 公里";
-            mNotificationApiCompat.updateNotification(NOTIFY_ID,
-                    getString(R.string.
-                            title_notification_bar, String.valueOf(stepCount)), contentText);
-        }
-    }
-
-    private synchronized void initNotification(int currentStep) {
-
-        nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        int smallIcon = getResources().getIdentifier("icon_step_small", "mipmap", getPackageName());
-        if (0 == smallIcon) {
-            smallIcon = R.mipmap.ic_launcher;
-        }
-        String receiverName = getReceiver(getApplicationContext());
-        PendingIntent contentIntent = PendingIntent.getBroadcast(this, BROADCAST_REQUEST_CODE, new Intent(), PendingIntent.FLAG_UPDATE_CURRENT);
-        if (!TextUtils.isEmpty(receiverName)) {
-            try {
-                contentIntent = PendingIntent.getBroadcast(this, BROADCAST_REQUEST_CODE, new Intent(this, Class.forName(receiverName)), PendingIntent.FLAG_UPDATE_CURRENT);
-            } catch (Exception e) {
-                e.printStackTrace();
-                contentIntent = PendingIntent.getBroadcast(this, BROADCAST_REQUEST_CODE, new Intent(), PendingIntent.FLAG_UPDATE_CURRENT);
-            }
-        }
-        String km = getDistanceByStep(currentStep);
-        String calorie = getCalorieByStep(currentStep);
-        String contentText = calorie + " 千卡  " + km + " 公里";
-        int largeIcon = getResources().getIdentifier("ic_launcher", "mipmap", getPackageName());
-        Bitmap largeIconBitmap = null;
-        if (0 != largeIcon) {
-            largeIconBitmap = BitmapFactory.decodeResource(getResources(), largeIcon);
-        } else {
-            largeIconBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
-        }
-        mNotificationApiCompat = new NotificationApiCompat.Builder(this,
-                nm,
-                STEP_CHANNEL_ID,
-                getString(R.string.step_channel_name),
-                smallIcon)
-                .setContentIntent(contentIntent)
-                .setContentText(contentText)
-                .setContentTitle(getString(R.string.title_notification_bar, String.valueOf(currentStep)))
-                .setTicker(getString(R.string.app_name))
-                .setOngoing(true)
-                .setPriority(Notification.PRIORITY_MIN)
-                .setLargeIcon(largeIconBitmap)
-                .setOnlyAlertOnce(true)
-                .builder();
-        mNotificationApiCompat.startForeground(this, NOTIFY_ID);
-        mNotificationApiCompat.notify(NOTIFY_ID);
-
-    }
-
-    public static String getReceiver(Context context) {
-        try {
-            PackageInfo packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), PackageManager.GET_RECEIVERS);
-            ActivityInfo[] activityInfos = packageInfo.receivers;
-            if (null != activityInfos && activityInfos.length > 0) {
-                for (int i = 0; i < activityInfos.length; i++) {
-                    String receiverName = activityInfos[i].name;
-                    Class superClazz = Class.forName(receiverName).getSuperclass();
-                    int count = 1;
-                    while (null != superClazz) {
-                        if (superClazz.getName().equals("java.lang.Object")) {
-                            break;
-                        }
-                        if (superClazz.getName().equals(BaseClickBroadcast.class.getName())) {
-                            return receiverName;
-                        }
-                        if (count > 20) {
-                            //用来做容错，如果20个基类还不到Object直接跳出防止while死循环
-                            break;
-                        }
-                        count++;
-                        superClazz = superClazz.getSuperclass();
-
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 }

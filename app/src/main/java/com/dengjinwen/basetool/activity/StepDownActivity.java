@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.dengjinwen.basetool.R;
 import com.dengjinwen.basetool.library.function.screenAdaptation.ScreenAdapterTools;
 import com.dengjinwen.basetool.library.function.stepDown.BaseToolStepService;
+import com.dengjinwen.basetool.library.function.stepDown.NotificationHelper;
 import com.dengjinwen.basetool.library.function.stepDown.interfaces.IUpdateUiCallBack;
 
 /**
@@ -41,6 +42,9 @@ public class StepDownActivity extends BaseActivity implements View.OnClickListen
         head_text_title.setText("记步");
 
         step_count_tv=findViewById(R.id.step_count_tv);
+
+        findViewById(R.id.stop_tv).setOnClickListener(this); //停止通知
+        findViewById(R.id.start_tv).setOnClickListener(this); //开始通知
 
         Intent intent=new Intent(mContext,BaseToolStepService.class);
         intent.putExtra(BaseToolStepService.notification,true);
@@ -97,6 +101,14 @@ public class StepDownActivity extends BaseActivity implements View.OnClickListen
         switch (v.getId()){
             case R.id.head_img_left:
                 finish();
+                break;
+                //停止通知
+            case R.id.stop_tv:
+                NotificationHelper.getInstance().stopNotification();
+                break;
+                //开始通知
+            case R.id.start_tv:
+                NotificationHelper.getInstance().showNOtification(mContext,stepService);
                 break;
         }
     }

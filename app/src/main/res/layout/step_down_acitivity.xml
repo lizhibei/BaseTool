@@ -22,4 +22,23 @@
         android:layout_marginTop="10px"
         android:textColor="@color/red_normal"
         android:textSize="30px" />
+
+
+    <TextView
+        android:id="@+id/stop_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28px"
+        android:layout_marginTop="20px"
+        android:textColor="@color/text_color"
+        android:text="停止通知"/>
+
+    <TextView
+        android:id="@+id/start_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28px"
+        android:layout_marginTop="20px"
+        android:textColor="@color/text_color"
+        android:text="开始通知"/>
 </LinearLayout>
