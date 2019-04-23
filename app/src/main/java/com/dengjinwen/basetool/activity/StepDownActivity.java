@@ -46,8 +46,8 @@ public class StepDownActivity extends BaseActivity implements View.OnClickListen
         findViewById(R.id.stop_tv).setOnClickListener(this); //停止通知
         findViewById(R.id.start_tv).setOnClickListener(this); //开始通知
 
+        NotificationHelper.isNofi=true;
         Intent intent=new Intent(mContext,BaseToolStepService.class);
-        intent.putExtra(BaseToolStepService.notification,true);
         isBind=bindService(intent,serviceConnection,Context.BIND_AUTO_CREATE);
         startService(intent);
     }

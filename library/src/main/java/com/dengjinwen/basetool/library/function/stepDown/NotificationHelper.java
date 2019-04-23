@@ -41,6 +41,11 @@ public class NotificationHelper {
 
     private static Service mService;
 
+    /**
+     * 是否显示通知
+     */
+    public static boolean isNofi=false;
+
     private NotificationHelper() {
     }
 
@@ -75,6 +80,7 @@ public class NotificationHelper {
      * 隐藏通知
      */
     public void stopNotification(){
+        isNofi=false;
         if(mNotificationApiCompat!=null&&mService!=null){
             mNotificationApiCompat.stopForeground(mService);
         }
@@ -84,6 +90,7 @@ public class NotificationHelper {
      * 显示通知
      */
     public void showNOtification(Context context,Service service){
+        isNofi=true;
         if(mService!=null&&mNotificationApiCompat!=null){
             mNotificationApiCompat.startForeground(mService,NOTIFY_ID);
         }else if(mService==null&&service!=null){

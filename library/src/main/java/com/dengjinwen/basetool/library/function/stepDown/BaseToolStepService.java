@@ -64,11 +64,6 @@ public class BaseToolStepService extends Service implements SensorEventListener 
 
     private IStepDBHelper stepDBHelper;
 
-    /**
-     * 是否显示通知
-     */
-    private boolean isNofi=false;
-
     private BroadcastReceiver mInfoReceiver;
 
     @Override
@@ -89,9 +84,8 @@ public class BaseToolStepService extends Service implements SensorEventListener 
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        isNofi=intent.getBooleanExtra(notification,false);
         NotificationHelper.getInstance().initNotification(this,this,nowStepCount);
-        if(!isNofi){
+        if(!NotificationHelper.isNofi){
            NotificationHelper.getInstance().stopNotification();
         }
         return lcBinder;
@@ -177,13 +171,9 @@ public class BaseToolStepService extends Service implements SensorEventListener 
             Log.i("BindService", "数据更新");
             mCallback.updateUi(nowStepCount);
         }
-        if(isNofi){
+        if(NotificationHelper.isNofi){
             NotificationHelper.getInstance().updateNotification(this,this,nowStepCount);
         }
-    }
-
-    public void showNofi(){
-        isNofi=true;
     }
 
     /**
