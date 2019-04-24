@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 
 import com.dengjinwen.basetool.library.view.chart.animation.ChartAnimator;
 import com.dengjinwen.basetool.library.view.chart.compute.ComputePie;
@@ -18,6 +19,7 @@ import com.dengjinwen.basetool.library.view.chart.render.PieChartRender;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PieChart extends PieRadarChart<IPieData> implements IPieChart {
 
@@ -54,6 +56,11 @@ public class PieChart extends PieRadarChart<IPieData> implements IPieChart {
     private ValueAnimator.AnimatorUpdateListener mAnimatorUpdateListener;
     private ChartAnimator mChartAnimator;
 
+    // 点击判断
+    private boolean isDownTouch = false;
+
+    private int angleId = -1;
+
     private ComputePie computePie=new ComputePie(mPieAxisData);
 
     public PieChart(Context context) {
@@ -66,9 +73,6 @@ public class PieChart extends PieRadarChart<IPieData> implements IPieChart {
 
     public PieChart(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
-
-        initView();
     }
 
     @Override
@@ -159,6 +163,53 @@ public class PieChart extends PieRadarChart<IPieData> implements IPieChart {
             chartRender.drawGraph(canvas,animatedValue);
         }
         canvas.restore();
+
+        for (ChartRender chartRender : chartRenders){
+            PieChartRender pieChartRender = (PieChartRender)chartRender;
+            pieChartRender.drawGraphText(canvas,animatedValue);
+        }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (mDatas.size()>0){
+            switch (event.getAction()){
+                case MotionEvent.ACTION_DOWN:
+                    float x = event.getX()-(mWidth/2);
+                    float y = event.getY()-(mHeight/2);
+                    float touchAngle = 0;
+                    if (x<0&&y<0){
+                        touchAngle += 180;
+                    }else if (y<0&&x>0){
+                        touchAngle += 360;
+                    }else if (y>0&&x<0){
+                        touchAngle += 180;
+                    }
+                    touchAngle +=Math.toDegrees(Math.atan(y/x));
+                    touchAngle = touchAngle-mPieAxisData.getStartAngle();
+                    if (touchAngle<0){
+                        touchAngle = touchAngle+360;
+                    }
+                    float touchRadius = (float) Math.sqrt(y*y+x*x);
+                    if (radiusOut< touchRadius && touchRadius< radius){
+                        angleId = -Arrays.binarySearch(mPieAxisData.getStartAngles(),(touchAngle))-1;
+                        PieChartRender pieChartRender = (PieChartRender)chartRenders.get(angleId);
+                        pieChartRender.setTouchFlag(true);
+                        invalidate();
+                        isDownTouch = true;
+                    }
+                    return true;
+                case MotionEvent.ACTION_UP:
+                    if (isDownTouch){
+                        PieChartRender pieChartRender = (PieChartRender)chartRenders.get(angleId);
+                        pieChartRender.setTouchFlag(false);
+                        invalidate();
+                        isDownTouch = false;
+                        return true;
+                    }
+            }
+        }
+        return super.onTouchEvent(event);
     }
 
     protected void animated(){
@@ -224,27 +275,19 @@ public class PieChart extends PieRadarChart<IPieData> implements IPieChart {
     }
 
 
-    private void initView() {
-
-    }
-
-
-    public void setMarkerLineLength(float markerLineLength){
-    }
-
     @Override
     public void setAxisTextSize(float axisTextSize) {
-
+        mPieAxisData.setTextSize(axisTextSize);
     }
 
     @Override
     public void setAxisColor(int axisColor) {
-
+        mPieAxisData.setColor(axisColor);
     }
 
     @Override
     public void setAxisWidth(float axisWidth) {
-
+        mPieAxisData.setPaintWidth(axisWidth);
     }
 
     @Override
@@ -254,31 +297,37 @@ public class PieChart extends PieRadarChart<IPieData> implements IPieChart {
 
     @Override
     public void setInsideRadiusScale(float insideRadiusScale) {
-
+        mPieAxisData.setInsideRadiusScale(insideRadiusScale);
     }
 
     @Override
     public void setOutsideRadiusScale(float outsideRadiusScale) {
-
+        mPieAxisData.setOutsideRadiusScale(outsideRadiusScale);
     }
 
     @Override
     public void setOffsetRadiusScale(float offsetRadiusScale) {
-
+        mPieAxisData.setOffsetRadiusScale(offsetRadiusScale);
     }
 
     @Override
     public void setStartAngle(float startAngle) {
-
+        while (startAngle<0){
+            startAngle = startAngle+360;
+        }
+        while (startAngle>360){
+            startAngle = startAngle-360;
+        }
+        mPieAxisData.setStartAngle(startAngle);
     }
 
     @Override
     public void setMinAngle(float minAngle) {
-
+        mPieAxisData.setMinAngle(minAngle);
     }
 
     @Override
     public void setDecimalPlaces(int decimalPlaces) {
-
+        mPieAxisData.setDecimalPlaces(decimalPlaces);
     }
 }

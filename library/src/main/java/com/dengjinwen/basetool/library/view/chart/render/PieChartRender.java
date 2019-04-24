@@ -3,6 +3,7 @@ package com.dengjinwen.basetool.library.view.chart.render;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PointF;
 import android.graphics.RectF;
 
 import com.dengjinwen.basetool.library.view.chart.interfaces.iData.IPieAxisData;
@@ -50,6 +51,10 @@ public class PieChartRender extends ChartRender implements TouchListener {
      */
     private float textHeight=100;
     private float textBottom;
+    /**
+     * 饼状图 内部绘制文字的点坐标
+     */
+    private PointF mPointF = new PointF();
 
 
     public PieChartRender(IPieAxisData iPieAxisData,IPieData iPieData ) {
@@ -61,8 +66,8 @@ public class PieChartRender extends ChartRender implements TouchListener {
 
         textPaint.setAntiAlias(true);
         textPaint.setDither(true);
-        textPaint.setColor(pieData.getColor());
-        textPaint.setTextSize(pieData.getTextSize());
+        textPaint.setColor(pieAxisData.getColor());
+        textPaint.setTextSize(pieAxisData.getTextSize());
         textPaint.setTextAlign(Paint.Align.CENTER);
         textPaint.setStrokeWidth(pieAxisData.getPaintWidth());
 
@@ -100,10 +105,12 @@ public class PieChartRender extends ChartRender implements TouchListener {
     public void drawGraphText(Canvas canvas,float animatedValue){
         if(pieAxisData.getIsTextSize()&&animatedValue>pieData.getCurrentAngle()+pieData.getAngle()/2){
             if(touchFlag){
-
+                drawText(canvas,pieData,pieData.getCurrentAngle()+pieAxisData.getStartAngle(),
+                        numberFormat,true);
             } else {
                 if(pieData.getAngle()>pieAxisData.getMinAngle()){
-
+                    drawText(canvas,pieData,pieData.getCurrentAngle()+
+                            pieAxisData.getStartAngle(),numberFormat,false);
                 }
             }
         }
@@ -142,120 +149,30 @@ public class PieChartRender extends ChartRender implements TouchListener {
         midInPath.reset();
     }
 
-    private void drawText(Canvas canvas, IPieData pie, float currentStartAngle, NumberFormat numberFormat,boolean flag){
-
+    /**
+     *
+     * @param canvas
+     * @param pie
+     * @param currentStartAngle  当前弧形的开始角度
+     * @param numberFormat
+     * @param flag 是否绘制名称
+     */
+    private void drawText(Canvas canvas, IPieData pie, float currentStartAngle,
+                          NumberFormat numberFormat,boolean flag){
+        int textPathX=(int)(Math.cos(Math.toRadians(currentStartAngle+pie.getAngle()/2))*
+                pieAxisData.getAxisLength()*(1+pieAxisData.getOutsideRadiusScale())/2);
+        int textPathY=(int)(Math.sin(Math.toRadians(currentStartAngle+pie.getAngle()/2))*
+                pieAxisData.getAxisLength()*(1+pieAxisData.getOutsideRadiusScale())/2);
+        mPointF.x=textPathX;
+        mPointF.y=textPathY;
+        String[] strings;
+        if(flag) {
+            strings = new String[]{pie.getName(), numberFormat.format(pie.getPercentage()) + ""};
+        }else {
+            strings=new String[]{numberFormat.format(pie.getPercentage())+""};
+        }
+        textCenter(strings,textPaint,canvas,mPointF,Paint.Align.CENTER);
     }
-    /**
-     * 绘制图形
-     */
-//    public void drawAllSectors(Canvas canvas,List<IPieData> data){
-//        float sum1=0f;
-//        for(IPieData pieChartData:data){
-//            sum1+=pieChartData.getValue();
-//        }
-//
-//        float sum2=0f;
-//        for(IPieData pieChartData:data){
-//            float startAngel=sum2/sum1*360;
-//            sum2+=pieChartData.getValue();
-//            float sweepAngel=pieChartData.getValue()/sum1*360;
-//            drawSectors(canvas,pieChartData.getColor(),startAngel,sweepAngel);
-//            drawTag(canvas,pieChartData.getColor(),startAngel+sweepAngel/2,pieChartData.getMarker());
-//        }
-//    }
-
-
-    /**
-     * 获取标记文本的高度bottom
-     */
-//    private void getHeightAndBottom(){
-//        textPaint.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,textSize,
-//                mContext.getResources().getDisplayMetrics()));
-//        Paint.FontMetrics fontMetrics=textPaint.getFontMetrics();
-//        textHeight=fontMetrics.descent-fontMetrics.ascent;
-//        textBottom=fontMetrics.bottom;
-//    }
-
-    /**
-     * 绘制扇形
-     * @param color
-     * @param startAngel
-     * @param sweepAngel
-     */
-//    private void drawSectors(Canvas canvas,int color,float startAngel,float sweepAngel){
-//
-//        Paint paint=new Paint();
-//        paint.setFlags(Paint.ANTI_ALIAS_FLAG);
-//        paint.setStyle(Paint.Style.FILL);
-//        paint.setColor(color);
-//
-//        canvas.drawArc(pieChartCircleRectf,startAngel,sweepAngel,true,paint);
-//    }
-
-    /**
-     * 绘制标记
-     * @param color
-     * @param rotateAngel
-     * @param text
-     */
-//    private void drawTag(Canvas canvas,int color,float rotateAngel,String text){
-//
-//        drawTagLine(canvas,rotateAngel,color);
-//        drawTagText(canvas,rotateAngel,color,text);
-//    }
-
-    /**
-     * 绘制标记线
-     * @param rotateAngel
-     */
-//    private void drawTagLine(Canvas canvas,float rotateAngel,int color){
-//        Paint paint=new Paint();
-//        paint.setFlags(Paint.ANTI_ALIAS_FLAG);
-//        paint.setStyle(Paint.Style.STROKE);
-//        paint.setColor(color);
-//
-//        Path path=new Path();
-//        path.close();
-////        path.moveTo(width/2,height/2);
-//        PointF pointF=getTurningPoint(rotateAngel);
-//        path.lineTo(pointF.x,pointF.y);
-//        float landLineX=0f;
-//        if(rotateAngel>90f&&rotateAngel<270f){
-//            landLineX=pointF.x-20;
-//        }else {
-//            landLineX=pointF.x+20;
-//        }
-//        path.lineTo(landLineX,pointF.y);
-//        canvas.drawPath(path,paint);
-//    }
-
-    /**
-     * 绘制标记文本
-     * @param rotateAngel
-     * @param color
-     */
-//    private void drawTagText( Canvas canvas,float rotateAngel, int color, String text){
-//        textPaint.setColor(color);
-//        PointF pointF=getTurningPoint(rotateAngel);
-//        if(rotateAngel>90f&&rotateAngel<270f){
-//            float textWidth=textPaint.measureText(text);
-//            canvas.drawText(text,pointF.x-20-textWidth,pointF.y+textHeight/2-textBottom,textPaint);
-//        }else {
-//            canvas.drawText(text,pointF.x+20,pointF.y+textHeight/2-textBottom,textPaint);
-//        }
-//    }
-
-    /**
-     * 获取标记线的转折点坐标
-     * @return
-     */
-//    private PointF getTurningPoint(float rotateAngel){
-//        float x= (float) (width/2+(markerLineLength+radius)*Math.cos(Math.toRadians(rotateAngel)));
-//        float y= (float) (height/2+(markerLineLength+radius)*Math.sin(Math.toRadians(rotateAngel)));
-//        PointF point=new PointF(x,y);
-//        return point;
-//    }
-
 
     public void setMarkerLineLength(float markerLineLength) {
         this.markerLineLength = markerLineLength;
