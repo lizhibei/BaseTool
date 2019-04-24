@@ -18,6 +18,7 @@ import com.dengjinwen.basetool.activity.selfview.SelfViewActivity;
 import com.dengjinwen.basetool.adapter.MainAdapter;
 import com.dengjinwen.basetool.entity.MainItem;
 import com.dengjinwen.basetool.library.function.zxing.common.Constant;
+import com.dengjinwen.basetool.library.tool.NotificationsUtils;
 import com.dengjinwen.basetool.library.tool.ScreenUitl;
 import com.dengjinwen.basetool.library.tool.log;
 import com.dengjinwen.basetool.util.FilePicker;
@@ -57,6 +58,10 @@ public class MainActivity extends BaseActivity  {
 ////        WindowManager windowManager= (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
 ////        windowManager.getDefaultDisplay().getMetrics(dm);
 ////        log.e("density:"+dm.density);
+
+        if(!NotificationsUtils.isNotificationEnabled(mContext)){
+            NotificationsUtils.toNotificationSetting(this);
+        }
     }
 
 
@@ -86,6 +91,10 @@ public class MainActivity extends BaseActivity  {
                 String scanResult = data.getStringExtra(Constant.CODED_CONTENT);
                 log.e("scanResult:"+scanResult);
             }
+        }
+
+        if(requestCode==NotificationsUtils.GET_PER){
+            log.e("获取权限回调");
         }
     }
 
