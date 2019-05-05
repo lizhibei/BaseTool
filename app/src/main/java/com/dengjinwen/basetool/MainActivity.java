@@ -17,6 +17,7 @@ import com.dengjinwen.basetool.activity.StepDownActivity;
 import com.dengjinwen.basetool.activity.selfview.SelfViewActivity;
 import com.dengjinwen.basetool.adapter.MainAdapter;
 import com.dengjinwen.basetool.entity.MainItem;
+import com.dengjinwen.basetool.library.function.screenAdaptation.ScreenAdapterTools;
 import com.dengjinwen.basetool.library.function.zxing.common.Constant;
 import com.dengjinwen.basetool.library.tool.NotificationsUtils;
 import com.dengjinwen.basetool.library.tool.ScreenUitl;
@@ -40,7 +41,7 @@ public class MainActivity extends BaseActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        ScreenAdapterTools.getInstance().loadView(getWindow().getDecorView());
+        ScreenAdapterTools.getInstance().loadView(getWindow().getDecorView());
         ScreenUitl.setHead(this,findViewById(R.id.head_top), R.color.head_translucent,
                 ScreenUitl.StatusBarStyle.COLOR);
         mContext=this;
