@@ -193,18 +193,18 @@ public class BaseToolStepService extends Service implements SensorEventListener 
             stepDataNewDay.setToday(currrentDay);
             stepDataNewDay.setLastSenorStep(tempStep);
             if(front!=null){  //APP不是第一次安装
-                if(front.getLastSenorStep()>tempStep){  //手机重启，传感器的步数被清零
-                    nowStepCount= (int) (front.getStep()+tempStep);
-                }else {
-                    if(front.getToday().equals(currrentDay)){  //最后一次回调是当天
-                        if(front.getLastSenorStep()!=-1){
+                if(front.getToday().equals(currrentDay)){  //最后一次回调是当天
+                    if(front.getLastSenorStep()!=-1){
+                        if(front.getLastSenorStep()>tempStep){
+                            nowStepCount= (int) (front.getStep()+tempStep);
+                        }  else {
                             nowStepCount= (int) (front.getStep()+tempStep-front.getLastSenorStep());
-                        }else {
-                            nowStepCount=DBConstants.ERROR;
                         }
-                    }else {  //最后一次回调不是当天
+                    }else {
                         nowStepCount=DBConstants.ERROR;
                     }
+                }else {  //最后一次回调不是当天
+                    nowStepCount=DBConstants.ERROR;
                 }
             }else {  //APP第一次安装
                 nowStepCount=DBConstants.ERROR;
