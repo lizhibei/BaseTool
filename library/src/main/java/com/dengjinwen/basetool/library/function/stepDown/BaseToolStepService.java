@@ -180,50 +180,53 @@ public class BaseToolStepService extends Service implements SensorEventListener 
      */
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if(stepSensorType==Sensor.TYPE_STEP_COUNTER){  //返回一段时间步数
-            //获取当前传感器返回的临时步数
-            int tempStep= (int) event.values[0];
-            log.e("传感器返回的步数："+tempStep);
+        String name=PreferencesHelper.getName(this);
+       if(name!=null&&!name.isEmpty()){
+           if(stepSensorType==Sensor.TYPE_STEP_COUNTER){  //返回一段时间步数
+               //获取当前传感器返回的临时步数
+               int tempStep= (int) event.values[0];
+               log.e("传感器返回的步数："+tempStep);
 
-            long time=System.currentTimeMillis();
-            String currrentDay=DateUtils.dateFormat(time,"yyyy-MM-dd");
-            StepData front=PreferencesHelper.getLastSensorStep(getApplicationContext());
-            StepData stepDataNewDay=new StepData();
-            stepDataNewDay.setDate(time);
-            stepDataNewDay.setToday(currrentDay);
-            stepDataNewDay.setLastSenorStep(tempStep);
-            if(front!=null){  //APP不是第一次安装
-                if(front.getToday().equals(currrentDay)){  //最后一次回调是当天
-                    if(front.getLastSenorStep()!=-1){
-                        if(PreferencesHelper.getLoginFirstGetStep(this)){  //登录后第一次获取到步数
-                            nowStepCount= (int) front.getStep();
-                        }else {
-                            if(front.getLastSenorStep()>tempStep){ //机子被重启
-                                nowStepCount= (int) (front.getStep()+tempStep);
-                            }  else {
-                                nowStepCount= (int) (front.getStep()+tempStep-front.getLastSenorStep());
-                            }
-                        }
-                    }else {
-                        nowStepCount=DBConstants.ERROR;
-                    }
-                }else {  //最后一次回调不是当天
-                    nowStepCount=DBConstants.ERROR;
-                }
-            }else {  //APP第一次安装
-                nowStepCount=DBConstants.ERROR;
-            }
-            stepDataNewDay.setStep(nowStepCount);
-            PreferencesHelper.saveLastSensorStep(getApplicationContext(),stepDataNewDay);
-            PreferencesHelper.setLoginFirstGetStep(this,false);
+               long time=System.currentTimeMillis();
+               String currrentDay=DateUtils.dateFormat(time,"yyyy-MM-dd");
+               StepData front=PreferencesHelper.getLastSensorStep(getApplicationContext());
+               StepData stepDataNewDay=new StepData();
+               stepDataNewDay.setDate(time);
+               stepDataNewDay.setToday(currrentDay);
+               stepDataNewDay.setLastSenorStep(tempStep);
+               if(front!=null){  //APP不是第一次安装
+                   if(front.getToday().equals(currrentDay)){  //最后一次回调是当天
+                       if(front.getLastSenorStep()!=-1){
+                           if(PreferencesHelper.getLoginFirstGetStep(this)){  //登录后第一次获取到步数
+                               nowStepCount= (int) front.getStep();
+                           }else {
+                               if(front.getLastSenorStep()>tempStep){ //机子被重启
+                                   nowStepCount= (int) (front.getStep()+tempStep);
+                               }  else {
+                                   nowStepCount= (int) (front.getStep()+tempStep-front.getLastSenorStep());
+                               }
+                           }
+                       }else {
+                           nowStepCount=DBConstants.ERROR;
+                       }
+                   }else {  //最后一次回调不是当天
+                       nowStepCount=DBConstants.ERROR;
+                   }
+               }else {  //APP第一次安装
+                   nowStepCount=DBConstants.ERROR;
+               }
+               stepDataNewDay.setStep(nowStepCount);
+               PreferencesHelper.saveLastSensorStep(getApplicationContext(),stepDataNewDay);
+               PreferencesHelper.setLoginFirstGetStep(this,false);
 //            }
-        } //else if(stepSensorType==Sensor.TYPE_STEP_DETECTOR){  //返回单个步伐变化
+           } //else if(stepSensorType==Sensor.TYPE_STEP_DETECTOR){  //返回单个步伐变化
 //            if (event.values[0] == 1.0) {
 //                nowStepCount++;
 //            }
 //        }
 
-        updateNotification();
+           updateNotification();
+       }
     }
 
 

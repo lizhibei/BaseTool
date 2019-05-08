@@ -66,7 +66,7 @@ public class PreferencesHelper {
     /**
      * 保存是否是登录首次获取步数
      * @param context
-     * @param isLogin
+     * @param isLogin 是否登出
      */
     public static void setLoginFirstGetStep(Context context,boolean isLogin){
         getSharedPreferences(context).edit().putBoolean(getName(context)+LOGIN_FIRST_GET_STEP,
