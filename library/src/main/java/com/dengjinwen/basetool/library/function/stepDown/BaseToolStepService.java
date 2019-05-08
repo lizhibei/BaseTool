@@ -261,6 +261,7 @@ public class BaseToolStepService extends Service implements SensorEventListener 
         super.onDestroy();
         //取消前台进程
         stopForeground(true);
+        unregisterReceiver(mInfoReceiver);
 
     }
 
