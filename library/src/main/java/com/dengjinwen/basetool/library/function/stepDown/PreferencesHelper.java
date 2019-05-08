@@ -11,6 +11,7 @@ import java.lang.reflect.Type;
 public class PreferencesHelper {
 
     public static final String APP_SHARE="step_share_prefs";
+    public static final String LOGIN_FIRST_GET_STEP="login_first_get_step";
 
     /**
      * 计步器上次返回的步数
@@ -60,5 +61,25 @@ public class PreferencesHelper {
 
     public static String getName(Context context){
         return getSharedPreferences(context).getString(NAME,"");
+    }
+
+    /**
+     * 保存是否是登录首次获取步数
+     * @param context
+     * @param isLogin
+     */
+    public static void setLoginFirstGetStep(Context context,boolean isLogin){
+        getSharedPreferences(context).edit().putBoolean(getName(context)+LOGIN_FIRST_GET_STEP,
+                isLogin).commit();
+    }
+
+    /**
+     * 获取是否是登录首次获取步数
+     * @param context
+     * @return
+     */
+    public static boolean getLoginFirstGetStep(Context context){
+        return getSharedPreferences(context).getBoolean(getName(context)+LOGIN_FIRST_GET_STEP,
+                true);
     }
 }

@@ -195,10 +195,14 @@ public class BaseToolStepService extends Service implements SensorEventListener 
             if(front!=null){  //APP不是第一次安装
                 if(front.getToday().equals(currrentDay)){  //最后一次回调是当天
                     if(front.getLastSenorStep()!=-1){
-                        if(front.getLastSenorStep()>tempStep){
-                            nowStepCount= (int) (front.getStep()+tempStep);
-                        }  else {
-                            nowStepCount= (int) (front.getStep()+tempStep-front.getLastSenorStep());
+                        if(PreferencesHelper.getLoginFirstGetStep(this)){  //登录后第一次获取到步数
+                            nowStepCount= (int) front.getStep();
+                        }else {
+                            if(front.getLastSenorStep()>tempStep){ //机子被重启
+                                nowStepCount= (int) (front.getStep()+tempStep);
+                            }  else {
+                                nowStepCount= (int) (front.getStep()+tempStep-front.getLastSenorStep());
+                            }
                         }
                     }else {
                         nowStepCount=DBConstants.ERROR;
@@ -211,7 +215,7 @@ public class BaseToolStepService extends Service implements SensorEventListener 
             }
             stepDataNewDay.setStep(nowStepCount);
             PreferencesHelper.saveLastSensorStep(getApplicationContext(),stepDataNewDay);
-
+            PreferencesHelper.setLoginFirstGetStep(this,false);
 //            }
         } //else if(stepSensorType==Sensor.TYPE_STEP_DETECTOR){  //返回单个步伐变化
 //            if (event.values[0] == 1.0) {
