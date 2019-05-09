@@ -13,7 +13,6 @@ import android.os.Binder;
 import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.dengjinwen.basetool.library.function.stepDown.interfaces.IStepDBHelper;
 import com.dengjinwen.basetool.library.function.stepDown.interfaces.IStepValuePassListener;
@@ -165,8 +164,8 @@ public class BaseToolStepService extends Service implements SensorEventListener 
      * 通知调用者步数更新 数据交互
      */
     private void updateNotification() {
+        log.e( "更新步数nowStepCount:"+nowStepCount);
         if (mCallback != null) {
-            Log.i("BindService", "数据更新");
             mCallback.updateUi(nowStepCount);
         }
         if(NotificationHelper.isNofi){
@@ -199,10 +198,13 @@ public class BaseToolStepService extends Service implements SensorEventListener 
                        if(front.getLastSenorStep()!=-1){
                            if(PreferencesHelper.getLoginFirstGetStep(this)){  //登录后第一次获取到步数
                                nowStepCount= (int) front.getStep();
+                               log.e("登出后第一次获取步数,nowStepCount:"+nowStepCount);
                            }else {
                                if(front.getLastSenorStep()>tempStep){ //机子被重启
+                                   log.e("重启后第一次获取步数,nowStepCount:"+nowStepCount);
                                    nowStepCount= (int) (front.getStep()+tempStep);
                                }  else {
+                                   log.e("正常的步数回调,nowStepCount:"+nowStepCount);
                                    nowStepCount= (int) (front.getStep()+tempStep-front.getLastSenorStep());
                                }
                            }
