@@ -17,6 +17,8 @@ public class LoadViewHelper extends AbsLoadViewHelper {
         super(context, designWidth, designDpi, fontSize, unit);
     }
 
+
+
     @Override
     public void loadWidthHeightFont(View view) {
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
@@ -88,6 +90,7 @@ public class LoadViewHelper extends AbsLoadViewHelper {
         return (int) calculateValue(value);
     }
 
+    @Override
     public float calculateValue(float value) {
         if ("px".equals(unit)) {
             return value * ((float) actualWidth / (float) designWidth);
@@ -99,6 +102,5 @@ public class LoadViewHelper extends AbsLoadViewHelper {
         }
         return 0;
     }
-
 
 }

@@ -94,4 +94,6 @@ public abstract class AbsLoadViewHelper implements ILoadViewHelper{
         }
 
     }
+
+    public  abstract  float calculateValue(float value);
 }
