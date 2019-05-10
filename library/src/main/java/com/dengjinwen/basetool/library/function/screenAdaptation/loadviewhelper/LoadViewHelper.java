@@ -88,7 +88,7 @@ public class LoadViewHelper extends AbsLoadViewHelper {
         return (int) calculateValue(value);
     }
 
-    private float calculateValue(float value) {
+    public float calculateValue(float value) {
         if ("px".equals(unit)) {
             return value * ((float) actualWidth / (float) designWidth);
         } else if ("dp".equals(unit)) {
