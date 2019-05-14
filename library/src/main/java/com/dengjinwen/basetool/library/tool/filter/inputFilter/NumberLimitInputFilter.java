@@ -21,6 +21,14 @@ public class NumberLimitInputFilter implements InputFilter {
      */
     private long max;
     private Context context;
+    /**
+     * 小于最小值提示
+     */
+    private String minHint="小于最小值"+min;
+    /**
+     * 大于最大值提示
+     */
+    private String maxHint="大于最大值"+max;
 
     /**
      *
@@ -46,14 +54,22 @@ public class NumberLimitInputFilter implements InputFilter {
         CharSequence minC=""+min;
         if(s.length()>=minC.length()){
             if(temp<min){
-                Toast.makeText(context,"小于最小值"+min,Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,minHint,Toast.LENGTH_SHORT).show();
                 return "";
             }
         }
         if(temp>max){
-            Toast.makeText(context,"大于最大值"+max,Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,maxHint,Toast.LENGTH_SHORT).show();
             return "";
         }
         return null;
+    }
+
+    public void setMinHint(String hint){
+        minHint=hint;
+    }
+
+    public void setMaxHint(String maxHint) {
+        this.maxHint = maxHint;
     }
 }
