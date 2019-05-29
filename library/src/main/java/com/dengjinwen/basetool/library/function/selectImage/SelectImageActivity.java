@@ -114,6 +114,10 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
      * 列表列数
      */
     private int COLUMN_NUMBER=3;
+    /**
+     * 页面标题
+     */
+    private String title;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -132,6 +136,7 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
             VIDOE_MAX_CAPACITY=bundle.getInt("videolimit",25);
             IS_SHOW_TAKE=bundle.getBoolean("show_take",true);
             COLUMN_NUMBER=bundle.getInt("column_number",3);
+            title=bundle.getString("title");
         }
 
         findViewById(R.id.left_iv).setOnClickListener(this);
@@ -141,11 +146,16 @@ public class SelectImageActivity extends AppCompatActivity implements View.OnCli
         right_tv.setOnClickListener(this);
 
         title_tv=findViewById(R.id.title_tv);
-        if(SELECT_TYPE==TAG_SELECT_VIDEO){
-            title_tv.setText(R.string.select_video);
+        if(title==null){
+            if(SELECT_TYPE==TAG_SELECT_VIDEO){
+                title_tv.setText(R.string.select_video);
+            }else {
+                title_tv.setText(R.string.select_image);
+            }
         }else {
-            title_tv.setText(R.string.select_image);
+            title_tv.setText(title);
         }
+
 
         show_image_gv=findViewById(R.id.show_image_gv);
 

@@ -50,6 +50,10 @@ public class AndSelectImage {
      * 图片列表列数  默认3列
      */
     public int COLUMN_NUMBER=3;
+    /**
+     * 页面标题
+     */
+    private String title;
 
     public AndSelectImage(){}
 
@@ -89,6 +93,11 @@ public class AndSelectImage {
 
     public AndSelectImage withType(int type){
         this.TYPE=type;
+        return this;
+    }
+
+    public AndSelectImage witTitle(String title){
+        this.title=title;
         return this;
     }
 
@@ -137,6 +146,7 @@ public class AndSelectImage {
         bundle.putInt("videolimit",VIDOE_MAX_CAPACITY);
         bundle.putBoolean("show_take",IS_SHOW_TAKE);
         bundle.putInt("column_number",COLUMN_NUMBER);
+        bundle.putString("title",title);
         intent.putExtras(bundle);
         if(activity!=null){
             activity.startActivityForResult(intent,mRequestCode);
