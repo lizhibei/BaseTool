@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dengjinwen.basetool.library.R;
+import com.dengjinwen.basetool.library.function.screenAdaptation.ScreenAdapterTools;
 
 /**
  * 有确定取消两个按钮的对话框
@@ -49,7 +50,7 @@ public class ConfirmAndCancleDialog extends Dialog implements View.OnClickListen
     public ConfirmAndCancleDialog(@NonNull Context context) {
         super(context);
         view=LayoutInflater.from(context).inflate(R.layout.confirm_and_cancle_dialog,null);
-
+        ScreenAdapterTools.getInstance().loadView(view);
         initview();
     }
 
