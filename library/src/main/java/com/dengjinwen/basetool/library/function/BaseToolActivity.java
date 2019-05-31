@@ -79,6 +79,7 @@ public class BaseToolActivity extends AppCompatActivity implements IBaseView {
         return this;
     }
 
+
     @Override
     protected void onDestroy() {
         if(loadDialog.isShowing()){
