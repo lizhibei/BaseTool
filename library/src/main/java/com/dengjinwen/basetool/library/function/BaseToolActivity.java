@@ -1,5 +1,6 @@
 package com.dengjinwen.basetool.library.function;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Looper;
@@ -70,6 +71,11 @@ public class BaseToolActivity extends AppCompatActivity implements IBaseView {
 
     @Override
     public Context getContext() {
+        return this;
+    }
+
+    @Override
+    public Activity getAcitvity() {
         return this;
     }
 

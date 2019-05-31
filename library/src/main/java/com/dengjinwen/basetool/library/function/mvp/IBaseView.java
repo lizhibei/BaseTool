@@ -1,5 +1,6 @@
 package com.dengjinwen.basetool.library.function.mvp;
 
+import android.app.Activity;
 import android.content.Context;
 
 public interface IBaseView {
@@ -31,4 +32,6 @@ public interface IBaseView {
      * @return 上下文
      */
     Context getContext();
+
+    Activity getAcitvity();
 }
