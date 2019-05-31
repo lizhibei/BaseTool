@@ -8,7 +8,6 @@ import android.view.Gravity;
 import android.widget.TextView;
 
 import com.dengjinwen.basetool.library.R;
-import com.dengjinwen.basetool.library.function.screenAdaptation.ScreenAdapterTools;
 
 /**
  * 中间是文本的确定取消对话框
@@ -27,6 +26,5 @@ public class TextCACD extends ConfirmAndCancleDialog {
         content_tv.setGravity(Gravity.LEFT);
         content_tv.setTextColor(ContextCompat.getColor(context, R.color.tab_text_unselect));
         content_ll.addView(content_tv);
-        ScreenAdapterTools.getInstance().loadView(view);
     }
 }
