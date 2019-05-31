@@ -1,5 +1,6 @@
 package com.dengjinwen.basetool.library.function;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Looper;
@@ -75,9 +76,14 @@ public abstract class BaseToolFragment extends Fragment implements IBaseView {
     @Override
     public Context getContext() {
         if(mContext==null){
-            mContext=getActivity();
+            mContext=super.getActivity();
         }
         return mContext;
+    }
+
+    @Override
+    public Activity getAcitvity() {
+        return super.getActivity();
     }
 
     public void setTextStatusBar(){
