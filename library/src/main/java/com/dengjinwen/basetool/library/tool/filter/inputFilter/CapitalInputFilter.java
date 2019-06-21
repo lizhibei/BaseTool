@@ -20,7 +20,8 @@ public class CapitalInputFilter implements InputFilter {
      * @return  返回null则认同当前操作  返回其他则用返回的值替代当前操作
      */
     @Override
-    public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+    public CharSequence filter(CharSequence source, int start, int end,
+                               Spanned dest, int dstart, int dend) {
         for(int i=start;i<end;i++){
             if(Character.isLowerCase(source.charAt(i))){
                 char[] v=new char[end-start];
