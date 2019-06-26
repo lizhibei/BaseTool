@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-def AAVersion = '4.6.0'
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -33,10 +32,5 @@ dependencies {
     implementation 'com.android.support:percent:27.1.1'
     implementation 'com.google.code.gson:gson:2.8.2'
 
-    implementation "org.androidannotations:androidannotations-api:$AAVersion"
-    annotationProcessor "org.androidannotations:androidannotations:$AAVersion"
-    androidTestImplementation('com.android.support:support-annotations:26.1.0') {
-        force = true
-    }
 
 }

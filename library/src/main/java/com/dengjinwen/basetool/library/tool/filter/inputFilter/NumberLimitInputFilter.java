@@ -15,11 +15,11 @@ public class NumberLimitInputFilter implements InputFilter {
     /**
      * 最小值
      */
-    private long min;
+    private double min;
     /**
      * 最大值
      */
-    private long max;
+    private double max;
     private Context context;
     /**
      * 小于最小值提示
@@ -36,7 +36,7 @@ public class NumberLimitInputFilter implements InputFilter {
      * @param min  最小值
      * @param max  最大值
      */
-    public NumberLimitInputFilter(Context context,long min, long max) {
+    public NumberLimitInputFilter(Context context,double min, double max) {
         this.min = min;
         this.max = max;
         this.context=context;

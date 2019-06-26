@@ -36,6 +36,4 @@ dependencies {
     compileOnly 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
     compileOnly files('libs/core-3.3.3.jar')
     compileOnly 'com.google.code.gson:gson:2.8.2'
-    compileOnly 'com.jakewharton:butterknife:8.4.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 }
