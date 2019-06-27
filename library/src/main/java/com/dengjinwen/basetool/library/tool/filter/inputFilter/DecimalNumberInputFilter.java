@@ -35,7 +35,7 @@ public class DecimalNumberInputFilter implements InputFilter {
         //小数点后保留decimalNumber位
         if (lastInputContent.contains(".")) {
             int index = lastInputContent.indexOf(".");
-            if (dend - index >= decimalNumber + 1) {
+            if (lastInputContent.length() - index >= decimalNumber +1&&dstart>index) {
                 return "";
             }
 

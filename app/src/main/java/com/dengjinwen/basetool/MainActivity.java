@@ -3,8 +3,10 @@ package com.dengjinwen.basetool;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -22,6 +24,7 @@ import com.dengjinwen.basetool.library.function.zxing.android.BaseToolCaptureAct
 import com.dengjinwen.basetool.library.function.zxing.common.Constant;
 import com.dengjinwen.basetool.library.tool.NotificationsUtils;
 import com.dengjinwen.basetool.library.tool.ScreenUitl;
+import com.dengjinwen.basetool.library.tool.filter.inputFilter.DecimalNumberInputFilter;
 import com.dengjinwen.basetool.library.tool.log;
 import com.dengjinwen.basetool.util.FilePicker;
 
@@ -57,11 +60,8 @@ public class MainActivity extends BaseActivity  {
             }
         });
 
-//        DisplayMetrics dm=new DisplayMetrics();
-////        WindowManager windowManager= (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
-////        windowManager.getDefaultDisplay().getMetrics(dm);
-////        log.e("density:"+dm.density);
-
+        EditText input_et=findViewById(R.id.input_et);
+        input_et.setFilters(new InputFilter[]{new DecimalNumberInputFilter(8)});
 
 
         if(!NotificationsUtils.isNotificationEnabled(mContext)){
