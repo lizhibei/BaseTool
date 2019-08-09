@@ -16,6 +16,8 @@ import com.dengjinwen.basetool.activity.CreditCardActivity;
 import com.dengjinwen.basetool.activity.DialogFactoryActivity;
 import com.dengjinwen.basetool.activity.SelectImageAndActivity;
 import com.dengjinwen.basetool.activity.StepDownActivity;
+import com.dengjinwen.basetool.activity.okhttp.OkHttpDemoActivity;
+import com.dengjinwen.basetool.activity.okio.OkioDemoActivity;
 import com.dengjinwen.basetool.activity.selfview.SelfViewActivity;
 import com.dengjinwen.basetool.adapter.MainAdapter;
 import com.dengjinwen.basetool.entity.MainItem;
@@ -116,6 +118,10 @@ public class MainActivity extends BaseActivity  {
         data.add(dialogFactory);
         MainItem stepDown=new MainItem("StepService","本地记步");
         data.add(stepDown);
+        MainItem okhttp=new MainItem("OkHttp","");
+        data.add(okhttp);
+        MainItem okio=new MainItem("okio","");
+        data.add(okio);
     }
 
     private void click(int position){
@@ -147,6 +153,14 @@ public class MainActivity extends BaseActivity  {
                 //本地记步
             case 5:
                 startIntent(mContext,StepDownActivity.class);
+                break;
+                //okhttp
+            case 6:
+                startIntent(mContext, OkHttpDemoActivity.class);
+                break;
+                //
+            case 7:
+                startIntent(mContext, OkioDemoActivity.class);
                 break;
         }
     }

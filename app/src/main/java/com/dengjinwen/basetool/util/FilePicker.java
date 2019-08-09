@@ -5,9 +5,9 @@ import android.app.Fragment;
 import android.content.Intent;
 
 import com.dengjinwen.basetool.activity.FilePickerActivity;
-import com.dengjinwen.basetool.library.tool.file.filter.CompositeFilter;
-import com.dengjinwen.basetool.library.tool.file.filter.HiddenFilter;
-import com.dengjinwen.basetool.library.tool.file.filter.PatternFilter;
+import com.dengjinwen.basetool.library.tool.filter.CompositeFilter;
+import com.dengjinwen.basetool.library.tool.filter.HiddenFilter;
+import com.dengjinwen.basetool.library.tool.filter.PatternFilter;
 
 import java.io.FileFilter;
 import java.util.ArrayList;

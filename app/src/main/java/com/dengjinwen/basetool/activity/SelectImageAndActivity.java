@@ -11,8 +11,20 @@ import com.dengjinwen.basetool.R;
 import com.dengjinwen.basetool.adapter.SelectImageAndAdapter;
 import com.dengjinwen.basetool.library.function.selectImage.AndSelectImage;
 import com.dengjinwen.basetool.library.function.selectImage.ItemEntity;
+import com.dengjinwen.basetool.library.tool.log;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * 选择本地图片
@@ -63,6 +75,7 @@ public class SelectImageAndActivity extends BaseActivity implements View.OnClick
                         }
                     }
                     adapter.notifyDataSetChanged();
+                    asynPostMultipartBody(new File(list.get(0).getPath()));
                     break;
                     //选择视频返回
                 case SELECT_VIDEO:
@@ -80,6 +93,41 @@ public class SelectImageAndActivity extends BaseActivity implements View.OnClick
         }
     }
 
+    /**
+     * 异步分块请求
+     */
+    private void asynPostMultipartBody(File file){
+        OkHttpClient okHttpClient=new OkHttpClient();
+
+        MultipartBody.Builder builder=new MultipartBody.Builder();
+        builder.setType(MultipartBody.FORM);
+
+        builder.addFormDataPart("type","image");
+        builder.addFormDataPart("access_token","a2d978f75d34be8f030541560d808b66");
+        builder.addFormDataPart("ucopenid","083d2581319fc6f7cdb503df1dfe089f");
+        builder.addFormDataPart("appid","299e5b6a4871202g");
+        builder.addFormDataPart("file",file.getName(),RequestBody.create(MediaType.parse("image/png"),file));
+        MultipartBody body= builder.build();
+        Request request=new Request.Builder()
+                .url("http://api.entserver.lan/V1/file/upload")
+                .post(body)
+                .build();
+        Call call=okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                log.e("请求失败");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if(response.body()!=null){
+                    log.e("response:"+response.body().string());
+                }
+            }
+        });
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -88,7 +136,7 @@ public class SelectImageAndActivity extends BaseActivity implements View.OnClick
             break;
             case R.id.add_tv:
                 new AndSelectImage().withActivity(this)
-                        .withNumber(2)
+                        .withNumber(1)
                         .withRequestCode(SELECT_IMAGE)
                         .withType(AndSelectImage.TYPE_IMAGE)
                         .withColumnNumber(4)
