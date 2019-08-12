@@ -1,11 +1,10 @@
 package com.dengjinwen.basetool.activity;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import androidx.lifecycle.ViewModelProviders;
 
 import com.dengjinwen.basetool.R;
 import com.dengjinwen.basetool.entity.LiveDataBean;
