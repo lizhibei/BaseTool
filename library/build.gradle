@@ -36,7 +36,15 @@ dependencies {
     compileOnly 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
     compileOnly files('libs/core-3.3.3.jar')
     compileOnly 'com.google.code.gson:gson:2.8.2'
+
+    //okhttp
     compileOnly 'com.squareup.okhttp3:logging-interceptor:3.8.0'
 
-    implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
+    //retrofit
+    compileOnly 'com.squareup.retrofit2:retrofit:2.1.0'
+    compileOnly 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compileOnly 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+
+    //rxjava
+    compileOnly 'io.reactivex:rxandroid:1.2.0'
 }

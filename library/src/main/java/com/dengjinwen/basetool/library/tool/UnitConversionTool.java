@@ -26,6 +26,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 /**
  * 单位换算
  */
@@ -306,5 +312,44 @@ public class UnitConversionTool {
                     R.drawable.image);
         }
         return bitmap;
+    }
+
+    /**
+     * url转换Bytes
+     * @param url
+     * @param callBack
+     */
+    public static void url2Bytes(String url, final url2BytesCallBack callBack){
+        OkHttpClient client=new OkHttpClient();
+        final Request request=new Request.Builder()
+                .url(url)
+                .get()
+                .build();
+        Call call=client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                callBack.fail();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if(response.body()!=null){
+                    byte[] bytes=response.body().bytes();
+                    if(bytes!=null){
+                        callBack.success(bytes);
+                    }else {
+                        callBack.fail();
+                    }
+                }else {
+                    callBack.fail();
+                }
+            }
+        });
+    }
+
+    public interface url2BytesCallBack{
+        void success(byte[] bytes);
+        void fail();
     }
 }
