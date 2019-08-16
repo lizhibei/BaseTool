@@ -315,6 +315,40 @@ public class UnitConversionTool {
     }
 
     /**
+     * 网络url转Bitmap
+     * @param url
+     * @param callBack
+     */
+    public static void url2Bitmap(String url, final url2BitmapCallBack callBack){
+        OkHttpClient client=new OkHttpClient();
+        final Request request=new Request.Builder()
+                .url(url)
+                .get()
+                .build();
+        Call call=client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                callBack.fail();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if(response.body()!=null){
+                    byte[] bytes=response.body().bytes();
+                    if(bytes!=null){
+                        callBack.success(BitmapFactory.decodeByteArray(bytes,0,bytes.length));
+                    }else {
+                        callBack.fail();
+                    }
+                }else {
+                    callBack.fail();
+                }
+            }
+        });
+    }
+
+    /**
      * url转换Bytes
      * @param url
      * @param callBack
@@ -346,6 +380,11 @@ public class UnitConversionTool {
                 }
             }
         });
+    }
+
+    public interface url2BitmapCallBack{
+        void success(Bitmap bitmap);
+        void fail();
     }
 
     public interface url2BytesCallBack{
