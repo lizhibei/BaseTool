@@ -13,6 +13,7 @@ public abstract class PaseGsonNetwork extends BaseNetwork {
     public Retrofit getRetrofit() {
         return new Retrofit.Builder()
                 .baseUrl(getBaseUrl())
+                .addConverterFactory(MyGsonConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .client(BaseOkHttpClient.getOkHttpClient(getPublicParams(),getHeaders()))
