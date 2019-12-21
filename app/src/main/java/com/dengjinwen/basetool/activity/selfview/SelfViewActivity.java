@@ -11,6 +11,7 @@ import com.dengjinwen.basetool.R;
 import com.dengjinwen.basetool.activity.BaseActivity;
 import com.dengjinwen.basetool.activity.CountDownButtonActivity;
 import com.dengjinwen.basetool.activity.selfview.chart.ChartActivity;
+import com.dengjinwen.basetool.activity.selfview.recyclerview.CardViewDemoActivity;
 import com.dengjinwen.basetool.activity.selfview.recyclerview.RecyclerViewActivity;
 import com.dengjinwen.basetool.adapter.MainAdapter;
 import com.dengjinwen.basetool.entity.MainItem;
@@ -59,6 +60,8 @@ public class SelfViewActivity extends BaseActivity implements View.OnClickListen
         data.add(recyclerView);
         MainItem chart=new MainItem("ChartView","图表");
         data.add(chart);
+        MainItem tangtang=new MainItem("探探主页","模仿探探主页效果");
+        data.add(tangtang);
     }
 
     private void initview() {
@@ -126,6 +129,10 @@ public class SelfViewActivity extends BaseActivity implements View.OnClickListen
                 //图表
             case 11:
                 startIntent(mContext,ChartActivity.class);
+                break;
+            //模仿探探主页
+            case 12:
+                startIntent(mContext, CardViewDemoActivity.class);
                 break;
         }
     }

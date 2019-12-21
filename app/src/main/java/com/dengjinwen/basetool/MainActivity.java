@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.dengjinwen.basetool.activity.BaseActivity;
 import com.dengjinwen.basetool.activity.CreditCardActivity;
 import com.dengjinwen.basetool.activity.DialogFactoryActivity;
+import com.dengjinwen.basetool.activity.liveData.LiveDataDemoActivity;
 import com.dengjinwen.basetool.activity.SelectImageAndActivity;
 import com.dengjinwen.basetool.activity.StepDownActivity;
 import com.dengjinwen.basetool.activity.okhttp.OkHttpDemoActivity;
@@ -122,6 +123,8 @@ public class MainActivity extends BaseActivity  {
         data.add(okhttp);
         MainItem okio=new MainItem("okio","");
         data.add(okio);
+        MainItem liveData=new MainItem("LiveData","");
+        data.add(liveData);
     }
 
     private void click(int position){
@@ -162,6 +165,11 @@ public class MainActivity extends BaseActivity  {
             case 7:
                 startIntent(mContext, OkioDemoActivity.class);
                 break;
+                //
+            case 8:
+                startIntent(mContext, LiveDataDemoActivity.class);
+                break;
+
         }
     }
 

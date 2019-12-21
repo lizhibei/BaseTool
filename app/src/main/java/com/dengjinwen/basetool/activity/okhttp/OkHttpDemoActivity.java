@@ -3,6 +3,7 @@ package com.dengjinwen.basetool.activity.okhttp;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dengjinwen.basetool.R;
@@ -33,6 +34,7 @@ import okio.BufferedSink;
 public class OkHttpDemoActivity extends BaseActivity {
 
     @BindView(R.id.head_text_title)TextView head_text_title;
+    @BindView(R.id.image_iv)ImageView image_iv;
 
     private String getUrl="http://api.entserver.lan/V3/customer/login?username=18259243837&password=123456&type=1&login_key=5e8bc9947ed224d8ef01dd99fe8f2df1&access_token=068adfd8ab7137d096468b17866c24f5&systems_os=android_HUAWEI NXT-AL10_8.0.0&version_os=1&app_version=android_432&ucopenid=083d2581319fc6f7cdb503df1dfe089f&version_type=1&appid=299e5b6a4871202g&client_time=1563780362&sign=&";
     private String postUrl="http://api.entserver.lan/V3/customer/login";
@@ -48,6 +50,7 @@ public class OkHttpDemoActivity extends BaseActivity {
 
     private void initview() {
         head_text_title.setText("OkHttp的基本使用");
+
     }
 
     /**
