@@ -83,10 +83,9 @@ public class BannerLayoutActivity extends BaseActivity implements View.OnClickLi
                 .load(url)
                 .centerCrop()
                 .priority(Priority.HIGH)
-                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                 .placeholder(R.mipmap.image)
                 .error(R.mipmap.image)
-                .crossFade()
                 .into(imgView);
     }
 
