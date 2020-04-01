@@ -21,10 +21,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
 
 import com.dengjinwen.basetool.library.function.permission.SettingService;
 import com.dengjinwen.basetool.library.function.permission.source.Source;
+
+import androidx.annotation.NonNull;
 
 
 /**

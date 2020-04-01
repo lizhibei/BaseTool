@@ -4,7 +4,6 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
@@ -20,6 +19,8 @@ import com.dengjinwen.basetool.library.view.chart.render.PieChartRender;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import androidx.annotation.Nullable;
 
 public class PieChart extends PieRadarChart<IPieData> implements IPieChart {
 

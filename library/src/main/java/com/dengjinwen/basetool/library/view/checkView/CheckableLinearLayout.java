@@ -1,10 +1,11 @@
 package com.dengjinwen.basetool.library.view.checkView;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.Checkable;
 import android.widget.LinearLayout;
+
+import androidx.annotation.Nullable;
 
 public class CheckableLinearLayout extends LinearLayout implements Checkable {
 

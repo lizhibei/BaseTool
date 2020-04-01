@@ -1,6 +1,5 @@
 package com.dengjinwen.basetool.activity;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -10,6 +9,7 @@ import com.dengjinwen.basetool.R;
 import com.dengjinwen.basetool.entity.LiveDataBean;
 import com.dengjinwen.basetool.library.function.screenAdaptation.ScreenAdapterTools;
 
+import androidx.lifecycle.ViewModelProviders;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

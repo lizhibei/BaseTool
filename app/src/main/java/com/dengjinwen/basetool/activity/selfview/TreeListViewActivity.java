@@ -37,10 +37,10 @@ public class TreeListViewActivity extends BaseActivity implements View.OnClickLi
 
     private void initview() {
         findViewById(R.id.head_img_left).setOnClickListener(this);
-        head_text_title=findViewById(R.id.head_text_title);
+        head_text_title= (TextView) findViewById(R.id.head_text_title);
         head_text_title.setText("TreeListView");
 
-        list_lv=findViewById(R.id.list_lv);
+        list_lv= (ListView) findViewById(R.id.list_lv);
         try {
             mAdapter=new SimpleTreeListViewAdapter<OrgBean>(list_lv,mContext,data,0);
             list_lv.setAdapter(mAdapter);

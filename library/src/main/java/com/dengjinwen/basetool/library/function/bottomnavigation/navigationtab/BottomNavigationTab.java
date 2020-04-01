@@ -7,8 +7,6 @@ import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
-import android.support.annotation.CallSuper;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -19,6 +17,9 @@ import android.widget.TextView;
 
 import com.dengjinwen.basetool.library.function.bottomnavigation.badgeitem.BadgeItem;
 import com.dengjinwen.basetool.library.function.bottomnavigation.badgeitem.BadgeTextView;
+
+import androidx.annotation.CallSuper;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 /**
  * Class description

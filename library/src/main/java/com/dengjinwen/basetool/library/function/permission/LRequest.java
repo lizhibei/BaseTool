@@ -15,7 +15,6 @@
  */
 package com.dengjinwen.basetool.library.function.permission;
 
-import android.support.annotation.NonNull;
 
 import com.dengjinwen.basetool.library.function.permission.checker.PermissionChecker;
 import com.dengjinwen.basetool.library.function.permission.checker.StrictChecker;
@@ -24,6 +23,8 @@ import com.dengjinwen.basetool.library.function.permission.source.Source;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import androidx.annotation.NonNull;
 
 import static java.util.Arrays.asList;
 

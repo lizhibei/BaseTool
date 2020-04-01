@@ -12,13 +12,14 @@ import android.hardware.SensorManager;
 import android.os.Binder;
 import android.os.Build;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
 
 import com.dengjinwen.basetool.library.function.stepDown.interfaces.IStepDBHelper;
 import com.dengjinwen.basetool.library.function.stepDown.interfaces.IStepValuePassListener;
 import com.dengjinwen.basetool.library.function.stepDown.interfaces.IUpdateUiCallBack;
 import com.dengjinwen.basetool.library.tool.DateUtils;
 import com.dengjinwen.basetool.library.tool.log;
+
+import androidx.annotation.Nullable;
 
 public class BaseToolStepService extends Service implements SensorEventListener {
 

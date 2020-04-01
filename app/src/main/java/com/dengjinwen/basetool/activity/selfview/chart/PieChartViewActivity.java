@@ -35,10 +35,10 @@ public class PieChartViewActivity extends BaseActivity implements View.OnClickLi
 
     private void initview() {
         findViewById(R.id.head_img_left).setOnClickListener(this);
-        head_text_title=findViewById(R.id.head_text_title);
+        head_text_title= (TextView) findViewById(R.id.head_text_title);
         head_text_title.setText("PieChartView");
 
-        pie_view=findViewById(R.id.pie_view);
+        pie_view= (PieChart) findViewById(R.id.pie_view);
 
         for (int i=0; i<9; i++){
             PieData pieData = new PieData();

@@ -4,11 +4,12 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewAnimationUtils;
+
+import androidx.annotation.Nullable;
 
 /**
  * 实现ViewAnimationUtils动画的自定义View

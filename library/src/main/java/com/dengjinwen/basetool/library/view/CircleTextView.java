@@ -7,10 +7,11 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
 import com.dengjinwen.basetool.library.R;
+
+import androidx.appcompat.widget.AppCompatTextView;
 
 public class CircleTextView extends AppCompatTextView {
 

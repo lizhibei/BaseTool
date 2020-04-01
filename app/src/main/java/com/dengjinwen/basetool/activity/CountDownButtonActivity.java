@@ -28,10 +28,10 @@ public class CountDownButtonActivity extends BaseActivity implements View.OnClic
 
     private void initview() {
         findViewById(R.id.head_img_left).setOnClickListener(this);
-        head_text_title=findViewById(R.id.head_text_title);
+        head_text_title= (TextView) findViewById(R.id.head_text_title);
         head_text_title.setText("CountDownButton");
 
-        cd_button=findViewById(R.id.cd_button);
+        cd_button= (CountDownButton) findViewById(R.id.cd_button);
         cd_button.setOnClickListener(this);
 
         barterLoginDialog=new BarterLoginDialog(this);

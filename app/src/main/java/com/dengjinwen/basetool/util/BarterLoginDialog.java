@@ -2,7 +2,6 @@ package com.dengjinwen.basetool.util;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -10,6 +9,8 @@ import android.widget.EditText;
 import com.dengjinwen.basetool.R;
 import com.dengjinwen.basetool.library.function.screenAdaptation.ScreenAdapterTools;
 import com.dengjinwen.basetool.library.view.CountDownButton;
+
+import androidx.annotation.NonNull;
 
 /**
  * 铛铛易物  绑定手机号对话框

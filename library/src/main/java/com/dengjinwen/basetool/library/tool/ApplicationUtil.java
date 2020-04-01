@@ -6,10 +6,11 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
-import android.support.v4.content.FileProvider;
 
 import java.io.File;
 import java.util.Locale;
+
+import androidx.core.content.FileProvider;
 
 public class ApplicationUtil {
 

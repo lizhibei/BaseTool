@@ -1,14 +1,15 @@
 package com.dengjinwen.basetool.library.function.dialog.product;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.TextView;
 
 import com.dengjinwen.basetool.library.R;
 import com.dengjinwen.basetool.library.function.screenAdaptation.ScreenAdapterTools;
+
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 
 /**
  * 中间是文本的确定取消对话框

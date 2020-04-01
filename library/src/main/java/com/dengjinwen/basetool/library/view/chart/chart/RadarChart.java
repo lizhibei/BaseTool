@@ -2,13 +2,14 @@ package com.dengjinwen.basetool.library.view.chart.chart;
 
 import android.content.Context;
 import android.graphics.PathMeasure;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.dengjinwen.basetool.library.view.chart.data.RadarAxisData;
 import com.dengjinwen.basetool.library.view.chart.interfaces.iChart.IRadarChart;
 import com.dengjinwen.basetool.library.view.chart.interfaces.iData.IRadarAxisData;
 import com.dengjinwen.basetool.library.view.chart.interfaces.iData.IRadarData;
+
+import androidx.annotation.Nullable;
 
 /**
  * 雷达图绘制类

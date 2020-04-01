@@ -1,8 +1,5 @@
 package com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.entity;
 
-import android.support.annotation.FloatRange;
-import android.support.annotation.IntDef;
-import android.support.annotation.IntRange;
 import android.widget.LinearLayout;
 
 import com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.view.SwipeMenuLayout;
@@ -11,6 +8,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.FloatRange;
+import androidx.annotation.IntDef;
+import androidx.annotation.IntRange;
 
 public class SwipeMenu {
 

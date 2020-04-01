@@ -18,12 +18,13 @@ package com.dengjinwen.basetool.library.function.permission.checker;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 
 import com.dengjinwen.basetool.library.function.permission.Permission;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
 /**
  * 精准核对

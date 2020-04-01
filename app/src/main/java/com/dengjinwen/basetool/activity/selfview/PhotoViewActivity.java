@@ -22,7 +22,7 @@ public class PhotoViewActivity extends BaseActivity implements View.OnClickListe
 
     private void initview() {
         findViewById(R.id.head_img_left).setOnClickListener(this);
-        head_text_title=findViewById(R.id.head_text_title);
+        head_text_title= (TextView) findViewById(R.id.head_text_title);
         head_text_title.setText("PhotoView");
     }
 

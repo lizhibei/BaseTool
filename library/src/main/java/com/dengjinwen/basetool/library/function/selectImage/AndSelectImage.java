@@ -8,7 +8,7 @@ import android.os.Bundle;
 public class AndSelectImage {
     private Activity activity;
     private Fragment fragment;
-    private android.support.v4.app.Fragment supporFragment;
+    private Fragment supporFragment;
 
     private Class<? extends SelectImageActivity> mSelectImageClass=SelectImageActivity.class;
 
@@ -73,7 +73,7 @@ public class AndSelectImage {
         return this;
     }
 
-    public AndSelectImage withSupporFragment(android.support.v4.app.Fragment fragment){
+    public AndSelectImage withSupporFragment(Fragment fragment){
         if(activity!=null||fragment!=null){
             throw new RuntimeException("You must pass either Activity, Fragment or SupportFragment");
         }

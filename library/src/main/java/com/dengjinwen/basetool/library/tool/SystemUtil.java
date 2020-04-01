@@ -11,7 +11,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
-import android.support.v4.content.FileProvider;
 import android.telephony.SmsManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -26,6 +25,8 @@ import com.dengjinwen.basetool.library.function.permission.RequestExecutor;
 
 import java.io.File;
 import java.util.List;
+
+import androidx.core.content.FileProvider;
 
 /**
  * 系统相关工具类

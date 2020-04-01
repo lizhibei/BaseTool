@@ -1,6 +1,7 @@
 package com.dengjinwen.basetool.activity.application;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.res.Configuration;
 
 import com.dengjinwen.basetool.library.function.screenAdaptation.ScreenAdapterTools;
@@ -16,5 +17,12 @@ public class BaseApplication extends Application {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         ScreenAdapterTools.getInstance().reset(this);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+//        MultiDex.install(base);
+
     }
 }

@@ -1,7 +1,8 @@
 package com.dengjinwen.basetool.library.tool;
 
-import android.support.v4.util.SimpleArrayMap;
 import android.text.TextUtils;
+
+import androidx.collection.SimpleArrayMap;
 
 /**
  * 拼音相关工具类

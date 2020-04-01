@@ -15,7 +15,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
+        buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -32,11 +32,9 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    compileOnly 'com.android.support:appcompat-v7:28.0.0'
-    compileOnly 'com.android.support:design:28.0.0'
+    compileOnly "com.google.android.material:material:1.2.0-alpha05"
+    compileOnly 'androidx.appcompat:appcompat:1.1.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     compileOnly 'com.github.bumptech.glide:glide:3.7.0'
     compileOnly 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
     compileOnly files('libs/core-3.3.3.jar')
@@ -53,8 +51,8 @@ dependencies {
     //rxjava
     compileOnly 'io.reactivex:rxandroid:1.2.0'
 
-    compileOnly 'com.android.support:recyclerview-v7:28.0.0'
-    compileOnly 'com.android.support:cardview-v7:28.0.0'
+    compileOnly 'androidx.recyclerview:recyclerview:1.1.0'
+    compileOnly 'androidx.cardview:cardview:1.0.0'
 
     compileOnly 'com.github.bumptech.glide:glide:4.9.0'
 }

@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.dengjinwen.basetool.activity.BaseActivity;
 import com.dengjinwen.basetool.activity.CreditCardActivity;
 import com.dengjinwen.basetool.activity.DialogFactoryActivity;
-import com.dengjinwen.basetool.activity.liveData.LiveDataDemoActivity;
+import com.dengjinwen.basetool.activity.LiveDataDemoActivity;
 import com.dengjinwen.basetool.activity.SelectImageAndActivity;
 import com.dengjinwen.basetool.activity.StepDownActivity;
 import com.dengjinwen.basetool.activity.okhttp.OkHttpDemoActivity;
@@ -63,7 +63,7 @@ public class MainActivity extends BaseActivity  {
             }
         });
 
-        EditText input_et=findViewById(R.id.input_et);
+        EditText input_et= (EditText) findViewById(R.id.input_et);
         input_et.setFilters(new InputFilter[]{new DecimalNumberInputFilter(8)});
 
 
@@ -75,12 +75,12 @@ public class MainActivity extends BaseActivity  {
 
     private void initview() {
 
-        head_img_left=findViewById(R.id.head_img_left);
+        head_img_left= (ImageView) findViewById(R.id.head_img_left);
         head_img_left.setVisibility(View.GONE);
-        head_text_title=findViewById(R.id.head_text_title);
+        head_text_title= (TextView) findViewById(R.id.head_text_title);
         head_text_title.setText("Demo");
 
-        list_lv=  findViewById(R.id.list_lv);
+        list_lv= (ListView) findViewById(R.id.list_lv);
         adapter=new MainAdapter(mContext,data);
         list_lv.setAdapter(adapter);
         list_lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {

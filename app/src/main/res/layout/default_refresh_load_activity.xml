@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <include layout="@layout/basetool_header_px"/>
-    <android.support.v4.widget.SwipeRefreshLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -18,5 +18,6 @@
             android:scrollbars="none">
 
         </com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.view.SwipeMenuRecyclerView>
-    </android.support.v4.widget.SwipeRefreshLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 </LinearLayout>

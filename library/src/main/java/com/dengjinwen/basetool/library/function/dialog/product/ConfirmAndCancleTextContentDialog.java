@@ -2,10 +2,11 @@ package com.dengjinwen.basetool.library.function.dialog.product;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 /**
  * 有确定取消两个按钮的对话框  中间的提示内容为文本

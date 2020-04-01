@@ -1,14 +1,15 @@
 package com.dengjinwen.basetool.library.view.recyclerView.tangtang;
 
 import android.graphics.Canvas;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 
 import com.dengjinwen.basetool.library.view.recyclerView.adpater.UniversalAdapter;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class SwipeCardCallback extends ItemTouchHelper.SimpleCallback{
 

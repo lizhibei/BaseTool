@@ -1,7 +1,8 @@
 package com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.touch;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
+
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 public interface OnItemMovementListener {
     int INVALID = 0;
@@ -14,7 +15,7 @@ public interface OnItemMovementListener {
 
     int DOWN = ItemTouchHelper.DOWN;
 
-    int onDragFlags(RecyclerView recyclerView,RecyclerView.ViewHolder targetViewHolder);
+    int onDragFlags(RecyclerView recyclerView, RecyclerView.ViewHolder targetViewHolder);
 
     int onSwipeFlags(RecyclerView recyclerView,RecyclerView.ViewHolder targetViewHolder);
 }

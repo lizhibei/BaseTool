@@ -15,13 +15,15 @@
  */
 package com.dengjinwen.basetool.library.function.permission.checker;
 
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.provider.CallLog;
-import android.support.annotation.RequiresPermission;
 
 import com.dengjinwen.basetool.library.function.permission.Permission;
+
+import androidx.annotation.RequiresPermission;
 
 
 /**
@@ -39,7 +41,7 @@ class CallLogReadTest implements PermissionTest {
     @Override
     public boolean test() throws Throwable {
         String[] projection = new String[]{CallLog.Calls._ID, CallLog.Calls.NUMBER, CallLog.Calls.TYPE};
-        Cursor cursor = mResolver.query(CallLog.Calls.CONTENT_URI, projection, null, null, null);
+        @SuppressLint("MissingPermission") Cursor cursor = mResolver.query(CallLog.Calls.CONTENT_URI, projection, null, null, null);
         if (cursor != null) {
             try {
                 CursorTest.read(cursor);

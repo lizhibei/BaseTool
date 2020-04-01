@@ -1,8 +1,5 @@
 package com.dengjinwen.basetool.library.function.bottomnavigation.badgeitem;
 
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPropertyAnimatorCompat;
-import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -11,6 +8,10 @@ import android.widget.TextView;
 import com.dengjinwen.basetool.library.function.bottomnavigation.navigationtab.BottomNavigationTab;
 
 import java.lang.ref.WeakReference;
+
+import androidx.core.view.ViewCompat;
+import androidx.core.view.ViewPropertyAnimatorCompat;
+import androidx.core.view.ViewPropertyAnimatorListener;
 
 /**
  * Class description : Holds and manages data for badges

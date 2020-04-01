@@ -1,8 +1,9 @@
 package com.dengjinwen.basetool.library.view.recyclerView.tangtang;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 public class SwipeCardLayoutManager extends RecyclerView.LayoutManager {
     @Override

@@ -1,10 +1,11 @@
 package com.dengjinwen.basetool.library.function.zxing.bean;
 
-import android.support.annotation.ColorRes;
 
 import com.dengjinwen.basetool.library.R;
 
 import java.io.Serializable;
+
+import androidx.annotation.ColorRes;
 
 /**
  * @author: yzq

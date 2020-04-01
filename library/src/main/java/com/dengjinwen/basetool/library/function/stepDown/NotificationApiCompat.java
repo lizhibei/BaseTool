@@ -9,8 +9,9 @@ import android.app.Service;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Build;
-import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
+
+import androidx.core.app.NotificationCompat;
 
 public class NotificationApiCompat {
 
@@ -19,7 +20,7 @@ public class NotificationApiCompat {
     private final NotificationManager manager;
     private Notification mNotification;
     private final Notification.Builder mBuilder26;
-    private final android.support.v4.app.NotificationCompat.Builder mBuilder25;
+    private final NotificationCompat.Builder mBuilder25;
 
     public NotificationApiCompat(Builder builder) {
         manager = builder.manager;
@@ -75,7 +76,7 @@ public class NotificationApiCompat {
         private final NotificationManager manager;
         private NotificationChannel mNotificationChannel;
         private Notification.Builder mBuilder26;
-        private android.support.v4.app.NotificationCompat.Builder mBuilder25;
+        private NotificationCompat.Builder mBuilder25;
 
         public Builder(Context context, NotificationManager manager, String channelId, String channelName, int smallIcon) {
             mContext = context;
@@ -223,7 +224,7 @@ public class NotificationApiCompat {
          *
          * @return
          */
-        private android.support.v4.app.NotificationCompat.Builder getNotification_25(Context context) {
+        private NotificationCompat.Builder getNotification_25(Context context) {
             return new NotificationCompat.Builder(context);
         }
 

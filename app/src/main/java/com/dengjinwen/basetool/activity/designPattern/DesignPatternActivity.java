@@ -35,10 +35,10 @@ public class DesignPatternActivity extends BaseActivity implements View.OnClickL
 
     private void initview() {
         findViewById(R.id.head_img_left).setOnClickListener(this);
-        head_text_title=findViewById(R.id.head_text_title);
+        head_text_title= (TextView) findViewById(R.id.head_text_title);
         head_text_title.setText("DesignPattern(设计模式)");
 
-        list_lv=  findViewById(R.id.list_lv);
+        list_lv= (ListView) findViewById(R.id.list_lv);
         adapter=new MainAdapter(mContext,data);
         list_lv.setAdapter(adapter);
         list_lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {

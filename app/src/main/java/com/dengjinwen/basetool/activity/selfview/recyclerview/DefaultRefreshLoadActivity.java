@@ -2,10 +2,6 @@ package com.dengjinwen.basetool.activity.selfview.recyclerview;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.widget.TextView;
 
@@ -18,6 +14,11 @@ import com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.interfaces.Sw
 import com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.view.SwipeMenuRecyclerView;
 
 import java.util.ArrayList;
+
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 /**
  * 默认下拉刷新加载更多

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.os.CountDownTimer;
-import android.support.v7.widget.AppCompatTextView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -12,6 +11,8 @@ import android.view.MotionEvent;
 import com.dengjinwen.basetool.library.R;
 
 import java.util.Locale;
+
+import androidx.appcompat.widget.AppCompatTextView;
 
 /**
  *

@@ -21,11 +21,12 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.support.annotation.RequiresPermission;
 
 import com.dengjinwen.basetool.library.function.permission.Permission;
 
 import java.util.List;
+
+import androidx.annotation.RequiresPermission;
 
 /**
  * Created by YanZhenjie on 2018/1/14.

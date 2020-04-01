@@ -30,7 +30,7 @@ public class BottomNavigationActivity extends BaseActivity implements View.OnCli
 
     private void initview() {
         findViewById(R.id.head_img_left).setOnClickListener(this);
-        head_text_title=findViewById(R.id.head_text_title);
+        head_text_title= (TextView) findViewById(R.id.head_text_title);
         head_text_title.setText("BottomNavigationBar");
 
         //item的右上角文字
@@ -39,7 +39,7 @@ public class BottomNavigationActivity extends BaseActivity implements View.OnCli
        textBadgeItem.setTextColor(Color.WHITE);
        textBadgeItem.setText("99");
 
-        bottom_bnv=findViewById(R.id.bottom_bnv);
+        bottom_bnv= (BottomNavigationBar) findViewById(R.id.bottom_bnv);
         bottom_bnv.setMode(BottomNavigationBar.MODE_FIXED);
         bottom_bnv.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
         bottom_bnv.setBarBackgroundColor(android.R.color.white);

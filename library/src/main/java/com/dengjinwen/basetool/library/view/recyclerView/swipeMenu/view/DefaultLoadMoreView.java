@@ -16,7 +16,6 @@
 package com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.view;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -28,6 +27,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.dengjinwen.basetool.library.R;
+
+import androidx.annotation.Nullable;
 
 
 /**

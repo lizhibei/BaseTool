@@ -17,7 +17,6 @@ package com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -33,6 +32,8 @@ import com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.interfaces.Sw
 import com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.util.SwipeHorizontal;
 import com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.util.SwipeLeftHorizontal;
 import com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.util.SwipeRightHorizontal;
+
+import androidx.core.view.ViewCompat;
 
 /**
  * Created by Yan Zhenjie on 2016/7/27.

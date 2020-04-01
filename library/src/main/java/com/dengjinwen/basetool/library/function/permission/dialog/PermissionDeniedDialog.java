@@ -1,11 +1,12 @@
 package com.dengjinwen.basetool.library.function.permission.dialog;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.dengjinwen.basetool.library.R;
 import com.dengjinwen.basetool.library.function.permission.AndPermission;
+
+import androidx.annotation.NonNull;
 
 /**
  * 获取权限失败对话框

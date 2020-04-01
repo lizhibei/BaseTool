@@ -4,13 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Looper;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.dengjinwen.basetool.library.function.dialog.product.LoadDialog;
 import com.dengjinwen.basetool.library.function.mvp.IBaseView;
 import com.dengjinwen.basetool.library.tool.ScreenUitl;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class BaseToolActivity extends AppCompatActivity implements IBaseView {
 

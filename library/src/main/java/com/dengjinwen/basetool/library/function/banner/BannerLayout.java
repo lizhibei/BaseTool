@@ -6,7 +6,6 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
@@ -20,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import androidx.viewpager.widget.ViewPager;
 
 //import com.voctex.banners.bean.BannerEntity;
 

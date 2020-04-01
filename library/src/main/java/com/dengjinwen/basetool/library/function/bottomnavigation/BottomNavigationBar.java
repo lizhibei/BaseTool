@@ -5,14 +5,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Build;
-import android.support.annotation.ColorRes;
-import android.support.annotation.IntDef;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPropertyAnimatorCompat;
-import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,10 +21,19 @@ import com.dengjinwen.basetool.library.function.bottomnavigation.navigationtab.B
 import com.dengjinwen.basetool.library.function.bottomnavigation.navigationtab.FixedBottomNavigationTab;
 import com.dengjinwen.basetool.library.function.bottomnavigation.navigationtab.ShiftingBottomNavigationTab;
 import com.dengjinwen.basetool.library.tool.ScreenUitl;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
+
+import androidx.annotation.ColorRes;
+import androidx.annotation.IntDef;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.ViewPropertyAnimatorCompat;
+import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
 
 /**
  * Class description : This class is used to draw the layout and this acts like a bridge between
@@ -223,7 +224,7 @@ public class BottomNavigationBar extends FrameLayout {
         if (attrs != null) {
             TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.BottomNavigationBar, 0, 0);
 
-            mActiveColor = typedArray.getColor(R.styleable.BottomNavigationBar_bnbActiveColor,ContextCompat.getColor(context,R.color.text_color) );
+            mActiveColor = typedArray.getColor(R.styleable.BottomNavigationBar_bnbActiveColor, ContextCompat.getColor(context,R.color.text_color) );
             mInActiveColor = typedArray.getColor(R.styleable.BottomNavigationBar_bnbInactiveColor, Color.LTGRAY);
             mBackgroundColor = typedArray.getColor(R.styleable.BottomNavigationBar_bnbBackgroundColor, Color.WHITE);
             mAutoHideEnabled = typedArray.getBoolean(R.styleable.BottomNavigationBar_bnbAutoHideEnabled, true);

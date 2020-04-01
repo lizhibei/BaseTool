@@ -3,8 +3,6 @@ package com.dengjinwen.basetool.activity.selfview.recyclerview;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -25,6 +23,9 @@ import com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.interfaces.Sw
 import com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.view.SwipeMenuRecyclerView;
 
 import java.util.ArrayList;
+
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 /**
  * 侧滑菜单
@@ -50,10 +51,10 @@ public class SwipeMenuActivity extends BaseActivity implements View.OnClickListe
 
     private void initview() {
         findViewById(R.id.head_img_left).setOnClickListener(this);
-        head_text_title=findViewById(R.id.head_text_title);
+        head_text_title= (TextView) findViewById(R.id.head_text_title);
         head_text_title.setText("SwipeMenu");
 
-        list_smrv=findViewById(R.id.list_smrv);
+        list_smrv= (SwipeMenuRecyclerView) findViewById(R.id.list_smrv);
 
         //SwipeItemClickListener必须设置
         list_smrv.setSwipeItemClickListener(this);

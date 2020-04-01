@@ -1,10 +1,11 @@
 package com.dengjinwen.basetool.library.view.checkView;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.widget.Checkable;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageView;
 
 public class CheckableImageView extends AppCompatImageView implements Checkable {
 

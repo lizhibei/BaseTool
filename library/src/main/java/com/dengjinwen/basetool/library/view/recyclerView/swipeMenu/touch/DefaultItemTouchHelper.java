@@ -1,6 +1,7 @@
 package com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.touch;
 
-import android.support.v7.widget.helper.ItemTouchHelper;
+
+import androidx.recyclerview.widget.ItemTouchHelper;
 
 public class DefaultItemTouchHelper extends ItemTouchHelper {
 
@@ -12,6 +13,7 @@ public class DefaultItemTouchHelper extends ItemTouchHelper {
 
     private DefaultItemTouchHelper(DefaultItemTouchHelperCallback callback) {
         super(callback);
+
         mItemTouchHelperCallback=callback;
     }
 

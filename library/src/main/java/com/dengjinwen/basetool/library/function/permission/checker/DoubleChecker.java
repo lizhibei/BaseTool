@@ -16,9 +16,10 @@
 package com.dengjinwen.basetool.library.function.permission.checker;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
 
 /**
  * Created by YanZhenjie on 2018/1/27.

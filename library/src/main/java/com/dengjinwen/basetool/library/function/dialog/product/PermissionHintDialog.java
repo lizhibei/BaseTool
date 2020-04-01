@@ -2,7 +2,6 @@ package com.dengjinwen.basetool.library.function.dialog.product;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +11,8 @@ import android.widget.TextView;
 
 import com.dengjinwen.basetool.library.R;
 import com.dengjinwen.basetool.library.function.screenAdaptation.ScreenAdapterTools;
+
+import androidx.annotation.NonNull;
 
 /**
  * 权限提示对话框

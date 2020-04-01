@@ -8,12 +8,13 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
 import com.dengjinwen.basetool.library.R;
 import com.dengjinwen.basetool.library.tool.UnitConversionTool;
+
+import androidx.annotation.Nullable;
 
 public class NumberProgressBar extends View {
 

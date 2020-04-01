@@ -17,7 +17,7 @@ public class FilePicker {
 
     private Activity activity;
     private Fragment fragment;
-    private android.support.v4.app.Fragment supporFragment;
+    private Fragment supporFragment;
 
     private Class<? extends FilePickerActivity> mFilePickerClass = FilePickerActivity.class;
 
@@ -68,7 +68,7 @@ public class FilePicker {
         return this;
     }
 
-    public FilePicker withSupporFragment(android.support.v4.app.Fragment fragment){
+    public FilePicker withSupporFragment(Fragment fragment){
         if(activity!=null||fragment!=null){
             throw new RuntimeException("You must pass either Activity, Fragment or SupportFragment");
         }

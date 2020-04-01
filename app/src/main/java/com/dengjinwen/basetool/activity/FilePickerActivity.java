@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
@@ -26,6 +25,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
+
+import androidx.annotation.NonNull;
 
 public class FilePickerActivity extends BaseActivity implements View.OnClickListener,FilePickerFragment.FileClickListener{
 
@@ -92,7 +93,7 @@ public class FilePickerActivity extends BaseActivity implements View.OnClickList
 
     private void initview() {
         findViewById(R.id.head_img_left).setOnClickListener(this);
-        head_text_title=findViewById(R.id.head_text_title);
+        head_text_title= (TextView) findViewById(R.id.head_text_title);
 
         AndPermission.with(this)
                 .permission(Manifest.permission.READ_EXTERNAL_STORAGE)

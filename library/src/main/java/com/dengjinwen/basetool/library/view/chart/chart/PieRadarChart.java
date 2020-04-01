@@ -1,13 +1,14 @@
 package com.dengjinwen.basetool.library.view.chart.chart;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.dengjinwen.basetool.library.view.chart.interfaces.iChart.IPieRadarChart;
 import com.dengjinwen.basetool.library.view.chart.interfaces.iData.IChartData;
 
 import java.util.ArrayList;
+
+import androidx.annotation.Nullable;
 
 /**
  * 扇形图、雷达图绘制基类

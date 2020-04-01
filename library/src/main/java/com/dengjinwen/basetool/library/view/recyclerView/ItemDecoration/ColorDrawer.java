@@ -17,7 +17,8 @@ package com.dengjinwen.basetool.library.view.recyclerView.ItemDecoration;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.support.annotation.ColorInt;
+
+import androidx.annotation.ColorInt;
 
 /**
  * Created by YanZhenjie on 2018/4/20.

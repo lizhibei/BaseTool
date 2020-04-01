@@ -26,13 +26,13 @@ public class CreditCardActivity extends BaseActivity implements View.OnClickList
 
     private void initview() {
         findViewById(R.id.head_img_left).setOnClickListener(this);
-        head_text_title=findViewById(R.id.head_text_title);
+        head_text_title= (TextView) findViewById(R.id.head_text_title);
         head_text_title.setText("信用卡");
 
-        number_et=findViewById(R.id.number_et);
-        front_money_tv=findViewById(R.id.front_money_tv);
+        number_et= (EditText) findViewById(R.id.number_et);
+        front_money_tv= (TextView) findViewById(R.id.front_money_tv);
 
-        money_tv=findViewById(R.id.money_tv);
+        money_tv= (TextView) findViewById(R.id.money_tv);
         SharedPreferences sp=getSharedPreferences(temp,0);
         money_tv.setText(""+sp.getFloat(temp,0.0f));
         findViewById(R.id.add_b).setOnClickListener(this);

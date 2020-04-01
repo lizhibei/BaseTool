@@ -1,13 +1,14 @@
 package com.dengjinwen.basetool.library.view.recyclerView.adpater;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 public abstract class UniversalAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -39,7 +40,7 @@ public abstract class UniversalAdapter<T> extends RecyclerView.Adapter<RecyclerV
         return true;
     }
 
-    protected int getPosition(android.support.v7.widget.RecyclerView.ViewHolder viewHolder) {
+    protected int getPosition(ViewHolder viewHolder) {
         return viewHolder.getAdapterPosition();
     }
 

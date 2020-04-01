@@ -29,10 +29,10 @@ public class NumberProgressBarActivity extends BaseActivity implements NumberPro
     private void initview() {
 
         findViewById(R.id.head_img_left).setOnClickListener(this);
-        head_text_title=findViewById(R.id.head_text_title);
+        head_text_title= (TextView) findViewById(R.id.head_text_title);
         head_text_title.setText("NumberProgressBar");
 
-        progress_npb=findViewById(R.id.progress_npb);
+        progress_npb= (NumberProgressBar) findViewById(R.id.progress_npb);
         progress_npb.setOnProgressBarListener(this);
 
         timer=new Timer();

@@ -3,7 +3,6 @@ package com.dengjinwen.basetool.activity.selfview;
 import android.content.Context;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,6 +10,8 @@ import com.dengjinwen.basetool.R;
 import com.dengjinwen.basetool.activity.BaseActivity;
 import com.dengjinwen.basetool.library.view.checkView.CheckableImageView;
 import com.dengjinwen.basetool.library.view.checkView.CheckableLinearLayout;
+
+import androidx.core.content.ContextCompat;
 
 public class CheckViewDemoActivity extends BaseActivity implements View.OnClickListener{
     private TextView head_text_title;
@@ -29,10 +30,10 @@ public class CheckViewDemoActivity extends BaseActivity implements View.OnClickL
 
     private void initview() {
         findViewById(R.id.head_img_left).setOnClickListener(this);
-        head_text_title=findViewById(R.id.head_text_title);
+        head_text_title= (TextView) findViewById(R.id.head_text_title);
         head_text_title.setText("CheckView");
 
-        check_ll=findViewById(R.id.check_ll);
+        check_ll= (CheckableLinearLayout) findViewById(R.id.check_ll);
         //父视图复制子视图的状态
         check_ll.setAddStatesFromChildren(true);
 
@@ -40,7 +41,7 @@ public class CheckViewDemoActivity extends BaseActivity implements View.OnClickL
 //        cable_L.setDuplicateParentStateEnabled(true);
         check_ll.setBackground(initStateListDrawable());
 
-        item_iv=findViewById(R.id.item_iv);
+        item_iv= (CheckableImageView) findViewById(R.id.item_iv);
         item_iv.setImageDrawable(getImageStateLIstDrawable());
         item_iv.setOnClickListener(new View.OnClickListener() {
             @Override

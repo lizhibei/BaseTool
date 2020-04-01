@@ -3,10 +3,6 @@ package com.dengjinwen.basetool.activity.selfview.recyclerview;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -30,6 +26,11 @@ import com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.view.SwipeMen
 
 import java.util.ArrayList;
 import java.util.Collections;
+
+import androidx.core.content.ContextCompat;
+import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * 拖拽+侧滑菜单
@@ -55,10 +56,10 @@ public class DragSwipeActivity extends BaseActivity implements View.OnClickListe
 
     private void initview() {
         findViewById(R.id.head_img_left).setOnClickListener(this);
-        head_text_title=findViewById(R.id.head_text_title);
+        head_text_title= (TextView) findViewById(R.id.head_text_title);
         head_text_title.setText("DragSwipe");
 
-        list_smrv=findViewById(R.id.list_smrv);
+        list_smrv= (SwipeMenuRecyclerView) findViewById(R.id.list_smrv);
 
         list_smrv.setSwipeMenuItemClickListener(menuItemClickListener);
         list_smrv.setSwipeMenuCreator(swipeMenuCreator);

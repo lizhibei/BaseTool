@@ -46,10 +46,10 @@ public class BannerLayoutActivity extends BaseActivity implements View.OnClickLi
 
     private void initview() {
         findViewById(R.id.head_img_left).setOnClickListener(this);
-        head_text_title=findViewById(R.id.head_text_title);
+        head_text_title= (TextView) findViewById(R.id.head_text_title);
         head_text_title.setText("BannerLayout");
 
-        banner_bl=findViewById(R.id.banner_bl);
+        banner_bl= (BannerLayout) findViewById(R.id.banner_bl);
 
         List<IBannerEntity> mList = new ArrayList<>();
         for (int i = 0; i < imgs.length; i++) {

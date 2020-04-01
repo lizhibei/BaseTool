@@ -15,15 +15,17 @@
  */
 package com.dengjinwen.basetool.library.function.permission.checker;
 
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.net.Uri;
 import android.provider.CallLog;
-import android.support.annotation.RequiresPermission;
 
 import com.dengjinwen.basetool.library.function.permission.Permission;
+
+import androidx.annotation.RequiresPermission;
 
 
 /**
@@ -37,6 +39,7 @@ class CallLogWriteTest implements PermissionTest {
         this.mResolver = context.getContentResolver();
     }
 
+    @SuppressLint("MissingPermission")
     @RequiresPermission(Permission.WRITE_CALL_LOG)
     @Override
     public boolean test() throws Throwable {
@@ -46,7 +49,7 @@ class CallLogWriteTest implements PermissionTest {
             content.put(CallLog.Calls.NUMBER, "1");
             content.put(CallLog.Calls.DATE, 20080808);
             content.put(CallLog.Calls.NEW, "0");
-            Uri resourceUri = mResolver.insert(CallLog.Calls.CONTENT_URI, content);
+            @SuppressLint("MissingPermission") Uri resourceUri = mResolver.insert(CallLog.Calls.CONTENT_URI, content);
             return ContentUris.parseId(resourceUri) > 0;
         } finally {
             mResolver.delete(CallLog.Calls.CONTENT_URI, CallLog.Calls.NUMBER + "=?", new String[]{"1"});

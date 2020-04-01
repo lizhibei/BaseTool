@@ -1,10 +1,11 @@
 package com.dengjinwen.basetool.library.function.dialog.product;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 
 import com.dengjinwen.basetool.library.R;
 import com.dengjinwen.basetool.library.function.permission.RequestExecutor;
+
+import androidx.annotation.NonNull;
 
 public class PermissionRationaleDialog extends PermissionHintDialog {
 

@@ -11,8 +11,6 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.Window;
@@ -45,6 +43,9 @@ import com.google.zxing.qrcode.QRCodeReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDelegate;
 
 public class BaseToolBaseCaptureActivity extends BaseToolActivity implements IBaseCaptureView {
 

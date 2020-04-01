@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v4.content.FileProvider;
 
 import com.dengjinwen.basetool.library.function.dialog.product.PermissionHintDialog;
 import com.dengjinwen.basetool.library.function.permission.Action;
@@ -19,6 +18,8 @@ import com.dengjinwen.basetool.library.function.permission.RequestExecutor;
 
 import java.io.File;
 import java.util.List;
+
+import androidx.core.content.FileProvider;
 
 /**
  * 照相机工具类
@@ -97,7 +98,7 @@ public class CameraTool {
                     @Override
                     public void onAction(List<String> permissions) {
                         createFile(parentFile,type,time);
-                        final Uri mUri=FileProvider.getUriForFile(activity,activity.getApplicationInfo().packageName+".fileprovider",mImageFile);
+                        final Uri mUri= FileProvider.getUriForFile(activity,activity.getApplicationInfo().packageName+".fileprovider",mImageFile);
                         toCamera(mUri,activity,flag,type);
                     }
                 })

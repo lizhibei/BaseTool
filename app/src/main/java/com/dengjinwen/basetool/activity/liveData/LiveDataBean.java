@@ -1,7 +1,8 @@
 package com.dengjinwen.basetool.activity.liveData;
 
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
+
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 public class LiveDataBean extends ViewModel {
 

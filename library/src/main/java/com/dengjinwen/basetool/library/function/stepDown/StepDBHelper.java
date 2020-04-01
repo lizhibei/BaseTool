@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.support.annotation.Nullable;
 
 import com.dengjinwen.basetool.library.function.stepDown.interfaces.IStepDBHelper;
 import com.dengjinwen.basetool.library.tool.DateUtils;
@@ -15,6 +14,8 @@ import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import androidx.annotation.Nullable;
 
 public class StepDBHelper extends SQLiteOpenHelper implements IStepDBHelper {
 

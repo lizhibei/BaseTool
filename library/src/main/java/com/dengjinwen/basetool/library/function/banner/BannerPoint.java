@@ -4,11 +4,12 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
 import com.dengjinwen.basetool.library.R;
+
+import androidx.core.content.ContextCompat;
 
 /**
  * Created by voctex on 20160707

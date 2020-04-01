@@ -2,10 +2,11 @@ package com.dengjinwen.basetool.library.function.dialog.product;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.NonNull;
 
 import com.dengjinwen.basetool.library.R;
 import com.dengjinwen.basetool.library.function.permission.AndPermission;
+
+import androidx.annotation.NonNull;
 
 /**
  * 获取权限失败对话框

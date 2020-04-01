@@ -2,10 +2,6 @@ package com.dengjinwen.basetool.activity.selfview.recyclerview;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -19,6 +15,10 @@ import com.dengjinwen.basetool.library.view.recyclerView.tangtang.SwipeCardLayou
 
 import java.util.List;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

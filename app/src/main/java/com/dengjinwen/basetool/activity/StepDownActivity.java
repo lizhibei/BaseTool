@@ -38,10 +38,10 @@ public class StepDownActivity extends BaseActivity implements View.OnClickListen
 
     private void initview() {
         findViewById(R.id.head_img_left).setOnClickListener(this);
-        head_text_title=findViewById(R.id.head_text_title);
+        head_text_title= (TextView) findViewById(R.id.head_text_title);
         head_text_title.setText("记步");
 
-        step_count_tv=findViewById(R.id.step_count_tv);
+        step_count_tv= (TextView) findViewById(R.id.step_count_tv);
 
         findViewById(R.id.stop_tv).setOnClickListener(this); //停止通知
         findViewById(R.id.start_tv).setOnClickListener(this); //开始通知

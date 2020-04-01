@@ -16,11 +16,6 @@ import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
-import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -28,6 +23,12 @@ import android.view.ViewOutlineProvider;
 
 import com.dengjinwen.basetool.library.R;
 import com.dengjinwen.basetool.library.tool.UnitConversionTool;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.AppCompatImageView;
 
 public class CircleImageView extends AppCompatImageView {
 

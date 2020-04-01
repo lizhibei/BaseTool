@@ -15,8 +15,8 @@
  */
 package com.dengjinwen.basetool.library.function.permission;
 
-import android.support.annotation.NonNull;
 
+import androidx.annotation.NonNull;
 
 /**
  * <p>Permission request.</p>

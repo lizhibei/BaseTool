@@ -7,12 +7,13 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Typeface;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 
 import com.dengjinwen.basetool.library.R;
+
+import androidx.annotation.Nullable;
 
 public class IconView extends View {
 

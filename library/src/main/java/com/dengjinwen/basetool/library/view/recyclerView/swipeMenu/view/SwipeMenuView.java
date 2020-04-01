@@ -18,9 +18,6 @@ package com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.view;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.widget.TextViewCompat;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -37,6 +34,10 @@ import com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.interfaces.Sw
 import com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.interfaces.SwipeSwitch;
 
 import java.util.List;
+
+import androidx.core.view.ViewCompat;
+import androidx.core.widget.TextViewCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by Yan Zhenjie on 2016/7/26.

@@ -48,10 +48,10 @@ public class SelectImageAndActivity extends BaseActivity implements View.OnClick
 
     private void initview() {
         findViewById(R.id.head_img_left).setOnClickListener(this);
-        head_text_title=findViewById(R.id.head_text_title);
+        head_text_title= (TextView) findViewById(R.id.head_text_title);
         head_text_title.setText("选择图片");
 
-        list_gv=findViewById(R.id.list_gv);
+        list_gv= (GridView) findViewById(R.id.list_gv);
 
         findViewById(R.id.add_tv).setOnClickListener(this);
 

@@ -16,10 +16,6 @@
 package com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v4.util.SparseArrayCompat;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +31,11 @@ import com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.view.SwipeMen
 
 import java.lang.reflect.Field;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.collection.SparseArrayCompat;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import static com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.view.SwipeMenuRecyclerView.LEFT_DIRECTION;
 import static com.dengjinwen.basetool.library.view.recyclerView.swipeMenu.view.SwipeMenuRecyclerView.RIGHT_DIRECTION;

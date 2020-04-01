@@ -2,7 +2,6 @@ package com.dengjinwen.basetool.library.view.chart.chart;
 
 import android.content.Context;
 import android.graphics.Paint;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -11,6 +10,8 @@ import com.dengjinwen.basetool.library.view.chart.interfaces.iData.IChartData;
 import com.dengjinwen.basetool.library.view.chart.render.ChartRender;
 
 import java.util.ArrayList;
+
+import androidx.annotation.Nullable;
 
 /**
  * 图标基类

@@ -1,7 +1,6 @@
 package com.dengjinwen.basetool.activity.okhttp;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,6 +13,7 @@ import com.dengjinwen.basetool.library.tool.log;
 import java.io.File;
 import java.io.IOException;
 
+import androidx.annotation.Nullable;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

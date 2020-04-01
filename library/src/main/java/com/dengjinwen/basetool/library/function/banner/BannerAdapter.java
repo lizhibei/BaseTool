@@ -1,7 +1,6 @@
 package com.dengjinwen.basetool.library.function.banner;
 
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -13,6 +12,8 @@ import com.dengjinwen.basetool.library.function.banner.interfac.OnBannerImgShowL
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.viewpager.widget.PagerAdapter;
 
 
 /**
@@ -36,12 +37,9 @@ public class BannerAdapter extends PagerAdapter {
             img.setScaleType(ImageView.ScaleType.FIT_XY);
             img.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.MATCH_PARENT));
-            img.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (onBannerClickListener != null) {
-                        onBannerClickListener.onBannerClick(position - 1, mlist.get(position));
-                    }
+            img.setOnClickListener(v -> {
+                if (onBannerClickListener != null) {
+                    onBannerClickListener.onBannerClick(position - 1, mlist.get(position));
                 }
             });
 //            if (entity.getAdImg() == null && entity.getAdResId() != 0) {
