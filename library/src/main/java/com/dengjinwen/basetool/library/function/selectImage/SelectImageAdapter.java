@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.dengjinwen.basetool.library.R;
-import com.dengjinwen.basetool.library.tool.ScreenUitl;
+import com.dengjinwen.basetool.library.tool.screen.ScreenUitl;
 
 import java.io.File;
 import java.util.HashSet;

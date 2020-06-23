@@ -13,6 +13,8 @@ import android.text.Html;
 import android.text.Spanned;
 import android.widget.TextView;
 
+import com.dengjinwen.basetool.library.tool.screen.ScreenUitl;
+
 import org.xml.sax.XMLReader;
 
 import java.io.FileNotFoundException;

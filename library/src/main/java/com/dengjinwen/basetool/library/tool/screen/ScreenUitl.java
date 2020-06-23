@@ -1,4 +1,4 @@
-package com.dengjinwen.basetool.library.tool;
+package com.dengjinwen.basetool.library.tool.screen;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

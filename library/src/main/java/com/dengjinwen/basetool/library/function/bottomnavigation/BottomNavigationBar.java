@@ -20,7 +20,7 @@ import com.dengjinwen.basetool.library.function.bottomnavigation.behaviour.Botto
 import com.dengjinwen.basetool.library.function.bottomnavigation.navigationtab.BottomNavigationTab;
 import com.dengjinwen.basetool.library.function.bottomnavigation.navigationtab.FixedBottomNavigationTab;
 import com.dengjinwen.basetool.library.function.bottomnavigation.navigationtab.ShiftingBottomNavigationTab;
-import com.dengjinwen.basetool.library.tool.ScreenUitl;
+import com.dengjinwen.basetool.library.tool.screen.ScreenUitl;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.lang.annotation.Retention;

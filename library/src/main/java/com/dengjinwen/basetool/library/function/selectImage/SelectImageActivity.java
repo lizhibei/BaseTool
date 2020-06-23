@@ -28,7 +28,7 @@ import com.dengjinwen.basetool.library.function.permission.Rationale;
 import com.dengjinwen.basetool.library.function.permission.RequestExecutor;
 import com.dengjinwen.basetool.library.tool.CameraTool;
 import com.dengjinwen.basetool.library.tool.LocalDataUitlTool;
-import com.dengjinwen.basetool.library.tool.ScreenUitl;
+import com.dengjinwen.basetool.library.tool.screen.ScreenUitl;
 import com.dengjinwen.basetool.library.tool.comparator.FileModityTimeComparator;
 
 import java.io.File;

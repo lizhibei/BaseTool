@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 
 import com.dengjinwen.basetool.library.function.screenAdaptation.conversion.IConversion;
 import com.dengjinwen.basetool.library.function.screenAdaptation.conversion.SimpleConversion;
-import com.dengjinwen.basetool.library.tool.ScreenUitl;
+import com.dengjinwen.basetool.library.tool.screen.ScreenUitl;
 
 
 public abstract class AbsLoadViewHelper implements ILoadViewHelper{

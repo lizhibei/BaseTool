@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+
 import com.dengjinwen.basetool.activity.BaseActivity;
 import com.dengjinwen.basetool.activity.CreditCardActivity;
 import com.dengjinwen.basetool.activity.DialogFactoryActivity;
@@ -26,9 +28,10 @@ import com.dengjinwen.basetool.library.function.screenAdaptation.ScreenAdapterTo
 import com.dengjinwen.basetool.library.function.zxing.android.BaseToolCaptureActivity;
 import com.dengjinwen.basetool.library.function.zxing.common.Constant;
 import com.dengjinwen.basetool.library.tool.NotificationsUtils;
-import com.dengjinwen.basetool.library.tool.ScreenUitl;
+import com.dengjinwen.basetool.library.tool.screen.ScreenUitl;
 import com.dengjinwen.basetool.library.tool.filter.inputFilter.DecimalNumberInputFilter;
 import com.dengjinwen.basetool.library.tool.log;
+import com.dengjinwen.basetool.library.tool.screen.StatusBarUtil;
 import com.dengjinwen.basetool.util.FilePicker;
 
 import java.util.ArrayList;
@@ -49,8 +52,7 @@ public class MainActivity extends BaseActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ScreenAdapterTools.getInstance().loadView(getWindow().getDecorView());
-        ScreenUitl.setHead(this,findViewById(R.id.head_top), R.color.head_translucent,
-                ScreenUitl.StatusBarStyle.COLOR);
+//        StatusBarUtil.setStatusBar(this, ContextCompat.getColor(this,R.color.white));
         mContext=this;
         initData();
         initview();

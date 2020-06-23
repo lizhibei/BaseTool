@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.dengjinwen.basetool.library.R;
 import com.dengjinwen.basetool.library.function.dialog.product.LoadDialog;
 import com.dengjinwen.basetool.library.function.mvp.IBaseView;
-import com.dengjinwen.basetool.library.tool.ScreenUitl;
+import com.dengjinwen.basetool.library.tool.screen.ScreenUitl;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
