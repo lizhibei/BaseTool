@@ -70,6 +70,8 @@ public class MainActivity extends BaseActivity  {
         if(!NotificationsUtils.isNotificationEnabled(mContext)){
             NotificationsUtils.toNotificationSetting(this);
         }
+
+        String url=BuildConfig.SERVER_URL;
     }
 
 
@@ -94,14 +96,15 @@ public class MainActivity extends BaseActivity  {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(resultCode==RESULT_OK){
-            if(requestCode==QR_CODE){
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == QR_CODE) {
                 String scanResult = data.getStringExtra(Constant.CODED_CONTENT);
-                log.e("scanResult:"+scanResult);
+                log.e("scanResult:" + scanResult);
             }
         }
 
-        if(requestCode==NotificationsUtils.GET_PER){
+        if (requestCode == NotificationsUtils.GET_PER) {
             log.e("获取权限回调");
         }
     }

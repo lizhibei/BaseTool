@@ -1,14 +1,19 @@
 apply plugin: 'com.android.application'
+
+def myname=this.rootProject.ext.usename
+
+def app_android=this.getRootProject().ext.app_adroid
+
 android {
-    compileSdkVersion 28
+    compileSdkVersion app_android.compileSdkVersion
     defaultConfig {
-        applicationId "com.dengjinwen.basetool"
-        minSdkVersion 26
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-        multiDexEnabled true
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        applicationId app_android.applicationId
+        minSdkVersion app_android.minSdkVersion
+        targetSdkVersion app_android.targetSdkVersion
+        versionCode app_android.versionCode
+        versionCode app_android.versionCode
+        multiDexEnabled app_android.multiDexEnabled
+        testInstrumentationRunner app_android.testInstrumentationRunner
     }
     packagingOptions {
         exclude 'META-INF/LICENSE'
@@ -16,7 +21,11 @@ android {
         exclude 'META-INF/LGPL2.1'
     }
     buildTypes {
+        debug{
+            buildConfigField("String","SERVER_URL","\"${url.debug}\"")
+        }
         release {
+            buildConfigField("String","SERVER_URL","\"${url.release}\"")
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -32,8 +41,11 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "com.google.android.material:material:1.2.0-alpha05"
-    implementation "androidx.appcompat:appcompat:1.1.0"
-    implementation "androidx.percentlayout:percentlayout:1.0.0"
+    app_impl.each {
+        k,v -> implementation v
+    }
+//    implementation app_impl.appcompat
+//    implementation app_impl.percentlayout
     testImplementation 'junit:junit:4.12'
     implementation project(':library')
     implementation 'com.github.bumptech.glide:glide:4.9.0'

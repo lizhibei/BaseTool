@@ -111,26 +111,30 @@ public class ScreenUitl {
 
     /**
      * 设置头部状态栏
-     * @param context
+     * @param activity
      * @param view
      * @param color
      * @param style tag为1时头部是正常的白色标题栏头部；tag为2时头部是图片
      */
-    public static void setHead(Activity context, View view, int color, StatusBarStyle style) {
+    public static void setHead(Activity activity, View view, int color, StatusBarStyle style) {
+        setHead(activity,view,color,style,50);
+    }
+
+    public static void setHead(Activity activity, View view, int color, StatusBarStyle style,int height){
         //5.0及以上
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            View decorView = context.getWindow().getDecorView();
+            View decorView = activity.getWindow().getDecorView();
             int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                     | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
             decorView.setSystemUiVisibility(option);
-            context.getWindow().setStatusBarColor(Color.TRANSPARENT);
+            activity.getWindow().setStatusBarColor(Color.TRANSPARENT);
             if (style == StatusBarStyle.COLOR) {
                 LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) view.getLayoutParams();
-                linearParams.height = getStatusBarHeight(context);
-                view.setBackgroundColor(context.getResources().getColor(color));
+                linearParams.height = getStatusBarHeight(activity);
+                view.setBackgroundColor(activity.getResources().getColor(color));
             } else if (style == StatusBarStyle.IMAGE) {
                 //设置距离顶部margin值
-                setMargins(view, 0, 50, 0, 0);
+                setMargins(view, 0, height, 0, 0);
             }
         }
     }

@@ -1,0 +1,26 @@
+// ext 自定义 添加我们的内容
+ext{
+
+    usename="dengjinwen"
+
+    app_adroid=[
+            compileSdkVersion: 28,
+            applicationId : "com.dengjinwen.basetool",
+            minSdkVersion : 26,
+            targetSdkVersion :28,
+            versionCode :1,
+            versionName :"1.0",
+            multiDexEnabled :true,
+            testInstrumentationRunner :"android.support.test.runner.AndroidJUnitRunner"
+    ]
+
+    app_impl=[
+            appcompat: "androidx.appcompat:appcompat:1.1.0",
+            percentlayout: "androidx.percentlayout:percentlayout:1.0.0"
+    ]
+
+    url=[
+            debug : "http://54353.65465.64.464//" ,
+            release : "http://777.65465.64.464//"
+    ]
+}
