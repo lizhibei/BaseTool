@@ -77,6 +77,19 @@ public class StatusBarUtil {
       }
 
       /**
+       * 取消填充状态栏
+       * @param activity
+       * @param view
+       * @param color
+       */
+      public static void cancleImageFillStatusBar(Activity activity,View view,int color){
+            View decorView = activity.getWindow().getDecorView();
+            decorView.setSystemUiVisibility(0);
+            setStatusBar(activity,color);
+            setMargins(view,0,0,0,0);
+      }
+
+      /**
        * 设置头部margin值
        */
       private static void setMargins(View v, int l, int t, int r, int b) {
