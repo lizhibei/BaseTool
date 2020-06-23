@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.yanzhenjie:permission:1.0.6@aar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../Android/sdk/gradle/gradle-5.4.1/caches/transforms-2/files-2.1/75b9879de651aa24f4b2dec367417e2e/jetified-permission-1.0.6/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../Android/sdk/gradle/gradle-5.4.1/caches/transforms-2/files-2.1/75b9879de651aa24f4b2dec367417e2e/jetified-permission-1.0.6/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../Android/sdk/gradle/gradle-5.4.1/caches/modules-2/files-2.1/com.yanzhenjie/permission/1.0.6/c0d0b8451b7915ebceba59aab436e9a338045c5f/permission-1.0.6-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../Android/sdk/gradle/gradle-5.4.1/caches/modules-2/files-2.1/com.yanzhenjie/permission/1.0.6/f300f963fe40c61125d5b4bbed939fb0bc8c2d29/permission-1.0.6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
