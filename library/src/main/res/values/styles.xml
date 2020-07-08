@@ -14,6 +14,21 @@
         <item name="android:activityCloseExitAnimation">@anim/right_out</item>
     </style>
 
+    <style name="BottomEnterBottomExit" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/BottomEnterBottomExitAnimation</item>
+    </style>
+
+    <style name="BottomEnterBottomExitAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/buttom_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/anim_no</item>
+        <item name="android:activityCloseEnterAnimation">@anim/anim_no</item>
+        <item name="android:activityCloseExitAnimation">@anim/buttom_out</item>
+    </style>
+
     <style name="BadgeText" parent="TextAppearance.AppCompat.Body2">
         <item name="android:textSize">@dimen/badge_text_size</item>
         <item name="android:includeFontPadding">false</item>

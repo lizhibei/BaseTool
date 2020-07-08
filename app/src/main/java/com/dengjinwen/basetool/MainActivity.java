@@ -114,7 +114,7 @@ public class MainActivity extends BaseActivity  {
     private void initData() {
         MainItem selfview=new MainItem("自定义View","");
         data.add(selfview);
-        MainItem credit=new MainItem("CreditCard","信用卡账单");
+        MainItem credit=new MainItem("CreditCard","");
         data.add(credit);
         MainItem fileS=new MainItem("文件系统","文件系统实例");
         data.add(fileS);
@@ -140,7 +140,7 @@ public class MainActivity extends BaseActivity  {
                 break;
                 //信用卡账单
             case 1:
-                startIntent(mContext,CreditCardActivity.class);
+//                startIntent(mContext,CreditCardActivity.class);
                 break;
                 //文件系统
             case 2:
@@ -173,6 +173,8 @@ public class MainActivity extends BaseActivity  {
                 //
             case 8:
                 startIntent(mContext, LiveDataDemoActivity.class);
+                break;
+            case 9:
                 break;
 
         }

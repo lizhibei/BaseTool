@@ -13,7 +13,9 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.dengjinwen.basetool.R;
 import com.dengjinwen.basetool.activity.BaseActivity;
+import com.dengjinwen.basetool.library.function.banner.BannerAdapter;
 import com.dengjinwen.basetool.library.function.banner.BannerLayout;
+import com.dengjinwen.basetool.library.function.banner.SelfBannerLayout;
 import com.dengjinwen.basetool.library.function.banner.bean.BannerEntity;
 import com.dengjinwen.basetool.library.function.banner.interfac.IBannerEntity;
 import com.dengjinwen.basetool.library.function.banner.interfac.OnBannerClickListener;
@@ -49,7 +51,7 @@ public class BannerLayoutActivity extends BaseActivity implements View.OnClickLi
         head_text_title= (TextView) findViewById(R.id.head_text_title);
         head_text_title.setText("BannerLayout");
 
-        banner_bl= (BannerLayout) findViewById(R.id.banner_bl);
+        banner_bl=  findViewById(R.id.banner_bl);
 
         List<IBannerEntity> mList = new ArrayList<>();
         for (int i = 0; i < imgs.length; i++) {
@@ -61,10 +63,11 @@ public class BannerLayoutActivity extends BaseActivity implements View.OnClickLi
         bannerEntity.setAdResId(R.mipmap.image);
         mList.add(bannerEntity);
 
+//        BannerAdapter adapter=new BannerAdapter(mContext,mList,this);
         banner_bl.setEntities(mList,this); //绑定数据
         banner_bl.setPointColor(Color.BLUE, Color.RED);  //设置圆点的颜色
-        banner_bl.setPointPotision(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);//设置圆点的位置
-        banner_bl.setPointMargin(10,0,10,90); //这个方法可以移动圆点的位置
+        banner_bl.setPointPotision( Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL);//设置圆点的位置
+        banner_bl.setPointMargin(10,0,10,20); //这个方法可以移动圆点的位置
         banner_bl.schedule(2000, 3000); //设置轮播图跳转的间隔时间
     }
 

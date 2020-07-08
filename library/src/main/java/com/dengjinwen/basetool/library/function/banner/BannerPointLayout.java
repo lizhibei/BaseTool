@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 /**
- * Created by Voctex on 2016/8/27.
+ *
  * 点的视图组
  */
 public class BannerPointLayout extends LinearLayout {
@@ -43,7 +43,7 @@ public class BannerPointLayout extends LinearLayout {
 
     }
 
-    /**
+     /**
      * 根据给的半径和内边距来生成点的view
      */
     void setPointSize(int pointRadius, int pointPadding) {

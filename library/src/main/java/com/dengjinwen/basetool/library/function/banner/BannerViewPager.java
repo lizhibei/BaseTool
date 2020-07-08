@@ -9,10 +9,11 @@ import java.lang.reflect.Field;
 import androidx.viewpager.widget.ViewPager;
 
 /**
- * Created by Voctex on 2016/10/26.
+ *
  * 适用于banner广告的viewpager
  */
 public class BannerViewPager extends ViewPager {
+
 
     public BannerViewPager(Context context) {
         super(context);
