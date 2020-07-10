@@ -2,6 +2,7 @@ package com.dengjinwen.basetool;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
@@ -24,6 +26,7 @@ import com.dengjinwen.basetool.activity.okio.OkioDemoActivity;
 import com.dengjinwen.basetool.activity.selfview.SelfViewActivity;
 import com.dengjinwen.basetool.adapter.MainAdapter;
 import com.dengjinwen.basetool.entity.MainItem;
+import com.dengjinwen.basetool.library.function.dialog.product.LoadDialog;
 import com.dengjinwen.basetool.library.function.screenAdaptation.ScreenAdapterTools;
 import com.dengjinwen.basetool.library.function.zxing.android.BaseToolCaptureActivity;
 import com.dengjinwen.basetool.library.function.zxing.common.Constant;
@@ -56,6 +59,10 @@ public class MainActivity extends BaseActivity  {
         mContext=this;
         initData();
         initview();
+
+        LoadDialog loadDialog=new LoadDialog(mContext);
+        loadDialog.setProgressBarColor(Color.parseColor("#ffc234"));
+        loadDialog.show();
 
 
         findViewById(R.id.scan_b).setOnClickListener(new View.OnClickListener() {
