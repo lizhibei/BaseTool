@@ -23,7 +23,7 @@ public class DateUtils {
     /**
      * 返回一定格式的当前时间
      *
-     * @param pattern "yyyy-MM-dd HH:mm:ss E"
+     * @param pattern "yyyy-MM-dd HH:mm:ss "
      * @return
      */
     public static String getCurrentDate(String pattern) {
@@ -50,7 +50,7 @@ public class DateUtils {
      * 格式化输入的millis
      *
      * @param millis
-     * @param pattern yyyy-MM-dd HH:mm:ss E
+     * @param pattern yyyy-MM-dd HH:mm:ss
      * @return
      */
     public static String dateFormat(long millis, String pattern) {
@@ -64,7 +64,7 @@ public class DateUtils {
      * 将dateString原来old格式转换成new格式
      *
      * @param dateString
-     * @param oldPattern yyyy-MM-dd HH:mm:ss E
+     * @param oldPattern yyyy-MM-dd HH:mm:ss
      * @param newPattern
      * @return oldPattern和dateString形式不一样直接返回dateString
      */
