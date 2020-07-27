@@ -120,10 +120,14 @@ public class PermissionHintDialog extends Dialog implements View.OnClickListener
     public void onClick(View v) {
         if(v.getId()==R.id.cancle_tv){
             dismiss();
-            cancleClick.onClick();
+            if(cancleClick!=null){
+                cancleClick.onClick();
+            }
         }else if(v.getId()==R.id.confirm_tv){
             dismiss();
-            confirmClick.onClick();
+            if(confirmClick!=null){
+                confirmClick.onClick();
+            }
         }
     }
 
