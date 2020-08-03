@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -60,21 +61,6 @@ public class MainActivity extends BaseActivity  {
         initData();
         initview();
 
-        LoadDialog loadDialog=new LoadDialog(mContext);
-        loadDialog.setProgressBarColor(Color.parseColor("#ffc234"));
-        loadDialog.show();
-
-
-        findViewById(R.id.scan_b).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivityForResult(BaseToolCaptureActivity.createIntent(mContext),QR_CODE);
-            }
-        });
-
-        EditText input_et= (EditText) findViewById(R.id.input_et);
-        input_et.setFilters(new InputFilter[]{new DecimalNumberInputFilter(8)});
-
 
         if(!NotificationsUtils.isNotificationEnabled(mContext)){
             NotificationsUtils.toNotificationSetting(this);
@@ -119,38 +105,32 @@ public class MainActivity extends BaseActivity  {
     }
 
     private void initData() {
-        MainItem selfview=new MainItem("自定义View","");
+        MainItem selfview=new MainItem("自定义View","",0);
         data.add(selfview);
-        MainItem credit=new MainItem("CreditCard","");
-        data.add(credit);
-        MainItem fileS=new MainItem("文件系统","文件系统实例");
+        MainItem fileS=new MainItem("文件系统","文件系统实例",1);
         data.add(fileS);
-        MainItem selectImage=new MainItem("选择本地图片","选择本地图片实例");
+        MainItem selectImage=new MainItem("选择本地图片","选择本地图片实例",2);
         data.add(selectImage);
-        MainItem dialogFactory=new MainItem("DialogFactory","对话框工厂");
+        MainItem dialogFactory=new MainItem("DialogFactory","对话框工厂",3);
         data.add(dialogFactory);
-        MainItem stepDown=new MainItem("StepService","本地记步");
+        MainItem stepDown=new MainItem("StepService","本地记步",4);
         data.add(stepDown);
-        MainItem okhttp=new MainItem("OkHttp","");
+        MainItem okhttp=new MainItem("OkHttp","",5);
         data.add(okhttp);
-        MainItem okio=new MainItem("okio","");
+        MainItem okio=new MainItem("okio","",6);
         data.add(okio);
-        MainItem liveData=new MainItem("LiveData","");
+        MainItem liveData=new MainItem("LiveData","",7);
         data.add(liveData);
     }
 
     private void click(int position){
-        switch (position){
+        switch (data.get(position).getId()){
             //自定义View
             case 0:
                 startIntent(mContext,SelfViewActivity.class);
                 break;
-                //信用卡账单
-            case 1:
-//                startIntent(mContext,CreditCardActivity.class);
-                break;
                 //文件系统
-            case 2:
+            case 1:
                 new FilePicker().withActivity(this)
                         .withRequestCode(0)
                         .withHiddenFiles(true)
@@ -158,30 +138,30 @@ public class MainActivity extends BaseActivity  {
                         .start();
                 break;
                 //选择本地图片
-            case 3:
+            case 2:
                 startIntent(mContext,SelectImageAndActivity.class);
                 break;
                 //对话框工厂
-            case 4:
+            case 3:
                 startIntent(mContext,DialogFactoryActivity.class);
                 break;
                 //本地记步
-            case 5:
+            case 4:
                 startIntent(mContext,StepDownActivity.class);
                 break;
                 //okhttp
-            case 6:
+            case 5:
                 startIntent(mContext, OkHttpDemoActivity.class);
                 break;
                 //
-            case 7:
+            case 6:
                 startIntent(mContext, OkioDemoActivity.class);
                 break;
                 //
-            case 8:
+            case 7:
                 startIntent(mContext, LiveDataDemoActivity.class);
                 break;
-            case 9:
+            case 8:
                 break;
 
         }

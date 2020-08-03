@@ -20,6 +20,10 @@ android {
         exclude 'META-INF/NOTICE'
         exclude 'META-INF/LGPL2.1'
     }
+
+    dataBinding{
+        enabled=true
+    }
     buildTypes {
         debug{
             buildConfigField("String","SERVER_URL","\"${url.debug}\"")

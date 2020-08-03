@@ -382,6 +382,10 @@ public class UnitConversionTool {
         });
     }
 
+    public long byteToMB(long bytes){
+        long mb=bytes/(1024*1024);
+        return mb;
+    }
     public interface url2BitmapCallBack{
         void success(Bitmap bitmap);
         void fail();

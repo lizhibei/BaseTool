@@ -51,17 +51,17 @@ public class RecyclerViewActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void initData(){
-        MainItem swipeMenu=new MainItem("SwipeMenu","侧滑菜单");
+        MainItem swipeMenu=new MainItem("SwipeMenu","侧滑菜单",0);
         data.add(swipeMenu);
-        MainItem dragSwipe=new MainItem("DragSwipe","拖拽+侧滑");
+        MainItem dragSwipe=new MainItem("DragSwipe","拖拽+侧滑",1);
         data.add(dragSwipe);
-        MainItem defaultRefreshLoad=new MainItem("DefaultRefreshLoad","默认的下拉刷新加载更多");
+        MainItem defaultRefreshLoad=new MainItem("DefaultRefreshLoad","默认的下拉刷新加载更多",2);
         data.add(defaultRefreshLoad);
-        MainItem defineLoadMore=new MainItem("DefineLoadMore","自定义加载更多");
+        MainItem defineLoadMore=new MainItem("DefineLoadMore","自定义加载更多",3);
         data.add(defaultRefreshLoad);
     }
     private void click(int position){
-        switch (position){
+        switch (data.get(position).getId()){
             //侧滑菜单
             case 0:
                 startIntent(mContext,SwipeMenuActivity.class);

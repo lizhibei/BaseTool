@@ -50,12 +50,12 @@ public class DesignPatternActivity extends BaseActivity implements View.OnClickL
     }
 
     private void initData() {
-        MainItem orderup=new MainItem("CommandMode","命令模式");
+        MainItem orderup=new MainItem("CommandMode","命令模式",0);
         data.add(orderup);
     }
 
     private void click(int position){
-        switch (position){
+        switch (data.get(position).getId()){
             //命令模式
             case 0:
                 startIntent(mContext,CommandModeActivity.class);

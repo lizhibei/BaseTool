@@ -36,32 +36,34 @@ public class SelfViewActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void initData() {
-        MainItem bootonNar=new MainItem("BottomNavigation","底部导航栏");
+        MainItem bootonNar=new MainItem("BottomNavigation","底部导航栏",0);
         data.add(bootonNar);
-        MainItem numberProgress=new MainItem("NumberProgress","数字进度条");
+        MainItem numberProgress=new MainItem("NumberProgress","数字进度条",1);
         data.add(numberProgress);
-        MainItem bannerLayout=new MainItem("BannerLayout","轮播图");
+        MainItem bannerLayout=new MainItem("BannerLayout","轮播图",2);
         data.add(bannerLayout);
-        MainItem checkView=new MainItem("CheckView","实现Checkable的自定义视图");
+        MainItem checkView=new MainItem("CheckView","实现Checkable的自定义视图",3);
         data.add(checkView);
-        MainItem animView=new MainItem("AnimView","实现ViewAnimationUtils动画的自定义View");
+        MainItem animView=new MainItem("AnimView","实现ViewAnimationUtils动画的自定义View",4);
         data.add(animView);
-        MainItem circleimageview=new MainItem("CircleImageView","");
+        MainItem circleimageview=new MainItem("CircleImageView","",5);
         data.add(circleimageview);
-        MainItem photoview=new MainItem("PhotoView","PhotoView实例");
+        MainItem photoview=new MainItem("PhotoView","PhotoView实例",6);
         data.add(photoview);
-        MainItem scrollViewContainer=new MainItem("ScrollViewContainer","仿淘宝商品详情");
+        MainItem scrollViewContainer=new MainItem("ScrollViewContainer","仿淘宝商品详情",7);
         data.add(scrollViewContainer);
-        MainItem treelistView=new MainItem("TreeListView","树形结构列表");
+        MainItem treelistView=new MainItem("TreeListView","树形结构列表",8);
         data.add(treelistView);
-        MainItem countDown=new MainItem("CountDownButton","计时器");
+        MainItem countDown=new MainItem("CountDownButton","计时器",9);
         data.add(countDown);
-        MainItem recyclerView=new MainItem("RecyclerView","RecyclerView");
+        MainItem recyclerView=new MainItem("RecyclerView","RecyclerView",10);
         data.add(recyclerView);
-        MainItem chart=new MainItem("ChartView","图表");
+        MainItem chart=new MainItem("ChartView","图表",11);
         data.add(chart);
-        MainItem tangtang=new MainItem("探探主页","模仿探探主页效果");
+        MainItem tangtang=new MainItem("探探主页","模仿探探主页效果",12);
         data.add(tangtang);
+        MainItem expression=new MainItem("表情键盘","",13);
+        data.add(expression);
     }
 
     private void initview() {
@@ -81,7 +83,7 @@ public class SelfViewActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void click(int position){
-        switch (position){
+        switch (data.get(position).getId()){
             //底部导航栏
             case 0:
                 startIntent(mContext,BottomNavigationActivity.class);
@@ -133,6 +135,10 @@ public class SelfViewActivity extends BaseActivity implements View.OnClickListen
             //模仿探探主页
             case 12:
                 startIntent(mContext, CardViewDemoActivity.class);
+                break;
+                //表情键盘
+            case 13:
+                startIntent(mContext,ExpressionActivity.class);
                 break;
         }
     }

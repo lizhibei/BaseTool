@@ -35,7 +35,7 @@ public class ChartActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void initData() {
-        MainItem peiChart=new MainItem("pieChartView","饼状图");
+        MainItem peiChart=new MainItem("pieChartView","饼状图",0);
         data.add(peiChart);
     }
 
@@ -56,7 +56,7 @@ public class ChartActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void click(int position){
-        switch (position){
+        switch (data.get(position).getId()){
             //饼状图
             case 0:
                 startIntent(mContext,PieChartViewActivity.class);

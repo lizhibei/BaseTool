@@ -180,6 +180,10 @@
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
 
         <activity android:name=".activity.selfview.recyclerview.CardViewDemoActivity" />
+        <activity
+            android:name=".activity.selfview.ExpressionActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
     </application>
 
 </manifest>
