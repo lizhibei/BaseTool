@@ -19,6 +19,8 @@
 [StringTool 字符串工具类](https://github.com/lizhibei/BaseTool/wiki/StringTool)&ensp;  &ensp;
 [InputFilter 输入过滤器](https://github.com/lizhibei/BaseTool/wiki/InputFilter)&ensp;  &ensp;
 [NumberTool 四舍五入](https://github.com/lizhibei/BaseTool/wiki/NumberTool)&ensp;  &ensp;<br/>
+[SoftInputTool](https://github.com/lizhibei/BaseTool/wiki/SoftInputTool)&ensp;  &ensp;
+[MySingleClick过滤快速点击](https://github.com/lizhibei/BaseTool/wiki/MySingleClick-%E8%BF%87%E6%BB%A4%E5%BF%AB%E9%80%9F%E7%82%B9%E5%87%BB)&ensp;  &ensp;<br/>
 ## 自定义视图
 [PhotoView 缩放移动图片](https://github.com/lizhibei/BaseTool/wiki/PhotoView)&ensp;  &ensp;
 [TreeListView 树形列表](https://github.com/lizhibei/BaseTool/wiki/TreeListView)&ensp;  &ensp;
