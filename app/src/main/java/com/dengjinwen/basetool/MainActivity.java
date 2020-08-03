@@ -36,6 +36,7 @@ import com.dengjinwen.basetool.library.tool.screen.ScreenUitl;
 import com.dengjinwen.basetool.library.tool.filter.inputFilter.DecimalNumberInputFilter;
 import com.dengjinwen.basetool.library.tool.log;
 import com.dengjinwen.basetool.library.tool.screen.StatusBarUtil;
+import com.dengjinwen.basetool.library.tool.singleClick.MySingleClick;
 import com.dengjinwen.basetool.util.FilePicker;
 
 import java.util.ArrayList;
@@ -60,6 +61,14 @@ public class MainActivity extends BaseActivity  {
         mContext=this;
         initData();
         initview();
+
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @MySingleClick
+            @Override
+            public void onClick(View v) {
+                log.e("11111执行了");
+            }
+        });
 
 
         if(!NotificationsUtils.isNotificationEnabled(mContext)){
