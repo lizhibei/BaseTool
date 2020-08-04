@@ -44,6 +44,7 @@ import androidx.appcompat.app.AppCompatActivity;
 /**
  * 从本地选择图片
  */
+
 public class SelectImageActivity extends AppCompatActivity implements View.OnClickListener{
 
     public static final String TAG_IMAGE_NUMBER="image_number";

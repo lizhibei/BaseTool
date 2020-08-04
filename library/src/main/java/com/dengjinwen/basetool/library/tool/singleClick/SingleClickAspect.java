@@ -28,8 +28,8 @@ public class SingleClickAspect {
        */
       @Around("addSingleClick()")
       public void aroundJoinPoint(ProceedingJoinPoint joinPoint) throws Throwable {
-//            log.e("执行了吗");
             // 取出方法的参数
+            log.e("执行了快速点击注解");
             View view = null;
             for (Object arg : joinPoint.getArgs()) {
                   if (arg instanceof View) {
@@ -38,6 +38,7 @@ public class SingleClickAspect {
                   }
             }
             if (view == null) {
+                  log.e("没有传入view");
                   return;
             }
             // 取出方法的注解
@@ -48,7 +49,6 @@ public class SingleClickAspect {
                   return;
             }
             MySingleClick singleClick = method.getAnnotation(MySingleClick.class);
-//            log.e("value:"+singleClick.value());
             // 判断是否快速点击
             if (!XClickUtil.isFastDoubleClick(view, singleClick.value())) {
                   // 不是快速点击，执行原方法

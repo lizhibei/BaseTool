@@ -39,8 +39,9 @@ import com.dengjinwen.basetool.library.tool.screen.StatusBarUtil;
 import com.dengjinwen.basetool.library.tool.singleClick.MySingleClick;
 import com.dengjinwen.basetool.util.FilePicker;
 
-import java.util.ArrayList;
+import org.aspectj.lang.annotation.Around;
 
+import java.util.ArrayList;
 public class MainActivity extends BaseActivity  {
 
     private ListView list_lv;
@@ -61,6 +62,7 @@ public class MainActivity extends BaseActivity  {
         mContext=this;
         initData();
         initview();
+
 
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @MySingleClick
