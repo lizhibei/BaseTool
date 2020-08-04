@@ -47,3 +47,13 @@
 .idea/workspace.xml
 .idea/caches/build_file_checksums.ser
 app/BaseTool-app.iml
+.idea/libraries/Gradle__androidx_documentfile_documentfile_1_0_0_aar.xml
+.idea/libraries/Gradle__androidx_legacy_legacy_support_core_ui_1_0_0_aar.xml
+.idea/libraries/Gradle__androidx_legacy_legacy_support_core_utils_1_0_0_aar.xml
+.idea/libraries/Gradle__androidx_legacy_legacy_support_v4_1_0_0_aar.xml
+.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml
+.idea/libraries/Gradle__androidx_media_media_1_0_0_aar.xml
+.idea/libraries/Gradle__androidx_print_print_1_0_0_aar.xml
+.idea/libraries/Gradle__androidx_slidingpanelayout_slidingpanelayout_1_0_0_aar.xml
+.idea/libraries/Gradle__com_alibaba_arouter_annotation_1_0_3_jar.xml
+.idea/libraries/Gradle__com_alibaba_arouter_api_1_2_2_aar.xml
