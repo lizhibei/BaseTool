@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/BaseTool.iml" filepath="$PROJECT_DIR$/BaseTool.iml" group="BaseTool" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="BaseTool/app" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" group="BaseTool/library" />
+      <module fileurl="file://$PROJECT_DIR$/mateialdesign/mateialdesign.iml" filepath="$PROJECT_DIR$/mateialdesign/mateialdesign.iml" group="BaseTool/mateialdesign" />
     </modules>
   </component>
 </project>

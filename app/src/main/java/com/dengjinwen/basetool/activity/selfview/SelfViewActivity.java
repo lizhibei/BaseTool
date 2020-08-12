@@ -64,6 +64,8 @@ public class SelfViewActivity extends BaseActivity implements View.OnClickListen
         data.add(tangtang);
         MainItem expression=new MainItem("表情键盘","",13);
         data.add(expression);
+        MainItem findbehavior=new MainItem("Findbehavior","",14);
+        data.add(findbehavior);
     }
 
     private void initview() {
@@ -139,6 +141,9 @@ public class SelfViewActivity extends BaseActivity implements View.OnClickListen
                 //表情键盘
             case 13:
                 startIntent(mContext,ExpressionActivity.class);
+                break;
+            case 14:
+                startIntent(mContext,FindbehaviorActivity.class);
                 break;
         }
     }

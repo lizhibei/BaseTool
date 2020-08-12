@@ -7,7 +7,7 @@ android {
 
 
     defaultConfig {
-        minSdkVersion 26
+        minSdkVersion 22
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -32,12 +32,14 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    compileOnly "com.google.android.material:material:1.2.0-alpha05"
+    compileOnly "com.google.android.material:material:1.3.0-alpha02"
     compileOnly 'androidx.appcompat:appcompat:1.1.0'
     testImplementation 'junit:junit:4.12'
     compileOnly 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
     compileOnly files('libs/core-3.3.3.jar')
     compileOnly 'com.google.code.gson:gson:2.8.2'
+
+    compileOnly 'androidx.constraintlayout:constraintlayout:1.1.3'
 
     //okhttp
     compileOnly 'com.squareup.okhttp3:logging-interceptor:3.8.0'
